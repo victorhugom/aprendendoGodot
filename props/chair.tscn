@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://btxqjl4gptweb"]
+
+[ext_resource type="Texture2D" uid="uid://qkxk5d3tq41j" path="res://assets/colored-transparent.png" id="1_xyoml"]
+
+[node name="chair" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_xyoml")
+hframes = 49
+vframes = 22
+frame = 452
