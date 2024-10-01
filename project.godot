@@ -19,6 +19,14 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://npc/": "blue",
+"res://player/": "teal",
+"res://props/": "pink"
+}
+
 [input]
 
 ui_left={

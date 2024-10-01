@@ -4,17 +4,17 @@ extends CharacterBody2D
 @export var groundMapTile: TileMapLayer
 
 @onready var animations = $AnimationPlayer
-@onready var walkSprite = $WalkSprite
-@onready var idleSprite = $IdleSprite
-@onready var followCamera = $FollowCamera
+@onready var walk_sprite = $WalkSprite
+@onready var idle_sprite = $IdleSprite
+@onready var follow_camera = $FollowCamera
 
-var lastAnimDirection = "down"
+var last_anim_direction = "down"
 
 func _ready() -> void:
 	animations.play("RESET")
 	setCameraLimit()
-	walkSprite.visible = false
-	idleSprite.visible = true
+	walk_sprite.visible = false
+	idle_sprite.visible = true
 
 func _physics_process(delta: float) -> void:
 	handleInput()
@@ -22,20 +22,20 @@ func _physics_process(delta: float) -> void:
 	updateAnimation()
 
 func handleInput():
-	var moveDirection = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
-	velocity = moveDirection * speed
+	var move_direction = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
+	velocity = move_direction * speed
 	
 func updateAnimation():
-	var direction = lastAnimDirection
+	var direction = last_anim_direction
 	var animation_type = "walk_"
 	
 	if velocity.length() == 0: #idle
-		walkSprite.visible = false
-		idleSprite.visible = true
+		walk_sprite.visible = false
+		idle_sprite.visible = true
 		animation_type = "idle_"
 	else: #walking
-		walkSprite.visible = true
-		idleSprite.visible = false
+		walk_sprite.visible = true
+		idle_sprite.visible = false
 		animation_type = "walk_"
 		
 		if velocity.x < 0: direction = "left"
@@ -43,7 +43,7 @@ func updateAnimation():
 		elif velocity.y < 0: direction = "up"
 		elif velocity.y > 0: direction = "down"
 		
-	lastAnimDirection = direction
+	last_anim_direction = direction
 	animations.play(animation_type + direction)
 
 	
@@ -52,5 +52,5 @@ func setCameraLimit():
 	var map_cellsize = 16
 	var worldMapInPixels = map_limits.size * map_cellsize
 	
-	followCamera.limit_right = worldMapInPixels.x
-	followCamera.limit_bottom = worldMapInPixels.y
+	follow_camera.limit_right = worldMapInPixels.x
+	follow_camera.limit_bottom = worldMapInPixels.y

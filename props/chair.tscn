@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://btxqjl4gptweb"]
+[gd_scene load_steps=3 format=3 uid="uid://cgp33mgo87hud"]
 
 [ext_resource type="Texture2D" uid="uid://qkxk5d3tq41j" path="res://assets/colored-transparent.png" id="1_xyoml"]
 
-[node name="chair" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6wfe"]
+size = Vector2(8, 12)
+
+[node name="chair" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
@@ -10,3 +13,6 @@ texture = ExtResource("1_xyoml")
 hframes = 49
 vframes = 22
 frame = 452
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a6wfe")

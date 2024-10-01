@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bilbym4fj7uhw" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_001_Idle_n.png" id="5_iqkw4"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4tbg0"]
-polygon = PackedVector2Array(-1, -2, -1, 4, -2, 8, 0, 10, 2, 9, 2, 3, 2, -1, 0, -4)
+polygon = PackedVector2Array(-1, 11, -1, 12, 1, 12, 1, 11, 1, 11, 1, 8, -1, 8)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vaynh"]
 diffuse_texture = ExtResource("1_ew5t4")
@@ -216,6 +216,7 @@ script = ExtResource("1_nyc0f")
 occluder = SubResource("OccluderPolygon2D_4tbg0")
 
 [node name="WalkSprite" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("CanvasTexture_vaynh")
 hframes = 4
 vframes = 4
