@@ -28,7 +28,7 @@ func handleInput():
 func _input(event):
 	if event.is_action_pressed("ui_test_key"):
 		animations.play("NOME DA ANIMACAO")
-		print_debug("ANIMACAO TEST")
+		print_debug("ANIMACAO TEST 2")
 	
 func updateAnimation():
 	var direction = last_anim_direction
