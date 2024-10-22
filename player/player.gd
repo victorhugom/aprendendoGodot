@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name  Player extends CharacterBody2D
 
 @export var speed = 16*5
 @export var groundMapTile: TileMapLayer
@@ -16,7 +16,7 @@ func _ready() -> void:
 	walk_sprite.visible = false
 	idle_sprite.visible = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	handleInput()
 	move_and_slide()
 	updateAnimation()
@@ -45,7 +45,6 @@ func updateAnimation():
 		
 	last_anim_direction = direction
 	animations.play(animation_type + direction)
-
 	
 func setCameraLimit():
 	var map_limits = groundMapTile.get_used_rect()

@@ -1,39 +1,50 @@
 extends CharacterBody2D
 
-@export var floor: Floor
+signal found_target
+
+@export var level_floor: Floor
 @export var speed = 16*3
 
-@onready var player: CharacterBody2D = %Player
-@onready var timer: Timer = $Timer
+@onready var tracking_timer: Timer = $TrackingTimer
 
+var target_node: Node2D
+var tracking_node: bool
+var target_path_index = 0
 var path: PackedVector2Array
-var target_index = 0
-var timed_out = false
 
 func _ready() -> void:
-	pass
-
-			
-func _physics_process(delta: float) -> void:
+	print_debug(Time.get_time_string_from_system(), ": new npc ready")
 	
+func _physics_process(_delta: float) -> void:
 	if path.size() > 0:
-		var target = path[target_index]
-		var direction = (target - global_position).normalized()
-		print_debug(direction)
+		_follow_path()
+
+#region Private
+
+func _on_tracking_timer_timeout() -> void:
+	_get_path(target_node.global_position)
+
+func _follow_path():
+	if path.size() > 0:
+		var target_path = path[target_path_index]
+		var direction = (target_path - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
 		
-		if global_position.distance_to(target) < 10:
-			target_index += 1
-			if target_index >= path.size():
+		if global_position.distance_to(target_path) < 5:
+			target_path_index += 1
+			if target_path_index >= path.size():
 				path.clear()
+				found_target.emit()
+
+func _get_path(target_position: Vector2):
+
+	#no path to calculate is close enough
+	if global_position.distance_to(target_position) < 16: 
+		return
 	
-func _on_timer_timeout() -> void:
-	update_path()
-	
-func update_path():
-	
-	var new_path = floor.recalculate_path2(self, player)
+	var new_path = level_floor.recalculate_path(self.global_position, target_position)
+	target_path_index = 0
 	
 	if new_path.size() > 0:
 		# Interpolate the path update
@@ -48,4 +59,16 @@ func update_path():
 		
 		# Update the path with the interpolated position
 		path = [interpolated_position] + new_path_array.slice(1, new_path_array.size())
-		target_index = 0
+		target_path_index = 0
+	else:
+		path = []
+		
+#endregion
+
+func track_node(target: Node2D):
+	tracking_node = true
+	target_node = target
+	tracking_timer.start()
+	
+func go_to_location(location: Vector2):
+	_get_path(location)

@@ -1,18 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgp33mgo87hud"]
 
-[ext_resource type="Texture2D" uid="uid://qkxk5d3tq41j" path="res://assets/colored-transparent.png" id="1_xyoml"]
+[ext_resource type="Script" path="res://props/chair.gd" id="1_t6fv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6wfe"]
-size = Vector2(8, 12)
+size = Vector2(8, 8)
 
-[node name="chair" type="StaticBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 3
-texture = ExtResource("1_xyoml")
-hframes = 49
-vframes = 22
-frame = 452
+[node name="Chair" type="Area2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_t6fv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_a6wfe")
+debug_color = Color(0.923159, 4.84195e-05, 0.68483, 0.42)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-16, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

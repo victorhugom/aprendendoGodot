@@ -1,13 +1,11 @@
-extends TileMapLayer
-
-class_name Floor
+class_name Floor extends TileMapLayer
 
 const WALL_TILE_COORD = Vector2i(0, 0)
 const FLOOR_TILE_COORD = Vector2i(1, 0)
 const TILE_SIZE = 16
 const CELL_SIZE = Vector2(TILE_SIZE, TILE_SIZE)
 
-@onready var debug_line : Line2D = $"../DebugLine2D"
+#@onready var debug_line : Line2D = $"../DebugLine2D"
 
 var astar_grid = AStarGrid2D.new()
 var path: PackedVector2Array
@@ -20,46 +18,40 @@ func _ready() -> void:
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.update()
 
-	hide_points()
+	_disable_points()
 	
-func hide_points() -> void:
+func _disable_points() -> void:
+	#set points that cannot be walked as solid
 	
 	var all_tile_map_layer = []
-	get_all_nodes_of_type(get_tree().root, "TileMapLayer", all_tile_map_layer)
+	all_tile_map_layer = Helper.get_all_nodes_of_type(get_tree().root, "TileMapLayer")
 	
 	for layer: TileMapLayer in all_tile_map_layer:
 		if layer.name == "Floor": continue
 		for cell in layer.get_used_cells():
 			astar_grid.set_point_solid(cell, true)
-	
-	#var all_static_bodies = []
-	#get_all_nodes_of_type(get_tree().root, "StaticBody2D", all_static_bodies)
-	#for static_body:StaticBody2D in all_static_bodies:
-		#var point = astar_grid.get_closest_point(static_body.global_position)
-		#astar_grid.set_point_solid(point, true)
 
-## Recalculates the path between the two target nodes.
-func recalculate_path(start: Node2D, end: Node2D) -> PackedVector2Array:
-	path = astar_grid.get_point_path(local_to_map(start.global_position), local_to_map(end.global_position))
-	debug_line.points = path
-	return path
+func get_points_in_radius(center: Vector2, radius: float):
 	
-func recalculate_path2(start: Node2D, end: Node2D) -> PackedVector2Array:
-	var path_ids = astar_grid.get_id_path(local_to_map(start.global_position), local_to_map(end.global_position))
+	var points_in_radius = []
 	
-	if path_ids.size() > 0:
-		# Convert point IDs to positions
-		path = []
-		for id in path_ids:
-			path.append(astar_grid.get_point_position(id))
-		
-	debug_line.points = path
-	return path
-	
+	var region = astar_grid.region
+	for x in range(region.position.x, region.position.x + region.size.x):
+		for y in range(region.position.y, region.position.y + region.size.y):
+			var point_id = Vector2i(x, y)
+			if astar_grid.is_point_solid(point_id) == false:
+				var point_position = astar_grid.get_point_position(point_id)
+				if center.distance_to(point_position) <= radius:
+					points_in_radius.append(point_position)
 
-func get_all_nodes_of_type(node: Node, type: String, result: Array) -> void:
-	if node.is_class(type):
-		result.append(node)
-	for child in node.get_children():
-		get_all_nodes_of_type(child, type, result)
+	if points_in_radius.size() > 0:
+		var random_id = randi_range(0, points_in_radius.size() -1)
+		return points_in_radius[random_id]
 		
+	return null
+
+# Recalculates the path between the two target nodes.
+func recalculate_path(start: Vector2, end: Vector2) -> PackedVector2Array:
+	path = astar_grid.get_point_path(local_to_map(start), local_to_map(end), true)
+	#debug_line.points = path
+	return path
