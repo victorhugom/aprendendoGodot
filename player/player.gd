@@ -3,7 +3,7 @@ class_name  Player extends CharacterBody2D
 @export var speed = 16*5
 @export var groundMapTile: TileMapLayer
 
-@onready var animations = $AnimationPlayer
+@onready var animations = $personagem/AnimationPlayer2
 @onready var walk_sprite = $WalkSprite
 @onready var idle_sprite = $IdleSprite
 @onready var follow_camera = $FollowCamera

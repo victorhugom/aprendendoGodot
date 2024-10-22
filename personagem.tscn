@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://chbh0oertpsxx"]
+
+[ext_resource type="PackedScene" uid="uid://dcjeej2ofxjcg" path="res://assets/pres/personagem.aseprite" id="1_n37jf"]
+
+[node name="personagem" instance=ExtResource("1_n37jf")]
+texture_filter = 1
+offset = Vector2(0, 5)
+region_rect = Rect2(385, 387, 39, 52)
