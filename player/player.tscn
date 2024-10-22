@@ -227,6 +227,7 @@ position = Vector2(0, -16)
 occluder = SubResource("OccluderPolygon2D_4tbg0")
 
 [node name="WalkSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -12)
 texture = SubResource("CanvasTexture_vaynh")
 hframes = 4

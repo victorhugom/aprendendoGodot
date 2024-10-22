@@ -24,6 +24,11 @@ func _physics_process(_delta: float) -> void:
 func handleInput():
 	var move_direction = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
 	velocity = move_direction * speed
+
+func _input(event):
+	if event.is_action_pressed("ui_test_key"):
+		animations.play("NOME DA ANIMACAO")
+		print_debug("ANIMACAO TEST")
 	
 func updateAnimation():
 	var direction = last_anim_direction
