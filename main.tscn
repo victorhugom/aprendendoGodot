@@ -451,7 +451,7 @@ sources/1 = SubResource("TileSetAtlasSource_40ffs")
 y_sort_enabled = true
 texture_filter = 5
 script = ExtResource("1_pn30b")
-doors = [NodePath("")]
+doors = [null]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.886262, 0.886262, 0.886261, 1)
