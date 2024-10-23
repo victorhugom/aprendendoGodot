@@ -9,6 +9,8 @@ class_name  Player extends CharacterBody2D
 @onready var follow_camera = $FollowCamera
 
 var last_anim_direction = "down"
+var is_atatcking = false
+var is_blocking = false
 
 func _ready() -> void:
 	animations.play("RESET")
@@ -29,6 +31,10 @@ func _input(event):
 	if event.is_action_pressed("ui_test_key"):
 		animations.play("NOME DA ANIMACAO")
 		print_debug("ANIMACAO TEST 2")
+	if event.is_action_pressed("ui_attack"):
+		attack()
+	if event.is_action_pressed("ui_block"):
+		block()
 	
 func updateAnimation():
 	var direction = last_anim_direction
@@ -58,3 +64,17 @@ func setCameraLimit():
 	
 	follow_camera.limit_right = worldMapInPixels.x
 	follow_camera.limit_bottom = worldMapInPixels.y
+	
+func attack() -> void:
+	is_atatcking = true
+	animations.play("attack_" + last_anim_direction)
+	
+func block() -> void:
+	is_blocking = true
+	animations.play("block_" + last_anim_direction)
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name.begins_with("attack_"):
+		is_atatcking = false
+	if anim_name.begins_with("block_"):
+		is_blocking = false
