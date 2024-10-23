@@ -1,33 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=18 format=3 uid="uid://dj8800iifbe5s"]
 
-[ext_resource type="Texture2D" uid="uid://dc45fotobmapj" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_001.png" id="1_ew5t4"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
-[ext_resource type="Texture2D" uid="uid://dxloscso8emrq" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_001_Idle.png" id="3_vxqhq"]
-[ext_resource type="Texture2D" uid="uid://bkqa8cancj8c5" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_001_n.png" id="4_7tt3i"]
-[ext_resource type="Texture2D" uid="uid://dm84haui032yx" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_001_s.png" id="5_1f2iy"]
-[ext_resource type="Texture2D" uid="uid://bilbym4fj7uhw" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_001_Idle_n.png" id="5_iqkw4"]
 [ext_resource type="PackedScene" uid="uid://dcjeej2ofxjcg" path="res://assets/pres/personagem.aseprite" id="7_uulp3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4tbg0"]
 polygon = PackedVector2Array(-1, 11, -1, 12, 1, 12, 1, 11, 1, 11, 1, 8, -1, 8)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_vaynh"]
-diffuse_texture = ExtResource("1_ew5t4")
-normal_texture = ExtResource("4_7tt3i")
-specular_texture = ExtResource("5_1f2iy")
-texture_filter = 3
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_w44b0"]
-diffuse_texture = ExtResource("3_vxqhq")
-normal_texture = ExtResource("5_iqkw4")
-specular_texture = ExtResource("5_1f2iy")
-texture_filter = 3
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
 size = Vector2(10, 7.25)
 
 [sub_resource type="Animation" id="Animation_k5abd"]
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -55,7 +37,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_jtp30"]
 length = 1.3
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,7 +63,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_vrt70"]
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,7 +90,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_h4u40"]
 length = 1.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -218,33 +197,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Rect2i(124, 388, 39, 52), Rect2i(529, 280, 44, 54), Rect2i(535, 225, 40, 54), Rect2i(84, 340, 40, 54), Rect2i(309, 388, 39, 52), Rect2i(40, 389, 39, 52), Rect2i(315, 235, 46, 53), Rect2i(431, 119, 52, 57), Rect2i(163, 390, 39, 52)]
-}
-
-[sub_resource type="Animation" id="Animation_jkjeb"]
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-2, 4), Vector2(-1, 4), Vector2(-1, 3), Vector2(-2, 3), Vector2(0, 3), Vector2(1, 2), Vector2(0, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:region_rect")
-tracks/1/interp = 0
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2i(225, 331, 43, 52), Rect2i(0, 281, 45, 52), Rect2i(46, 230, 46, 54), Rect2i(142, 229, 46, 54), Rect2i(0, 227, 46, 54), Rect2i(440, 280, 44, 55), Rect2i(256, 276, 44, 55), Rect2i(95, 180, 47, 54), Rect2i(0, 171, 49, 56), Rect2i(347, 179, 47, 56)]
 }
 
 [sub_resource type="Animation" id="Animation_xndbl"]
@@ -359,6 +311,34 @@ tracks/1/keys = {
 "values": [Rect2i(385, 439, 36, 52), Rect2i(202, 436, 38, 52), Rect2i(343, 336, 42, 52), Rect2i(130, 336, 42, 52), Rect2i(163, 176, 50, 53), Rect2i(214, 175, 52, 51)]
 }
 
+[sub_resource type="Animation" id="Animation_jkjeb"]
+resource_name = "idle_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-2, 4), Vector2(-1, 4), Vector2(-1, 3), Vector2(-2, 3), Vector2(0, 3), Vector2(1, 2), Vector2(0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(225, 331, 43, 52), Rect2i(0, 281, 45, 52), Rect2i(46, 230, 46, 54), Rect2i(142, 229, 46, 54), Rect2i(0, 227, 46, 54), Rect2i(440, 280, 44, 55), Rect2i(256, 276, 44, 55), Rect2i(95, 180, 47, 54), Rect2i(0, 171, 49, 56), Rect2i(347, 179, 47, 56)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6o8j"]
 _data = {
 "block_down": SubResource("Animation_k5abd"),
@@ -367,8 +347,8 @@ _data = {
 "block_up": SubResource("Animation_h4u40"),
 "idle_down": SubResource("Animation_tv8bo"),
 "idle_left": SubResource("Animation_sht4e"),
+"idle_right": SubResource("Animation_jkjeb"),
 "idle_up": SubResource("Animation_cfpge"),
-"idlle_right": SubResource("Animation_jkjeb"),
 "walk_down": SubResource("Animation_xndbl"),
 "walk_left": SubResource("Animation_kev25"),
 "walk_right": SubResource("Animation_6rh63"),
@@ -392,29 +372,17 @@ position_smoothing_speed = 10.0
 position = Vector2(0, -16)
 occluder = SubResource("OccluderPolygon2D_4tbg0")
 
-[node name="WalkSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -12)
-texture = SubResource("CanvasTexture_vaynh")
-hframes = 4
-vframes = 4
-
-[node name="IdleSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -12)
-texture = SubResource("CanvasTexture_w44b0")
-hframes = 4
-vframes = 4
-
 [node name="MovementCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.375)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="personagem" parent="." instance=ExtResource("7_uulp3")]
-offset = Vector2(0, 5)
-region_rect = Rect2(385, 387, 39, 52)
+offset = Vector2(-2, 4)
+region_rect = Rect2(225, 331, 43, 52)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="personagem"]
 libraries = {
 "": SubResource("AnimationLibrary_v6o8j")
 }
+
+[connection signal="animation_finished" from="personagem/AnimationPlayer2" to="." method="_on_animation_player_animation_finished"]
