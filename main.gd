@@ -6,7 +6,9 @@ class_name MainScene extends Node2D
 @export var doors: Array[Node]
 
 func _ready() -> void:
-	customer_spawner.start()
+	if customer_spawner:
+		customer_spawner.start()
 
 func _exit_tree() -> void:
-	customer_spawner.stop()
+	if customer_spawner:
+		customer_spawner.stop()
