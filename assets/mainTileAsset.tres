@@ -1,7 +1,9 @@
-[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bisg10shh8p3s"]
+[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://bisg10shh8p3s"]
 
 [ext_resource type="Texture2D" uid="uid://qkxk5d3tq41j" path="res://assets/colored-transparent.png" id="1_pl0eb"]
 [ext_resource type="Texture2D" uid="uid://b8ys1rusbh17u" path="res://assets/pres/Tileset 1.aseprite" id="2_0uytq"]
+[ext_resource type="Texture2D" uid="uid://b8at3jsipky78" path="res://assets/pres/caixa.aseprite" id="2_khi4g"]
+[ext_resource type="Texture2D" uid="uid://dltxlhcd6nsgw" path="res://assets/pres/props.aseprite" id="4_6eej1"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_10gla"]
 tile_data = PackedInt32Array(0, 655362, 1, 65536, 655362, 2, 1, 720898, 1, 65537, 720898, 2, 2, 786434, 1, 65538, 786434, 2)
@@ -1152,6 +1154,12 @@ separation = Vector2i(1, 1)
 48:21/0 = 0
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04rq8"]
+texture = ExtResource("2_khi4g")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:1/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v52up"]
 texture = ExtResource("2_0uytq")
 texture_region_size = Vector2i(32, 32)
@@ -1258,6 +1266,111 @@ texture_region_size = Vector2i(32, 32)
 20:6/0 = 0
 19:5/0 = 0
 9:8/0 = 0
+2:27/0 = 0
+2:26/0 = 0
+2:25/0 = 0
+2:24/0 = 0
+2:23/0 = 0
+2:22/0 = 0
+2:21/0 = 0
+1:24/0 = 0
+1:25/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:21/0 = 0
+13:21/0 = 0
+12:21/0 = 0
+11:21/0 = 0
+10:21/0 = 0
+9:21/0 = 0
+8:21/0 = 0
+7:21/0 = 0
+6:21/0 = 0
+5:21/0 = 0
+4:21/0 = 0
+3:21/0 = 0
+4:22/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+8:22/0 = 0
+7:22/0 = 0
+6:22/0 = 0
+5:22/0 = 0
+4:19/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+8:19/0 = 0
+7:19/0 = 0
+6:19/0 = 0
+5:19/0 = 0
+12:19/0 = 0
+12:18/0 = 0
+12:17/0 = 0
+12:16/0 = 0
+13:18/0 = 0
+13:19/0 = 0
+2:19/0 = 0
+2:18/0 = 0
+2:17/0 = 0
+2:16/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+20:17/0 = 0
+19:17/0 = 0
+18:17/0 = 0
+17:17/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:19/0 = 0
+21:18/0 = 0
+21:19/0 = 0
+21:20/0 = 0
+20:20/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+20:22/0 = 0
+19:22/0 = 0
+19:23/0 = 0
+18:23/0 = 0
+18:22/0 = 0
+18:21/0 = 0
+17:21/0 = 0
+16:21/0 = 0
+17:22/0 = 0
+17:20/0 = 0
+16:20/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+19:21/0 = 0
+19:19/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgw6d"]
+texture = ExtResource("4_6eej1")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:1/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -1268,4 +1381,6 @@ terrain_set_0/terrain_0/name = "castle"
 terrain_set_0/terrain_0/color = Color(0.573603, 0.181112, 0.183425, 1)
 sources/0 = SubResource("TileSetAtlasSource_uke6l")
 sources/2 = SubResource("TileSetAtlasSource_v52up")
+sources/1 = SubResource("TileSetAtlasSource_04rq8")
+sources/3 = SubResource("TileSetAtlasSource_xgw6d")
 pattern_0 = SubResource("TileMapPattern_10gla")
