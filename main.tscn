@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=20 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" path="res://floor.gd" id="3_yvehi"]
 [ext_resource type="Texture2D" uid="uid://b8ys1rusbh17u" path="res://assets/pres/Tileset 1.aseprite" id="4_1ogfw"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="5_ajxlq"]
+[ext_resource type="PackedScene" uid="uid://bj6e86qu3icep" path="res://assets/pres/enemy1.aseprite" id="7_qpdo1"]
 [ext_resource type="PackedScene" uid="uid://brahx7jbfc3ew" path="res://npc/customer/customer_spawner.tscn" id="8_7ra0r"]
 [ext_resource type="PackedScene" uid="uid://cgp33mgo87hud" path="res://props/chair.tscn" id="8_l5mpn"]
+[ext_resource type="Script" path="res://assets/pres/enemy_1.gd" id="8_lfrwp"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="9_iyvlt"]
 [ext_resource type="PackedScene" uid="uid://daconss0morha" path="res://assets/pres/littlemage.aseprite" id="12_olxkw"]
 [ext_resource type="Script" path="res://assets/pres/littlemage.gd" id="13_mtbky"]
@@ -597,9 +599,12 @@ tile_map_data = PackedByteArray("AAAGAAAAAAAJAAcAAAAEAAAAAAAJAAcAAAAHAAAAAAAKAAc
 enabled = false
 tile_set = ExtResource("1_lh2lw")
 
+[node name="enemy1" parent="Decoration" instance=ExtResource("7_qpdo1")]
+position = Vector2(346, 116)
+script = ExtResource("8_lfrwp")
+
 [node name="littlemage" parent="Decoration" instance=ExtResource("12_olxkw")]
 position = Vector2(146, 107)
-animation = &"idle_right"
 script = ExtResource("13_mtbky")
 
 [node name="Chandelier6" parent="Decoration" instance=ExtResource("5_ajxlq")]
@@ -661,7 +666,7 @@ door_curr_scene_name = "BAR"
 player = NodePath("../Player")
 
 [node name="CustomerSpawner" parent="." node_paths=PackedStringArray("root_node", "level_floor") instance=ExtResource("8_7ra0r")]
-position = Vector2(176, 200)
+position = Vector2(123, 225)
 root_node = NodePath("..")
 level_floor = NodePath("../Floor")
 
