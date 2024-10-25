@@ -360,7 +360,7 @@ collision_mask = 28
 script = ExtResource("1_nyc0f")
 
 [node name="FollowCamera" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
 limit_right = 1136

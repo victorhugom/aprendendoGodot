@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=18 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://brahx7jbfc3ew" path="res://npc/customer/customer_spawner.tscn" id="8_7ra0r"]
 [ext_resource type="PackedScene" uid="uid://cgp33mgo87hud" path="res://props/chair.tscn" id="8_l5mpn"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="9_iyvlt"]
+[ext_resource type="PackedScene" uid="uid://daconss0morha" path="res://assets/pres/littlemage.aseprite" id="12_olxkw"]
+[ext_resource type="Script" path="res://assets/pres/littlemage.gd" id="13_mtbky"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs4m6"]
 texture = ExtResource("2_uyjix")
@@ -594,6 +596,11 @@ script = ExtResource("3_yvehi")
 tile_map_data = PackedByteArray("AAAGAAAAAAAJAAcAAAAEAAAAAAAJAAcAAAAHAAAAAAAKAAcAAAADAAAAAAAKAAcAAAALAAAAAAAnAAQAAAAOAAAAAAAnAAQAAAARAAAAAAAnAAQAAAAUAAAAAAAEAA8AAAA=")
 enabled = false
 tile_set = ExtResource("1_lh2lw")
+
+[node name="littlemage" parent="Decoration" instance=ExtResource("12_olxkw")]
+position = Vector2(146, 107)
+animation = &"idle_right"
+script = ExtResource("13_mtbky")
 
 [node name="Chandelier6" parent="Decoration" instance=ExtResource("5_ajxlq")]
 position = Vector2(268, 345)
