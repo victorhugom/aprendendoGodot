@@ -1,8 +1,7 @@
-[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://bisg10shh8p3s"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://bisg10shh8p3s"]
 
 [ext_resource type="Texture2D" uid="uid://qkxk5d3tq41j" path="res://assets/colored-transparent.png" id="1_pl0eb"]
 [ext_resource type="Texture2D" uid="uid://b8ys1rusbh17u" path="res://assets/pres/Tileset 1.aseprite" id="2_0uytq"]
-[ext_resource type="Texture2D" uid="uid://b8at3jsipky78" path="res://assets/pres/caixa.aseprite" id="2_khi4g"]
 [ext_resource type="Texture2D" uid="uid://dltxlhcd6nsgw" path="res://assets/pres/props.aseprite" id="4_6eej1"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_10gla"]
@@ -1154,12 +1153,6 @@ separation = Vector2i(1, 1)
 48:21/0 = 0
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04rq8"]
-texture = ExtResource("2_khi4g")
-texture_region_size = Vector2i(32, 32)
-1:0/0 = 0
-1:1/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v52up"]
 texture = ExtResource("2_0uytq")
 texture_region_size = Vector2i(32, 32)
@@ -1369,8 +1362,9 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgw6d"]
 texture = ExtResource("4_6eej1")
 texture_region_size = Vector2i(32, 32)
-1:0/0 = 0
 1:1/0 = 0
+1:2/0 = 0
+3:2/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -1381,6 +1375,5 @@ terrain_set_0/terrain_0/name = "castle"
 terrain_set_0/terrain_0/color = Color(0.573603, 0.181112, 0.183425, 1)
 sources/0 = SubResource("TileSetAtlasSource_uke6l")
 sources/2 = SubResource("TileSetAtlasSource_v52up")
-sources/1 = SubResource("TileSetAtlasSource_04rq8")
 sources/3 = SubResource("TileSetAtlasSource_xgw6d")
 pattern_0 = SubResource("TileMapPattern_10gla")
