@@ -5,6 +5,8 @@ enum TransformationsENUM {
 	SAUSAGE
 }
 
+const PROJECTILE = preload("res://player/projectile.tscn")
+
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
 
@@ -25,14 +27,22 @@ enum TransformationsENUM {
 	TransformationsENUM.SAUSAGE : $SausageMovementCollision
 }
 
-@onready var PlayerTransformationsConfig: = {
+@onready var CharTransformationsConfig: = {
 	TransformationsENUM.MAGE : preload("res://player/player_transformation_litlemage.tres"),
 	TransformationsENUM.SAUSAGE : preload("res://player/player_transformation_sausage.tres")
 }
 
+@onready var CharProjectilePosition = {
+	TransformationsENUM.MAGE : $LittleMageProjectilePosition,
+	TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
+}
+
+
 var last_anim_direction = "down"
+var move_direction_vector = Vector2(0,0)
 var is_blocking = false
 var is_atatcking = false
+var is_transforming = false
 
 var is_dashing = false
 var dash_timer = 0.0
@@ -45,6 +55,8 @@ var current_transformation_config: PlayerTransformationConfig
 func _ready() -> void:
 	
 	transform(TransformationsENUM.MAGE)
+	is_transforming = false
+	
 	animations.play("idle_down")
 	setCameraLimit()
 
@@ -62,12 +74,12 @@ func _physics_process(_delta: float) -> void:
 			is_dashing = false
 			speed = current_transformation_config.Speed
 	
-	if is_atatcking == false && is_blocking == false:
+	if is_atatcking == false && is_blocking == false && is_transforming == false:
 		move_and_slide()
 
 func handleInput():
-	var move_direction = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
-	velocity = move_direction * speed
+	move_direction_vector = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
+	velocity = move_direction_vector * speed
 
 func _input(event):
 	if event.is_action_pressed("ui_attack"):
@@ -105,7 +117,7 @@ func updateAnimation():
 	elif velocity.y > 0: direction = "down"
 		
 	last_anim_direction = direction
-	if is_atatcking == false && is_blocking == false:
+	if is_atatcking == false && is_blocking == false && is_transforming == false:
 		if animation_type == "dash_":
 			animations.play(animation_type + direction, -1, 2)
 		else:
@@ -120,15 +132,18 @@ func setCameraLimit():
 	follow_camera.limit_bottom = worldMapInPixels.y
 	
 func attack() -> void:
-	# quando tiver animação de ataque:
-	# 1: remove o comentário das linhas abaixo (hashtag/jogo da velha)
-	# 2: remove o "pass"
-	# 3: remove o loop da animação
-	# PS: a animação deve ter o nome attack_DIRECÃO_DO_ATAQUE ex: attack_left
 	
-	#is_atatcking = true
-	#animations.play("attack_" + last_anim_direction)
-	pass
+	if is_atatcking: return
+	is_atatcking = true
+	
+	animations.play("attack_" + last_anim_direction)
+	
+	if current_transformation == TransformationsENUM.MAGE:
+		var projectile = PROJECTILE.instantiate()
+		projectile.position = CharProjectilePosition[current_transformation].global_position
+		
+		get_parent().add_sibling(projectile)
+		projectile.shoot(last_anim_direction)
 	
 func block() -> void:
 	if current_transformation_config.CanBlock:
@@ -137,21 +152,32 @@ func block() -> void:
 
 func transform(transformation = TransformationsENUM.MAGE) -> void:
 	
-	current_transformation = transformation
-	current_transformation_config = PlayerTransformationsConfig[transformation]
+	if is_transforming: return
+	is_transforming = true
 	
+	if current_transformation == TransformationsENUM.MAGE && animations:
+		animations.play("transform")
+		current_transformation = transformation
+	elif current_transformation == TransformationsENUM.SAUSAGE:
+		current_transformation = transformation
+		_complete_transformation()
+	else:
+		_complete_transformation()
+		
+	current_transformation_config = CharTransformationsConfig[transformation]
 	speed = current_transformation_config.Speed
+	animations = CharTransatormationsAnimations[transformation]
+	last_anim_direction = "down"
+
+func _complete_transformation():
+	is_transforming = false
 	
 	for key in CharTransatormations.keys():
 		CharTransatormations[key].visible = false
 		CharTransatormationsCollisions[key].disabled = true
 	
-	var char_transformation: Sprite2D = CharTransatormations[transformation]
-	var char_transformation_collision: CollisionShape2D = CharTransatormationsCollisions[transformation]
-	char_transformation.visible = true
-	char_transformation_collision.disabled = false
-	
-	animations = CharTransatormationsAnimations[transformation]
+	CharTransatormations[current_transformation].visible = true
+	CharTransatormationsCollisions[current_transformation].disabled = false
 
 func dash():
 	if current_transformation_config.DashSpeed > 0:
@@ -164,3 +190,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_atatcking = false
 	if anim_name.begins_with("block_"):
 		is_blocking = false
+	if anim_name.begins_with("transform"):
+		_complete_transformation()
+	
+		
