@@ -5,6 +5,8 @@ enum TransformationsENUM {
 	SAUSAGE
 }
 
+const PROJECTILE = preload("res://player/projectile.tscn")
+
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
 
@@ -25,12 +27,19 @@ enum TransformationsENUM {
 	TransformationsENUM.SAUSAGE : $SausageMovementCollision
 }
 
-@onready var PlayerTransformationsConfig: = {
+@onready var CharTransformationsConfig: = {
 	TransformationsENUM.MAGE : preload("res://player/player_transformation_litlemage.tres"),
 	TransformationsENUM.SAUSAGE : preload("res://player/player_transformation_sausage.tres")
 }
 
+@onready var CharProjectilePosition = {
+	TransformationsENUM.MAGE : $LittleMageProjectilePosition,
+	TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
+}
+
+
 var last_anim_direction = "down"
+var move_direction_vector = Vector2(0,0)
 var is_blocking = false
 var is_atatcking = false
 
@@ -66,8 +75,8 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func handleInput():
-	var move_direction = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
-	velocity = move_direction * speed
+	move_direction_vector = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
+	velocity = move_direction_vector * speed
 
 func _input(event):
 	if event.is_action_pressed("ui_attack"):
@@ -120,8 +129,18 @@ func setCameraLimit():
 	follow_camera.limit_bottom = worldMapInPixels.y
 	
 func attack() -> void:
+	
+	if is_atatcking: return
+	
 	is_atatcking = true
 	animations.play("attack_" + last_anim_direction)
+	
+	if current_transformation == TransformationsENUM.MAGE:
+		var projectile = PROJECTILE.instantiate()
+		projectile.position = CharProjectilePosition[current_transformation].global_position
+		
+		get_parent().add_sibling(projectile)
+		projectile.shoot(last_anim_direction)
 	
 func block() -> void:
 	if current_transformation_config.CanBlock:
@@ -131,7 +150,7 @@ func block() -> void:
 func transform(transformation = TransformationsENUM.MAGE) -> void:
 	
 	current_transformation = transformation
-	current_transformation_config = PlayerTransformationsConfig[transformation]
+	current_transformation_config = CharTransformationsConfig[transformation]
 	
 	speed = current_transformation_config.Speed
 	
