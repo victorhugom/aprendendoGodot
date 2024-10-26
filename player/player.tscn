@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=19 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://my2vakvn6usn" path="res://assets/player/personagem.png" id="2_0fwvl"]
@@ -350,8 +350,11 @@ _data = {
 "walk_up": SubResource("Animation_m7fuo")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glqxi"]
+size = Vector2(15.793, 2.81409)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
-size = Vector2(17.25, 20)
+size = Vector2(10.293, 2.81409)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 28
@@ -379,15 +382,15 @@ libraries = {
 }
 
 [node name="SausageMovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -8.17188)
-shape = SubResource("RectangleShape2D_0gv8d")
+position = Vector2(0, -2.59296)
+shape = SubResource("RectangleShape2D_glqxi")
 
 [node name="LittleMageMovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -5.65625)
+position = Vector2(0, -2.59296)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="LittleMage" parent="." instance=ExtResource("3_tpvq7")]
-position = Vector2(-1, -29)
+position = Vector2(-2, -31)
 offset = Vector2(2, 14)
 region_rect = Rect2(244, 88, 46, 33)
 
