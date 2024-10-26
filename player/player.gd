@@ -50,6 +50,7 @@ var dash_cooldown_timer = 0.0
 
 var animations: AnimationPlayer = null
 var current_transformation: TransformationsENUM = TransformationsENUM.MAGE
+var last_transformation: TransformationsENUM = TransformationsENUM.SAUSAGE
 var current_transformation_config: PlayerTransformationConfig
 
 func _ready() -> void:
@@ -155,29 +156,28 @@ func transform(transformation = TransformationsENUM.MAGE) -> void:
 	if is_transforming: return
 	is_transforming = true
 	
-	if current_transformation == TransformationsENUM.MAGE && animations:
+	if animations:
 		animations.play("transform")
-		current_transformation = transformation
-	elif current_transformation == TransformationsENUM.SAUSAGE:
-		current_transformation = transformation
-		_complete_transformation()
 	else:
 		_complete_transformation()
 		
-	current_transformation_config = CharTransformationsConfig[transformation]
-	speed = current_transformation_config.Speed
-	animations = CharTransatormationsAnimations[transformation]
-	last_anim_direction = "down"
+	last_transformation = current_transformation
+	current_transformation = transformation
 
 func _complete_transformation():
-	is_transforming = false
 	
-	for key in CharTransatormations.keys():
-		CharTransatormations[key].visible = false
-		CharTransatormationsCollisions[key].disabled = true
+	CharTransatormations[last_transformation].visible = false
+	CharTransatormationsCollisions[last_transformation].disabled = true
 	
 	CharTransatormations[current_transformation].visible = true
 	CharTransatormationsCollisions[current_transformation].disabled = false
+	
+	current_transformation_config = CharTransformationsConfig[current_transformation]
+	animations = CharTransatormationsAnimations[current_transformation]
+	speed = current_transformation_config.Speed
+	last_anim_direction = "down"
+	
+	is_transforming = false
 
 func dash():
 	if current_transformation_config.DashSpeed > 0:
