@@ -12,14 +12,15 @@ var path: PackedVector2Array
 
 func _ready() -> void:
 	# Set up parameters, then update the grid.
-	astar_grid.region = get_used_rect()
-	astar_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
-	astar_grid.offset = CELL_SIZE / 2
-	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	astar_grid.update()
+	pass #TODO: ENABLE THIS
+	#astar_grid.region = get_used_rect()
+	#astar_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
+	#astar_grid.offset = CELL_SIZE / 2
+	#astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	#astar_grid.update()
+#
+	#_disable_points()
 
-	_disable_points()
-	
 func _disable_points() -> void:
 	#set points that cannot be walked as solid
 	

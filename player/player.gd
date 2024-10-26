@@ -5,7 +5,7 @@ enum TransformationsENUM {
 	SAUSAGE
 }
 
-@export var speed = 16*5
+@export var speed = 32*5
 @export var groundMapTile: TileMapLayer
 
 @onready var animations_litle_mage = $LitleMage/AnimationPlayerLitleMage
@@ -86,7 +86,7 @@ func updateAnimation():
 	
 func setCameraLimit():
 	var map_limits = groundMapTile.get_used_rect()
-	var map_cellsize = 16
+	var map_cellsize = 32
 	var worldMapInPixels = map_limits.size * map_cellsize
 	
 	follow_camera.limit_right = worldMapInPixels.x
