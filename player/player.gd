@@ -63,7 +63,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	handleInput()
-	updateAnimation()
+	update_animation()
 	
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= _delta
@@ -99,7 +99,7 @@ func _input(event):
 			transform(TransformationsENUM.MAGE)
 			return
 	
-func updateAnimation():
+func update_animation():
 	
 	var direction = last_anim_direction
 	var animation_type = "walk_"
@@ -142,6 +142,7 @@ func attack() -> void:
 	if current_transformation == TransformationsENUM.MAGE:
 		var projectile = PROJECTILE.instantiate()
 		projectile.position = CharProjectilePosition[current_transformation].global_position
+		projectile.set_config(preload("res://player/projectile/basic_projectile.tres"))
 		
 		get_parent().add_sibling(projectile)
 		projectile.shoot(last_anim_direction)

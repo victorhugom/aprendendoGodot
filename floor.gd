@@ -2,7 +2,7 @@ class_name Floor extends TileMapLayer
 
 const WALL_TILE_COORD = Vector2i(0, 0)
 const FLOOR_TILE_COORD = Vector2i(1, 0)
-const TILE_SIZE = 16
+const TILE_SIZE = 32
 const CELL_SIZE = Vector2(TILE_SIZE, TILE_SIZE)
 
 #@onready var debug_line : Line2D = $"../DebugLine2D"
@@ -12,14 +12,13 @@ var path: PackedVector2Array
 
 func _ready() -> void:
 	# Set up parameters, then update the grid.
-	pass #TODO: ENABLE THIS
-	#astar_grid.region = get_used_rect()
-	#astar_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
-	#astar_grid.offset = CELL_SIZE / 2
-	#astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	#astar_grid.update()
-#
-	#_disable_points()
+	astar_grid.region = get_used_rect()
+	astar_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
+	astar_grid.offset = CELL_SIZE / 2
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.update()
+
+	_disable_points()
 
 func _disable_points() -> void:
 	#set points that cannot be walked as solid

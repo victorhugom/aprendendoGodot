@@ -18,6 +18,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if path.size() > 0:
 		_follow_path()
+	
 
 #region Private
 
@@ -40,7 +41,7 @@ func _follow_path():
 func _get_path(target_position: Vector2):
 
 	#no path to calculate is close enough
-	if global_position.distance_to(target_position) < 16: 
+	if global_position.distance_to(target_position) < 64: 
 		return
 	
 	var new_path = level_floor.recalculate_path(self.global_position, target_position)

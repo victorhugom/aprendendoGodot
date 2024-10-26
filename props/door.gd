@@ -15,14 +15,14 @@ func _ready() -> void:
 		player.global_position = marker_2d.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_body_entered(_body: Node2D) -> void:
 	InteractionCall.show_interaction.emit("Entrar")
 	near_door = true
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	InteractionCall.hide_interaction.emit()
 	near_door = false
 	
