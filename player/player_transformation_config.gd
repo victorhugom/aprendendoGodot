@@ -7,3 +7,5 @@ class_name PlayerTransformationConfig  extends Resource
 @export var DashSpeed: int
 @export var DashDuration: float
 @export var DashCooldown: float
+
+@export var CanBlock: bool
