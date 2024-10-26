@@ -95,15 +95,21 @@ func updateAnimation():
 		animation_type = "idle_"
 	else: #walking
 		animation_type = "walk_"
+	
+	if is_dashing:
+		animation_type = "dash_"
 		
-		if velocity.x < 0: direction = "left"
-		elif velocity.x > 0: direction = "right"
-		elif velocity.y < 0: direction = "up"
-		elif velocity.y > 0: direction = "down"
+	if velocity.x < 0: direction = "left"
+	elif velocity.x > 0: direction = "right"
+	elif velocity.y < 0: direction = "up"
+	elif velocity.y > 0: direction = "down"
 		
 	last_anim_direction = direction
 	if is_atatcking == false && is_blocking == false:
-		animations.play(animation_type + direction)
+		if animation_type == "dash_":
+			animations.play(animation_type + direction, -1, 2)
+		else:
+			animations.play(animation_type + direction)
 	
 func setCameraLimit():
 	var map_limits = groundMapTile.get_used_rect()
@@ -125,8 +131,9 @@ func attack() -> void:
 	pass
 	
 func block() -> void:
-	is_blocking = true
-	animations.play("block_" + last_anim_direction)
+	if current_transformation_config.CanBlock:
+		is_blocking = true
+		animations.play("block_" + last_anim_direction)
 
 func transform(transformation = TransformationsENUM.MAGE) -> void:
 	

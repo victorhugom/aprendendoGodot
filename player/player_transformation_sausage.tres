@@ -10,3 +10,4 @@ Speed = 64
 DashSpeed = 0
 DashDuration = 0.0
 DashCooldown = 0.0
+CanBlock = true
