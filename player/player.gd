@@ -27,11 +27,18 @@ enum TransformationsENUM {
 	TransformationsENUM.SAUSAGE : $SausageMovementCollision
 }
 
+@onready var PlayerTransformationsConfig: = {
+	TransformationsENUM.MAGE : preload("res://player/player_transformation_litlemage.tres"),
+	TransformationsENUM.SAUSAGE : preload("res://player/player_transformation_sausage.tres")
+}
+
+
 var last_anim_direction = "down"
 var is_atatcking = false
 var is_blocking = false
 var animations: AnimationPlayer = null
 var current_transformation: TransformationsENUM = TransformationsENUM.MAGE
+var current_transformation_config: PlayerTransformationConfig
 
 func _ready() -> void:
 	
@@ -110,6 +117,9 @@ func block() -> void:
 func transform(transformation = TransformationsENUM.MAGE) -> void:
 	
 	current_transformation = transformation
+	current_transformation_config = PlayerTransformationsConfig[transformation]
+	
+	speed = current_transformation_config.Speed
 	
 	for key in CharTransatormations.keys():
 		CharTransatormations[key].visible = false

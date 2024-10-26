@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerTransformationConfig" load_steps=2 format=3 uid="uid://bprlp056rj7ik"]
+
+[ext_resource type="Script" path="res://player/player_transformation_config.gd" id="1_y1quq"]
+
+[resource]
+script = ExtResource("1_y1quq")
+Name = "Litle Mage"
+MaxLife = 3
+Speed = 160
