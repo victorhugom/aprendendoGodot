@@ -1,6 +1,8 @@
 extends Control
 
+@warning_ignore("unused_signal")
 signal show_interaction(text: String)
+@warning_ignore("unused_signal")
 signal hide_interaction
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
@@ -11,7 +13,7 @@ func _ready() -> void:
 	canvas_layer.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_show_interaction(text) -> void:

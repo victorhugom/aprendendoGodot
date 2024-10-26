@@ -24,6 +24,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 Globals="*res://globals.gd"
 Helper="*res://helper.gd"
 InteractionCall="*res://gui/InteractionCall.tscn"
+Enums="*res://utils/enums.gd"
 
 [display]
 
@@ -118,3 +119,5 @@ ui_dash={
 2d_physics/layer_3="furniture"
 2d_physics/layer_4="wall"
 2d_physics/layer_5="interactables"
+2d_physics/layer_6="projectile"
+2d_physics/layer_7="enemy"
