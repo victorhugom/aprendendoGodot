@@ -5,8 +5,8 @@ enum TransformationsENUM {
 	SAUSAGE
 }
 
-@export var speed = 32*5
 @export var groundMapTile: TileMapLayer
+@export var speed = 32*5
 
 @onready var animations_litle_mage = $LitleMage/AnimationPlayerLitleMage
 @onready var animations_sausage_monster = $SausageMonster/AnimationPlayerSausageMonster
@@ -32,10 +32,11 @@ enum TransformationsENUM {
 	TransformationsENUM.SAUSAGE : preload("res://player/player_transformation_sausage.tres")
 }
 
-
 var last_anim_direction = "down"
-var is_atatcking = false
+var is_dashing = false
 var is_blocking = false
+var is_atatcking = false
+
 var animations: AnimationPlayer = null
 var current_transformation: TransformationsENUM = TransformationsENUM.MAGE
 var current_transformation_config: PlayerTransformationConfig
@@ -43,7 +44,6 @@ var current_transformation_config: PlayerTransformationConfig
 func _ready() -> void:
 	
 	transform(TransformationsENUM.MAGE)
-	
 	animations.play("idle_down")
 	setCameraLimit()
 
@@ -131,6 +131,10 @@ func transform(transformation = TransformationsENUM.MAGE) -> void:
 	char_transformation_collision.disabled = false
 	
 	animations = CharTransatormationsAnimations[transformation]
+
+func dash():
+	if current_transformation_config.DashSpeed > 0:
+		is_dashing = true
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):

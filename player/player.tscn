@@ -382,11 +382,11 @@ _data = {
 "idle_right": SubResource("Animation_sg62b")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmnb8"]
-size = Vector2(11, 10.75)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
 size = Vector2(18, 21.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmnb8"]
+size = Vector2(11, 10.75)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 28
@@ -419,12 +419,12 @@ libraries = {
 "": SubResource("AnimationLibrary_fawjs")
 }
 
-[node name="LitleMageMovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -5.625)
-shape = SubResource("RectangleShape2D_wmnb8")
-
 [node name="SausageMovementCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_0gv8d")
+
+[node name="LitleMageMovementCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -5.625)
+shape = SubResource("RectangleShape2D_wmnb8")
 
 [connection signal="animation_finished" from="SausageMonster/AnimationPlayerSausageMonster" to="." method="_on_animation_player_animation_finished"]
