@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=12 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://floor.gd" id="3_yvehi"]
 [ext_resource type="Texture2D" uid="uid://b8ys1rusbh17u" path="res://assets/world/Tileset 1.aseprite" id="4_1ogfw"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="5_ajxlq"]
-[ext_resource type="PackedScene" uid="uid://bj6e86qu3icep" path="res://assets/enemies/enemy1.aseprite" id="7_qpdo1"]
-[ext_resource type="Script" path="res://assets/enemies/enemy_1.gd" id="8_lfrwp"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="9_iyvlt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40ffs"]
@@ -350,7 +348,3 @@ player = NodePath("../Player")
 unique_name_in_owner = true
 position = Vector2(208, 124)
 groundMapTile = NodePath("../Floor")
-
-[node name="enemy1" parent="." instance=ExtResource("7_qpdo1")]
-position = Vector2(346, 116)
-script = ExtResource("8_lfrwp")

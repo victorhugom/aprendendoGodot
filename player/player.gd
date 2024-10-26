@@ -8,22 +8,20 @@ enum TransformationsENUM {
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
 
-@onready var animations_litle_mage = $LitleMage/AnimationPlayerLitleMage
-@onready var animations_sausage_monster = $SausageMonster/AnimationPlayerSausageMonster
 @onready var follow_camera = $FollowCamera
 
 @onready var CharTransatormations = {
-	TransformationsENUM.MAGE : $LitleMage,
+	TransformationsENUM.MAGE : $LittleMage,
 	TransformationsENUM.SAUSAGE : $SausageMonster
 }
 
 @onready var CharTransatormationsAnimations = {
-	TransformationsENUM.MAGE : $LitleMage/AnimationPlayerLitleMage,
-	TransformationsENUM.SAUSAGE : $SausageMonster/AnimationPlayerSausageMonster
+	TransformationsENUM.MAGE : $LittleMage/AnimationPlayer,
+	TransformationsENUM.SAUSAGE : $SausageMonster/AnimationPlayer
 }
 
 @onready var CharTransatormationsCollisions = {
-	TransformationsENUM.MAGE : $LitleMageMovementCollision,
+	TransformationsENUM.MAGE : $LittleMageMovementCollision,
 	TransformationsENUM.SAUSAGE : $SausageMovementCollision
 }
 
