@@ -31,9 +31,12 @@ enum TransformationsENUM {
 }
 
 var last_anim_direction = "down"
-var is_dashing = false
 var is_blocking = false
 var is_atatcking = false
+
+var is_dashing = false
+var dash_timer = 0.0
+var dash_cooldown_timer = 0.0
 
 var animations: AnimationPlayer = null
 var current_transformation: TransformationsENUM = TransformationsENUM.MAGE
@@ -48,6 +51,17 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	handleInput()
 	updateAnimation()
+	
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= _delta
+	
+	if is_dashing:
+		speed = current_transformation_config.DashSpeed
+		dash_timer -= _delta
+		if dash_timer <= 0:
+			is_dashing = false
+			speed = current_transformation_config.Speed
+	
 	if is_atatcking == false && is_blocking == false:
 		move_and_slide()
 
@@ -60,6 +74,8 @@ func _input(event):
 		attack()
 	if event.is_action_pressed("ui_block"):
 		block()
+	if event.is_action_pressed("ui_dash"):
+		dash()
 		
 	# FOR TEST PURPOSE
 	if event.is_action_pressed("ui_test"):
@@ -133,6 +149,8 @@ func transform(transformation = TransformationsENUM.MAGE) -> void:
 func dash():
 	if current_transformation_config.DashSpeed > 0:
 		is_dashing = true
+		dash_timer = current_transformation_config.DashDuration
+		dash_cooldown_timer = current_transformation_config.DashCooldown
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):
