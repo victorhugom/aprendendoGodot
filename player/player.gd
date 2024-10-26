@@ -120,15 +120,8 @@ func setCameraLimit():
 	follow_camera.limit_bottom = worldMapInPixels.y
 	
 func attack() -> void:
-	# quando tiver animação de ataque:
-	# 1: remove o comentário das linhas abaixo (hashtag/jogo da velha)
-	# 2: remove o "pass"
-	# 3: remove o loop da animação
-	# PS: a animação deve ter o nome attack_DIRECÃO_DO_ATAQUE ex: attack_left
-	
-	#is_atatcking = true
-	#animations.play("attack_" + last_anim_direction)
-	pass
+	is_atatcking = true
+	animations.play("attack_" + last_anim_direction)
 	
 func block() -> void:
 	if current_transformation_config.CanBlock:
