@@ -48,4 +48,3 @@ process_material = SubResource("ParticleProcessMaterial_fgx3l")
 
 [node name="Torch" parent="." instance=ExtResource("3_nrl82")]
 position = Vector2(-1, -4)
-animation = &"flame"
