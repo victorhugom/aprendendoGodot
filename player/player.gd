@@ -161,10 +161,13 @@ func transform(transformation = TransformationsENUM.MAGE) -> void:
 	elif current_transformation == TransformationsENUM.SAUSAGE:
 		current_transformation = transformation
 		_complete_transformation()
+	else:
+		_complete_transformation()
 		
 	current_transformation_config = CharTransformationsConfig[transformation]
 	speed = current_transformation_config.Speed
 	animations = CharTransatormationsAnimations[transformation]
+	last_anim_direction = "down"
 
 func _complete_transformation():
 	is_transforming = false
