@@ -2,86 +2,88 @@
 
 [ext_resource type="PackedScene" uid="uid://ci2qfyewf03fx" path="res://npc/npc.tscn" id="1_ao7hb"]
 [ext_resource type="Script" path="res://npc/customer/customer.gd" id="1_ifdrj"]
-[ext_resource type="Texture2D" uid="uid://dehsubhan8pyj" path="res://assets/Free Character Sprites - Fantasy Dreamland/16x16/Char_002_Idle.png" id="2_qb4l4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2unfw"]
+load_path = "res://.godot/imported/Char_002_Idle.png-47bdb606dfc66b5471538efa0e72a70d.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6qsq"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmmba"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xihp"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ix7or"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwaxm"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbcry"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akbhp"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdyuo"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7pc0"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(0, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47bb1"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(24, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oetag"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(48, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0awn"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(72, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epa32"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(0, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jpphy"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(24, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r626r"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(48, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfpep"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(72, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foq5p"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(0, 72, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yi28n"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(24, 72, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu6qy"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(48, 72, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmihs"]
-atlas = ExtResource("2_qb4l4")
+atlas = SubResource("CompressedTexture2D_2unfw")
 region = Rect2(72, 72, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ljnqm"]

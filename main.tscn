@@ -1,23 +1,22 @@
-[gd_scene load_steps=20 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=18 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="2_ugr7h"]
-[ext_resource type="Texture2D" uid="uid://cds565t1n13cd" path="res://assets/floor_purple.png" id="2_uyjix"]
-[ext_resource type="Texture2D" uid="uid://dofng15n0p8fm" path="res://assets/pres/Tileset 1.png" id="3_jexyb"]
+[ext_resource type="Texture2D" uid="uid://dofng15n0p8fm" path="res://assets/world/Tileset 1.png" id="3_jexyb"]
 [ext_resource type="Script" path="res://floor.gd" id="3_yvehi"]
-[ext_resource type="Texture2D" uid="uid://b8ys1rusbh17u" path="res://assets/pres/Tileset 1.aseprite" id="4_1ogfw"]
+[ext_resource type="Texture2D" uid="uid://b8ys1rusbh17u" path="res://assets/world/Tileset 1.aseprite" id="4_1ogfw"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="5_ajxlq"]
-[ext_resource type="PackedScene" uid="uid://bj6e86qu3icep" path="res://assets/pres/enemy1.aseprite" id="7_qpdo1"]
-[ext_resource type="PackedScene" uid="uid://brahx7jbfc3ew" path="res://npc/customer/customer_spawner.tscn" id="8_7ra0r"]
-[ext_resource type="PackedScene" uid="uid://cgp33mgo87hud" path="res://props/chair.tscn" id="8_l5mpn"]
-[ext_resource type="Script" path="res://assets/pres/enemy_1.gd" id="8_lfrwp"]
+[ext_resource type="PackedScene" uid="uid://bj6e86qu3icep" path="res://assets/enemies/enemy1.aseprite" id="7_qpdo1"]
+[ext_resource type="Script" path="res://assets/enemies/enemy_1.gd" id="8_lfrwp"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="9_iyvlt"]
-[ext_resource type="PackedScene" uid="uid://daconss0morha" path="res://assets/pres/littlemage.aseprite" id="12_olxkw"]
-[ext_resource type="Script" path="res://assets/pres/littlemage.gd" id="13_mtbky"]
+[ext_resource type="PackedScene" uid="uid://daconss0morha" path="res://assets/player/littlemage.aseprite" id="12_olxkw"]
+[ext_resource type="Script" path="res://assets/player/littlemage.gd" id="13_mtbky"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lkwbk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs4m6"]
-texture = ExtResource("2_uyjix")
+texture = SubResource("CompressedTexture2D_lkwbk")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40ffs"]
@@ -595,8 +594,6 @@ tile_set = SubResource("TileSet_t2lsw")
 script = ExtResource("3_yvehi")
 
 [node name="Decoration" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAGAAAAAAAJAAcAAAAEAAAAAAAJAAcAAAAHAAAAAAAKAAcAAAADAAAAAAAKAAcAAAALAAAAAAAnAAQAAAAOAAAAAAAnAAQAAAARAAAAAAAnAAQAAAAUAAAAAAAEAA8AAAA=")
-enabled = false
 tile_set = ExtResource("1_lh2lw")
 
 [node name="enemy1" parent="Decoration" instance=ExtResource("7_qpdo1")]
@@ -632,27 +629,6 @@ position = Vector2(124, 284)
 tile_map_data = PackedByteArray("AAALAAEAAwABAAIAAAALAAIAAwABAAIAAAAMAAEAAwABAAEAAAAMAAIAAwABAAIAAAALAAAAAwABAAEAAAAQAAIAAwADAAIAAAAPAAIAAwAFAAIAAAALAAQAAwAHAAEAAAALAAUAAwAHAAIAAAALAAYAAwAHAAMAAAAMAAQAAwAIAAEAAAAMAAUAAwAIAAIAAAAMAAYAAwAIAAMAAAANAAQAAwAJAAEAAAANAAUAAwAJAAIAAAANAAYAAwAJAAMAAAAKAAIAAwALAAIAAAAOAAYAAwALAAIAAAAJAAMAAwANAAEAAAAJAAQAAwANAAIAAAAIAAUAAwANAAEAAAAIAAYAAwANAAIAAAADAAEAAwANAAEAAAADAAIAAwANAAIAAAABAAkAAwAPAAEAAAABAAoAAwAPAAIAAAACAAkAAwAQAAEAAAACAAoAAwAQAAIAAAARAP7/AwAPAAEAAAARAP//AwAPAAIAAAASAP7/AwAQAAEAAAASAP//AwAQAAIAAAAIAP7/AwARAAMAAAD+//z/AwATAAMAAAD9/wIAAwAUAAMAAAADAP//AwATAAMAAAAPAAAAAwAPAAMAAAAPAP7/AwAPAAMAAAAQAP//AwAPAAMAAAAGAP7/AwAPAAMAAAD9/wMAAwAPAAMAAAD+/wQAAwAPAAMAAAD8/wUAAwAPAAMAAAATAAkAAwAQAAMAAAASAAwAAwAQAAMAAAAOAAwAAwAQAAMAAAAPAAwAAwAQAAMAAAAVAAsAAwAQAAMAAAD//wcAAwAQAAMAAAAZAAIAAwAFAAIAAAAeAAIAAwALAAIAAAAdAAIAAwALAAIAAAAXAAIAAwANAAIAAAAWAAIAAwANAAIAAAAWAAEAAwANAAEAAAAXAAEAAwANAAEAAAAcAAEAAwABAAEAAAAcAAIAAwABAAIAAAAGAAAAAwABAAQAAAAGAAEAAwABAAUAAAAHAAAAAwACAAQAAAAHAAEAAwACAAUAAAAIAAAAAwADAAQAAAAIAAEAAwADAAUAAAAGAAIAAwABAAYAAAAHAAIAAwACAAYAAAAIAAIAAwADAAYAAAAKAAEAAwALAAEAAAAOAAEAAwALAAMAAAAOAAIAAwALAAQAAAAFAAEAAwALAAUAAAAFAAIAAwALAAYAAAAOAAUAAwALAAEAAAA=")
 tile_set = ExtResource("1_lh2lw")
 
-[node name="chair" parent="Furniture" instance=ExtResource("8_l5mpn")]
-position = Vector2(120, 120)
-
-[node name="chair4" parent="Furniture" instance=ExtResource("8_l5mpn")]
-position = Vector2(56, 120)
-rotation = -3.14159
-
-[node name="chair5" parent="Furniture" instance=ExtResource("8_l5mpn")]
-position = Vector2(56, 136)
-rotation = -3.14159
-
-[node name="chair6" parent="Furniture" instance=ExtResource("8_l5mpn")]
-position = Vector2(56, 152)
-rotation = -3.14159
-
-[node name="chair2" parent="Furniture" instance=ExtResource("8_l5mpn")]
-position = Vector2(120, 136)
-
-[node name="chair3" parent="Furniture" instance=ExtResource("8_l5mpn")]
-position = Vector2(120, 152)
-
 [node name="Walls" type="TileMapLayer" parent="."]
 position = Vector2(-735, -114)
 tile_map_data = PackedByteArray("AAAZAAQAAgAEAAcAAAAZAAUAAgAEAAgAAAAZAAsAAgAEAAsAAAAZAAwAAgAEAAwAAAAaAAQAAgAKAAkAAAAaAAUAAgAKAAoAAAAaAAsAAgAHAAcAAAAaAAwAAgAHAAgAAAAbAAQAAgALAAkAAAAbAAUAAgALAAoAAAAcAAQAAgAJAAkAAAAcAAUAAgAJAAoAAAAcAA0AAgAEAAsAAAAcAA4AAgAEAAwAAAAdAAQAAgAKAAkAAAAdAAUAAgAKAAoAAAAdAA0AAgAKAAkAAAAdAA4AAgAKAAoAAAAeAAUAAgALAAoAAAAeAA0AAgALAAkAAAAeAA4AAgALAAoAAAAfAA0AAgAJAAkAAAAfAA4AAgAJAAoAAAAgAAQAAgAKAAkAAAAgAAUAAgAKAAoAAAAgAA0AAgAKAAkAAAAgAA4AAgAKAAoAAAAhAAQAAgALAAkAAAAhAAUAAgALAAoAAAAhAA0AAgALAAkAAAAhAA4AAgALAAoAAAAiAAQAAgAJAAkAAAAiAAUAAgAJAAoAAAAiAA0AAgAJAAkAAAAiAA4AAgAJAAoAAAAjAAQAAgAKAAkAAAAjAAUAAgAKAAoAAAAjAA0AAgAKAAkAAAAjAA4AAgAKAAoAAAAkAAQAAgALAAkAAAAkAAUAAgALAAoAAAAkAA0AAgAJAAkAAAAkAA4AAgAJAAoAAAAlAAQAAgAJAAkAAAAlAAUAAgAJAAoAAAAlAA0AAgAJAAkAAAAlAA4AAgAJAAoAAAAmAAQAAgAKAAkAAAAmAAUAAgAKAAoAAAAmAA0AAgAKAAkAAAAmAA4AAgAKAAoAAAAZAAYAAgACAAcAAAAZAAcAAgACAAcAAAAZAAgAAgACAAcAAAAZAAkAAgACAAcAAAAZAAoAAgACAAcAAAAbAAsAAgAHAAcAAAAbAAwAAgAHAAgAAAAcAAsAAgAIAAcAAAAcAAwAAgAIAAgAAAAnAAQAAgALAAkAAAAnAAUAAgALAAoAAAAnAA0AAgALAAkAAAAnAA4AAgALAAoAAAAoAAQAAgAIAAcAAAAoAAUAAgAIAAgAAAAoAAYAAgACAAcAAAAoAAcAAgACAAYAAAAoAAgAAgACAAcAAAAoAAkAAgACAAgAAAAoAAoAAgACAAYAAAAoAAsAAgACAAcAAAAoAAwAAgACAAgAAAAoAA0AAgAIAAsAAAAoAA4AAgAIAAwAAAAsAAQAAgAEABIAAAAsAAUAAgAEABMAAAAtAAQAAgAFABIAAAAtAAUAAgAFABMAAAA1AAQAAgAHABIAAAA1AAUAAgAHABMAAAA2AAQAAgAIABIAAAA2AAUAAgAIABMAAAA0AAQAAgAFABIAAAA0AAUAAgAFABMAAAAzAAQAAgAFABIAAAAzAAUAAgAFABMAAAAyAAQAAgAFABIAAAAyAAUAAgAFABMAAAAxAAQAAgAFABIAAAAxAAUAAgAFABMAAAAwAAQAAgAFABIAAAAwAAUAAgAFABMAAAAvAAQAAgAFABIAAAAvAAUAAgAFABMAAAAuAAQAAgAFABIAAAAuAAUAAgAFABMAAAAzAAoAAgAEABIAAAAzAAsAAgAEABMAAAA0AAoAAgALABQAAAA0AAsAAgALABUAAAA1AAoAAgAKABQAAAA1AAsAAgAKABUAAAA2AAoAAgAIABYAAAA2AAsAAgAIABcAAAAuAAoAAgAKABQAAAAuAAsAAgAKABUAAAAvAAoAAgAIABIAAAAvAAsAAgAIABMAAAAsAAoAAgAEABYAAAAsAAsAAgAEABcAAAAtAAoAAgALABQAAAAtAAsAAgALABUAAAA2AAYAAgACABEAAAA2AAcAAgACABEAAAA2AAgAAgACABIAAAA2AAkAAgACABMAAAAsAAcAAgACABMAAAAsAAgAAgACABIAAAAsAAkAAgACABMAAAAsAAYAAgACABIAAAAzAAwAAgACABIAAAAzAA0AAgACABIAAAAzAA4AAgACABIAAAAzAA8AAgAIABYAAAAvAAwAAgACABIAAAAvAA0AAgACABIAAAAvAA4AAgACABIAAAAvAA8AAgAEABYAAAAzABAAAgAIABcAAAAvABAAAgAEABcAAAAwAA8AAgAKABQAAAAwABAAAgAKABUAAAAxAA8AAgAKABQAAAAxABAAAgAKABUAAAAyAA8AAgALABQAAAAyABAAAgALABUAAAAfAAQAAgAJAAkAAAAfAAUAAgAJAAoAAAA=")
@@ -664,11 +640,6 @@ door_scene_destination_path = "res://levels/deposit.tscn"
 door_destination_scene_name = "DEPOSIT"
 door_curr_scene_name = "BAR"
 player = NodePath("../Player")
-
-[node name="CustomerSpawner" parent="." node_paths=PackedStringArray("root_node", "level_floor") instance=ExtResource("8_7ra0r")]
-position = Vector2(123, 225)
-root_node = NodePath("..")
-level_floor = NodePath("../Floor")
 
 [node name="Player" parent="." node_paths=PackedStringArray("groundMapTile") instance=ExtResource("2_ugr7h")]
 unique_name_in_owner = true

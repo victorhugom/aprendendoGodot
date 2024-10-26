@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
-[ext_resource type="PackedScene" uid="uid://dcjeej2ofxjcg" path="res://assets/pres/personagem.aseprite" id="7_uulp3"]
+[ext_resource type="PackedScene" uid="uid://dcjeej2ofxjcg" path="res://assets/player/personagem.aseprite" id="7_uulp3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4tbg0"]
 polygon = PackedVector2Array(-1, 11, -1, 12, 1, 12, 1, 11, 1, 11, 1, 8, -1, 8)
@@ -377,8 +377,8 @@ position = Vector2(0, -3.375)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="personagem" parent="." instance=ExtResource("7_uulp3")]
-offset = Vector2(-2, 4)
-region_rect = Rect2(225, 331, 43, 52)
+offset = Vector2(0, 5)
+region_rect = Rect2(385, 387, 39, 52)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="personagem"]
 libraries = {

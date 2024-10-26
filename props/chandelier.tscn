@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://props/chandelier.gd" id="1_i3syb"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="2_epraj"]
-[ext_resource type="PackedScene" uid="uid://buq8qcr611jok" path="res://assets/pres/Torch.aseprite" id="3_nrl82"]
+[ext_resource type="PackedScene" uid="uid://buq8qcr611jok" path="res://assets/props/Torch.aseprite" id="3_nrl82"]
 
 [sub_resource type="Curve" id="Curve_w844x"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
