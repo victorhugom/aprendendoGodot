@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=16 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bj6e86qu3icep" path="res://assets/enemies/enemy1.aseprite" id="7_qpdo1"]
 [ext_resource type="Script" path="res://assets/enemies/enemy_1.gd" id="8_lfrwp"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="9_iyvlt"]
-[ext_resource type="PackedScene" uid="uid://daconss0morha" path="res://assets/player/littlemage.aseprite" id="12_olxkw"]
-[ext_resource type="Script" path="res://assets/player/littlemage.gd" id="13_mtbky"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lkwbk"]
 
@@ -596,14 +594,6 @@ script = ExtResource("3_yvehi")
 [node name="Decoration" type="TileMapLayer" parent="."]
 tile_set = ExtResource("1_lh2lw")
 
-[node name="enemy1" parent="Decoration" instance=ExtResource("7_qpdo1")]
-position = Vector2(346, 116)
-script = ExtResource("8_lfrwp")
-
-[node name="littlemage" parent="Decoration" instance=ExtResource("12_olxkw")]
-position = Vector2(146, 107)
-script = ExtResource("13_mtbky")
-
 [node name="Chandelier6" parent="Decoration" instance=ExtResource("5_ajxlq")]
 position = Vector2(268, 345)
 
@@ -645,3 +635,7 @@ player = NodePath("../Player")
 unique_name_in_owner = true
 position = Vector2(208, 124)
 groundMapTile = NodePath("../Floor")
+
+[node name="enemy1" parent="." instance=ExtResource("7_qpdo1")]
+position = Vector2(346, 116)
+script = ExtResource("8_lfrwp")

@@ -1,10 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=20 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
+[ext_resource type="PackedScene" uid="uid://cntv002pioods" path="res://littlemage.tscn" id="3_7jcek"]
 [ext_resource type="PackedScene" uid="uid://dcjeej2ofxjcg" path="res://assets/player/personagem.aseprite" id="7_uulp3"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4tbg0"]
-polygon = PackedVector2Array(-1, 11, -1, 12, 1, 12, 1, 11, 1, 11, 1, 8, -1, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
 size = Vector2(10, 7.25)
@@ -355,6 +353,38 @@ _data = {
 "walk_up": SubResource("Animation_m7fuo")
 }
 
+[sub_resource type="Animation" id="Animation_sg62b"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-1, 13), Vector2(-1, 12), Vector2(0, 12), Vector2(-1, 13), Vector2(3, 13), Vector2(4, 13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2i(0, 71, 19, 35), Rect2i(0, 35, 19, 36), Rect2i(19, 35, 19, 36), Rect2i(38, 35, 19, 36), Rect2i(19, 35, 19, 36), Rect2i(57, 36, 19, 36), Rect2i(57, 0, 22, 36), Rect2i(19, 71, 19, 35), Rect2i(30, 0, 27, 35), Rect2i(0, 0, 30, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fawjs"]
+_data = {
+"idle_right": SubResource("Animation_sg62b")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 28
 script = ExtResource("1_nyc0f")
@@ -368,21 +398,28 @@ limit_bottom = 624
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(0, -16)
-occluder = SubResource("OccluderPolygon2D_4tbg0")
-
 [node name="MovementCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.375)
 shape = SubResource("RectangleShape2D_0gv8d")
 
-[node name="personagem" parent="." instance=ExtResource("7_uulp3")]
+[node name="SausageMonster" parent="." instance=ExtResource("7_uulp3")]
+position = Vector2(-4, -29)
 offset = Vector2(0, 5)
 region_rect = Rect2(385, 387, 39, 52)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="personagem"]
+[node name="AnimationPlayerSausageMonster" type="AnimationPlayer" parent="SausageMonster"]
 libraries = {
 "": SubResource("AnimationLibrary_v6o8j")
 }
 
-[connection signal="animation_finished" from="personagem/AnimationPlayer2" to="." method="_on_animation_player_animation_finished"]
+[node name="LitleMage" parent="." instance=ExtResource("3_7jcek")]
+position = Vector2(-1, -31)
+offset = Vector2(-1, 13)
+region_rect = Rect2(0, 71, 19, 35)
+
+[node name="AnimationPlayerLitleMage" type="AnimationPlayer" parent="LitleMage"]
+libraries = {
+"": SubResource("AnimationLibrary_fawjs")
+}
+
+[connection signal="animation_finished" from="SausageMonster/AnimationPlayerSausageMonster" to="." method="_on_animation_player_animation_finished"]

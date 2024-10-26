@@ -1,6 +1,6 @@
 [remap]
 
-importer="Aseprite AnimatedSprite2D Import"
+importer="Aseprite Sprite2D Import"
 type="PackedScene"
 uid="uid://daconss0morha"
 path="res://.godot/imported/littlemage.aseprite-0b87c7f40bfca62df5f7a14cff71462c.scn"
@@ -23,3 +23,6 @@ animation/default/name="default"
 animation/default/direction=0
 animation/default/repeat_count=0
 animation/autoplay=""
+sprite2d/centered=true
+animation/strategy_(packed_spritesheet)=0
+animation/strategy_(grid-based_spritesheet)=0
