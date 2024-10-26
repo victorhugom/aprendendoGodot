@@ -6,4 +6,7 @@
 script = ExtResource("1_wo2p5")
 Name = "Sausage"
 MaxLife = 5
-Speed = 96
+Speed = 64
+DashSpeed = 0
+DashDuration = 0.0
+DashCooldown = 0.0
