@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_y1quq")
-Name = "Litle Mage"
+Name = ""
 MaxLife = 3
 Speed = 160
+DashSpeed = 600
+DashDuration = 0.1
+DashCooldown = 1.0
