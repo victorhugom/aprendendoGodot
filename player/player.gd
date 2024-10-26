@@ -22,6 +22,11 @@ enum TransformationsENUM {
 	TransformationsENUM.SAUSAGE : $SausageMonster/AnimationPlayerSausageMonster
 }
 
+@onready var CharTransatormationsCollisions = {
+	TransformationsENUM.MAGE : $LitleMageMovementCollision,
+	TransformationsENUM.SAUSAGE : $SausageMovementCollision
+}
+
 var last_anim_direction = "down"
 var is_atatcking = false
 var is_blocking = false
@@ -108,9 +113,12 @@ func transform(transformation = TransformationsENUM.MAGE) -> void:
 	
 	for key in CharTransatormations.keys():
 		CharTransatormations[key].visible = false
+		CharTransatormationsCollisions[key].disabled = true
 	
 	var char_transformation: Sprite2D = CharTransatormations[transformation]
+	var char_transformation_collision: CollisionShape2D = CharTransatormationsCollisions[transformation]
 	char_transformation.visible = true
+	char_transformation_collision.disabled = false
 	
 	animations = CharTransatormationsAnimations[transformation]
 
