@@ -1,45 +1,44 @@
 class_name  Player extends CharacterBody2D
 
-enum TransformationsENUM {
-	MAGE,
-	SAUSAGE
-}
-
 const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 const PROJECTILE = preload("res://player/projectile.tscn")
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/basic_projectile.tres")
+const MAGE_TRANSFORMATION_CONFIG = preload("res://player/player_transformation_litlemage.tres")
 
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
 @export var max_health = 3
 
 @onready var follow_camera = $FollowCamera
-@onready var punch_trace: ShapeCast2D = $PunchTrace
-@onready var shoot_timer: Timer = $ShootTimer
 
-@onready var CharTransatormations = {
-	TransformationsENUM.MAGE : $LittleMage,
-	TransformationsENUM.SAUSAGE : $SausageMonster
+#region Mage
+
+@onready var shoot_timer: Timer = $ShootTimer
+@export var mage_current_health: int
+@export var mage_max_health: int
+
+#endregion
+
+@onready var punch_trace: ShapeCast2D = $PunchTrace
+
+@onready var CharTransatormationsSprite = {
+	Enums.TransformationsENUM.MAGE : $LittleMage,
+	Enums.TransformationsENUM.SAUSAGE : $SausageMonster
 }
 
 @onready var CharTransatormationsAnimations = {
-	TransformationsENUM.MAGE : $LittleMage/AnimationPlayer,
-	TransformationsENUM.SAUSAGE : $SausageMonster/AnimationPlayer
+	Enums.TransformationsENUM.MAGE : $LittleMage/AnimationPlayer,
+	Enums.TransformationsENUM.SAUSAGE : $SausageMonster/AnimationPlayer
 }
 
 @onready var CharTransatormationsCollisions = {
-	TransformationsENUM.MAGE : $LittleMageMovementHitBox,
-	TransformationsENUM.SAUSAGE : $SausageMovementHitBox
-}
-
-@onready var CharTransformationsConfig: = {
-	TransformationsENUM.MAGE : preload("res://player/player_transformation_litlemage.tres"),
-	TransformationsENUM.SAUSAGE : preload("res://player/player_transformation_sausage.tres")
+	Enums.TransformationsENUM.MAGE : $LittleMageMovementHitBox,
+	Enums.TransformationsENUM.SAUSAGE : $SausageMovementHitBox
 }
 
 @onready var CharProjectilePosition = {
-	TransformationsENUM.MAGE : $LittleMageProjectilePosition,
-	TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
+	Enums.TransformationsENUM.MAGE : $LittleMageProjectilePosition,
+	Enums.TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
 }
 
 var health = max_health
@@ -65,19 +64,19 @@ var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 
-var animations: AnimationPlayer = null
-var current_transformation: TransformationsENUM = TransformationsENUM.MAGE
-var last_transformation: TransformationsENUM = TransformationsENUM.SAUSAGE
+var current_transformation: Enums.TransformationsENUM = Enums.TransformationsENUM.MAGE
+var last_transformation: Enums.TransformationsENUM = Enums.TransformationsENUM.MAGE
 var current_transformation_config: PlayerTransformationConfig
 
 func _ready() -> void:
 	
 	projectile_config = PROJECTILE_BASIC_CONFIG
 	
-	transform(TransformationsENUM.MAGE)
+	last_anim_direction = "down"
 	is_transforming = false
 	
-	animations.play("idle_down")
+	current_transformation_config = MAGE_TRANSFORMATION_CONFIG
+	CharTransatormationsAnimations[Enums.TransformationsENUM.MAGE].play("idle_down")
 	setCameraLimit()
 	
 	Hud.card_hand.player = self
@@ -125,15 +124,6 @@ func _input(event):
 		if Input.is_key_pressed(i):
 			previous_key_pressed = i
 			select_card(OS.get_keycode_string(i).to_int())
-			
-	# FOR TEST PURPOSE
-	if event.is_action_pressed("ui_test"):
-		if current_transformation == TransformationsENUM.MAGE:
-			transform(TransformationsENUM.SAUSAGE)
-			return
-		if current_transformation == TransformationsENUM.SAUSAGE:
-			transform(TransformationsENUM.MAGE)
-			return
 	
 func update_animation():
 	
@@ -156,9 +146,9 @@ func update_animation():
 	last_anim_direction = direction
 	if is_atatcking == false && is_blocking == false && is_transforming == false:
 		if animation_type == "dash_":
-			animations.play(animation_type + direction, -1, 2)
+			CharTransatormationsAnimations[current_transformation].play(animation_type + direction, -1, 2)
 		else:
-			animations.play(animation_type + direction)
+			CharTransatormationsAnimations[current_transformation].play(animation_type + direction)
 	
 func setCameraLimit():
 	var map_limits = groundMapTile.get_used_rect()
@@ -173,9 +163,9 @@ func attack() -> void:
 	if is_atatcking: return
 	is_atatcking = true
 	
-	animations.play("attack_" + last_anim_direction)
+	CharTransatormationsAnimations[current_transformation].play("attack_" + last_anim_direction)
 	
-	if current_transformation == TransformationsENUM.MAGE:
+	if current_transformation == Enums.TransformationsENUM.MAGE:
 		Hud.card_hand.use_selected_card()
 		for i in range(0, dps):
 			var projectile = PROJECTILE.instantiate()
@@ -201,35 +191,65 @@ func attack() -> void:
 func block() -> void:
 	if current_transformation_config.CanBlock:
 		is_blocking = true
-		animations.play("block_" + last_anim_direction)
+		CharTransatormationsAnimations[current_transformation].play("block_" + last_anim_direction)
 
-func transform(transformation = TransformationsENUM.MAGE) -> void:
+func transform(transformation_card = CardConfig) -> void:
 	
-	if is_transforming: return
+	if is_transforming: 
+		return
+	
 	is_transforming = true
 	
-	if animations:
-		animations.play("transform")
-	else:
-		_complete_transformation()
-		
-	last_transformation = current_transformation
-	current_transformation = transformation
-
-func _complete_transformation():
+	mage_max_health = max_health
+	mage_current_health = health
 	
-	CharTransatormations[last_transformation].visible = false
-	CharTransatormationsCollisions[last_transformation].disabled = true
+	current_transformation_config = transformation_card.CardData.TransformationConfig
 	
-	CharTransatormations[current_transformation].visible = true
-	CharTransatormationsCollisions[current_transformation].disabled = false
-	
-	current_transformation_config = CharTransformationsConfig[current_transformation]
-	animations = CharTransatormationsAnimations[current_transformation]
 	speed = current_transformation_config.Speed
+	health = current_transformation_config.MaxHealth
+	max_health = current_transformation_config.MaxHealth
+	
+	Hud.health_bar.setMaxHearts(max_health)
+	Hud.health_bar.updateHeats(health)
+	
+	last_transformation = Enums.TransformationsENUM.MAGE
+	current_transformation = transformation_card.CardData.TransformationEnum
+
+	#transform from last transformation to new
+	CharTransatormationsAnimations[last_transformation].play("transform")
 	last_anim_direction = "down"
 	
+func _complete_transformation():
+	#after transform hide old char and show new
+	
+	#hide mage stuff
+	CharTransatormationsSprite[last_transformation].visible = false
+	CharTransatormationsCollisions[last_transformation].disabled = true
+	
+	#show transformation stuff
+	CharTransatormationsSprite[current_transformation].visible = true
+	CharTransatormationsCollisions[current_transformation].disabled = false
+	
 	is_transforming = false
+
+	
+func revert_transformation() -> void:
+	
+	current_transformation_config = MAGE_TRANSFORMATION_CONFIG
+	
+	speed = current_transformation_config.Speed
+	max_health = mage_max_health
+	health = mage_current_health
+	
+	Hud.health_bar.setMaxHearts(max_health)
+	Hud.health_bar.updateHeats(health)
+	
+	last_transformation = current_transformation
+	current_transformation = Enums.TransformationsENUM.MAGE
+
+	#transform from last transformation to new
+	CharTransatormationsAnimations[last_transformation].play("transform")
+	last_anim_direction = "down"
 
 func dash():
 	if current_transformation_config.DashSpeed > 0:
@@ -281,11 +301,14 @@ func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
 	Hud.health_bar.updateHeats(health)
 	
 	if health <= 0:
-		is_dying = true
-		animations.play("death")
+		if current_transformation != Enums.TransformationsENUM.MAGE:
+			revert_transformation()
+		else:
+			is_dying = true
+			CharTransatormationsAnimations[current_transformation].play("death")
 	else:
 		is_being_hit = true
 		#animation_player.play("hit")
-		
+
 func select_card(card_number:int):
 	Hud.card_hand.select_card(card_number)

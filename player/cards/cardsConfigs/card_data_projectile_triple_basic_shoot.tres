@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("2_0d0iy")
 DPS = 3
-Projectile = ExtResource("1_6qofk")
+ProjectileConfig = ExtResource("1_6qofk")

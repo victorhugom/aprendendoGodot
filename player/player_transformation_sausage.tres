@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_wo2p5")
 Name = "Sausage"
-MaxLife = 5
+MaxHealth = 4
 Speed = 64
 DashSpeed = 0
 DashDuration = 0.0

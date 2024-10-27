@@ -38,7 +38,7 @@ func _ready() -> void:
 	current_usage = card_config.MaxCardUsage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func execute_card() -> void:
@@ -47,13 +47,18 @@ func execute_card() -> void:
 		execure_projectile()
 	if card_config.CardType == Enums.CARD_TYPE.Life:	
 		execute_life_recover()
+	if card_config.CardType == Enums.CARD_TYPE.Transform:	
+		execute_transformation()
 
 func execure_projectile() -> void:
-	player.projectile_config = card_config.CardData.Projectile
+	player.projectile_config = card_config.CardData.ProjectileConfig
 	player.dps = card_config.CardData.DPS
 	
 func execute_life_recover() -> void:
 	pass
+
+func execute_transformation() -> void:
+	player.transform(card_config)
 
 func destroy_card() -> void:
 	animation_player.play("destroy")

@@ -1,7 +1,7 @@
 class_name HealthBar extends HBoxContainer
 
 const HEART = preload("res://gui/healthBar/heart.tscn")
-var maxHealth = 0
+var max_health = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,9 +14,9 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func setMaxHearts(max: int = 3):
-	maxHealth = max
-	for i in range(max):
+func setMaxHearts(health: int = 3):
+	max_health = health
+	for i in range(max_health):
 		var heart = HEART.instantiate()
 		add_child(heart)
 		
