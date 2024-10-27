@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ProjectileConfig" load_steps=2 format=3 uid="uid://cjji3ggcakr2i"]
+[gd_resource type="Resource" script_class="ProjectileConfig" load_steps=3 format=3 uid="uid://cjji3ggcakr2i"]
 
+[ext_resource type="Texture2D" uid="uid://bje177qew44s5" path="res://assets/player/basic_projectile-Sheet.png" id="1_a6cdh"]
 [ext_resource type="Script" path="res://player/projectile/projectile_config.gd" id="1_ls1ja"]
 
 [resource]
@@ -8,3 +9,5 @@ Id = 0
 Name = "Eye Fire"
 Damage = 1
 Element = 0
+Target = 0
+ProjectileTexture = ExtResource("1_a6cdh")

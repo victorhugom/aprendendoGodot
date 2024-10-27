@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1xbpqyldymaa"]
+[gd_scene load_steps=2 format=3 uid="uid://dimvpnfxihi15"]
 
 [ext_resource type="PackedScene" uid="uid://cbybglk7i1jgh" path="res://player/projectile.tscn" id="1_j01ud"]
 

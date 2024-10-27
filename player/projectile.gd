@@ -14,10 +14,7 @@ func _ready() -> void:
 	visible = false
 	animation_player.play("projectile_anim")
 	
-	if projectile_config.Id == Enums.PROJECTILE_ID.Common:
-		basic_projectile.set_texture(preload("res://assets/player/basic_projectile-Sheet.png"))
-	if projectile_config.Id == Enums.PROJECTILE_ID.Enemy_Eye:
-		basic_projectile.set_texture(preload("res://assets/player/basic_projectile-Sheet.png"))
+	basic_projectile.set_texture(projectile_config.ProjectileTexture)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
