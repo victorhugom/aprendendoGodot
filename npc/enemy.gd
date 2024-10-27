@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	if is_dying: 
+	if is_dying || is_being_hit: 
 		return
 	
 	super._physics_process(delta)

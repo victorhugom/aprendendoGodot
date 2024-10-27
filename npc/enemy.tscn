@@ -154,3 +154,5 @@ region_rect = Rect2(133, 163, 26, 40)
 libraries = {
 "": SubResource("AnimationLibrary_jtf3n")
 }
+
+[connection signal="animation_finished" from="Enemy/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
