@@ -25,6 +25,7 @@ Globals="*res://globals.gd"
 Helper="*res://helper.gd"
 InteractionCall="*res://gui/InteractionCall.tscn"
 Enums="*res://utils/enums.gd"
+Shaker="*res://addons/shaker/src/Shaker.gd"
 
 [display]
 
@@ -41,7 +42,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 

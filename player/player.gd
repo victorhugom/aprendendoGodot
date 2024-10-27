@@ -6,11 +6,13 @@ enum TransformationsENUM {
 }
 
 const PROJECTILE = preload("res://player/projectile.tscn")
+const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
 
 @onready var follow_camera = $FollowCamera
+@onready var punch_trace: ShapeCast2D = $PunchTrace
 
 @onready var CharTransatormations = {
 	TransformationsENUM.MAGE : $LittleMage,
@@ -37,11 +39,11 @@ const PROJECTILE = preload("res://player/projectile.tscn")
 	TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
 }
 
-
 var last_anim_direction = "down"
 var move_direction_vector = Vector2(0,0)
 var is_blocking = false
 var is_atatcking = false
+var is_tracing_punch = false
 var is_transforming = false
 
 var is_dashing = false
@@ -64,6 +66,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	handleInput()
 	update_animation()
+	trace_punch()
 	
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= _delta
@@ -193,5 +196,30 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_blocking = false
 	if anim_name.begins_with("transform"):
 		_complete_transformation()
+
+func start_punch_trace():
+	is_tracing_punch = true
 	
+func end_punch_trace():
+	is_tracing_punch = false
+
+func shake():
+	Shaker.shake_by_preset(SCREEN_SHAKER, follow_camera, 2, 5, 20)
+	
+func trace_punch():
+	
+	if is_tracing_punch == false: return
+	
+	if last_anim_direction == "left":
+		punch_trace.target_position = Vector2(0,-100)
+	else:
+		punch_trace.target_position = Vector2(0,100)
+
+	if punch_trace.is_colliding():
 		
+		for i in range(0, punch_trace.get_collision_count()):
+			var body = punch_trace.get_collider(i)
+			if body is Enemy:
+				(body as Enemy).damage(3, Enums.ELEMENTS.SUPER)
+				
+		is_tracing_punch = false

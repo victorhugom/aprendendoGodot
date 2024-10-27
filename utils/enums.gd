@@ -5,7 +5,8 @@ enum ELEMENTS {
 	Water,
 	Earth,
 	Fire,
-	Air
+	Air,
+	SUPER
 }
 
 enum PROJECTILE_ID {
