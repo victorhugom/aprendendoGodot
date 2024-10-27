@@ -10,7 +10,7 @@ const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
-@export var max_life = 3
+@export var max_health = 3
 
 @onready var follow_camera = $FollowCamera
 @onready var punch_trace: ShapeCast2D = $PunchTrace
@@ -40,7 +40,7 @@ const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 	TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
 }
 
-var life = max_life
+var health = max_health
 var is_dying = false
 var is_being_hit = false
 
@@ -67,8 +67,14 @@ func _ready() -> void:
 	
 	animations.play("idle_down")
 	setCameraLimit()
+	
+	Hud.health_bar.setMaxHearts(max_health)
+	Hud.health_bar.updateHeats(health)
 
 func _physics_process(_delta: float) -> void:
+	
+	if is_dying: return
+	
 	handleInput()
 	update_animation()
 	trace_punch()
@@ -244,14 +250,14 @@ func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
 	
 	if is_blocking: return
 	
-	#if is_dying || is_being_hit: return
+	if is_dying: return
 	
-	life -= hurt_points
+	health -= hurt_points
+	Hud.health_bar.updateHeats(health)
 	
-	if life <= 0:
+	if health <= 0:
 		is_dying = true
-		rotation_degrees = -90
-		#animation_player.play("death")
+		animations.play("death")
 	else:
 		is_being_hit = true
 		#animation_player.play("hit")

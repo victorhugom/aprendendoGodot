@@ -26,6 +26,7 @@ Helper="*res://helper.gd"
 InteractionCall="*res://gui/InteractionCall.tscn"
 Enums="*res://utils/enums.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
+Hud="*res://gui/HUD.tscn"
 
 [display]
 

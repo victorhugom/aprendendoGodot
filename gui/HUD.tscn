@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://eetvodjwpv8r"]
+[gd_scene load_steps=3 format=3 uid="uid://eetvodjwpv8r"]
+
+[ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
+[ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -9,5 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_tsj7g")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("1_i2p7x")]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 76.0
+offset_bottom = 76.0
+scale = Vector2(2, 2)

@@ -45,7 +45,6 @@ func shoot(player_direction: String) -> void:
 		basic_projectile.rotation_degrees = 90
 			
 func _on_destruction_timer_timeout() -> void:
-	pass
 	show_hit()
 
 func _on_start_timer_timeout() -> void:
