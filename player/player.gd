@@ -95,6 +95,8 @@ func _input(event):
 		attack()
 	if event.is_action_pressed("ui_block"):
 		block()
+	if event.is_action_released("ui_block"):
+		is_blocking = false
 	if event.is_action_pressed("ui_dash"):
 		dash()
 		
@@ -150,6 +152,16 @@ func attack() -> void:
 	if current_transformation == TransformationsENUM.MAGE:
 		var projectile = PROJECTILE.instantiate()
 		projectile.position = CharProjectilePosition[current_transformation].global_position
+		
+		if last_anim_direction == "left":
+			projectile.position.x -= 30
+		if last_anim_direction == "right":
+			projectile.position.x += 30
+		if last_anim_direction == "up":
+			projectile.position.y -= 30
+		if last_anim_direction == "down":
+			projectile.position.y += 30
+		
 		projectile.set_config(preload("res://player/projectile/basic_projectile.tres"))
 		
 		get_parent().add_sibling(projectile)
@@ -197,8 +209,6 @@ func dash():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):
 		is_atatcking = false
-	if anim_name.begins_with("block_"):
-		is_blocking = false
 	if anim_name.begins_with("transform"):
 		_complete_transformation()
 
@@ -223,14 +233,17 @@ func trace_punch():
 	if punch_trace.is_colliding():
 		
 		for i in range(0, punch_trace.get_collision_count()):
-			var body = punch_trace.get_collider(i)
+			var hurtbox = punch_trace.get_collider(i)
+			var body = hurtbox.get_parent()
 			if body is Enemy:
 				(body as Enemy).damage(3, Enums.ELEMENTS.SUPER)
 				
 		is_tracing_punch = false
 		
 func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
-
+	
+	if is_blocking: return
+	
 	#if is_dying || is_being_hit: return
 	
 	life -= hurt_points
