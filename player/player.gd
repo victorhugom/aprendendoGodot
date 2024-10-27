@@ -8,7 +8,6 @@ enum TransformationsENUM {
 const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 const PROJECTILE = preload("res://player/projectile.tscn")
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/basic_projectile.tres")
-const CARD_CONFIG_DOUBLE_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_double_basic_shoot.tres")
 
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
@@ -47,8 +46,8 @@ var health = max_health
 var is_dying = false
 var is_being_hit = false
 
-var card_hand: Array[Card]
-var card_deck: Array[Card]
+var card_hand: CardHand
+var card_deck: Array[CardConfig]
 var card_selected: Card
 
 @export var projectile_config: ProjectileConfig
@@ -73,7 +72,6 @@ var current_transformation_config: PlayerTransformationConfig
 func _ready() -> void:
 	
 	projectile_config = PROJECTILE_BASIC_CONFIG
-	draw_cards()
 	
 	transform(TransformationsENUM.MAGE)
 	is_transforming = false
@@ -81,6 +79,8 @@ func _ready() -> void:
 	animations.play("idle_down")
 	setCameraLimit()
 	
+	Hud.card_hand.player = self
+	Hud.card_hand.draw_cards()
 	Hud.health_bar.setMaxHearts(max_health)
 	Hud.health_bar.updateHeats(health)
 
@@ -283,18 +283,5 @@ func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
 		is_being_hit = true
 		#animation_player.play("hit")
 		
-func draw_cards():
-	for i in range(0,3):
-		var card = Hud.card_hand.create_and_add_card(CARD_CONFIG_DOUBLE_BASIC_SHOOT, self)
-		card_hand.append(card)
-		print_debug(card.id)
-
 func select_card(card_number:int):
-	
-	if card_number <= card_hand.size():
-		if card_selected:
-			card_selected.in_use = false
-		
-		card_selected = card_hand[card_number - 1]
-		card_selected.in_use = true
-		card_selected.execute_card()
+	Hud.card_hand.select_card(card_number)

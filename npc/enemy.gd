@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 func damage(hurt_points: int, damage_type: Enums.ELEMENTS, knock_back_direction = Vector2(0,0), knock_back_power = 1500) -> void:
 	
-	if is_dying || is_being_hit: return
+	if is_dying: return
 	
 	life -= hurt_points
 	
