@@ -55,7 +55,7 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	var body = area.get_parent()
 	if body is Enemy && projectile_config.Target == Enums.CHAR_TYPES.Enemy:
-		(body as Enemy).damage(projectile_config.Damage, projectile_config.Element)
+		(body as Enemy).damage(projectile_config.Damage, projectile_config.Element, direction)
 		show_hit()
 	if body is Player && projectile_config.Target == Enums.CHAR_TYPES.Player:
 		(body as Player).damage(projectile_config.Damage, projectile_config.Element)

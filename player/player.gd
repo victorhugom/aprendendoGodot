@@ -242,7 +242,7 @@ func trace_punch():
 			var hurtbox = punch_trace.get_collider(i)
 			var body = hurtbox.get_parent()
 			if body is Enemy:
-				(body as Enemy).damage(3, Enums.ELEMENTS.SUPER)
+				(body as Enemy).damage(3, Enums.ELEMENTS.SUPER, velocity)
 				
 		is_tracing_punch = false
 		

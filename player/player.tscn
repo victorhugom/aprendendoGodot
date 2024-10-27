@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=45 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
@@ -675,18 +675,20 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij4xu"]
 size = Vector2(64, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhrhn"]
+size = Vector2(14, 10.1719)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
-size = Vector2(17, 16.3438)
+size = Vector2(13, 6.58595)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wc2"]
-size = Vector2(20, 36)
+size = Vector2(20, 32)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 28
 script = ExtResource("1_nyc0f")
 
 [node name="FollowCamera" type="Camera2D" parent="."]
-visible = false
 zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
@@ -696,12 +698,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="LittleMageProjectilePosition" type="Node2D" parent="."]
-visible = false
-position = Vector2(0, 27)
+position = Vector2(0, 15)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
 texture = ExtResource("2_61y8n")
-offset = Vector2(2, 13)
 hframes = 10
 vframes = 18
 frame = 170
@@ -713,9 +713,7 @@ libraries = {
 }
 
 [node name="SausageMonster" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("3_73aaf")
-offset = Vector2(-2, 4)
 hframes = 11
 vframes = 15
 region_rect = Rect2(472, 341, 43, 52)
@@ -726,7 +724,6 @@ libraries = {
 }
 
 [node name="PunchTrace" type="ShapeCast2D" parent="."]
-visible = false
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_ij4xu")
 target_position = Vector2(0, 100)
@@ -734,21 +731,18 @@ collision_mask = 64
 collide_with_areas = true
 
 [node name="SausageMovementHitBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 22)
-shape = SubResource("RectangleShape2D_0gv8d")
+position = Vector2(4, 22)
+shape = SubResource("RectangleShape2D_mhrhn")
 
 [node name="LittleMageMovementHitBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, 22.3438)
+position = Vector2(-0.5, 25)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 14)
+position = Vector2(-1, 12)
 shape = SubResource("RectangleShape2D_j5wc2")
 debug_color = Color(1, 0, 0, 0.419608)
 
