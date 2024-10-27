@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_osajx")
+Id = 0
 Name = "Basic"
 Damage = 1
 Element = 1
+Target = 1

@@ -1,5 +1,10 @@
 class_name enums extends Node
 
+enum CHAR_TYPES {
+	Player,
+	Enemy
+}
+
 enum ELEMENTS {
 	Common,
 	Water,
@@ -20,4 +25,5 @@ enum PROJECTILE_ID {
 	GigaEarth,
 	GigaFire,
 	GigaAir,
+	Enemy_Eye,
 }

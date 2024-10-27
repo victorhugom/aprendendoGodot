@@ -15,6 +15,8 @@ func _ready() -> void:
 	
 	if projectile_config.Id == Enums.PROJECTILE_ID.Common:
 		basic_projectile.set_texture(preload("res://assets/player/basic_projectile.png"))
+	if projectile_config.Id == Enums.PROJECTILE_ID.Enemy_Eye:
+		basic_projectile.set_texture(preload("res://assets/player/basic_projectile.png"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,7 +25,6 @@ func _process(delta: float) -> void:
 
 func set_config(config: ProjectileConfig):
 	projectile_config = config
-
 
 func shoot(player_direction: String) -> void:
 	
@@ -45,9 +46,17 @@ func _on_destruction_timer_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	visible = true
 	started = true
+	
+func _on_area_entered(area: Area2D) -> void:
+	
+	var body = area.get_parent()
+	if body is Enemy && projectile_config.Target == Enums.CHAR_TYPES.Enemy:
+		(body as Enemy).damage(projectile_config.Damage, projectile_config.Element)
+		queue_free()
+	if body is Player && projectile_config.Target == Enums.CHAR_TYPES.Player:
+		(body as Player).damage(projectile_config.Damage, projectile_config.Element)
+		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		(body as Enemy).damage(projectile_config.Damage, projectile_config.Element)
-	
+	if body is Enemy || body is Player: return
 	queue_free()
