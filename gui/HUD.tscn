@@ -1,8 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://eetvodjwpv8r"]
+[gd_scene load_steps=8 format=3 uid="uid://eetvodjwpv8r"]
 
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
 [ext_resource type="PackedScene" uid="uid://bhox0xfiactf2" path="res://player/cards/cardHand.tscn" id="3_fddru"]
+
+[sub_resource type="Animation" id="Animation_s8qj1"]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(462, 576), Vector2(462, 676)]
+}
+
+[sub_resource type="Animation" id="Animation_w6w73"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(462, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_pwrv4"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.183011),
+"update": 0,
+"values": [Vector2(462, 676), Vector2(462, 576)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68yv3"]
+_data = {
+"RESET": SubResource("Animation_w6w73"),
+"hide": SubResource("Animation_s8qj1"),
+"show": SubResource("Animation_pwrv4")
+}
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -24,13 +78,22 @@ offset_right = 76.0
 offset_bottom = 76.0
 scale = Vector2(2, 2)
 
-[node name="CardHand" parent="CanvasLayer" instance=ExtResource("3_fddru")]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -30.0
-offset_bottom = -30.0
+offset_left = -106.0
+offset_top = -48.0
+offset_right = 106.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="CardHand" parent="CanvasLayer/CenterContainer" instance=ExtResource("3_fddru")]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_68yv3")
+}

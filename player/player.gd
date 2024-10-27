@@ -231,6 +231,11 @@ func _complete_transformation():
 	CharTransatormationsCollisions[current_transformation].disabled = false
 	
 	is_transforming = false
+	
+	if current_transformation == Enums.TransformationsENUM.MAGE:
+		Hud.show_hand()
+	else:
+		Hud.hide_hand()
 
 	
 func revert_transformation() -> void:

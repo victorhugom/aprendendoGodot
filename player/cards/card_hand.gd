@@ -21,7 +21,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
+	
 func create_and_add_card(card_config: CardConfig, current_player: Player) -> void:
 	var card = CARD.instantiate()
 	card.card_config = card_config
@@ -44,7 +44,7 @@ func destroy_card(card: Card):
 	#select previous card or base card
 	var previous_card_idx = cards.find(previous_card)
 	if previous_card:
-		select_card(previous_card_idx)
+		select_card(previous_card_idx + 1)
 	else:
 		select_card(1)
 	
