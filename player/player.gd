@@ -209,7 +209,7 @@ func transform(transformation_card = CardConfig) -> void:
 	health = current_transformation_config.MaxHealth
 	max_health = current_transformation_config.MaxHealth
 	
-	Hud.health_bar.setMaxHearts(max_health)
+	Hud.health_bar.setMaxHearts(max_health, true)
 	Hud.health_bar.updateHeats(health)
 	
 	last_transformation = Enums.TransformationsENUM.MAGE

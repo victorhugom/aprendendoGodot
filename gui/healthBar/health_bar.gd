@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func setMaxHearts(health: int = 3):
+func setMaxHearts(health: int = 3, transformation = false):
 	
 	var hearts = get_children()
 	for h in hearts:
@@ -23,6 +23,9 @@ func setMaxHearts(health: int = 3):
 	max_health = health
 	for i in range(max_health):
 		var heart = HEART.instantiate()
+		if transformation:
+			heart.set_texture(preload("res://assets/heart_transformation.png"))
+			
 		add_child(heart)
 		
 func updateHeats(currentHealth: int):
