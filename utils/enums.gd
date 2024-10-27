@@ -5,9 +5,15 @@ enum CHAR_TYPES {
 	Enemy
 }
 
+enum TransformationsENUM {
+	MAGE,
+	SAUSAGE
+}
+
 enum CARD_TYPE {
 	Projectile,
-	Life
+	Life,
+	Transform
 }
 
 enum ELEMENTS {

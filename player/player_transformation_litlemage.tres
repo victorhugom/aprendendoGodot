@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_y1quq")
 Name = ""
-MaxLife = 3
+MaxHealth = 3
 Speed = 96
 DashSpeed = 300
 DashDuration = 0.35
