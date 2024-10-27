@@ -146,18 +146,20 @@ collision_layer = 64
 script = ExtResource("2_x8yhj")
 
 [node name="HitBox" parent="." index="0"]
-position = Vector2(7, 19)
+position = Vector2(0, -2)
 
 [node name="HurtBox" parent="." index="1"]
+position = Vector2(-7, -21)
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, 2)
 
 [node name="Enemy" type="Sprite2D" parent="." index="3"]
+position = Vector2(-7, -21)
 texture = ExtResource("3_0fa4l")
 offset = Vector2(0, 7)
-hframes = 11
+hframes = 19
 vframes = 5
 frame = 11
 region_rect = Rect2(133, 163, 26, 40)
@@ -168,6 +170,7 @@ libraries = {
 }
 
 [node name="PlayerTrace" type="ShapeCast2D" parent="." index="4"]
+position = Vector2(-7, -21)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_37lhs")
 target_position = Vector2(0, 300)
