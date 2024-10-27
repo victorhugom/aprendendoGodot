@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=41 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cgp2wtq4rhqiy" path="res://assets/player/personagem-Sheet.png" id="3_73aaf"]
@@ -494,6 +494,21 @@ _data = {
 "walk_up": SubResource("Animation_0guyc")
 }
 
+[sub_resource type="Animation" id="Animation_atype"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_d7nx6"]
 length = 0.7
 step = 0.1
@@ -508,6 +523,26 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [140, 141, 142, 143, 144, 145, 146]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_punch_trace"
+}, {
+"args": [],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"end_punch_trace"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_2ypqi"]
@@ -524,6 +559,26 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [130, 131, 132, 133, 134, 135, 136]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_punch_trace"
+}, {
+"args": [],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"end_punch_trace"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mfiwg"]
@@ -640,22 +695,6 @@ tracks/0/keys = {
 "values": [100, 101, 102, 103, 104, 105, 106, 107, 108]
 }
 
-[sub_resource type="Animation" id="Animation_stmbh"]
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13, 14, 15, 16]
-}
-
 [sub_resource type="Animation" id="Animation_nn6r2"]
 length = 0.9
 step = 0.1
@@ -740,8 +779,10 @@ tracks/0/keys = {
 "values": [110, 111, 112, 113, 114, 115]
 }
 
-[sub_resource type="Animation" id="Animation_atype"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_stmbh"]
+resource_name = "idle_right"
+loop_mode = 1
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -749,10 +790,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [10, 11, 12, 13, 14, 15, 16]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47kwo"]
@@ -766,14 +807,17 @@ _data = {
 "block_up": SubResource("Animation_88xer"),
 "idle_down": SubResource("Animation_d8ib3"),
 "idle_left": SubResource("Animation_s5rga"),
+"idle_right": SubResource("Animation_stmbh"),
 "idle_up": SubResource("Animation_t30gn"),
-"idlle_right": SubResource("Animation_stmbh"),
 "transform": SubResource("Animation_nn6r2"),
 "walk_down": SubResource("Animation_cc1id"),
 "walk_left": SubResource("Animation_g3xxq"),
 "walk_right": SubResource("Animation_jld4n"),
 "walk_up": SubResource("Animation_oalk7")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij4xu"]
+size = Vector2(64, 20)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 28
@@ -801,9 +845,9 @@ position = Vector2(0, 16)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
 texture = ExtResource("3_vw4fo")
-offset = Vector2(-1, 13)
+offset = Vector2(2, 14)
 region_enabled = true
-region_rect = Rect2(42, 343, 20, 35)
+region_rect = Rect2(212, 144, 46, 33)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LittleMage"]
 libraries = {
@@ -821,6 +865,12 @@ region_rect = Rect2(472, 341, 43, 52)
 libraries = {
 "": SubResource("AnimationLibrary_47kwo")
 }
+
+[node name="PunchTrace" type="ShapeCast2D" parent="."]
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_ij4xu")
+target_position = Vector2(0, 100)
+collision_mask = 64
 
 [connection signal="animation_finished" from="LittleMage/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="SausageMonster/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

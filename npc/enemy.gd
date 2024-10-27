@@ -49,5 +49,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_being_hit = false
 	if anim_name == "death":
 		queue_free()
+
 	
 	
