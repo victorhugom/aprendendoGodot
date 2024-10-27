@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CardDataProjectile" load_steps=3 format=3 uid="uid://d3isn1oio7jsx"]
+
+[ext_resource type="Resource" uid="uid://dco0xkbrahs5v" path="res://player/projectile/basic_projectile.tres" id="1_ee66m"]
+[ext_resource type="Script" path="res://player/cards/cardsConfigs/card_data_projectile.gd" id="1_knck6"]
+
+[resource]
+script = ExtResource("1_knck6")
+DPS = 2
+Projectile = ExtResource("1_ee66m")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://smuhytu33fjx"]
 
 [ext_resource type="Script" path="res://gui/interaction_call.gd" id="1_nrqpp"]
-[ext_resource type="Texture2D" uid="uid://bebwhk7dv6tv5" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_e.png" id="2_8uag0"]
+[ext_resource type="Texture2D" uid="uid://bebwhk7dv6tv5" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_e.png" id="2_8uag0"]
 
 [node name="InteractionCall" type="Control"]
 layout_mode = 3

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var health_bar: HBoxContainer = $CanvasLayer/HealthBar
+@onready var card_hand: HBoxContainer = $CanvasLayer/CardHand
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

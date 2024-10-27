@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cntv002pioods"]
-
-[ext_resource type="PackedScene" uid="uid://cngtjr6v1jkxo" path="res://assets/player/littlemage.aseprite" id="1_tpn77"]
-
-[node name="littlemage" instance=ExtResource("1_tpn77")]
-offset = Vector2(-1, 13)
-region_rect = Rect2(0, 71, 19, 35)

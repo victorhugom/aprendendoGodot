@@ -5,6 +5,11 @@ enum CHAR_TYPES {
 	Enemy
 }
 
+enum CARD_TYPE {
+	Projectile,
+	Life
+}
+
 enum ELEMENTS {
 	Common,
 	Water,
