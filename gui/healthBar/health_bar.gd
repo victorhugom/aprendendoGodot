@@ -15,6 +15,11 @@ func _process(_delta: float) -> void:
 
 
 func setMaxHearts(health: int = 3):
+	
+	var hearts = get_children()
+	for h in hearts:
+		remove_child(h)
+	
 	max_health = health
 	for i in range(max_health):
 		var heart = HEART.instantiate()
