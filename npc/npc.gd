@@ -5,6 +5,7 @@ signal found_target
 @export var level_floor: Floor
 @export var speed = 16*3
 @export var track_distance = 16*3
+@export var stop = false
 
 @onready var tracking_timer: Timer = $TrackingTimer
 
@@ -19,15 +20,21 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if path.size() > 0:
 		_follow_path()
-
-#region Private
+		
+func track_node(target: Node2D):
+	# set node that will be followed
+	
+	tracking_node = true
+	target_node = target
+	tracking_timer.start()
 
 func _on_tracking_timer_timeout() -> void:
 	_get_path(target_node.global_position)
 
 func _follow_path():
 	
-	if path.size() > 0:
+	if path.size() > 0 && stop == false:
+		
 		var target_path = path[target_path_index]
 		var direction = (target_path - global_position).normalized()
 		velocity = direction * speed
@@ -64,13 +71,6 @@ func _get_path(target_position: Vector2):
 		target_path_index = 0
 	else:
 		path = []
-		
-#endregion
-
-func track_node(target: Node2D):
-	tracking_node = true
-	target_node = target
-	tracking_timer.start()
 	
 func go_to_location(location: Vector2):
 	_get_path(location)

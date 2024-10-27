@@ -17,6 +17,6 @@ func set_texture(texture: Texture2D):
 	
 func update(full: bool):
 	if full:
-		sprite.frame = 4
+		sprite.frame = 3
 	else:
 		sprite.frame = 0

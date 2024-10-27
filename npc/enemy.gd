@@ -7,6 +7,7 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemy_eye_projectile.
 @onready var enemy: Sprite2D = $Enemy
 @onready var player_trace: ShapeCast2D = $PlayerTrace
 @onready var attack_timer: Timer = $AttackTimer
+@onready var projectile_position: Node2D = $ProjectilePosition
 
 var life = 3
 var is_being_hit = false
@@ -23,6 +24,8 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	stop = player_trace.is_colliding()
+	
 	if is_dying || is_being_hit || is_attacking: 
 		return
 	
@@ -37,8 +40,6 @@ func _physics_process(delta: float) -> void:
 		direction = "right"
 		enemy.flip_h = true
 		
-	if is_being_hit: return
-	
 	if velocity.x != 0:
 		animation_player.play("walk_left")
 	else:
@@ -65,10 +66,10 @@ func damage(hurt_points: int, damage_type: Enums.ELEMENTS, knock_back_direction 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hit":
 		is_being_hit = false
-	if anim_name == "death":
-		queue_free()
-	if anim_name == "attack":
+	elif anim_name == "attack":
 		is_attacking = false
+	elif anim_name == "death":
+		queue_free()
 
 func _on_attack_timer_timeout() -> void:
 	
@@ -79,7 +80,13 @@ func _on_attack_timer_timeout() -> void:
 		animation_player.play("attack")
 		
 		var projectile = PROJECTILE.instantiate()
-		projectile.position = global_position
+		projectile.position = projectile_position.global_position
+		
+		if direction == "left":
+			projectile.position.x -= 30
+		elif direction == "right":
+			projectile.position.x += 30
+		
 		projectile.set_config(PROJECTILE_CONFIG)
 		
 		get_parent().add_sibling(projectile)
