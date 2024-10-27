@@ -1,12 +1,24 @@
 class_name Card extends Panel
 
+const PROJECTILE = preload("res://player/projectile.tscn")
+
+signal destroyed
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var usages_remaining_label: RichTextLabel = $UsagesRemainingLabel
 
 @export var card_config: CardConfig
 @export var player: Player
-
 @export var id: int
+
+var current_usage: int:
+	get:
+		return current_usage
+	set(value):
+		current_usage = value
+		usages_remaining_label.text = str(value)
+
 var in_use: bool:
 	get:
 		return in_use
@@ -22,7 +34,8 @@ var in_use: bool:
 func _ready() -> void:
 	id = ResourceUID.create_id()
 	sprite_2d.texture = card_config.CardTexture
-
+	
+	current_usage = card_config.MaxCardUsage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,3 +54,10 @@ func execure_projectile() -> void:
 	
 func execute_life_recover() -> void:
 	pass
+
+func destroy_card() -> void:
+	animation_player.play("destroy")
+	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "destroy":
+		destroyed.emit(self)

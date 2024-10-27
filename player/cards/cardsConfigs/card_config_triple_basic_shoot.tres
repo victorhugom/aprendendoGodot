@@ -6,7 +6,8 @@
 
 [resource]
 script = ExtResource("3_fe1ur")
-Name = "Double Basic Shoot"
+Name = "Triple  Basic Shoot"
+MaxCardUsage = 5
 CardType = 0
 CardTexture = ExtResource("2_qq14m")
 CardData = ExtResource("1_ucv0d")

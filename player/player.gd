@@ -49,6 +49,7 @@ var is_being_hit = false
 var card_hand: CardHand
 var card_deck: Array[CardConfig]
 var card_selected: Card
+var previous_key_pressed: int
 
 @export var projectile_config: ProjectileConfig
 @export var dps = 1
@@ -120,7 +121,9 @@ func _input(event):
 		dash()
 		
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
+		if previous_key_pressed == i: continue
 		if Input.is_key_pressed(i):
+			previous_key_pressed = i
 			select_card(OS.get_keycode_string(i).to_int())
 			
 	# FOR TEST PURPOSE
@@ -173,6 +176,7 @@ func attack() -> void:
 	animations.play("attack_" + last_anim_direction)
 	
 	if current_transformation == TransformationsENUM.MAGE:
+		Hud.card_hand.use_selected_card()
 		for i in range(0, dps):
 			var projectile = PROJECTILE.instantiate()
 			projectile.position = CharProjectilePosition[current_transformation].global_position

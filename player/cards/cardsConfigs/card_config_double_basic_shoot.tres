@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_s5ceh")
 Name = "Double Basic Shoot"
+MaxCardUsage = 5
 CardType = 0
 CardTexture = ExtResource("1_xa5mq")
 CardData = ExtResource("1_y1xq3")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardConfig" load_steps=4 format=3 uid="uid://dbuj5c8v4emen"]
+
+[ext_resource type="Resource" uid="uid://iniwg5dhtf36" path="res://player/cards/cardsConfigs/card_data_projectile_single_basic_shoot.tres" id="1_7g0mq"]
+[ext_resource type="Texture2D" uid="uid://monc3u0u8bq4" path="res://assets/external_resources/Card Decks/PNG/UNO Cards/UNO-Blue-1.png" id="2_vsv6n"]
+[ext_resource type="Script" path="res://player/cards/cardsConfigs/card_config.gd" id="3_1p5wt"]
+
+[resource]
+script = ExtResource("3_1p5wt")
+Name = "Single Basic Shoot"
+MaxCardUsage = 999999
+CardType = 0
+CardTexture = ExtResource("2_vsv6n")
+CardData = ExtResource("1_7g0mq")
