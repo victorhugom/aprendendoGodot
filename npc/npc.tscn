@@ -14,16 +14,16 @@ collision_mask = 28
 wall_min_slide_angle = 0.0
 script = ExtResource("1_61t24")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_gmpuw")
-
-[node name="TrackingTimer" type="Timer" parent="."]
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_3cdwx")
+
+[node name="TrackingTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="TrackingTimer" to="." method="_on_tracking_timer_timeout"]

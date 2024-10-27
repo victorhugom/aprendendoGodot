@@ -10,6 +10,7 @@ const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 
 @export var groundMapTile: TileMapLayer
 @export var speed = 32*5
+@export var max_life = 3
 
 @onready var follow_camera = $FollowCamera
 @onready var punch_trace: ShapeCast2D = $PunchTrace
@@ -25,8 +26,8 @@ const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 }
 
 @onready var CharTransatormationsCollisions = {
-	TransformationsENUM.MAGE : $LittleMageMovementCollision,
-	TransformationsENUM.SAUSAGE : $SausageMovementCollision
+	TransformationsENUM.MAGE : $LittleMageMovementHitBox,
+	TransformationsENUM.SAUSAGE : $SausageMovementHitBox
 }
 
 @onready var CharTransformationsConfig: = {
@@ -38,6 +39,10 @@ const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 	TransformationsENUM.MAGE : $LittleMageProjectilePosition,
 	TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
 }
+
+var life = max_life
+var is_dying = false
+var is_being_hit = false
 
 var last_anim_direction = "down"
 var move_direction_vector = Vector2(0,0)
@@ -223,3 +228,17 @@ func trace_punch():
 				(body as Enemy).damage(3, Enums.ELEMENTS.SUPER)
 				
 		is_tracing_punch = false
+		
+func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
+
+	#if is_dying || is_being_hit: return
+	
+	life -= hurt_points
+	
+	if life <= 0:
+		is_dying = true
+		rotation_degrees = -90
+		#animation_player.play("death")
+	else:
+		is_being_hit = true
+		#animation_player.play("hit")

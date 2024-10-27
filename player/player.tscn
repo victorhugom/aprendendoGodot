@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d4tf61gbi3be" path="res://assets/player/littlemage-Sheet.aseprite" id="2_82obk"]
 [ext_resource type="Texture2D" uid="uid://cgp2wtq4rhqiy" path="res://assets/player/personagem-Sheet.png" id="3_73aaf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
-size = Vector2(17, 16.3438)
-
 [sub_resource type="Animation" id="Animation_6353p"]
 length = 0.5
 step = 0.1
@@ -661,6 +658,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij4xu"]
 size = Vector2(64, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
+size = Vector2(17, 16.3438)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wc2"]
+size = Vector2(20, 36)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 28
 script = ExtResource("1_nyc0f")
@@ -673,14 +676,6 @@ limit_right = 1136
 limit_bottom = 624
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-
-[node name="SausageMovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 22)
-shape = SubResource("RectangleShape2D_0gv8d")
-
-[node name="LittleMageMovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 22.3438)
-shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="LittleMageProjectilePosition" type="Node2D" parent="."]
 position = Vector2(0, 16)
@@ -715,6 +710,24 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_ij4xu")
 target_position = Vector2(0, 100)
 collision_mask = 64
+collide_with_areas = true
+
+[node name="SausageMovementHitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_0gv8d")
+
+[node name="LittleMageMovementHitBox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 22.3438)
+shape = SubResource("RectangleShape2D_0gv8d")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_j5wc2")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="animation_finished" from="LittleMage/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="SausageMonster/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
