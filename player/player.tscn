@@ -698,12 +698,13 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="LittleMageProjectilePosition" type="Node2D" parent="."]
-position = Vector2(0, 15)
+position = Vector2(0, -14)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
+position = Vector2(0, -29)
 texture = ExtResource("2_61y8n")
 hframes = 10
-vframes = 18
+vframes = 22
 frame = 170
 region_rect = Rect2(241, 254, 29, 35)
 
@@ -713,7 +714,7 @@ libraries = {
 }
 
 [node name="SausageMonster" type="Sprite2D" parent="."]
-visible = false
+position = Vector2(-3, -26)
 texture = ExtResource("3_73aaf")
 hframes = 11
 vframes = 15
@@ -725,6 +726,7 @@ libraries = {
 }
 
 [node name="PunchTrace" type="ShapeCast2D" parent="."]
+position = Vector2(0, -29)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_ij4xu")
 target_position = Vector2(0, 100)
@@ -732,15 +734,15 @@ collision_mask = 64
 collide_with_areas = true
 
 [node name="SausageMovementHitBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(4, 22)
+position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_mhrhn")
 
 [node name="LittleMageMovementHitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 25)
+position = Vector2(-0.5, -4)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(0, -29)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
