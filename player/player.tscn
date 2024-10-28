@@ -704,7 +704,7 @@ visible = false
 position = Vector2(-3, -26)
 texture = ExtResource("3_73aaf")
 hframes = 11
-vframes = 19
+vframes = 21
 region_rect = Rect2(472, 341, 43, 52)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SausageMonster"]

@@ -14,7 +14,9 @@ func _process(_delta: float) -> void:
 	pass
 	
 func show_hand() -> void:
-	animation_player.play("show")
+	pass
+	#animation_player.play("show")
 	
 func hide_hand() -> void:
-	animation_player.play("hide")
+	pass
+	#animation_player.play("hide")

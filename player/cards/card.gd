@@ -40,6 +40,9 @@ var transformation_icons = {
 	Enums.TransformationsENUM.SAUSAGE: preload("res://assets/cards/especial/transformationicon.png")
 }
 
+const NEUTRAL_BKG = preload("res://assets/cards/neutral/neutralcardbg.png")
+const HPICON = preload("res://assets/cards/neutral/hpicon.png")
+
 var current_usage: int:
 	get:
 		return current_usage
@@ -70,6 +73,8 @@ func _ready() -> void:
 		create_projectile_card()
 	elif card_config.CardType == Enums.CARD_TYPE.Transform:
 		create_transformation_card()
+	elif card_config.CardType == Enums.CARD_TYPE.Life:
+		create_life_card()
 	
 	current_usage = card_config.MaxCardUsage
 
@@ -101,12 +106,22 @@ func create_transformation_card() -> void:
 	new_icon_sprite.texture = transformation_icons[card_transformation.TransformationEnum]
 	h_box_container.add_child(new_icon_sprite)	
 
+func create_life_card() -> void:
+	
+	var card_transformation = card_config.CardData as CardDataHealth	
+		
+	card_background_sprite.texture = NEUTRAL_BKG
+	card_name_label.text = card_config.Name
+	
+	var new_icon_sprite = TextureRect.new()
+	new_icon_sprite.texture = HPICON
+	h_box_container.add_child(new_icon_sprite)	
 
 func execute_card() -> void:
 	
 	if card_config.CardType == Enums.CARD_TYPE.Projectile:
 		execure_projectile()
-	if card_config.CardType == Enums.CARD_TYPE.Life:	
+	if card_config.CardType == Enums.CARD_TYPE.Life  && player.health < player.max_health:	
 		execute_life_recover()
 	if card_config.CardType == Enums.CARD_TYPE.Transform:	
 		execute_transformation()
@@ -116,7 +131,7 @@ func execure_projectile() -> void:
 	player.dps = card_config.CardData.DPS
 	
 func execute_life_recover() -> void:
-	pass
+	player.recover_life((card_config.CardData as CardDataHealth).Health)
 
 func execute_transformation() -> void:
 	player.transform(card_config)

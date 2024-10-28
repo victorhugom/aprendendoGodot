@@ -48,7 +48,6 @@ var is_being_hit = false
 var card_hand: CardHand
 var card_deck: Array[CardConfig]
 var card_selected: Card
-var previous_key_pressed: int
 
 @export var projectile_config: ProjectileConfig
 @export var dps = 1
@@ -118,11 +117,9 @@ func _input(event):
 		is_blocking = false
 	if event.is_action_pressed("ui_dash"):
 		dash()
-		
+	
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
-		if previous_key_pressed == i: continue
-		if Input.is_key_pressed(i):
-			previous_key_pressed = i
+		if event is InputEventKey && event.keycode == i && event.is_released():
 			select_card(OS.get_keycode_string(i).to_int())
 	
 func update_animation():
@@ -313,7 +310,11 @@ func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
 			CharTransatormationsAnimations[current_transformation].play("death")
 	else:
 		is_being_hit = true
-		#animation_player.play("hit")
+		CharTransatormationsAnimations[current_transformation].play("hit")
+		
+func recover_life(add_value: int) -> void:
+	health +=add_value
+	Hud.health_bar.updateHeats(health)
 
 func select_card(card_number:int):
 	Hud.card_hand.select_card(card_number)

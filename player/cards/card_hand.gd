@@ -7,6 +7,7 @@ const CARD_CONFIG_FIRE_SHOOT = preload("res://player/cards/cardsConfigs/card_con
 const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_config_water_shoot.tres")
 
 const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://player/cards/cardsConfigs/card_config_transform_sausage.tres")
+const CARD_CONFIG_HEALTH_POTION = preload("res://player/cards/cardsConfigs/card_config_health_potion.tres")
 
 const CARD = preload("res://player/cards/card.tscn")
 
@@ -59,8 +60,8 @@ func draw_cards():
 	create_and_add_card(CARD_CONFIG_FIRE_SHOOT, player)
 	create_and_add_card(CARD_CONFIG_WATER_SHOOT, player)
 	create_and_add_card(CARD_CONFIG_TRANSFORM_SAUSAGE, player)
+	create_and_add_card(CARD_CONFIG_HEALTH_POTION, player)
 
-	
 	select_card(1)
 
 func select_card(card_number:int):
@@ -72,10 +73,19 @@ func select_card(card_number:int):
 		previous_card = card_selected
 		card_selected = cards[card_number - 1]
 		card_selected.in_use = true
+		
+		if card_selected.card_config.CardType == Enums.CARD_TYPE.Life && player.health >= player.max_health:
+			var idx = cards.find(previous_card)
+			select_card(idx + 1)
+			return
+		
 		card_selected.execute_card()
 		
 		if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
 			use_selected_card()
+		if card_selected.card_config.CardType == Enums.CARD_TYPE.Life:
+			use_selected_card()
+				
 		
 func use_selected_card():
 	card_selected.current_usage -= 1
