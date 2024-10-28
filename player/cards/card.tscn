@@ -82,6 +82,7 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(128, 128)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 script = ExtResource("1_o1hy8")
 card_config = ExtResource("2_b41ao")
 
@@ -94,10 +95,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="CardBackgroundSprite" type="Sprite2D" parent="PanelContainer"]
+[node name="CardBackgroundSprite" type="TextureRect" parent="PanelContainer"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
 texture = ExtResource("3_pcsg4")
-centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 layout_mode = 1
@@ -141,7 +145,7 @@ autowrap_mode = 0
 clip_contents = true
 layout_mode = 0
 offset_right = 128.0
-offset_bottom = 264.0
+offset_bottom = 128.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

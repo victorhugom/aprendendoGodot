@@ -12,6 +12,7 @@ const CARD_CONFIG_HEALTH_POTION = preload("res://player/cards/cardsConfigs/card_
 const CARD = preload("res://player/cards/card.tscn")
 
 var cards: Array[Card]
+var card_deck: Array[CardInDeck]
 var card_selected: Card
 var base_card = CARD_CONFIG_BASIC_SHOOT
 var previous_card = CARD_CONFIG_BASIC_SHOOT
@@ -58,15 +59,28 @@ func destroy_card(card: Card):
 		select_card(1)
 	
 func draw_cards():
-	create_and_add_card(base_card, player)
 	
-	create_and_add_card(CARD_CONFIG_AIR_SHOOT, player)
-	create_and_add_card(CARD_CONFIG_EARTH_SHOOT, player)
-	create_and_add_card(CARD_CONFIG_FIRE_SHOOT, player)
-	create_and_add_card(CARD_CONFIG_WATER_SHOOT, player)
-	create_and_add_card(CARD_CONFIG_TRANSFORM_SAUSAGE, player)
+	if cards.size() >= 3:
+		return
+		#TODO: message, cannot draw cards
 	
-	select_card(1)
+	if cards.size() == 0:
+		create_and_add_card(base_card, player)
+	
+	if card_deck.size() > 0:
+		for i in range(0, 2):
+			var card_index = randi_range(0, card_deck.size() - 1)
+			var card_in_deck = (card_deck[card_index] as CardInDeck)
+			var card_config = card_in_deck.card.card_config
+			
+			card_in_deck.quantity -= 1
+			if card_in_deck.quantity == 0:
+				card_deck.remove_at(card_index)
+			
+			create_and_add_card(card_config, player)
+	
+	if card_selected == null && cards.size() != 0:
+		select_card(1)
 
 func select_card(card_number:int):
 	

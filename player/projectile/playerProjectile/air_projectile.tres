@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileConfig" load_steps=3 format=3 uid="uid://cr42ndu8lx1eh"]
 
-[ext_resource type="Texture2D" uid="uid://bje177qew44s5" path="res://assets/player/basic_projectile-Sheet.png" id="1_yt6yv"]
+[ext_resource type="Texture2D" uid="uid://c4iftio5w3qfv" path="res://assets/props/projectile/air_projectile-Sheet.png" id="1_dgblc"]
 [ext_resource type="Script" path="res://player/projectile/projectileConfig/projectile_config.gd" id="2_1plmj"]
 
 [resource]
@@ -8,5 +8,5 @@ script = ExtResource("2_1plmj")
 Name = "Air"
 Damage = 1
 Element = 4
-Target = 0
-ProjectileTexture = ExtResource("1_yt6yv")
+Target = 1
+ProjectileTexture = ExtResource("1_dgblc")

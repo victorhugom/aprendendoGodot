@@ -108,7 +108,3 @@ func _on_attack_timer_timeout() -> void:
 
 func _on_tracking_timer_timeout() -> void:
 	follow_player()
-
-func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	#velocity = safe_velocity
-	pass

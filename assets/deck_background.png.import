@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjjt1lf7j5ihr"
-path="res://.godot/imported/earth_projectile-Sheet.png-e8e0c195cbc7dfde8439fb8bd455ee64.ctex"
+uid="uid://d1d6rumtmbi4k"
+path="res://.godot/imported/deck_background.png-a3e855473f28373760a423652d717785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/projectile/earth_projectile-Sheet.png"
-dest_files=["res://.godot/imported/earth_projectile-Sheet.png-e8e0c195cbc7dfde8439fb8bd455ee64.ctex"]
+source_file="res://assets/deck_background.png"
+dest_files=["res://.godot/imported/deck_background.png-a3e855473f28373760a423652d717785.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
 [ext_resource type="PackedScene" uid="uid://bhox0xfiactf2" path="res://player/cards/cardHand.tscn" id="3_fddru"]
-[ext_resource type="PackedScene" uid="uid://d4m5g3at6qoip" path="res://gui/deckBuilder.tscn" id="4_fh6ox"]
+[ext_resource type="PackedScene" uid="uid://d4m5g3at6qoip" path="res://gui/DeckBuilder.tscn" id="4_fh6ox"]
 
 [sub_resource type="Animation" id="Animation_w6w73"]
 length = 0.001
@@ -60,6 +60,7 @@ _data = {
 }
 
 [node name="HUD" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,6 +102,3 @@ alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_68yv3")
 }
-
-[connection signal="closed" from="CanvasLayer/DeckBuilder" to="." method="_on_deck_builder_closed"]
-[connection signal="opened" from="CanvasLayer/DeckBuilder" to="." method="_on_deck_builder_opened"]

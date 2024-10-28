@@ -49,7 +49,6 @@ func _on_start_timer_timeout() -> void:
 	started = true
 	
 func _on_area_entered(area: Area2D) -> void:
-	
 	var body = area.get_parent()
 	if body is Enemy && projectile_config.Target == Enums.CHAR_TYPES.Enemy:
 		(body as Enemy).damage(projectile_config.Damage, projectile_config.Element, direction)
