@@ -1,7 +1,7 @@
 class_name Enemy extends "res://npc/npc.gd"
 
 const PROJECTILE = preload("res://player/projectile.tscn")
-const PROJECTILE_CONFIG = preload("res://player/projectile/enemy_eye_projectile.tres")
+const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy_eye_projectile.tres")
 
 @onready var animation_player: AnimationPlayer = $Enemy/AnimationPlayer
 @onready var enemy: Sprite2D = $Enemy

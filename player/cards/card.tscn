@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=11 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_o1hy8"]
-[ext_resource type="Texture2D" uid="uid://32iaair3hrtl" path="res://assets/external_resources/Card Decks/PNG/UNO Cards/UNO-Blue-0.png" id="2_0ab3l"]
+[ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://player/cards/cardsConfigs/card_config_air_shoot.tres" id="2_b41ao"]
+[ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
+[ext_resource type="Texture2D" uid="uid://cyp8mot1c8iuk" path="res://assets/cards/air/airshooticon.png" id="4_n41rf"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
 
 [sub_resource type="Animation" id="Animation_gj107"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("PanelContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,50 +23,51 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8ghv8"]
 resource_name = "destroy"
-length = 0.5
+length = 0.1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("PanelContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 0.31864),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 100)]
 }
 
 [sub_resource type="Animation" id="Animation_au0ah"]
 resource_name = "down"
-length = 0.5
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("PanelContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2.46229, 4.75683),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -10), Vector2(0, 0)]
+"values": [Vector2(0, -20), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3ve20"]
 resource_name = "up"
-length = 0.5
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("PanelContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(4.75683, 2.46229),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -10)]
+"values": [Vector2(0, 0), Vector2(0, -20)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0tbg3"]
@@ -75,24 +79,69 @@ _data = {
 }
 
 [node name="Card" type="Panel"]
-custom_minimum_size = Vector2(32, 48)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(128, 128)
 script = ExtResource("1_o1hy8")
+card_config = ExtResource("2_b41ao")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_0ab3l")
+[node name="PanelContainer" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardBackgroundSprite" type="Sprite2D" parent="PanelContainer"]
+texture = ExtResource("3_pcsg4")
 centered = false
+
+[node name="CardIconSprite" type="Sprite2D" parent="PanelContainer"]
+texture = ExtResource("4_n41rf")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.5
+offset_top = -34.0
+offset_right = 24.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="CardNameLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_7myfg")
+theme_override_font_sizes/normal_font_size = 10
+text = "Tiro de Ar"
+fit_content = true
+autowrap_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UsagesRemainingLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_7myfg")
+theme_override_font_sizes/normal_font_size = 10
+text = "10"
+fit_content = true
+autowrap_mode = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0tbg3")
 }
-
-[node name="UsagesRemainingLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "10"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
