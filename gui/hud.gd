@@ -1,7 +1,7 @@
 extends Control
 
 @onready var health_bar: HBoxContainer = $CanvasLayer/HealthBar
-@onready var card_hand: HBoxContainer = $CanvasLayer/CenterContainer/CardHand
+@onready var card_hand: CardHand = $CanvasLayer/CenterContainer/CardHand
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.

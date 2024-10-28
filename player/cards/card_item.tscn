@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://llngneumvahe"]
+
+[ext_resource type="PackedScene" uid="uid://dwuvbt5j5i7uw" path="res://player/cards/card.tscn" id="1_t72mu"]
+[ext_resource type="Script" path="res://player/cards/card_item.gd" id="2_f2eh6"]
+
+[sub_resource type="Animation" id="Animation_65b24"]
+resource_name = "dismiss"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_ppgci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sw85u"]
+_data = {
+"RESET": SubResource("Animation_ppgci"),
+"dismiss": SubResource("Animation_65b24")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1lx3"]
+size = Vector2(97, 131)
+
+[node name="Card" instance=ExtResource("1_t72mu")]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_f2eh6")
+card_config = null
+
+[node name="CardItemAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_sw85u")
+}
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(63.5, 66.5)
+shape = SubResource("RectangleShape2D_g1lx3")
+
+[connection signal="animation_finished" from="CardItemAnimationPlayer" to="." method="_on_card_item_animation_player_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

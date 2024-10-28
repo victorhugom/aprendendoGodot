@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=10 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="2_ugr7h"]
 [ext_resource type="Script" path="res://nav_filter.gd" id="3_ba07l"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="5_ajxlq"]
+[ext_resource type="PackedScene" uid="uid://llngneumvahe" path="res://player/cards/card_item.tscn" id="8_x1ego"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="9_iyvlt"]
+[ext_resource type="Resource" uid="uid://dflhtfn7bmxt3" path="res://player/cards/cardsConfigs/card_config_health_potion.tres" id="9_nf36b"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://npc/enemy.tscn" id="9_v87hd"]
 
 [node name="Main" type="Node2D"]
@@ -71,3 +73,11 @@ groundMapTile = NodePath("../Floor")
 
 [node name="Enemy" parent="." instance=ExtResource("9_v87hd")]
 position = Vector2(840, 602)
+
+[node name="Card" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_x1ego")]
+offset_left = 680.0
+offset_top = 469.0
+offset_right = 808.0
+offset_bottom = 597.0
+card_config = ExtResource("9_nf36b")
+player = NodePath("../Player")
