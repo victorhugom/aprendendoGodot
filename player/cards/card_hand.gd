@@ -34,6 +34,11 @@ func create_and_add_card(card_config: CardConfig, current_player: Player) -> voi
 	add_child(card)
 	cards.append(card)
 	
+func add_card(new_card: Card, current_player: Player):
+	new_card.player = current_player
+	add_child(new_card)
+	cards.append(new_card)
+	
 func remove_card(card: Card):
 	card.destroy_card()
 	card.destroyed.connect(destroy_card)
@@ -60,8 +65,7 @@ func draw_cards():
 	create_and_add_card(CARD_CONFIG_FIRE_SHOOT, player)
 	create_and_add_card(CARD_CONFIG_WATER_SHOOT, player)
 	create_and_add_card(CARD_CONFIG_TRANSFORM_SAUSAGE, player)
-	create_and_add_card(CARD_CONFIG_HEALTH_POTION, player)
-
+	
 	select_card(1)
 
 func select_card(card_number:int):
