@@ -15,9 +15,7 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 @export var speed = 16*3
 
 var life = 3
-var is_being_hit = false
 var is_dying = false
-var is_attacking = false
 var direction = "left"
 var is_seeing_player = false
 
@@ -29,10 +27,11 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	if is_dying || is_being_hit || is_attacking: 
+	if is_dying || animation_player.current_animation == "attack" || animation_player.current_animation == "hit": 
 		return
 	
 	is_seeing_player = player_trace.is_colliding()
+	
 	if is_seeing_player == false: #only moves if not seeing player
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		var current_position = global_position
@@ -72,7 +71,6 @@ func damage(hurt_points: int, damage_type: Enums.ELEMENTS, knock_back_direction 
 		attack_timer.stop()
 		animation_player.play("death")
 	else:
-		is_being_hit = true
 		animation_player.play("hit")
 
 func knockBack(knock_back_direction: Vector2, knock_back_power: int):
@@ -85,19 +83,14 @@ func delayed_knock_back():
 		knockBack(last_hit_knock_back_direction, last_hit_knock_back_power)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "hit":
-		is_being_hit = false
-	elif anim_name == "attack":
-		is_attacking = false
-	elif anim_name == "death":
+	if anim_name == "death":
 		queue_free()
 
 func _on_attack_timer_timeout() -> void:
 	
-	if is_attacking || is_dying: return
+	if is_dying: return
 	
-	if player_trace.is_colliding() && is_being_hit == false:
-		is_attacking = true
+	if player_trace.is_colliding():
 		animation_player.play("attack")
 		
 		var projectile = PROJECTILE.instantiate()
