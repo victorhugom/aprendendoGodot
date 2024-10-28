@@ -38,7 +38,6 @@ func _physics_process(delta: float) -> void:
 		velocity = current_position.direction_to(next_path_position) * speed
 		move_and_slide()
 	
-
 	if velocity.x < 0:
 		enemy.flip_h = false
 		direction = "left"

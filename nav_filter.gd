@@ -16,6 +16,7 @@ func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 	
 	if coords in walls.get_used_cells() || coords in furniture.get_used_cells() ||  coords in decoration.get_used_cells():
 		return true
+		
 	return false
 	
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
