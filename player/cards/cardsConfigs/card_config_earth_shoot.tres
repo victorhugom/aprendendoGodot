@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardConfig" load_steps=5 format=3 uid="uid://c0gfa5h63ac0f"]
+
+[ext_resource type="Script" path="res://player/cards/cardsConfigs/definitions/card_data_projectile.gd" id="1_eoewd"]
+[ext_resource type="Resource" uid="uid://cyfe07tqnfelx" path="res://player/projectile/playerProjectile/earth_projectile.tres" id="1_pv331"]
+[ext_resource type="Script" path="res://player/cards/cardsConfigs/definitions/card_config.gd" id="1_qagnc"]
+
+[sub_resource type="Resource" id="Resource_e8w24"]
+script = ExtResource("1_eoewd")
+DPS = 1
+ProjectileConfig = ExtResource("1_pv331")
+
+[resource]
+script = ExtResource("1_qagnc")
+Name = "Tiro de Terra"
+MaxCardUsage = 10
+CardType = 0
+CardData = SubResource("Resource_e8w24")
