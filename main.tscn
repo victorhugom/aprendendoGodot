@@ -79,5 +79,6 @@ offset_left = 680.0
 offset_top = 469.0
 offset_right = 808.0
 offset_bottom = 597.0
+mouse_filter = 0
 card_config = ExtResource("9_nf36b")
 player = NodePath("../Player")

@@ -79,9 +79,9 @@ func _ready() -> void:
 	setCameraLimit()
 	
 	Hud.card_hand.player = self
-	Hud.card_hand.draw_cards()
 	Hud.health_bar.setMaxHearts(max_health)
 	Hud.health_bar.updateHeats(health)
+	Hud.card_hand.draw_cards()
 
 func _physics_process(_delta: float) -> void:
 	
@@ -117,6 +117,9 @@ func _input(event):
 		is_blocking = false
 	if event.is_action_pressed("ui_dash"):
 		dash()
+	if event.is_action_pressed("ui_draw_cards"):
+		Hud.card_hand.draw_cards()
+		damage(1, enums.ELEMENTS.Neutral)
 	
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
 		if event is InputEventKey && event.keycode == i && event.is_released():
@@ -296,7 +299,6 @@ func trace_punch():
 func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
 	
 	if is_blocking: return
-	
 	if is_dying: return
 	
 	health -= hurt_points

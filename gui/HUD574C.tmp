@@ -60,6 +60,7 @@ _data = {
 }
 
 [node name="HUD" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,6 +102,3 @@ alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_68yv3")
 }
-
-[connection signal="closed" from="CanvasLayer/DeckBuilder" to="." method="_on_deck_builder_closed"]
-[connection signal="opened" from="CanvasLayer/DeckBuilder" to="." method="_on_deck_builder_opened"]

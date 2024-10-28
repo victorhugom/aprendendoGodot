@@ -4,7 +4,7 @@ const PROJECTILE = preload("res://player/projectile.tscn")
 
 signal destroyed
 
-@onready var card_background_sprite: Sprite2D = $PanelContainer/CardBackgroundSprite
+@onready var card_background_sprite: TextureRect = $PanelContainer/CardBackgroundSprite
 @onready var card_name_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CardNameLabel
 @onready var usages_remaining_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CenterContainer/UsagesRemainingLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
