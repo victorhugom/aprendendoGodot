@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardConfig" load_steps=5 format=3 uid="uid://cley1gty1qtl1"]
+
+[ext_resource type="Resource" uid="uid://cdkpna2ajgkap" path="res://player/projectile/playerProjectile/fire_projectile.tres" id="1_8tb1w"]
+[ext_resource type="Script" path="res://player/cards/cardsConfigs/definitions/card_config.gd" id="1_40bso"]
+[ext_resource type="Script" path="res://player/cards/cardsConfigs/definitions/card_data_projectile.gd" id="2_36kfy"]
+
+[sub_resource type="Resource" id="Resource_6yw5n"]
+script = ExtResource("2_36kfy")
+DPS = 1
+ProjectileConfig = ExtResource("1_8tb1w")
+
+[resource]
+script = ExtResource("1_40bso")
+Name = "Tiro de Fogo"
+MaxCardUsage = 10
+CardType = 0
+CardData = SubResource("Resource_6yw5n")

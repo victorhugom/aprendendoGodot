@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ProjectileConfig" load_steps=3 format=3 uid="uid://cyfe07tqnfelx"]
+
+[ext_resource type="Texture2D" uid="uid://bje177qew44s5" path="res://assets/player/basic_projectile-Sheet.png" id="1_x7nbb"]
+[ext_resource type="Script" path="res://player/projectile/projectileConfig/projectile_config.gd" id="2_lp5dm"]
+
+[resource]
+script = ExtResource("2_lp5dm")
+Name = "Earth"
+Damage = 1
+Element = 2
+Target = 0
+ProjectileTexture = ExtResource("1_x7nbb")

@@ -17,24 +17,10 @@ enum CARD_TYPE {
 }
 
 enum ELEMENTS {
-	Common,
+	Neutral,
 	Water,
 	Earth,
 	Fire,
 	Air,
 	SUPER
-}
-
-enum PROJECTILE_ID {
-	Common,
-	Water,
-	Earth,
-	Fire,
-	Air,
-	GigaCommon,
-	GigaWater,
-	GigaEarth,
-	GigaFire,
-	GigaAir,
-	Enemy_Eye,
 }

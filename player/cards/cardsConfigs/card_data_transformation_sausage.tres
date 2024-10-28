@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="CardDataTransformation" load_steps=3 format=3 uid="uid://bkpop2v0jv7c3"]
-
-[ext_resource type="Resource" uid="uid://cjtntfau5dt64" path="res://player/player_transformation_sausage.tres" id="1_fcdfc"]
-[ext_resource type="Script" path="res://player/cards/cardsConfigs/card_data_transformation.gd" id="1_tixtp"]
-
-[resource]
-script = ExtResource("1_tixtp")
-TransformationEnum = 1
-TransformationConfig = ExtResource("1_fcdfc")

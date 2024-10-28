@@ -2,7 +2,7 @@ class_name  Player extends CharacterBody2D
 
 const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 const PROJECTILE = preload("res://player/projectile.tscn")
-const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/basic_projectile.tres")
+const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectile/basic_projectile.tres")
 const MAGE_TRANSFORMATION_CONFIG = preload("res://player/player_transformation_litlemage.tres")
 
 @export var groundMapTile: TileMapLayer

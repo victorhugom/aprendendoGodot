@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ProjectileConfig" load_steps=3 format=3 uid="uid://odr68qjpxkcd"]
+
+[ext_resource type="Texture2D" uid="uid://bje177qew44s5" path="res://assets/player/basic_projectile-Sheet.png" id="1_76u7a"]
+[ext_resource type="Script" path="res://player/projectile/projectileConfig/projectile_config.gd" id="2_2yd7k"]
+
+[resource]
+script = ExtResource("2_2yd7k")
+Name = "Water"
+Damage = 1
+Element = 1
+Target = 0
+ProjectileTexture = ExtResource("1_76u7a")

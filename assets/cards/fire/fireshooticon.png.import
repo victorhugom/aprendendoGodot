@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vtu1lgbrmw5i"
-path="res://.godot/imported/earthcardface.png-6ee319f322fd3d5c1012757402cbe0d7.ctex"
+uid="uid://dra6b2fni32cf"
+path="res://.godot/imported/fireshooticon.png-b1a5cf58fec198707103418659f42990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/earth/earthcardface.png"
-dest_files=["res://.godot/imported/earthcardface.png-6ee319f322fd3d5c1012757402cbe0d7.ctex"]
+source_file="res://assets/cards/fire/fireshooticon.png"
+dest_files=["res://.godot/imported/fireshooticon.png-b1a5cf58fec198707103418659f42990.ctex"]
 
 [params]
 

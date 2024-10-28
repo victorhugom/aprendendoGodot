@@ -1,16 +1,17 @@
 class_name CardHand extends HBoxContainer
 
-const CARD_CONFIG_SINGLE_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_single_basic_shoot.tres")
-const CARD_CONFIG_DOUBLE_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_double_basic_shoot.tres")
-const CARD_CONFIG_TRIPLE_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_triple_basic_shoot.tres")
-const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://player/cards/cardsConfigs/card_config_transform_sausage.tres")
+const CARD_CONFIG_AIR_SHOOT = preload("res://player/cards/cardsConfigs/card_config_air_shoot.tres")
+const CARD_CONFIG_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_basic_shoot.tres")
+const CARD_CONFIG_EARTH_SHOOT = preload("res://player/cards/cardsConfigs/card_config_earth_shoot.tres")
+const CARD_CONFIG_FIRE_SHOOT = preload("res://player/cards/cardsConfigs/card_config_fire_shoot.tres")
+const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_config_water_shoot.tres")
 
 const CARD = preload("res://player/cards/card.tscn")
 
 var cards: Array[Card]
 var card_selected: Card
-var base_card = CARD_CONFIG_SINGLE_BASIC_SHOOT
-var previous_card = CARD_CONFIG_SINGLE_BASIC_SHOOT
+var base_card = CARD_CONFIG_BASIC_SHOOT
+var previous_card = CARD_CONFIG_BASIC_SHOOT
 
 @export var player: Player
 
@@ -50,9 +51,13 @@ func destroy_card(card: Card):
 	
 func draw_cards():
 	create_and_add_card(base_card, player)
-	create_and_add_card(CARD_CONFIG_DOUBLE_BASIC_SHOOT, player)
-	create_and_add_card(CARD_CONFIG_TRIPLE_BASIC_SHOOT, player)
-	create_and_add_card(CARD_CONFIG_TRANSFORM_SAUSAGE, player)
+	
+	create_and_add_card(CARD_CONFIG_AIR_SHOOT, player)
+	create_and_add_card(CARD_CONFIG_EARTH_SHOOT, player)
+	create_and_add_card(CARD_CONFIG_FIRE_SHOOT, player)
+	create_and_add_card(CARD_CONFIG_WATER_SHOOT, player)
+
+	
 	select_card(1)
 
 func select_card(card_number:int):
