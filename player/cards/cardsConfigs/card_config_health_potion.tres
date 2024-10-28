@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardConfig" load_steps=4 format=3 uid="uid://dflhtfn7bmxt3"]
+[gd_resource type="Resource" script_class="CardConfig" load_steps=4 format=3 uid="uid://cn3uqq2dv70em"]
 
 [ext_resource type="Script" path="res://player/cards/cardsConfigs/definitions/card_data_health.gd" id="1_kt5uq"]
 [ext_resource type="Script" path="res://player/cards/cardsConfigs/definitions/card_config.gd" id="1_scs0f"]
