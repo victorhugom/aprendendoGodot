@@ -6,6 +6,8 @@ const CARD_CONFIG_EARTH_SHOOT = preload("res://player/cards/cardsConfigs/card_co
 const CARD_CONFIG_FIRE_SHOOT = preload("res://player/cards/cardsConfigs/card_config_fire_shoot.tres")
 const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_config_water_shoot.tres")
 
+const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://player/cards/cardsConfigs/card_config_transform_sausage.tres")
+
 const CARD = preload("res://player/cards/card.tscn")
 
 var cards: Array[Card]
@@ -56,6 +58,7 @@ func draw_cards():
 	create_and_add_card(CARD_CONFIG_EARTH_SHOOT, player)
 	create_and_add_card(CARD_CONFIG_FIRE_SHOOT, player)
 	create_and_add_card(CARD_CONFIG_WATER_SHOOT, player)
+	create_and_add_card(CARD_CONFIG_TRANSFORM_SAUSAGE, player)
 
 	
 	select_card(1)
