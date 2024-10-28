@@ -5,10 +5,10 @@ const PROJECTILE = preload("res://player/projectile.tscn")
 signal destroyed
 
 @onready var card_background_sprite: Sprite2D = $PanelContainer/CardBackgroundSprite
-@onready var card_icon_sprite: Sprite2D = $PanelContainer/CardIconSprite
 @onready var card_name_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CardNameLabel
 @onready var usages_remaining_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CenterContainer/UsagesRemainingLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var h_box_container: HFlowContainer = $PanelContainer/HBoxContainer
 
 
 @export var card_config: CardConfig
@@ -30,6 +30,14 @@ var card_shoot_icons = {
 	Enums.ELEMENTS.Water: preload("res://assets/cards/water/watershooticon.png"),
 	Enums.ELEMENTS.Earth: preload("res://assets/cards/earth/earthshooticon.png"),
 	Enums.ELEMENTS.Fire: preload("res://assets/cards/fire/fireshooticon.png"),
+}
+
+var transformation_backgrounds = {
+	Enums.TransformationsENUM.SAUSAGE: preload("res://assets/cards/especial/specialcardbg.png")
+}
+
+var transformation_icons = {
+	Enums.TransformationsENUM.SAUSAGE: preload("res://assets/cards/especial/transformationicon.png")
 }
 
 var current_usage: int:
@@ -59,18 +67,41 @@ func _ready() -> void:
 	id = ResourceUID.create_id()
 	
 	if card_config.CardType == Enums.CARD_TYPE.Projectile:
-		var card_projectile = card_config.CardData as CardDataProjectile	
-		
-		card_background_sprite.texture = card_backgrounds[card_projectile.ProjectileConfig.Element]
-		card_icon_sprite.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
-		card_name_label.text = card_config.Name
+		create_projectile_card()
+	elif card_config.CardType == Enums.CARD_TYPE.Transform:
+		create_transformation_card()
 	
 	current_usage = card_config.MaxCardUsage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func create_projectile_card() -> void:
+	var card_projectile = card_config.CardData as CardDataProjectile	
+		
+	card_background_sprite.texture = card_backgrounds[card_projectile.ProjectileConfig.Element]
+	#card_icon_sprite.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
+	card_name_label.text = card_config.Name
 	
+	for i in range(0, card_projectile.DPS):
+		
+		var new_icon_sprite = TextureRect.new()
+		new_icon_sprite.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
+		new_icon_sprite.scale = Vector2(1/card_projectile.DPS, 1/card_projectile.DPS)
+		h_box_container.add_child(new_icon_sprite)
+		
+func create_transformation_card() -> void:
+	var card_transformation = card_config.CardData as CardDataTransformation	
+		
+	card_background_sprite.texture = transformation_backgrounds[card_transformation.TransformationEnum]
+	card_name_label.text = card_config.Name
+	
+	var new_icon_sprite = TextureRect.new()
+	new_icon_sprite.texture = transformation_icons[card_transformation.TransformationEnum]
+	h_box_container.add_child(new_icon_sprite)	
+
+
 func execute_card() -> void:
 	
 	if card_config.CardType == Enums.CARD_TYPE.Projectile:

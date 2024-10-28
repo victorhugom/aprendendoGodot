@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=10 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_o1hy8"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://player/cards/cardsConfigs/card_config_air_shoot.tres" id="2_b41ao"]
 [ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
-[ext_resource type="Texture2D" uid="uid://cyp8mot1c8iuk" path="res://assets/cards/air/airshooticon.png" id="4_n41rf"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
 
 [sub_resource type="Animation" id="Animation_gj107"]
@@ -81,11 +80,14 @@ _data = {
 [node name="Card" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(128, 128)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_o1hy8")
 card_config = ExtResource("2_b41ao")
 
 [node name="PanelContainer" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+texture_filter = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,10 +97,6 @@ grow_vertical = 2
 
 [node name="CardBackgroundSprite" type="Sprite2D" parent="PanelContainer"]
 texture = ExtResource("3_pcsg4")
-centered = false
-
-[node name="CardIconSprite" type="Sprite2D" parent="PanelContainer"]
-texture = ExtResource("4_n41rf")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
@@ -138,6 +136,12 @@ theme_override_font_sizes/normal_font_size = 10
 text = "10"
 fit_content = true
 autowrap_mode = 0
+
+[node name="HBoxContainer" type="HFlowContainer" parent="PanelContainer"]
+clip_contents = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 264.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
