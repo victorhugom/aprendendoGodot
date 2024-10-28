@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=9 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_o1hy8"]
-[ext_resource type="Texture2D" uid="uid://32iaair3hrtl" path="res://assets/external_resources/Card Decks/PNG/UNO Cards/UNO-Blue-0.png" id="2_0ab3l"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="2_qpaqa"]
+[ext_resource type="Texture2D" uid="uid://dplsg7krwo4j5" path="res://assets/cards/airshoot_card.png" id="2_y5jys"]
 
 [sub_resource type="Animation" id="Animation_gj107"]
 length = 0.001
@@ -75,24 +76,37 @@ _data = {
 }
 
 [node name="Card" type="Panel"]
-custom_minimum_size = Vector2(32, 48)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(96, 128)
 script = ExtResource("1_o1hy8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_0ab3l")
+texture_filter = 3
+texture = ExtResource("2_y5jys")
 centered = false
+offset = Vector2(-16, 0)
+hframes = 2
+frame = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Sprite2D"]
+offset_left = 22.0
+offset_top = 96.0
+offset_right = 74.0
+offset_bottom = 136.0
+
+[node name="UsagesRemainingLabel" type="RichTextLabel" parent="Sprite2D/CenterContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_qpaqa")
+theme_override_font_sizes/normal_font_size = 10
+text = "10"
+fit_content = true
+autowrap_mode = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0tbg3")
 }
-
-[node name="UsagesRemainingLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "10"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

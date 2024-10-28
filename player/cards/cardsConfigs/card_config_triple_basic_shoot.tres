@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardConfig" load_steps=4 format=3 uid="uid://fwja4mtllv8i"]
 
 [ext_resource type="Resource" uid="uid://dwjvckcipeccg" path="res://player/cards/cardsConfigs/card_data_projectile_triple_basic_shoot.tres" id="1_ucv0d"]
-[ext_resource type="Texture2D" uid="uid://loi33fmqsahc" path="res://assets/external_resources/Card Decks/PNG/UNO Cards/UNO-Blue-3.png" id="2_qq14m"]
+[ext_resource type="Texture2D" uid="uid://b7fdtgbcoj8ah" path="res://assets/cards/watershoot_card.png" id="2_o5ces"]
 [ext_resource type="Script" path="res://player/cards/cardsConfigs/card_config.gd" id="3_fe1ur"]
 
 [resource]
@@ -9,5 +9,5 @@ script = ExtResource("3_fe1ur")
 Name = "Triple  Basic Shoot"
 MaxCardUsage = 5
 CardType = 0
-CardTexture = ExtResource("2_qq14m")
+CardTexture = ExtResource("2_o5ces")
 CardData = ExtResource("1_ucv0d")

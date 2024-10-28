@@ -6,7 +6,7 @@ signal destroyed
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var usages_remaining_label: RichTextLabel = $UsagesRemainingLabel
+@onready var usages_remaining_label: RichTextLabel = $Sprite2D/CenterContainer/UsagesRemainingLabel
 
 @export var card_config: CardConfig
 @export var player: Player
@@ -17,7 +17,10 @@ var current_usage: int:
 		return current_usage
 	set(value):
 		current_usage = value
-		usages_remaining_label.text = str(value)
+		if value > 9999:
+			usages_remaining_label.text = "/"
+		else:
+			usages_remaining_label.text = str(value)
 
 var in_use: bool:
 	get:
