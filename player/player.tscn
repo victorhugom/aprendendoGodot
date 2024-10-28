@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=47 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
@@ -366,7 +366,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [154, 155, 156, 157, 158, 159, 160, 161]
+"values": [165, 166, 167, 168, 169, 170, 171, 172]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -639,11 +639,87 @@ tracks/0/keys = {
 "values": [121, 122, 123, 124, 125, 126]
 }
 
+[sub_resource type="Animation" id="Animation_0w6oa"]
+resource_name = "attack_down"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [154, 155, 156, 157, 158, 159, 160, 161]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_punch_trace"
+}, {
+"args": [],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"end_punch_trace"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tpx1t"]
+resource_name = "attack_up"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [176, 177, 178, 179, 180, 181, 182, 183]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_punch_trace"
+}, {
+"args": [],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"end_punch_trace"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47kwo"]
 _data = {
 "RESET": SubResource("Animation_atype"),
+"attack_down": SubResource("Animation_0w6oa"),
 "attack_left": SubResource("Animation_d7nx6"),
 "attack_right": SubResource("Animation_2ypqi"),
+"attack_up": SubResource("Animation_tpx1t"),
 "block_down": SubResource("Animation_mfiwg"),
 "block_left": SubResource("Animation_cn6tl"),
 "block_right": SubResource("Animation_5cbqo"),
@@ -704,7 +780,7 @@ visible = false
 position = Vector2(-3, -26)
 texture = ExtResource("3_73aaf")
 hframes = 11
-vframes = 21
+vframes = 25
 region_rect = Rect2(472, 341, 43, 52)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SausageMonster"]
@@ -713,7 +789,6 @@ libraries = {
 }
 
 [node name="PunchTrace" type="ShapeCast2D" parent="."]
-visible = false
 position = Vector2(0, -29)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_ij4xu")

@@ -282,8 +282,16 @@ func trace_punch():
 	if is_tracing_punch == false: return
 	
 	if last_anim_direction == "left":
+		punch_trace.rotation_degrees = -90
 		punch_trace.target_position = Vector2(0,-100)
-	else:
+	if last_anim_direction == "right":
+		punch_trace.rotation_degrees = -90
+		punch_trace.target_position = Vector2(0,100)
+	if last_anim_direction == "up":
+		punch_trace.rotation_degrees = 0
+		punch_trace.target_position = Vector2(0,-100)
+	if last_anim_direction == "down":
+		punch_trace.rotation_degrees = 0
 		punch_trace.target_position = Vector2(0,100)
 
 	if punch_trace.is_colliding():
