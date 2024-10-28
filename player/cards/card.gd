@@ -1,4 +1,3 @@
-@tool
 class_name Card extends Panel
 
 const PROJECTILE = preload("res://player/projectile.tscn")

@@ -79,7 +79,6 @@ wait_time = 0.5
 autostart = true
 
 [node name="BasicProjectile" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_65b0x")
 offset = Vector2(0, 1)
 hframes = 6
