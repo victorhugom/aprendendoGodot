@@ -70,7 +70,13 @@ func draw_cards():
 	if card_deck.size() > 0:
 		for i in range(0, 2):
 			var card_index = randi_range(0, card_deck.size() - 1)
-			var card_config = (card_deck[card_index] as CardInDeck).card.card_config
+			var card_in_deck = (card_deck[card_index] as CardInDeck)
+			var card_config = card_in_deck.card.card_config
+			
+			card_in_deck.quantity -= 1
+			if card_in_deck.quantity == 0:
+				card_deck.remove_at(card_index)
+			
 			create_and_add_card(card_config, player)
 	
 	if card_selected == null && cards.size() != 0:
