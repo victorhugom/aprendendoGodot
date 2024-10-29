@@ -37,7 +37,7 @@ tile_set = ExtResource("1_lh2lw")
 
 [node name="Player" parent="." node_paths=PackedStringArray("groundMapTile") instance=ExtResource("2_ugr7h")]
 unique_name_in_owner = true
-position = Vector2(591, 465)
+position = Vector2(600, 469)
 groundMapTile = NodePath("../Floor")
 
 [node name="Enemy" parent="." instance=ExtResource("9_v87hd")]
