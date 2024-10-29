@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk75mr3u1qd36"]
+[gd_scene load_steps=13 format=3 uid="uid://dk75mr3u1qd36"]
 
 [ext_resource type="Script" path="res://props/chandelier.gd" id="1_i3syb"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="2_epraj"]
-[ext_resource type="PackedScene" uid="uid://buq8qcr611jok" path="res://assets/props/Torch.aseprite" id="3_nrl82"]
+[ext_resource type="Texture2D" uid="uid://i0jki8661gnp" path="res://assets/props/Torch.png" id="3_k1wqd"]
 
 [sub_resource type="Curve" id="Curve_w844x"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -28,6 +28,35 @@ scale_min = 0.4
 color_ramp = SubResource("GradientTexture1D_eo02l")
 alpha_curve = SubResource("CurveTexture_yhjg8")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nldfs"]
+atlas = ExtResource("3_k1wqd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe7cu"]
+atlas = ExtResource("3_k1wqd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc40y"]
+atlas = ExtResource("3_k1wqd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7oav6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nldfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe7cu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc40y")
+}],
+"loop": true,
+"name": &"flame",
+"speed": 5.0
+}]
+
 [node name="Chandelier" type="Node2D"]
 script = ExtResource("1_i3syb")
 
@@ -46,5 +75,7 @@ scale = Vector2(0.922823, 0.426316)
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_fgx3l")
 
-[node name="Torch" parent="." instance=ExtResource("3_nrl82")]
+[node name="Torch" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -4)
+sprite_frames = SubResource("SpriteFrames_7oav6")
+animation = &"flame"

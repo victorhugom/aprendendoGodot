@@ -6,7 +6,6 @@ extends Node2D
 func _ready() -> void:
 	torch.play("flame")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
