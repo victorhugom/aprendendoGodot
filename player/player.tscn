@@ -1,16 +1,17 @@
-[gd_scene load_steps=57 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=58 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
 [ext_resource type="Texture2D" uid="uid://cgp2wtq4rhqiy" path="res://assets/player/personagem-Sheet.png" id="3_73aaf"]
 [ext_resource type="AudioStream" uid="uid://dtfprkct4rf8h" path="res://assets/sounds/magicshoot.mp3" id="3_kwohu"]
 [ext_resource type="AudioStream" uid="uid://chmk56e0axfdf" path="res://assets/sounds/dash.mp3" id="4_a7pac"]
-[ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/impact.mp3" id="5_mbxu5"]
-[ext_resource type="AudioStream" uid="uid://coo4qp2kipcyp" path="res://assets/sounds/clap.mp3" id="6_cdlyq"]
+[ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="5_mbxu5"]
+[ext_resource type="AudioStream" uid="uid://bkhv0v1km4ona" path="res://assets/sounds/human-impact-on-ground.wav" id="6_eepaq"]
 [ext_resource type="AudioStream" uid="uid://bb5mmxhlrwgt5" path="res://assets/sounds/breath.mp3" id="7_3sr7w"]
+[ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="7_lhyfc"]
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="8_f16ms"]
 [ext_resource type="AudioStream" uid="uid://dwg6je1cusplu" path="res://assets/sounds/tinyfootsteps.mp3" id="9_8fibq"]
-[ext_resource type="AudioStream" uid="uid://c6rb5igbxt04l" path="res://assets/sounds/strongimpact.mp3" id="12_kg8x2"]
+[ext_resource type="AudioStream" uid="uid://dyh7ntv3sifvq" path="res://assets/sounds/har_impact_on_ground.mp3" id="12_11eu4"]
 [ext_resource type="AudioStream" uid="uid://e2wis1in3prv" path="res://assets/sounds/breathmonster.mp3" id="13_jgvu2"]
 [ext_resource type="AudioStream" uid="uid://bke3m3fkukpdw" path="res://assets/sounds/bigfootstep.mp3" id="14_uuvvm"]
 
@@ -310,11 +311,26 @@ tracks/1/keys = {
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("6_cdlyq")
+"stream": ExtResource("6_eepaq")
 }],
-"times": PackedFloat32Array(0, 0.5)
+"times": PackedFloat32Array(0, 0.4)
 }
 tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.53,
+"stream": ExtResource("7_lhyfc")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tqprm"]
 loop_mode = 1
@@ -699,9 +715,9 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("12_kg8x2")
+"stream": ExtResource("12_11eu4")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
 
@@ -750,9 +766,9 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("12_kg8x2")
+"stream": ExtResource("12_11eu4")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
 
@@ -801,9 +817,9 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("12_kg8x2")
+"stream": ExtResource("12_11eu4")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
 
@@ -853,9 +869,9 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("12_kg8x2")
+"stream": ExtResource("12_11eu4")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
 
