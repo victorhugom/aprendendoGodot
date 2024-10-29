@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://eetvodjwpv8r"]
+[gd_scene load_steps=18 format=3 uid="uid://eetvodjwpv8r"]
 
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bvo81bkdj8263" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q.png" id="5_fwk4v"]
 [ext_resource type="Texture2D" uid="uid://g0r7s3cqjopf" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_left.png" id="5_t6bsr"]
 [ext_resource type="Texture2D" uid="uid://bywbuxstv8gyt" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_right.png" id="6_qafju"]
+[ext_resource type="Texture2D" uid="uid://l1ajye4pblbl" path="res://assets/cards/air/aircardface.png" id="9_0ors8"]
+[ext_resource type="Texture2D" uid="uid://vtu1lgbrmw5i" path="res://assets/cards/earth/earthcardface.png" id="10_46k5k"]
+[ext_resource type="Texture2D" uid="uid://c57c3vp8qqdak" path="res://assets/cards/especial/specialcardface.png" id="11_54sa2"]
+[ext_resource type="Texture2D" uid="uid://dqoscns25oeqa" path="res://assets/cards/fire/firecardface.png" id="12_f50qc"]
+[ext_resource type="Texture2D" uid="uid://w7bevgg7lpf5" path="res://assets/cards/neutral/neutralface.png" id="13_0daqa"]
 
 [sub_resource type="Animation" id="Animation_w6w73"]
 length = 0.001
@@ -83,17 +88,54 @@ offset_right = 76.0
 offset_bottom = 76.0
 scale = Vector2(2, 2)
 
-[node name="BuyCards" type="MarginContainer" parent="CanvasLayer"]
+[node name="BuyCards" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -196.0
-offset_bottom = 40.0
+offset_left = -104.0
+offset_top = 528.0
+offset_right = -7.0
+offset_bottom = 613.0
 grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BuyCards"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Neutralface" type="Sprite2D" parent="CanvasLayer/BuyCards/MarginContainer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_0daqa")
+centered = false
+
+[node name="Aircardface" type="Sprite2D" parent="CanvasLayer/BuyCards/MarginContainer"]
+position = Vector2(10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_0ors8")
+centered = false
+
+[node name="Earthcardface" type="Sprite2D" parent="CanvasLayer/BuyCards/MarginContainer"]
+position = Vector2(18, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_46k5k")
+centered = false
+
+[node name="Firecardface" type="Sprite2D" parent="CanvasLayer/BuyCards/MarginContainer"]
+position = Vector2(26, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_f50qc")
+centered = false
+
+[node name="Specialcardface" type="Sprite2D" parent="CanvasLayer/BuyCards/MarginContainer"]
+position = Vector2(34, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_54sa2")
+centered = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BuyCards"]
 layout_mode = 2
@@ -110,24 +152,22 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BuyCards/HBoxContainer/CenterContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_diull")
-text = "Comprar Cartas <3"
+text = "Comprar "
 fit_content = true
 autowrap_mode = 0
 
-[node name="Commands" type="MarginContainer" parent="CanvasLayer"]
+[node name="Commands" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -196.0
-offset_top = -40.0
+offset_left = -173.0
+offset_top = -616.0
+offset_right = -8.0
+offset_bottom = -600.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Commands"]
 layout_mode = 2

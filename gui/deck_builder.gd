@@ -8,6 +8,7 @@ const CARD = preload("res://player/cards/card.tscn")
 
 const CARD_CONFIG_AIR_SHOOT = preload("res://player/cards/cardsConfigs/card_config_air_shoot.tres")
 const CARD_CONFIG_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_basic_shoot.tres")
+const CARD_CONFIG_BASIC_SHOOT_DOUBLE = preload("res://player/cards/cardsConfigs/card_config_basic_shoot_double.tres")
 const CARD_CONFIG_EARTH_SHOOT = preload("res://player/cards/cardsConfigs/card_config_earth_shoot.tres")
 const CARD_CONFIG_FIRE_SHOOT = preload("res://player/cards/cardsConfigs/card_config_fire_shoot.tres")
 const CARD_CONFIG_HEALTH_POTION = preload("res://player/cards/cardsConfigs/card_config_health_potion.tres")
@@ -19,8 +20,8 @@ const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_co
 @onready var quantity_label: RichTextLabel = $MarginContainer/GridContainer/VBoxContainer2/HBoxContainer/QuantityLabel
 
 var card_configs = [
+ CARD_CONFIG_BASIC_SHOOT_DOUBLE,
  CARD_CONFIG_AIR_SHOOT,
- #CARD_CONFIG_BASIC_SHOOT,
  CARD_CONFIG_EARTH_SHOOT,
  CARD_CONFIG_FIRE_SHOOT,
  CARD_CONFIG_HEALTH_POTION,

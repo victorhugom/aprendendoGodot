@@ -20,9 +20,14 @@ func hide_hand() -> void:
 	animation_player.play("hide")
 
 func _on_deck_builder_opened() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
 func _on_deck_builder_closed() -> void:
-	deck_builder.visible = false
-	card_hand.card_deck = deck_builder.cards_in_deck
 	get_tree().paused = false
+	deck_builder.visible = false
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	card_hand.card_deck = deck_builder.cards_in_deck
+	Hud.card_hand.draw_cards()
+	

@@ -3,7 +3,5 @@
 [ext_resource type="Script" path="res://player/cards/card_hand.gd" id="1_gtaso"]
 
 [node name="CardHand" type="HBoxContainer"]
-offset_top = 100.0
-offset_right = 140.0
-offset_bottom = 148.0
+offset_right = 20.0
 script = ExtResource("1_gtaso")
