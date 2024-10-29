@@ -10,17 +10,7 @@ signal destroyed
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var keyboard_shortcut: TextureRect = $PanelContainer/KeyboardShortcut
 
-@onready var single_icon_sprites: CenterContainer = $PanelContainer/SingleIconSprites
-@onready var single_icon_sprite_1: TextureRect = $PanelContainer/SingleIconSprites/SingleIconSprite
-
-@onready var double_icon_sprites: Panel = $PanelContainer/DoubleIconSprites
-@onready var double_icon_sprite_1: TextureRect = $PanelContainer/DoubleIconSprites/DoubleIconSprite
-@onready var double_icon_sprite_2: TextureRect = $PanelContainer/DoubleIconSprites/DoubleIconSprite2
-
-@onready var triple_icon_sprites: Panel = $PanelContainer/TripleIconSprites
-@onready var triple_icon_sprite_1: TextureRect = $PanelContainer/TripleIconSprites/TripleIconSprite
-@onready var triple_icon_sprite_2: TextureRect = $PanelContainer/TripleIconSprites/TripleIconSprite2
-@onready var triple_icon_sprite_3: TextureRect = $PanelContainer/TripleIconSprites/TripleIconSprite3
+@onready var card_icons_container: HFlowContainer = $PanelContainer/CardIconsContainer
 
 @export var card_config: CardConfig
 @export var player: Player
@@ -111,28 +101,24 @@ func create_projectile_card() -> void:
 	card_background_sprite.texture = card_backgrounds[card_projectile.ProjectileConfig.Element]
 	card_name_label.text = card_config.Name
 	
-	if card_projectile.DPS == 1:
-		single_icon_sprites.visible = true
-		double_icon_sprites.visible = false
-		triple_icon_sprites.visible = false
-		single_icon_sprite_1.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
-	elif card_projectile.DPS == 2:
-		single_icon_sprites.visible = false
-		double_icon_sprites.visible = true
-		triple_icon_sprites.visible = false
-		
-		double_icon_sprite_1.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
-		double_icon_sprite_2.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
-		
-		pass
+	var card_icon_size = Vector2(64, 64)
+
+	if card_projectile.DPS == 2:
+		card_icon_size = Vector2(30, 30)
 	elif card_projectile.DPS == 3:
-		single_icon_sprites.visible = false
-		double_icon_sprites.visible = false
-		triple_icon_sprites.visible = true
-		
-		triple_icon_sprite_1.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
-		triple_icon_sprite_2.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
-		triple_icon_sprite_3.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
+		card_icon_size = Vector2(20, 20)
+	elif card_projectile.DPS == 4:
+		card_icon_size = Vector2(20, 20)
+	
+	for i in range(0, card_projectile.DPS):
+		var card_icon = TextureRect.new()
+		card_icon.size = card_icon_size
+		card_icon.custom_minimum_size = card_icon_size
+		card_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		card_icon.stretch_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		card_icon.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
+		card_icons_container.add_child(card_icon)
+
 		
 		
 func create_transformation_card() -> void:
@@ -141,7 +127,10 @@ func create_transformation_card() -> void:
 	card_background_sprite.texture = transformation_backgrounds[card_transformation.TransformationEnum]
 	card_name_label.text = card_config.Name
 	
-	single_icon_sprite_1.texture = transformation_icons[card_transformation.TransformationEnum]
+	var card_icon = TextureRect.new()
+	card_icon.size = Vector2(64, 64)
+	card_icon.texture = transformation_icons[card_transformation.TransformationEnum]
+	card_icons_container.add_child(card_icon)	
 
 func create_life_card() -> void:
 	
@@ -150,7 +139,10 @@ func create_life_card() -> void:
 	card_background_sprite.texture = NEUTRAL_BKG
 	card_name_label.text = card_config.Name
 	
-	single_icon_sprite_1.texture = HPICON
+	var card_icon = TextureRect.new()
+	card_icon.size = Vector2(64, 64)
+	card_icon.texture = HPICON
+	card_icons_container.add_child(card_icon)
 
 func execute_card() -> void:
 	

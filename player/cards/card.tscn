@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=11 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_o1hy8"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://player/cards/cardsConfigs/card_config_air_shoot.tres" id="2_b41ao"]
 [ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
-[ext_resource type="Texture2D" uid="uid://cyp8mot1c8iuk" path="res://assets/cards/air/airshooticon.png" id="5_cur6n"]
 [ext_resource type="Texture2D" uid="uid://bvo81bkdj8263" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q.png" id="5_x5dgr"]
 
 [sub_resource type="Animation" id="Animation_gj107"]
@@ -115,9 +114,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -24.5
-offset_top = -34.0
+offset_top = -32.0
 offset_right = 24.5
-offset_bottom = -8.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -158,82 +157,20 @@ texture = ExtResource("5_x5dgr")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="SingleIconSprites" type="CenterContainer" parent="PanelContainer"]
+[node name="CardIconsContainer" type="HFlowContainer" parent="PanelContainer"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -24.0
+offset_right = -11.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SingleIconSprite" type="TextureRect" parent="PanelContainer/SingleIconSprites"]
-layout_mode = 2
-texture = ExtResource("5_cur6n")
-stretch_mode = 3
-
-[node name="DoubleIconSprites" type="Panel" parent="PanelContainer"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 93.0
-offset_bottom = 130.0
-mouse_filter = 1
-
-[node name="DoubleIconSprite" type="TextureRect" parent="PanelContainer/DoubleIconSprites"]
-custom_minimum_size = Vector2(50, 128)
-layout_mode = 2
-offset_right = 69.0
-offset_bottom = 128.0
-texture = ExtResource("5_cur6n")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DoubleIconSprite2" type="TextureRect" parent="PanelContainer/DoubleIconSprites"]
-custom_minimum_size = Vector2(50, 128)
-layout_mode = 2
-offset_left = 30.0
-offset_right = 99.0
-offset_bottom = 128.0
-texture = ExtResource("5_cur6n")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TripleIconSprites" type="Panel" parent="PanelContainer"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 93.0
-offset_bottom = 130.0
-mouse_filter = 1
-
-[node name="TripleIconSprite" type="TextureRect" parent="PanelContainer/TripleIconSprites"]
-custom_minimum_size = Vector2(50, 128)
-layout_mode = 2
-offset_right = 50.0
-offset_bottom = 128.0
-texture = ExtResource("5_cur6n")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TripleIconSprite2" type="TextureRect" parent="PanelContainer/TripleIconSprites"]
-custom_minimum_size = Vector2(50, 128)
-layout_mode = 2
-offset_left = 25.0
-offset_right = 75.0
-offset_bottom = 128.0
-texture = ExtResource("5_cur6n")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TripleIconSprite3" type="TextureRect" parent="PanelContainer/TripleIconSprites"]
-custom_minimum_size = Vector2(50, 128)
-layout_mode = 2
-offset_left = 50.0
-offset_right = 100.0
-offset_bottom = 128.0
-texture = ExtResource("5_cur6n")
-expand_mode = 1
-stretch_mode = 5
+alignment = 1
+last_wrap_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
