@@ -29,6 +29,9 @@ func _physics_process(delta: float) -> void:
 	
 	if is_dying || animation_player.current_animation == "attack" || animation_player.current_animation == "hit": 
 		return
+		
+	if global_position.distance_to(player.global_position) > 400:
+		return
 	
 	is_seeing_player = player_trace.is_colliding()
 	
