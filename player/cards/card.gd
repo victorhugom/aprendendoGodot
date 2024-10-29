@@ -9,6 +9,7 @@ signal destroyed
 @onready var usages_remaining_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CenterContainer/UsagesRemainingLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var h_box_container: HFlowContainer = $PanelContainer/HBoxContainer
+@onready var keyboard_shortcut: TextureRect = $PanelContainer/KeyboardShortcut
 
 
 @export var card_config: CardConfig
@@ -52,7 +53,21 @@ var current_usage: int:
 		if current_usage > 999:
 			usages_remaining_label.text = "#"
 		else:
+	
+	
 			usages_remaining_label.text = str(value)
+
+var shortcut_id: int:
+	get:
+		return shortcut_id
+	set(value):
+		shortcut_id = value
+			
+		if shortcut_id != 0:
+			keyboard_shortcut.texture = load("res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/keyboard_%s.png" %shortcut_id)
+			keyboard_shortcut.visible = true
+		else:
+			keyboard_shortcut.visible = false
 
 var in_use: bool:
 	get:

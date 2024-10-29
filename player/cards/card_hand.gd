@@ -31,9 +31,14 @@ func create_and_add_card(card_config: CardConfig, current_player: Player) -> voi
 	var card = CARD.instantiate()
 	card.card_config = card_config
 	card.player = current_player
+	cards.append(card)
 	
 	add_child(card)
-	cards.append(card)
+	
+func update_shortcur_ids():
+	
+	for idx in range(0, cards.size()):
+		cards[idx].shortcut_id = idx + 1
 	
 func add_card(new_card: Card, current_player: Player):
 	new_card.player = current_player
@@ -57,6 +62,8 @@ func destroy_card(card: Card):
 		select_card(previous_card_idx + 1)
 	else:
 		select_card(1)
+		
+	update_shortcur_ids()
 	
 func draw_cards():
 	
@@ -69,6 +76,10 @@ func draw_cards():
 	
 	if card_deck.size() > 0:
 		for i in range(0, 2):
+			
+			if card_deck.size() <= 0:
+				continue
+			
 			var card_index = randi_range(0, card_deck.size() - 1)
 			var card_in_deck = (card_deck[card_index] as CardInDeck)
 			var card_config = card_in_deck.card.card_config
@@ -81,6 +92,8 @@ func draw_cards():
 	
 	if card_selected == null && cards.size() != 0:
 		select_card(1)
+	
+	update_shortcur_ids()
 
 func select_card(card_number:int):
 	
