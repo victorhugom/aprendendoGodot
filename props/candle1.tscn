@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://tmkv1nrroxoi"]
+
+[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="2_v6mm6"]
+[ext_resource type="Texture2D" uid="uid://i0jki8661gnp" path="res://assets/props/Torch.png" id="3_4fv88"]
+[ext_resource type="Texture2D" uid="uid://bk6vhchsduq4o" path="res://assets/props/candle1.png" id="3_aw4dg"]
+[ext_resource type="Script" path="res://props/candle.gd" id="5_rx4bh"]
+
+[sub_resource type="Curve" id="Curve_w844x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yhjg8"]
+curve = SubResource("Curve_w844x")
+
+[sub_resource type="Gradient" id="Gradient_2tgv8"]
+colors = PackedColorArray(1, 0.694118, 0.0352941, 1, 0.854181, 3.77826e-06, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eo02l"]
+gradient = SubResource("Gradient_2tgv8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fgx3l"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 1, 1)
+gravity = Vector3(0, -20, 0)
+linear_accel_min = -16.13
+linear_accel_max = -2.23517e-06
+scale_min = 0.4
+color_ramp = SubResource("GradientTexture1D_eo02l")
+alpha_curve = SubResource("CurveTexture_yhjg8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slbff"]
+atlas = ExtResource("3_aw4dg")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cr6j"]
+atlas = ExtResource("3_aw4dg")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxf8j"]
+atlas = ExtResource("3_aw4dg")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wawqh"]
+atlas = ExtResource("3_aw4dg")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nldfs"]
+atlas = ExtResource("3_4fv88")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe7cu"]
+atlas = ExtResource("3_4fv88")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc40y"]
+atlas = ExtResource("3_4fv88")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7oav6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slbff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cr6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxf8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wawqh")
+}],
+"loop": true,
+"name": &"candleflame",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nldfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe7cu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc40y")
+}],
+"loop": true,
+"name": &"flame",
+"speed": 5.0
+}]
+
+[node name="Candle" type="Node2D"]
+script = ExtResource("5_rx4bh")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.724609, 0.724609)
+color = Color(0.371644, 0.143033, 0.0602592, 1)
+energy = 1.82
+range_z_max = 0
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("2_v6mm6")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(0, -11)
+scale = Vector2(0.178, 0.426)
+amount = 23
+amount_ratio = 0.4385
+process_material = SubResource("ParticleProcessMaterial_fgx3l")
+
+[node name="Candle" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -11)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_7oav6")
+animation = &"candleflame"

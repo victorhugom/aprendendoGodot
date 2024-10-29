@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://5hn027omehtf"]
+
+[ext_resource type="Script" path="res://props/bluegrass.gd" id="1_mr8ka"]
+[ext_resource type="Texture2D" uid="uid://chflrvs4dmfdh" path="res://assets/world/bluegrass.png" id="2_0jo0g"]
+[ext_resource type="Texture2D" uid="uid://b2evyvnbhcdw0" path="res://assets/lights/lbluelight.png" id="3_rpqtk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjn8g"]
+atlas = ExtResource("2_0jo0g")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awgks"]
+atlas = ExtResource("2_0jo0g")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2te0p"]
+atlas = ExtResource("2_0jo0g")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxlb4"]
+atlas = ExtResource("2_0jo0g")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpgqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjn8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awgks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2te0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxlb4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bluegrass" type="Node2D"]
+script = ExtResource("1_mr8ka")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hpgqa")
+frame_progress = 0.178754
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2.28882e-05, -12)
+scale = Vector2(0.202637, 0.202637)
+texture = ExtResource("3_rpqtk")

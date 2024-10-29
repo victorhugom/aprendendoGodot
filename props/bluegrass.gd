@@ -1,10 +1,11 @@
 extends Node2D
 
-@onready var torch: AnimatedSprite2D = $Torch
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	torch.play("flame")
+	animated_sprite_2d.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
