@@ -1,8 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=57 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
-[ext_resource type="AudioStream" uid="uid://dlarrje5wt6wj" path="res://assets/sounds/189640__yuval__grass-loop-short.wav" id="3_8cks8"]
 [ext_resource type="Texture2D" uid="uid://cgp2wtq4rhqiy" path="res://assets/player/personagem-Sheet.png" id="3_73aaf"]
 [ext_resource type="AudioStream" uid="uid://dtfprkct4rf8h" path="res://assets/sounds/magicshoot.mp3" id="3_kwohu"]
 [ext_resource type="AudioStream" uid="uid://chmk56e0axfdf" path="res://assets/sounds/dash.mp3" id="4_a7pac"]
@@ -496,15 +495,15 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
-"end_offset": 0.129077,
-"start_offset": 0.102317,
+"end_offset": 0.0,
+"start_offset": 0.0,
 "stream": ExtResource("9_8fibq")
 }, {
-"end_offset": 0.129077,
-"start_offset": 0.102317,
+"end_offset": 0.0,
+"start_offset": 0.0,
 "stream": ExtResource("9_8fibq")
 }],
-"times": PackedFloat32Array(0.1, 0.4)
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/use_blend = true
 
@@ -534,17 +533,13 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
+"stream": ExtResource("9_8fibq")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
+"stream": ExtResource("9_8fibq")
 }],
-"times": PackedFloat32Array(0, 0.2, 0.4)
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/use_blend = true
 
@@ -574,17 +569,13 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
+"stream": ExtResource("9_8fibq")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
+"stream": ExtResource("9_8fibq")
 }],
-"times": PackedFloat32Array(0, 0.2, 0.4)
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/use_blend = true
 
@@ -614,17 +605,13 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
+"stream": ExtResource("9_8fibq")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_8cks8")
+"stream": ExtResource("9_8fibq")
 }],
-"times": PackedFloat32Array(0, 0.2, 0.4)
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/use_blend = true
 
