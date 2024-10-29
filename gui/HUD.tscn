@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://eetvodjwpv8r"]
+[gd_scene load_steps=13 format=3 uid="uid://eetvodjwpv8r"]
 
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
 [ext_resource type="PackedScene" uid="uid://bhox0xfiactf2" path="res://player/cards/cardHand.tscn" id="3_fddru"]
 [ext_resource type="PackedScene" uid="uid://d4m5g3at6qoip" path="res://gui/deckBuilder.tscn" id="4_fh6ox"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_diull"]
+[ext_resource type="Texture2D" uid="uid://bvo81bkdj8263" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q.png" id="5_fwk4v"]
+[ext_resource type="Texture2D" uid="uid://g0r7s3cqjopf" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_left.png" id="5_t6bsr"]
+[ext_resource type="Texture2D" uid="uid://bywbuxstv8gyt" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_right.png" id="6_qafju"]
 
 [sub_resource type="Animation" id="Animation_w6w73"]
 length = 0.001
@@ -17,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(42, 496)]
+"values": [Vector2(42, 480)]
 }
 
 [sub_resource type="Animation" id="Animation_s8qj1"]
@@ -33,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(42, 496), Vector2(42, 650)]
+"values": [Vector2(42, 480), Vector2(42, 650)]
 }
 
 [sub_resource type="Animation" id="Animation_bke02"]
@@ -49,7 +53,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(42, 650), Vector2(42, 496)]
+"values": [Vector2(42, 650), Vector2(42, 480)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_68yv3"]
@@ -79,6 +83,87 @@ offset_right = 76.0
 offset_bottom = 76.0
 scale = Vector2(2, 2)
 
+[node name="BuyCards" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BuyCards"]
+layout_mode = 2
+
+[node name="KeyboardQ" type="TextureRect" parent="CanvasLayer/BuyCards/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_fwk4v")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/BuyCards/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BuyCards/HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_diull")
+text = "Comprar Cartas <3"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Commands" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Commands"]
+layout_mode = 2
+
+[node name="KeyboardQ" type="TextureRect" parent="CanvasLayer/Commands/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_t6bsr")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Commands/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Commands/HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_diull")
+text = "Attacar"
+fit_content = true
+autowrap_mode = 0
+
+[node name="KeyboardQ2" type="TextureRect" parent="CanvasLayer/Commands/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_qafju")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Commands/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Commands/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_diull")
+text = "Esquiva"
+fit_content = true
+autowrap_mode = 0
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -86,8 +171,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -526.0
-offset_top = -128.0
+offset_top = -144.0
 offset_right = 526.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 

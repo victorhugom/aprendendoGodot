@@ -109,6 +109,9 @@ func handleInput():
 	velocity = move_direction_vector * speed
 
 func _input(event):
+	
+	if is_dying: return
+	
 	if event.is_action_pressed("ui_attack"):
 		attack()
 	if event.is_action_pressed("ui_block"):
@@ -306,8 +309,7 @@ func trace_punch():
 		
 func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
 	
-	if is_blocking: return
-	if is_dying: return
+	if is_blocking || is_dashing || is_dying: return
 	
 	health -= hurt_points
 	Hud.health_bar.updateHeats(health)

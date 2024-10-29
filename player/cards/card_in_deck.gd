@@ -9,7 +9,7 @@ class_name CardInDeck extends Button
 	set(value):
 		quantity = value
 		
-		if quantity > 0:
+		if quantity > 1:
 			quantity_label.text = str(quantity)
 			quantity_label.visible =  true
 		else:
