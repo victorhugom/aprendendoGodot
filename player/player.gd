@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectile/basic_projectile.tres")
 const DECK_BUILDER = preload("res://player/cards/deckBuilder.tscn")
 const CARD_HAND = preload("res://player/character_components/cardHand.tscn")
+const SAUSAGE_MONSTER = preload("res://player/sausage_monster.tscn")
 
 @onready var health: Health = $Health
 @onready var hurt_box: HurtBox  = $HurtBox
@@ -10,7 +11,7 @@ const CARD_HAND = preload("res://player/character_components/cardHand.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var follow_camera: FollowCamera = $FollowCamera
 
-@export var groundMapTile: TileMapLayer
+@export var ground_map_tile: TileMapLayer
 @export var max_health = 3
 
 @export var speed = 32 * 5
@@ -19,6 +20,7 @@ const CARD_HAND = preload("res://player/character_components/cardHand.tscn")
 @export var dash_duration = 0.35
 @export var dash_cooldown = 1
 
+var transformation: Node2D
 var is_dying = false
 var is_being_hit = false
 
@@ -49,7 +51,7 @@ func _ready() -> void:
 	is_transforming = false
 	
 	#camera setup
-	follow_camera.groundMapTile = groundMapTile
+	follow_camera.ground_map_tile = ground_map_tile
 	follow_camera.set_camera_limit()
 	
 	#health setup
@@ -62,7 +64,6 @@ func _ready() -> void:
 	deck_builder.closed.connect(_on_deck_builder_closed)
 	deck_builder.opened.connect(_on_deck_builder_opened)
 	add_child(deck_builder)
-
 
 func _physics_process(_delta: float) -> void:
 
@@ -138,6 +139,7 @@ func attack() -> void:
 	animation_player.play("attack_" + last_anim_direction)
 	card_hand.use_selected_card()
 
+	shooter.projectile_config = projectile_config
 	shooter.shoot(last_anim_direction, (card_hand.card_selected.card_config.CardData as CardDataProjectile).DPS)
 	
 func dash():
@@ -153,6 +155,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_being_hit = false
 	if anim_name.begins_with("transform"):
 		is_transforming = false
+		get_tree().root.	add_child(transformation)
 
 func _on_hit():
 	if is_dying: return
@@ -180,21 +183,26 @@ func _on_deck_builder_opened() -> void:
 func _on_deck_builder_closed(deck: Array[CardInDeck]) -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	remove_child(deck_builder)
+	deck_builder.queue_free()
+	
+	create_deck_hand(deck)
+	
+func create_deck_hand(deck: Array[CardInDeck]):
 	card_hand = CARD_HAND.instantiate()
 	card_hand.card_deck = deck
 	card_hand.player = self
 	card_hand.card_selected_changed.connect(_on_card_selected_changed)
 	
-	remove_child(deck_builder)
 	add_child(card_hand)
-	
-	deck_builder.queue_free()
 	card_hand.draw_cards()
 	
 func _on_card_selected_changed(card_selected: Card):
 	
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Projectile:
-		projectile_config = (card_selected.card_config.CardData as CardDataProjectile).ProjectileConfig	
+		projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
+	if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
+		transform (card_selected.card_config)
 	
 func transform(transformation_card = CardConfig) -> void:
 	
@@ -202,6 +210,15 @@ func transform(transformation_card = CardConfig) -> void:
 		return
 	
 	is_transforming = true
+	Globals.player = self
+	
+	var current_position = global_position
+	
+	transformation = SAUSAGE_MONSTER.instantiate()
+	transformation.position = global_position
+	transformation.ground_map_tile = ground_map_tile
+	transformation.max_health = 5
+	transformation.player = self
 
 	#transform from last transformation to new
 	animation_player.play("transform")

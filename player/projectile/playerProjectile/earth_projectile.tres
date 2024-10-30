@@ -7,6 +7,6 @@
 script = ExtResource("2_lp5dm")
 name = ""
 damage = 1
-element = 0
+element = 2
 target = 0
 projectileTexture = ExtResource("1_nnc5i")

@@ -98,7 +98,7 @@ func _process(_delta: float) -> void:
 func create_projectile_card() -> void:
 	var card_projectile = card_config.CardData as CardDataProjectile	
 		
-	card_background_sprite.texture = card_backgrounds[card_projectile.ProjectileConfig.element]
+	card_background_sprite.texture = card_backgrounds[card_projectile.projectile_config.element]
 	card_name_label.text = card_config.Name
 	
 	var card_icon_size = Vector2(64, 64)
@@ -116,7 +116,7 @@ func create_projectile_card() -> void:
 		card_icon.custom_minimum_size = card_icon_size
 		card_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		card_icon.stretch_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		card_icon.texture = card_shoot_icons[card_projectile.ProjectileConfig.element]
+		card_icon.texture = card_shoot_icons[card_projectile.projectile_config.element]
 		card_icons_container.add_child(card_icon)
 
 		
@@ -152,7 +152,7 @@ func execute_card() -> void:
 		execute_transformation()
 
 func execure_projectile() -> void:
-	player.projectile_config = card_config.CardData.ProjectileConfig
+	player.projectile_config = card_config.CardData.projectile_config
 	
 func execute_life_recover() -> void:
 	player.recover_life((card_config.CardData as CardDataHealth).Health)

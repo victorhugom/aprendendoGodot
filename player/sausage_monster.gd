@@ -11,13 +11,14 @@ const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectil
 @onready var hurt_box: HurtBox  = $HurtBox
 @onready var shooter: Shooter = $Shooter
 
-@export var groundMapTile: TileMapLayer
+@export var ground_map_tile: TileMapLayer
 @export var max_health = 3
 
 @export_group("Movement")
 @export var speed = 32 * 5
 @export var walk_speed = 32 * 5
 
+var player: Player
 var is_dying = false
 var is_being_hit = false
 
@@ -38,7 +39,7 @@ func _ready() -> void:
 	animation_player.play("idle_down")
 	
 	#camera setup
-	follow_camera.groundMapTile = groundMapTile
+	follow_camera.ground_map_tile = ground_map_tile
 	follow_camera.set_camera_limit()
 	
 	#health setup
@@ -46,6 +47,7 @@ func _ready() -> void:
 	hurt_box.damaged.connect(_on_hit)
 	Hud.health_bar.health = health
 	
+	player.queue_free()
 
 func _physics_process(_delta: float) -> void:
 
