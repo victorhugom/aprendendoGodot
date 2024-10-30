@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ct48vr753rcgt" path="res://assets/world/Tileset.png" id="1_x7m2e"]
 [ext_resource type="Texture2D" uid="uid://ca1304vkrxayu" path="res://assets/world/vegetation.png" id="2_8slq4"]
 [ext_resource type="Texture2D" uid="uid://yuf54hang337" path="res://assets/props/props1.png" id="3_wfh7o"]
-[ext_resource type="Texture2D" uid="uid://b8qwi768hyg01" path="res://assets/world/props and buildings-Sheet.png" id="5_yxios"]
+[ext_resource type="Texture2D" uid="uid://b8qwi768hyg01" path="res://assets/props and buildings-Sheet.png" id="4_8v1sd"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_x1cfc"]
 tile_data = PackedInt32Array(0, 65537, 1, 65536, 65537, 2, 131072, 65537, 3, 1, 131073, 1, 65537, 131073, 2, 131073, 131073, 3, 2, 196609, 1, 65538, 196609, 2, 131074, 196609, 3)
@@ -999,6 +999,18 @@ texture_region_size = Vector2i(32, 32)
 16:3/0 = 0
 15:2/0 = 0
 15:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 9.6, 3.2, 9.6, -16, 3.2, -9.6, -16, 9.6, -16, 16, -16)
+2:5/animation_columns = 4
+2:5/animation_frame_0/duration = 0.3
+2:5/animation_frame_1/duration = 0.3
+2:5/animation_frame_2/duration = 0.3
+2:5/animation_frame_3/duration = 0.3
+2:5/0 = 0
+2:6/animation_columns = 4
+2:6/animation_frame_0/duration = 0.3
+2:6/animation_frame_1/duration = 0.3
+2:6/animation_frame_2/duration = 0.3
+2:6/animation_frame_3/duration = 0.3
+2:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgw6d"]
 texture = ExtResource("3_wfh7o")
@@ -1084,9 +1096,21 @@ texture_region_size = Vector2i(32, 32)
 1:2/0/y_sort_origin = 9
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:5/0 = 0
+6:7/0 = 0
+6:8/0 = 0
+6:9/0 = 0
+6:10/0 = 0
+7:9/0 = 0
+5:10/0 = 0
+7:8/0 = 0
+5:7/0 = 0
+5:8/0 = 0
+7:7/0 = 0
+5:9/0 = 0
+7:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghobi"]
-texture = ExtResource("5_yxios")
+texture = ExtResource("4_8v1sd")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 1:1/0/y_sort_origin = 100
