@@ -2,11 +2,11 @@
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
-[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="2_ugr7h"]
 [ext_resource type="Script" path="res://nav_filter.gd" id="3_ba07l"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="5_ajxlq"]
 [ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="7_xfhto"]
 [ext_resource type="AudioStream" uid="uid://d0bh7ti3dry6j" path="res://assets/sounds/music1.mp3" id="8_apfpx"]
+[ext_resource type="PackedScene" uid="uid://i634nwo2sv1m" path="res://player/sausage_monster.tscn" id="9_aqad5"]
 [ext_resource type="PackedScene" path="res://props/candle1.tscn" id="10_0mja2"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://npc/enemy.tscn" id="10_hunqv"]
 [ext_resource type="PackedScene" path="res://props/bluegrass.tscn" id="10_llmax"]
@@ -320,10 +320,11 @@ position = Vector2(527, 412)
 [node name="Candle" parent="Node/CandleContainer" instance=ExtResource("10_0mja2")]
 position = Vector2(527, 508)
 
-[node name="Player" parent="." node_paths=PackedStringArray("groundMapTile") instance=ExtResource("2_ugr7h")]
-position = Vector2(758, 568)
+[node name="SausageMonster" parent="." node_paths=PackedStringArray("groundMapTile") instance=ExtResource("9_aqad5")]
+position = Vector2(637, 538)
 groundMapTile = NodePath("../Floor")
+max_health = 5
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
-position = Vector2(892, 571)
-target = NodePath("../Player")
+position = Vector2(801, 571)
+target = NodePath("../SausageMonster")
