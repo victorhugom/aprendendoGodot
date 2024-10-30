@@ -1,7 +1,7 @@
 class_name ProjectileConfig extends Resource
 
-@export var Name: String
-@export var Damage: int
-@export var Element: Enums.ELEMENTS
-@export var Target: Enums.CHAR_TYPES
-@export var ProjectileTexture: Texture2D
+@export var name: String
+@export var damage: int = 1
+@export var element: Enums.ELEMENTS
+@export var target: Enums.CHAR_TYPES
+@export var projectileTexture: Texture2D

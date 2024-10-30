@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqtt62iaedi3k"]
+
+[ext_resource type="Script" path="res://player/character_components/follow_camera.gd" id="1_behc3"]
+
+[node name="FollowCamera" type="Camera2D"]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1136
+limit_bottom = 624
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("1_behc3")

@@ -1,18 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8dhl8bkqruhs"]
+[gd_scene load_steps=21 format=3 uid="uid://b8dhl8bkqruhs"]
 
 [ext_resource type="Script" path="res://npc/enemy.gd" id="2_x8yhj"]
 [ext_resource type="Texture2D" uid="uid://cftr1ocg6q8tx" path="res://assets/enemies/enemy1-Sheet.png" id="3_0fa4l"]
 [ext_resource type="AudioStream" uid="uid://cfhmmgy2nxoqc" path="res://assets/sounds/vanishing.mp3" id="3_0qwg2"]
+[ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="3_2m8bk"]
 [ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="3_62n5r"]
 [ext_resource type="AudioStream" uid="uid://7rcbqgj8ef05" path="res://assets/sounds/lasershoot.mp3" id="3_p0iyi"]
 [ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="5_eoxeq"]
+[ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="5_hxeq6"]
 [ext_resource type="AudioStream" uid="uid://coo4qp2kipcyp" path="res://assets/sounds/clap.mp3" id="6_ji71g"]
+[ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="10_wvv3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmpuw"]
 size = Vector2(7, 3.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cdwx"]
-size = Vector2(25, 35.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ob6v"]
+radius = 12.0
 
 [sub_resource type="Animation" id="Animation_xo2l5"]
 length = 0.001
@@ -133,32 +136,33 @@ tracks/2/use_blend = true
 [sub_resource type="Animation" id="Animation_56sli"]
 length = 0.4
 step = 0.1
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"delayed_knock_back"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [60, 61, 62, 63]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_62n5r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -168,27 +172,12 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_62n5r")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AudioStreamPlayer2D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
 "start_offset": 0.0314822,
 "stream": ExtResource("5_eoxeq")
 }],
 "times": PackedFloat32Array(0.0314822)
 }
-tracks/3/use_blend = true
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1hk04"]
 length = 0.9
@@ -238,26 +227,12 @@ _data = {
 size = Vector2(40, 20)
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 64
-collision_mask = 94
+collision_layer = 2048
+collision_mask = 30
 wall_min_slide_angle = 0.0
 script = ExtResource("2_x8yhj")
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_gmpuw")
-
-[node name="HurtBox" type="Area2D" parent="."]
-position = Vector2(-7, -21)
-collision_layer = 64
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 5.25)
-shape = SubResource("RectangleShape2D_3cdwx")
-debug_color = Color(1, 0, 0, 0.419608)
-
-[node name="Enemy" type="Sprite2D" parent="."]
+[node name="Eye" type="Sprite2D" parent="."]
 position = Vector2(-7, -21)
 texture = ExtResource("3_0fa4l")
 offset = Vector2(0, 7)
@@ -265,35 +240,71 @@ hframes = 20
 vframes = 5
 region_rect = Rect2(133, 163, 26, 40)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
-libraries = {
-"": SubResource("AnimationLibrary_jtf3n")
-}
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_gmpuw")
 
-[node name="PlayerTrace" type="ShapeCast2D" parent="."]
-position = Vector2(0, -16)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_37lhs")
-target_position = Vector2(0, 300)
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_2m8bk")]
+position = Vector2(-37, -15)
+collision_layer = 256
+collision_mask = 192
+health = NodePath("../Health")
 
-[node name="ProjectilePosition" type="Node2D" parent="."]
-position = Vector2(0, -17)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(29, -1)
+shape = SubResource("CircleShape2D_8ob6v")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-avoidance_enabled = true
+[node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("10_wvv3r")]
+collision_layer = 512
+collision_mask = 32
+left_marker = NodePath("LeftMarker2D")
+right_marker = NodePath("RightMarker2D")
+up_marker = NodePath("UpMarker2D")
+down_marker = NodePath("DownMarker2D")
 
-[node name="TrackingTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="LeftMarker2D" type="Marker2D" parent="Shooter"]
+position = Vector2(-20, -17)
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="RightMarker2D" type="Marker2D" parent="Shooter"]
+position = Vector2(10, -17)
+
+[node name="UpMarker2D" type="Marker2D" parent="Shooter"]
+position = Vector2(-6, -30)
+
+[node name="DownMarker2D" type="Marker2D" parent="Shooter"]
+position = Vector2(-6, -4)
+
+[node name="Health" parent="." instance=ExtResource("5_hxeq6")]
+max_health = 3
+
+[node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="animation_finished" from="Enemy/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Eye")
+libraries = {
+"": SubResource("AnimationLibrary_jtf3n")
+}
+
+[node name="PlayerTrace" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_37lhs")
+target_position = Vector2(0, 300)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+avoidance_enabled = true
+
+[node name="TrackingTimer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="timeout" from="TrackingTimer" to="." method="_on_tracking_timer_timeout"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="NavigationAgent2D/TrackingTimer" to="." method="_on_tracking_timer_timeout"]

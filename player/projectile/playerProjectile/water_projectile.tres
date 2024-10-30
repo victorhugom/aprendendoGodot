@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_2yd7k")
-Name = "Water"
-Damage = 1
-Element = 1
-Target = 1
-ProjectileTexture = ExtResource("1_y18hg")
+name = ""
+damage = 1
+element = 0
+target = 0
+projectileTexture = ExtResource("1_y18hg")

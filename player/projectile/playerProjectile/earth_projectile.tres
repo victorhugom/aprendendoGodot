@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_lp5dm")
-Name = "Earth"
-Damage = 1
-Element = 2
-Target = 1
-ProjectileTexture = ExtResource("1_nnc5i")
+name = ""
+damage = 1
+element = 0
+target = 0
+projectileTexture = ExtResource("1_nnc5i")

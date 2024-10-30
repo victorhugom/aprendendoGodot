@@ -19,5 +19,5 @@ func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 		
 	return false
 	
-func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
+func _tile_data_runtime_update(_coords: Vector2i, tile_data: TileData) -> void:
 	tile_data.set_navigation_polygon(0, null)

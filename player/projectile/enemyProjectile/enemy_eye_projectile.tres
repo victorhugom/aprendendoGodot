@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_25huh")
-Name = "Eye Fire"
-Damage = 1
-Element = 0
-Target = 0
-ProjectileTexture = ExtResource("1_jnin4")
+name = ""
+damage = 1
+element = 0
+target = 0
+projectileTexture = ExtResource("1_jnin4")
