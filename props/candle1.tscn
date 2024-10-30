@@ -97,8 +97,8 @@ script = ExtResource("5_rx4bh")
 [node name="PointLight2D6" type="PointLight2D" parent="."]
 position = Vector2(0, 2)
 scale = Vector2(0.724609, 0.724609)
-color = Color(0.371644, 0.143033, 0.0602592, 1)
-energy = 1.82
+color = Color(0.292611, 0.206516, 0.0247197, 1)
+energy = 0.96
 range_z_max = 0
 shadow_enabled = true
 shadow_filter = 2
