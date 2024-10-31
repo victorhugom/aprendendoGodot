@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=44 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
@@ -678,6 +678,158 @@ _data = {
 "walk_up": SubResource("Animation_0guyc")
 }
 
+[sub_resource type="Animation" id="Animation_q2ypp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LittleMage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LittleMage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [180]
+}
+
+[sub_resource type="Animation" id="Animation_owrph"]
+resource_name = "hit_right"
+length = 0.4
+step = 0.0666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LittleMage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LittleMage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [180, 181, 182, 183, 184, 185]
+}
+
+[sub_resource type="Animation" id="Animation_6foh1"]
+resource_name = "hit_left"
+length = 0.4
+step = 0.0666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LittleMage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LittleMage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.1998, 0.2664, 0.333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [190, 191, 192, 193, 194, 195]
+}
+
+[sub_resource type="Animation" id="Animation_lifxu"]
+resource_name = "hit_up"
+length = 0.4
+step = 0.0666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LittleMage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LittleMage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.1998, 0.2664, 0.333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [200, 201, 202, 203, 204, 205]
+}
+
+[sub_resource type="Animation" id="Animation_k655c"]
+resource_name = "hit_down"
+length = 0.4
+step = 0.0666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LittleMage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LittleMage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.1998, 0.2664, 0.333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [210, 211, 212, 213, 214, 215]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdd01"]
+_data = {
+"RESET": SubResource("Animation_q2ypp"),
+"hit_down": SubResource("Animation_k655c"),
+"hit_left": SubResource("Animation_6foh1"),
+"hit_right": SubResource("Animation_owrph"),
+"hit_up": SubResource("Animation_lifxu")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2078
 script = ExtResource("1_nyc0f")
@@ -689,6 +841,7 @@ position = Vector2(0, -29)
 texture = ExtResource("2_61y8n")
 hframes = 10
 vframes = 22
+frame = 180
 region_rect = Rect2(241, 254, 29, 35)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
@@ -725,7 +878,7 @@ position = Vector2(0, -26)
 position = Vector2(0, -6)
 
 [node name="Health" parent="." instance=ExtResource("16_v5ako")]
-max_health = 3
+max_health = 10
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
@@ -736,4 +889,10 @@ libraries = {
 "": SubResource("AnimationLibrary_0axpv")
 }
 
+[node name="AnimationPlayerBlink" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cdd01")
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayerBlink" to="." method="_on_animation_player_animation_finished"]

@@ -9,6 +9,7 @@ const SAUSAGE_MONSTER = preload("res://player/sausage_monster.tscn")
 @onready var hurt_box: HurtBox  = $HurtBox
 @onready var shooter: Shooter = $Shooter
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_blink: AnimationPlayer = $AnimationPlayerBlink
 @onready var follow_camera: FollowCamera = $FollowCamera
 
 @export var ground_map_tile: TileMapLayer
@@ -98,7 +99,9 @@ func _input(event):
 	if event.is_action_pressed("ui_dash"):
 		dash()
 	if event.is_action_pressed("ui_draw_cards"):
-		card_hand.draw_cards()
+		if card_hand.draw_cards():
+			health.decrease_health(1)
+			_on_hit()
 	
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
 		if event is InputEventKey && event.keycode == i && event.is_released():
@@ -161,9 +164,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_hit():
 	if is_dying: return
-	
 	is_being_hit = true
-	animation_player.play("hit")
+	animation_player_blink.play("hit_" + last_anim_direction)
 	
 func _on_health_empty():
 	is_dying = true
@@ -188,6 +190,9 @@ func _on_deck_builder_closed(deck: Array[CardInDeck]) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	remove_child(deck_builder)
 	deck_builder.queue_free()
+	
+	for card:CardInDeck in deck:
+		card.get_parent().remove_child(card)
 	
 	create_deck_hand(deck)
 	
@@ -214,15 +219,13 @@ func _on_card_selected_changed(card_selected: Card):
 		else:
 			card_hand.select_previous_card()
 	
-func transform(transformation_card = CardConfig) -> void:
+func transform(_transformation_card = CardConfig) -> void:
 	
 	if is_transforming: 
 		return
 	
 	is_transforming = true
 	Globals.player = self
-	
-	var current_position = global_position
 	
 	transformation = SAUSAGE_MONSTER.instantiate()
 	transformation.position = global_position

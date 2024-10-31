@@ -6,11 +6,13 @@ const PROJECTILE = preload("res://player/projectile.tscn")
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectile/basic_projectile.tres")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_blink: AnimationPlayer = $AnimationPlayerBlink
 @onready var follow_camera: FollowCamera = $FollowCamera
 @onready var health: Health = $Health
 @onready var hurt_box: HurtBox  = $HurtBox
 @onready var shooter: Shooter = $Shooter
 @onready var punch_collision_area: MeleeCollisionBox = $PunchCollisionArea
+
 
 @export var ground_map_tile: TileMapLayer
 @export var max_health = 3
@@ -55,7 +57,7 @@ func _ready() -> void:
 	
 	punch_collision_area.monitorable = false
 	punch_collision_area.monitoring = false
-
+	
 func _physics_process(_delta: float) -> void:
 
 	hurt_box.can_be_hurt = can_take_damage()
@@ -115,6 +117,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		get_tree().root.add_child(previous_char)
 		get_tree().call_group("enemies", "update_target")
 		previous_char.global_position = current_position
+		Hud.health_bar.health = previous_char
 		self.get_parent().remove_child(self)
 		
 	if anim_name.begins_with("block_"):
@@ -124,7 +127,10 @@ func _on_hit():
 	if is_transforming: return
 	
 	is_being_hit = true
-	animation_player.play("hit")
+	animation_player_blink.play("hit_" + last_anim_direction)
+	
+func _on_finish_hit_blink():
+	is_being_hit = false
 	
 func _on_health_empty():
 	is_transforming = true
