@@ -21,22 +21,18 @@ var base_card = CARD_CONFIG_BASIC_SHOOT
 var previous_card = CARD_CONFIG_BASIC_SHOOT
 
 var card_deck: Array[CardInDeck]
-var player: Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not player:	
-		push_warning("CardHand: Player var is missing")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 	
-func create_and_add_card(card_config: CardConfig, current_player: Player) -> void:
+func create_and_add_card(card_config: CardConfig) -> void:
 	var card = CARD.instantiate()
 	card.card_config = card_config
-	card.player = current_player
 	cards.append(card)
 	
 	card_container.add_child(card)
@@ -55,7 +51,8 @@ func remove_card(card: Card):
 	card.destroyed.connect(destroy_card)
 	
 func destroy_card(card: Card):
-	remove_child(card)
+	
+	card.queue_free()
 	
 	#remove from list
 	var card_to_remove_idx = cards.find(card_selected)
@@ -77,7 +74,7 @@ func draw_cards():
 		#TODO: message, cannot draw cards
 	
 	if cards.size() == 0:
-		create_and_add_card(base_card, player)
+		create_and_add_card(base_card)
 	
 	if card_deck.size() > 0:
 		for i in range(0, 2):
@@ -93,7 +90,7 @@ func draw_cards():
 			if card_in_deck.quantity == 0:
 				card_deck.remove_at(card_index)
 			
-			create_and_add_card(card_config, player)
+			create_and_add_card(card_config)
 	
 	if card_selected == null && cards.size() != 0:
 		select_card(1)
@@ -109,24 +106,14 @@ func select_card(card_number:int):
 		previous_card = card_selected
 		card_selected = cards[card_number - 1]
 		card_selected.in_use = true
-		
-		if card_selected.card_config.CardType == Enums.CARD_TYPE.Life && player.health >= player.max_health:
-			var idx = cards.find(previous_card)
-			select_card(idx + 1)
-			card_selected_changed.emit(card_selected)
-			return
-		
-		card_selected.execute_card()
-		
-		if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
-			use_selected_card()
-		if card_selected.card_config.CardType == Enums.CARD_TYPE.Life:
-			use_selected_card()
-			
-		
-				
-		
+		card_selected_changed.emit(card_selected)
+	
+func select_previous_card():
+	pass
+	var previous_card_idx = cards.find(previous_card)
+	select_card(previous_card_idx + 1)
+	
 func use_selected_card():
 	card_selected.current_usage -= 1
 	if card_selected.current_usage <= 0:
-		remove_card(card_selected)			
+		remove_card(card_selected)

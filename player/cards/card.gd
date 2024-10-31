@@ -13,7 +13,6 @@ signal destroyed
 @onready var card_icons_container: HFlowContainer = $PanelContainer/CardIconsContainer
 
 @export var card_config: CardConfig
-@export var player: Player
 @export var id: int
 
 var card_backgrounds = {
@@ -119,8 +118,6 @@ func create_projectile_card() -> void:
 		card_icon.texture = card_shoot_icons[card_projectile.projectile_config.element]
 		card_icons_container.add_child(card_icon)
 
-		
-		
 func create_transformation_card() -> void:
 	var card_transformation = card_config.CardData as CardDataTransformation	
 		
@@ -141,24 +138,6 @@ func create_life_card() -> void:
 	card_icon.size = Vector2(64, 64)
 	card_icon.texture = HPICON
 	card_icons_container.add_child(card_icon)
-
-func execute_card() -> void:
-	
-	if card_config.CardType == Enums.CARD_TYPE.Projectile:
-		execure_projectile()
-	if card_config.CardType == Enums.CARD_TYPE.Life  && player.health < player.max_health:	
-		execute_life_recover()
-	if card_config.CardType == Enums.CARD_TYPE.Transform:	
-		execute_transformation()
-
-func execure_projectile() -> void:
-	player.projectile_config = card_config.CardData.projectile_config
-	
-func execute_life_recover() -> void:
-	player.recover_life((card_config.CardData as CardDataHealth).Health)
-
-func execute_transformation() -> void:
-	player.transform(card_config)
 
 func destroy_card() -> void:
 	animation_player.play("destroy")

@@ -73,10 +73,11 @@ func add_card_selected(card_config) -> void:
 			return
 			
 	# create new card
-	var card_in_deck = CARD_IN_DECK.instantiate()
 	var card = CARD.instantiate()
-	card_in_deck.card = card
 	card.card_config = card_config
+	
+	var card_in_deck = CARD_IN_DECK.instantiate()
+	card_in_deck.card = card
 	
 	var callable = Callable(remove_card_from_deck)
 	callable = callable.bind(card_config)

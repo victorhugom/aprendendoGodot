@@ -171,6 +171,7 @@ func recover_life(value: int) -> void:
 	health.increase_health(value)
 
 func select_card(card_number:int):
+	print_debug("select card")
 	card_hand.select_card(card_number)
 	
 func can_take_damage():
@@ -191,7 +192,6 @@ func _on_deck_builder_closed(deck: Array[CardInDeck]) -> void:
 func create_deck_hand(deck: Array[CardInDeck]):
 	card_hand = CARD_HAND.instantiate()
 	card_hand.card_deck = deck
-	card_hand.player = self
 	card_hand.card_selected_changed.connect(_on_card_selected_changed)
 	
 	add_child(card_hand)
@@ -202,7 +202,15 @@ func _on_card_selected_changed(card_selected: Card):
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Projectile:
 		projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
-		transform (card_selected.card_config)
+		card_hand.use_selected_card()
+		transform(card_selected.card_config)
+	if card_selected.card_config.CardType == Enums.CARD_TYPE.Life:
+		var health_card_data = card_selected.card_config.CardData as CardDataHealth
+		var result: bool = health.increase_health(health_card_data.health)
+		if result:
+			card_hand.use_selected_card()
+		else:
+			card_hand.select_previous_card()
 	
 func transform(transformation_card = CardConfig) -> void:
 	
