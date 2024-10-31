@@ -18,18 +18,18 @@ const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectil
 @export var speed = 32 * 5
 @export var walk_speed = 32 * 5
 
-var player: Player
-var is_dying = false
-var is_being_hit = false
 
 var projectile_config: ProjectileConfig
 var dps = 1
 
+var is_being_hit = false
 var is_blocking = false
 var is_atatcking = false
 var is_transforming = false
 var last_anim_direction = "down"
+
 var move_direction_vector = Vector2(0,0)
+var previous_char: Node
 
 func _ready() -> void:
 	
@@ -47,13 +47,16 @@ func _ready() -> void:
 	hurt_box.damaged.connect(_on_hit)
 	Hud.health_bar.health = health
 	
-	player.queue_free()
+	previous_char = Globals.player
+	Globals.player =  self
+	previous_char.get_parent().remove_child(previous_char)
+	get_tree().call_group("enemies", "update_target")
 
 func _physics_process(_delta: float) -> void:
 
 	hurt_box.can_be_hurt = can_take_damage()
 	
-	if is_dying || is_being_hit: return
+	if is_transforming || is_being_hit: return
 	
 	handle_movement_input()
 	
@@ -62,7 +65,7 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func _input(event):
-	if is_dying: return
+	if is_transforming: return
 	
 	if event.is_action_pressed("ui_attack"):
 		attack()
@@ -103,19 +106,28 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_being_hit = false
 	if anim_name.begins_with("transform"):
 		is_transforming = false
+		
+		var current_position = global_position
+		get_tree().root.add_child(previous_char)
+		get_tree().call_group("enemies", "update_target")
+		previous_char.global_position = current_position
+		self.get_parent().remove_child(self)
+		
 	if anim_name.begins_with("block_"):
 		is_blocking = false
 
 func _on_hit():
+	if is_transforming: return
+	
 	is_being_hit = true
 	animation_player.play("hit")
 	
 func _on_health_empty():
-	is_dying = true
-	animation_player.play("death")
+	is_transforming = true
+	animation_player.play("transform")
 		
 func can_take_damage():
-	return is_dying == false || health.current_health > 0 || is_blocking == false
+	return is_transforming == false && health.current_health > 0 && is_blocking == false
 
 func block() -> void:
 	is_blocking = true

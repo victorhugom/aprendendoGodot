@@ -5,6 +5,7 @@ class_name HealthBar extends HBoxContainer
 		health = value
 		health.health_changed.connect(update_hearts)
 		set_max_hearts(health.max_health)
+		update_hearts(health.current_health)
 	get:
 		return health
 
@@ -14,7 +15,6 @@ var max_health = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

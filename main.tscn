@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cslncasnaoeme"]
+[gd_scene load_steps=11 format=4 uid="uid://cslncasnaoeme"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_lh2lw"]
 [ext_resource type="Script" path="res://main.gd" id="1_pn30b"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="7_xfhto"]
 [ext_resource type="AudioStream" uid="uid://d0bh7ti3dry6j" path="res://assets/sounds/music1.mp3" id="8_apfpx"]
 [ext_resource type="PackedScene" path="res://props/candle1.tscn" id="10_0mja2"]
+[ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://npc/enemy.tscn" id="10_hunqv"]
 [ext_resource type="PackedScene" path="res://props/bluegrass.tscn" id="10_llmax"]
 
 [node name="Main" type="Node2D"]
@@ -302,23 +303,30 @@ position = Vector2(1295, 1867)
 [node name="Chandelier22" parent="ChandelierContainer" instance=ExtResource("5_ajxlq")]
 position = Vector2(1382, 1864)
 
-[node name="Node" type="Node" parent="."]
+[node name="CandlesContainer" type="Node" parent="."]
 
-[node name="CandleContainer" type="Node2D" parent="Node"]
-position = Vector2(-25, 4)
+[node name="Candle2" parent="CandlesContainer" instance=ExtResource("10_0mja2")]
+position = Vector2(560, 460)
 
-[node name="Candle2" parent="Node/CandleContainer" instance=ExtResource("10_0mja2")]
-position = Vector2(585, 456)
+[node name="Candle3" parent="CandlesContainer" instance=ExtResource("10_0mja2")]
+position = Vector2(443, 459)
 
-[node name="Candle3" parent="Node/CandleContainer" instance=ExtResource("10_0mja2")]
-position = Vector2(468, 455)
+[node name="Candle4" parent="CandlesContainer" instance=ExtResource("10_0mja2")]
+position = Vector2(502, 416)
 
-[node name="Candle4" parent="Node/CandleContainer" instance=ExtResource("10_0mja2")]
-position = Vector2(527, 412)
+[node name="Candle" parent="CandlesContainer" instance=ExtResource("10_0mja2")]
+position = Vector2(502, 512)
 
-[node name="Candle" parent="Node/CandleContainer" instance=ExtResource("10_0mja2")]
-position = Vector2(527, 508)
+[node name="EnemiesContainer" type="Node" parent="."]
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("2_ugr7h")]
-position = Vector2(342, 363)
+position = Vector2(842, 540)
 ground_map_tile = NodePath("../Floor")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
+position = Vector2(1014, 675)
+target = NodePath("../Player")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
+position = Vector2(832, 678)
+target = NodePath("../Player")

@@ -25,6 +25,7 @@ func _ready() -> void:
 	health.health_empty.connect(_on_health_empty)
 	hurt_box.damaged.connect(_on_damaged)
 	hurt_box.can_be_hurt = true
+	add_to_group("enemies")
 	
 func _physics_process(_delta: float) -> void:
 	
@@ -58,6 +59,9 @@ func _physics_process(_delta: float) -> void:
 		
 func follow_player() -> void:
 	navigation_agent_2d.target_position = target.global_position
+
+func update_target():
+	target = Globals.player
 	
 func _on_damaged() -> void:
 	if is_dying: return

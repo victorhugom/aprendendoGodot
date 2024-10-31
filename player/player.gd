@@ -64,6 +64,8 @@ func _ready() -> void:
 	deck_builder.closed.connect(_on_deck_builder_closed)
 	deck_builder.opened.connect(_on_deck_builder_opened)
 	add_child(deck_builder)
+	
+	Globals.player = self
 
 func _physics_process(_delta: float) -> void:
 
@@ -175,7 +177,7 @@ func select_card(card_number:int):
 	card_hand.select_card(card_number)
 	
 func can_take_damage():
-	return is_dying == false || health.current_health > 0
+	return is_dying == false && health.current_health > 0
 	
 func _on_deck_builder_opened() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -226,7 +228,6 @@ func transform(transformation_card = CardConfig) -> void:
 	transformation.position = global_position
 	transformation.ground_map_tile = ground_map_tile
 	transformation.max_health = 5
-	transformation.player = self
 
 	#transform from last transformation to new
 	animation_player.play("transform")

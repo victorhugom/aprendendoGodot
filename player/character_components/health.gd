@@ -29,6 +29,7 @@ func decrease_health(value: int = 1) -> bool:
 	
 	if current_health <= 0:
 		health_empty.emit()
+		print_debug("Health: Empty")
 		
 	return true
 
