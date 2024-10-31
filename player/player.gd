@@ -9,6 +9,7 @@ const SAUSAGE_MONSTER = preload("res://player/sausage_monster.tscn")
 @onready var hurt_box: HurtBox  = $HurtBox
 @onready var shooter: Shooter = $Shooter
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_blink: AnimationPlayer = $AnimationPlayerBlink
 @onready var follow_camera: FollowCamera = $FollowCamera
 
 @export var ground_map_tile: TileMapLayer
@@ -161,9 +162,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_hit():
 	if is_dying: return
-	
 	is_being_hit = true
-	animation_player.play("hit")
+	animation_player_blink.play("hit_" + last_anim_direction)
 	
 func _on_health_empty():
 	is_dying = true
@@ -214,15 +214,13 @@ func _on_card_selected_changed(card_selected: Card):
 		else:
 			card_hand.select_previous_card()
 	
-func transform(transformation_card = CardConfig) -> void:
+func transform(_transformation_card = CardConfig) -> void:
 	
 	if is_transforming: 
 		return
 	
 	is_transforming = true
 	Globals.player = self
-	
-	var current_position = global_position
 	
 	transformation = SAUSAGE_MONSTER.instantiate()
 	transformation.position = global_position
