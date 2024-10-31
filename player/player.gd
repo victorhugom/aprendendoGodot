@@ -99,7 +99,9 @@ func _input(event):
 	if event.is_action_pressed("ui_dash"):
 		dash()
 	if event.is_action_pressed("ui_draw_cards"):
-		card_hand.draw_cards()
+		if card_hand.draw_cards():
+			health.decrease_health(1)
+			_on_hit()
 	
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
 		if event is InputEventKey && event.keycode == i && event.is_released():
@@ -188,6 +190,9 @@ func _on_deck_builder_closed(deck: Array[CardInDeck]) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	remove_child(deck_builder)
 	deck_builder.queue_free()
+	
+	for card:CardInDeck in deck:
+		card.get_parent().remove_child(card)
 	
 	create_deck_hand(deck)
 	

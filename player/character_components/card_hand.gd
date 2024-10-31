@@ -67,19 +67,21 @@ func destroy_card(card: Card):
 		
 	update_shortcut_ids()
 	
-func draw_cards():
+func draw_cards(amount_to_draw = 1) -> bool:
 	
 	if cards.size() >= 3:
-		return
+		return false
 		#TODO: message, cannot draw cards
 	
 	if cards.size() == 0:
 		create_and_add_card(base_card)
+		return true
 	
 	if card_deck.size() > 0:
-		for i in range(0, 2):
+		for i in range(0, amount_to_draw):
 			
 			if card_deck.size() <= 0:
+				return false
 				continue
 			
 			var card_index = randi_range(0, card_deck.size() - 1)
@@ -91,6 +93,8 @@ func draw_cards():
 				card_deck.remove_at(card_index)
 			
 			create_and_add_card(card_config)
+	
+	return true
 	
 	if card_selected == null && cards.size() != 0:
 		select_card(1)
