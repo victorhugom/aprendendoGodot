@@ -10,6 +10,7 @@ const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectil
 @onready var health: Health = $Health
 @onready var hurt_box: HurtBox  = $HurtBox
 @onready var shooter: Shooter = $Shooter
+@onready var punch_collision_area: MeleeCollisionBox = $PunchCollisionArea
 
 @export var ground_map_tile: TileMapLayer
 @export var max_health = 3
@@ -51,6 +52,9 @@ func _ready() -> void:
 	Globals.player =  self
 	previous_char.get_parent().remove_child(previous_char)
 	get_tree().call_group("enemies", "update_target")
+	
+	punch_collision_area.monitorable = false
+	punch_collision_area.monitoring = false
 
 func _physics_process(_delta: float) -> void:
 

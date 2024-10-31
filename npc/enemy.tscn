@@ -11,8 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://coo4qp2kipcyp" path="res://assets/sounds/clap.mp3" id="6_ji71g"]
 [ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="10_wvv3r"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmpuw"]
-size = Vector2(7, 3.75)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hdjc"]
+height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ob6v"]
 radius = 12.0
@@ -228,7 +228,7 @@ size = Vector2(40, 20)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2048
-collision_mask = 30
+collision_mask = 31
 wall_min_slide_angle = 0.0
 script = ExtResource("2_x8yhj")
 
@@ -241,8 +241,8 @@ vframes = 5
 region_rect = Rect2(133, 163, 26, 40)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_gmpuw")
+position = Vector2(-7, -12)
+shape = SubResource("CapsuleShape2D_4hdjc")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_2m8bk")]
 position = Vector2(-37, -15)

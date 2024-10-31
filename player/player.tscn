@@ -16,9 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="16_v5ako"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
-size = Vector2(13, 6.58595)
+size = Vector2(13, 10.293)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3u1m0"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1ujr"]
+radius = 8.0
 
 [sub_resource type="Animation" id="Animation_pbldg"]
 length = 0.001
@@ -678,7 +679,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 28
+collision_mask = 2078
 script = ExtResource("1_nyc0f")
 
 [node name="FollowCamera" parent="." instance=ExtResource("2_axglg")]
@@ -691,7 +692,7 @@ vframes = 22
 region_rect = Rect2(241, 254, 29, 35)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -4)
+position = Vector2(-0.5, -5.85351)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("15_yjxdr")]
@@ -700,8 +701,8 @@ collision_mask = 1536
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -11)
-shape = SubResource("CircleShape2D_3u1m0")
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_w1ujr")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("14_acclv")]
 collision_layer = 64
