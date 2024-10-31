@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbybglk7i1jgh"]
+[gd_scene load_steps=8 format=3 uid="uid://cqrsw6b8pyhc2"]
 
 [ext_resource type="Script" path="res://player/projectile.gd" id="1_vgfv6"]
 [ext_resource type="Texture2D" uid="uid://dsw8s4ii3365p" path="res://assets/props/projectile/basic_projectile-Sheet.png" id="2_ttupi"]
@@ -63,12 +63,12 @@ _data = {
 }
 
 [node name="Projectile" type="Area2D"]
-collision_layer = 32
-collision_mask = 127
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_vgfv6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vhgr5")
 
 [node name="DestructionTimer" type="Timer" parent="."]

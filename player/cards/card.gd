@@ -13,7 +13,6 @@ signal destroyed
 @onready var card_icons_container: HFlowContainer = $PanelContainer/CardIconsContainer
 
 @export var card_config: CardConfig
-@export var player: Player
 @export var id: int
 
 var card_backgrounds = {
@@ -98,7 +97,7 @@ func _process(_delta: float) -> void:
 func create_projectile_card() -> void:
 	var card_projectile = card_config.CardData as CardDataProjectile	
 		
-	card_background_sprite.texture = card_backgrounds[card_projectile.ProjectileConfig.Element]
+	card_background_sprite.texture = card_backgrounds[card_projectile.projectile_config.element]
 	card_name_label.text = card_config.Name
 	
 	var card_icon_size = Vector2(64, 64)
@@ -116,11 +115,9 @@ func create_projectile_card() -> void:
 		card_icon.custom_minimum_size = card_icon_size
 		card_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		card_icon.stretch_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		card_icon.texture = card_shoot_icons[card_projectile.ProjectileConfig.Element]
+		card_icon.texture = card_shoot_icons[card_projectile.projectile_config.element]
 		card_icons_container.add_child(card_icon)
 
-		
-		
 func create_transformation_card() -> void:
 	var card_transformation = card_config.CardData as CardDataTransformation	
 		
@@ -134,8 +131,6 @@ func create_transformation_card() -> void:
 
 func create_life_card() -> void:
 	
-	var card_transformation = card_config.CardData as CardDataHealth	
-		
 	card_background_sprite.texture = NEUTRAL_BKG
 	card_name_label.text = card_config.Name
 	
@@ -143,25 +138,6 @@ func create_life_card() -> void:
 	card_icon.size = Vector2(64, 64)
 	card_icon.texture = HPICON
 	card_icons_container.add_child(card_icon)
-
-func execute_card() -> void:
-	
-	if card_config.CardType == Enums.CARD_TYPE.Projectile:
-		execure_projectile()
-	if card_config.CardType == Enums.CARD_TYPE.Life  && player.health < player.max_health:	
-		execute_life_recover()
-	if card_config.CardType == Enums.CARD_TYPE.Transform:	
-		execute_transformation()
-
-func execure_projectile() -> void:
-	player.projectile_config = card_config.CardData.ProjectileConfig
-	player.dps = card_config.CardData.DPS
-	
-func execute_life_recover() -> void:
-	player.recover_life((card_config.CardData as CardDataHealth).Health)
-
-func execute_transformation() -> void:
-	player.transform(card_config)
 
 func destroy_card() -> void:
 	animation_player.play("destroy")

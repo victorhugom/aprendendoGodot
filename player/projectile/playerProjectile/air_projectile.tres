@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_1plmj")
-Name = "Air"
-Damage = 1
-Element = 4
-Target = 1
-ProjectileTexture = ExtResource("1_dgblc")
+name = "Air Projectile"
+damage = 1
+element = 4
+target = 0
+projectileTexture = ExtResource("1_dgblc")

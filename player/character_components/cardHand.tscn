@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhox0xfiactf2"]
+
+[ext_resource type="Script" path="res://player/character_components/card_hand.gd" id="1_gtaso"]
+
+[node name="CardHand" type="CanvasLayer"]
+script = ExtResource("1_gtaso")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CardContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2

@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_pvxat"]
 script = ExtResource("2_n8q2u")
 DPS = 1
-ProjectileConfig = ExtResource("1_i8hth")
+projectile_config = ExtResource("1_i8hth")
 
 [resource]
 script = ExtResource("1_u00u8")

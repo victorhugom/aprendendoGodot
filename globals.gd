@@ -1,3 +1,3 @@
 extends Node
 
-@export var last_scene_name: String
+@export var player: Node

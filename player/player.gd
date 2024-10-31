@@ -1,112 +1,93 @@
-class_name  Player extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
-const PROJECTILE = preload("res://player/projectile.tscn")
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectile/basic_projectile.tres")
-const MAGE_TRANSFORMATION_CONFIG = preload("res://player/player_transformation_litlemage.tres")
+const DECK_BUILDER = preload("res://player/cards/deckBuilder.tscn")
+const CARD_HAND = preload("res://player/character_components/cardHand.tscn")
+const SAUSAGE_MONSTER = preload("res://player/sausage_monster.tscn")
 
-@export var groundMapTile: TileMapLayer
-@export var speed = 32*5
+@onready var health: Health = $Health
+@onready var hurt_box: HurtBox  = $HurtBox
+@onready var shooter: Shooter = $Shooter
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var follow_camera: FollowCamera = $FollowCamera
+
+@export var ground_map_tile: TileMapLayer
 @export var max_health = 3
 
-@onready var follow_camera = $FollowCamera
+@export var speed = 32 * 5
+@export var dash_speed = 32 * 10
+@export var walk_speed = 32 * 5
+@export var dash_duration = 0.35
+@export var dash_cooldown = 1
 
-#region Mage
-
-@onready var shoot_timer: Timer = $ShootTimer
-@export var mage_current_health: int
-@export var mage_max_health: int
-
-#endregion
-
-@onready var punch_trace: ShapeCast2D = $PunchTrace
-
-@onready var CharTransatormationsSprite = {
-	Enums.TransformationsENUM.MAGE : $LittleMage,
-	Enums.TransformationsENUM.SAUSAGE : $SausageMonster
-}
-
-@onready var CharTransatormationsAnimations = {
-	Enums.TransformationsENUM.MAGE : $LittleMage/AnimationPlayer,
-	Enums.TransformationsENUM.SAUSAGE : $SausageMonster/AnimationPlayer
-}
-
-@onready var CharTransatormationsCollisions = {
-	Enums.TransformationsENUM.MAGE : $LittleMageMovementHitBox,
-	Enums.TransformationsENUM.SAUSAGE : $SausageMovementHitBox
-}
-
-@onready var CharProjectilePosition = {
-	Enums.TransformationsENUM.MAGE : $LittleMageProjectilePosition,
-	Enums.TransformationsENUM.SAUSAGE : $LittleMageProjectilePosition
-}
-
-var health = max_health
+var transformation: Node2D
 var is_dying = false
 var is_being_hit = false
 
+#region Deck Builder
+var deck_builder: DeckBuilder
 var card_hand: CardHand
 var card_deck: Array[CardConfig]
-var card_selected: Card
+#endregion
 
-@export var projectile_config: ProjectileConfig
-@export var dps = 1
+var projectile_config: ProjectileConfig
 
+var is_atatcking = false
+var is_transforming = false
 var last_anim_direction = "down"
 var move_direction_vector = Vector2(0,0)
-var is_blocking = false
-var is_atatcking = false
-var is_tracing_punch = false
-var is_transforming = false
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 
-var current_transformation: Enums.TransformationsENUM = Enums.TransformationsENUM.MAGE
-var last_transformation: Enums.TransformationsENUM = Enums.TransformationsENUM.MAGE
-var current_transformation_config: PlayerTransformationConfig
-
 func _ready() -> void:
 	
-	projectile_config = PROJECTILE_BASIC_CONFIG
+	shooter.projectile_config = PROJECTILE_BASIC_CONFIG
 	
 	last_anim_direction = "down"
+	animation_player.play("idle_down")
+	
 	is_transforming = false
 	
-	current_transformation_config = MAGE_TRANSFORMATION_CONFIG
-	CharTransatormationsAnimations[Enums.TransformationsENUM.MAGE].play("idle_down")
-	setCameraLimit()
+	#camera setup
+	follow_camera.ground_map_tile = ground_map_tile
+	follow_camera.set_camera_limit()
 	
-	Hud.card_hand.player = self
-	Hud.health_bar.setMaxHearts(max_health)
-	Hud.health_bar.updateHeats(health)
-	Hud.card_hand.draw_cards()
+	#health setup
+	health.health_empty.connect(_on_health_empty)
+	hurt_box.damaged.connect(_on_hit)
+	Hud.health_bar.health = health
+	
+	#deck builder setup
+	deck_builder = DECK_BUILDER.instantiate()
+	deck_builder.closed.connect(_on_deck_builder_closed)
+	deck_builder.opened.connect(_on_deck_builder_opened)
+	add_child(deck_builder)
+	
+	Globals.player = self
 
 func _physics_process(_delta: float) -> void:
+
+	hurt_box.can_be_hurt = can_take_damage()
 	
-	if is_dying: return
+	if is_dying || is_being_hit: return
 	
-	handleInput()
+	handle_movement_input()
 	update_animation()
-	trace_punch()
 	
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= _delta
 	
 	if is_dashing:
-		speed = current_transformation_config.DashSpeed
+		speed = dash_speed
 		dash_timer -= _delta
 		if dash_timer <= 0:
 			is_dashing = false
-			speed = current_transformation_config.Speed
+			speed = walk_speed
 	
-	if is_atatcking == false && is_blocking == false && is_transforming == false:
+	if is_atatcking == false && is_transforming == false:
 		move_and_slide()
-
-func handleInput():
-	move_direction_vector = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
-	velocity = move_direction_vector * speed
 
 func _input(event):
 	
@@ -114,20 +95,19 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_attack"):
 		attack()
-	if event.is_action_pressed("ui_block"):
-		block()
-	if event.is_action_released("ui_block"):
-		is_blocking = false
 	if event.is_action_pressed("ui_dash"):
 		dash()
 	if event.is_action_pressed("ui_draw_cards"):
-		Hud.card_hand.draw_cards()
-		damage(1, enums.ELEMENTS.Neutral)
+		card_hand.draw_cards()
 	
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
 		if event is InputEventKey && event.keycode == i && event.is_released():
 			select_card(OS.get_keycode_string(i).to_int())
-	
+
+func handle_movement_input():
+	move_direction_vector = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
+	velocity = move_direction_vector * speed
+
 func update_animation():
 	
 	var direction = last_anim_direction
@@ -147,186 +127,108 @@ func update_animation():
 	elif velocity.y > 0: direction = "down"
 		
 	last_anim_direction = direction
-	if is_atatcking == false && is_blocking == false && is_transforming == false:
+	if is_atatcking == false && is_transforming == false:
 		if animation_type == "dash_":
-			CharTransatormationsAnimations[current_transformation].play(animation_type + direction, -1, 2)
+			animation_player.play(animation_type + direction, -1, 2)
 		else:
-			CharTransatormationsAnimations[current_transformation].play(animation_type + direction)
-	
-func setCameraLimit():
-	var map_limits = groundMapTile.get_used_rect()
-	var map_cellsize = 32
-	var worldMapInPixels = map_limits.size * map_cellsize
-	
-	follow_camera.limit_right = worldMapInPixels.x
-	follow_camera.limit_bottom = worldMapInPixels.y
+			animation_player.play(animation_type + direction)
 	
 func attack() -> void:
 	
 	if is_atatcking: return
 	is_atatcking = true
 	
-	CharTransatormationsAnimations[current_transformation].play("attack_" + last_anim_direction)
-	
-	if current_transformation == Enums.TransformationsENUM.MAGE:
-		Hud.card_hand.use_selected_card()
-		for i in range(0, dps):
-			var projectile = PROJECTILE.instantiate()
-			projectile.position = CharProjectilePosition[current_transformation].global_position
-			
-			if last_anim_direction == "left":
-				projectile.position.x -= 30
-			if last_anim_direction == "right":
-				projectile.position.x += 30
-			if last_anim_direction == "up":
-				projectile.position.y -= 30
-			if last_anim_direction == "down":
-				projectile.position.y += 30
-			
-			projectile.set_config(projectile_config)
-			
-			get_parent().add_sibling(projectile)
-			projectile.shoot(last_anim_direction)
-			
-			shoot_timer.start()
-			await shoot_timer.timeout
-	
-func block() -> void:
-	if current_transformation_config.CanBlock:
-		is_blocking = true
-		CharTransatormationsAnimations[current_transformation].play("block_" + last_anim_direction)
+	animation_player.play("attack_" + last_anim_direction)
+	card_hand.use_selected_card()
 
+	shooter.projectile_config = projectile_config
+	shooter.shoot(last_anim_direction, (card_hand.card_selected.card_config.CardData as CardDataProjectile).DPS)
+	
+func dash():
+
+	is_dashing = true
+	dash_timer = dash_duration
+	dash_cooldown_timer = dash_cooldown
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name.begins_with("attack_"):
+		is_atatcking = false
+	if anim_name.begins_with("hit"):
+		is_being_hit = false
+	if anim_name.begins_with("transform"):
+		is_transforming = false
+		get_tree().root.	add_child(transformation)
+
+func _on_hit():
+	if is_dying: return
+	
+	is_being_hit = true
+	animation_player.play("hit")
+	
+func _on_health_empty():
+	is_dying = true
+	animation_player.play("death")
+		
+func recover_life(value: int) -> void:
+	health.increase_health(value)
+
+func select_card(card_number:int):
+	print_debug("select card")
+	card_hand.select_card(card_number)
+	
+func can_take_damage():
+	return is_dying == false && health.current_health > 0
+	
+func _on_deck_builder_opened() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+
+func _on_deck_builder_closed(deck: Array[CardInDeck]) -> void:
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	remove_child(deck_builder)
+	deck_builder.queue_free()
+	
+	create_deck_hand(deck)
+	
+func create_deck_hand(deck: Array[CardInDeck]):
+	card_hand = CARD_HAND.instantiate()
+	card_hand.card_deck = deck
+	card_hand.card_selected_changed.connect(_on_card_selected_changed)
+	
+	add_child(card_hand)
+	card_hand.draw_cards()
+	
+func _on_card_selected_changed(card_selected: Card):
+	
+	if card_selected.card_config.CardType == Enums.CARD_TYPE.Projectile:
+		projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
+	if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
+		card_hand.use_selected_card()
+		transform(card_selected.card_config)
+	if card_selected.card_config.CardType == Enums.CARD_TYPE.Life:
+		var health_card_data = card_selected.card_config.CardData as CardDataHealth
+		var result: bool = health.increase_health(health_card_data.health)
+		if result:
+			card_hand.use_selected_card()
+		else:
+			card_hand.select_previous_card()
+	
 func transform(transformation_card = CardConfig) -> void:
 	
 	if is_transforming: 
 		return
 	
 	is_transforming = true
+	Globals.player = self
 	
-	mage_max_health = max_health
-	mage_current_health = health
+	var current_position = global_position
 	
-	current_transformation_config = transformation_card.CardData.TransformationConfig
-	
-	speed = current_transformation_config.Speed
-	health = current_transformation_config.MaxHealth
-	max_health = current_transformation_config.MaxHealth
-	
-	Hud.health_bar.setMaxHearts(max_health, true)
-	Hud.health_bar.updateHeats(health)
-	
-	last_transformation = Enums.TransformationsENUM.MAGE
-	current_transformation = transformation_card.CardData.TransformationEnum
+	transformation = SAUSAGE_MONSTER.instantiate()
+	transformation.position = global_position
+	transformation.ground_map_tile = ground_map_tile
+	transformation.max_health = 5
 
 	#transform from last transformation to new
-	CharTransatormationsAnimations[last_transformation].play("transform")
+	animation_player.play("transform")
 	last_anim_direction = "down"
-	
-func _complete_transformation():
-	#after transform hide old char and show new
-	
-	#hide mage stuff
-	CharTransatormationsSprite[last_transformation].visible = false
-	CharTransatormationsCollisions[last_transformation].disabled = true
-	
-	#show transformation stuff
-	CharTransatormationsSprite[current_transformation].visible = true
-	CharTransatormationsCollisions[current_transformation].disabled = false
-	
-	is_transforming = false
-	
-	if current_transformation == Enums.TransformationsENUM.MAGE:
-		Hud.show_hand()
-	else:
-		Hud.hide_hand()
-
-	
-func revert_transformation() -> void:
-	
-	current_transformation_config = MAGE_TRANSFORMATION_CONFIG
-	
-	speed = current_transformation_config.Speed
-	max_health = mage_max_health
-	health = mage_current_health
-	
-	Hud.health_bar.setMaxHearts(max_health)
-	Hud.health_bar.updateHeats(health)
-	
-	last_transformation = current_transformation
-	current_transformation = Enums.TransformationsENUM.MAGE
-
-	#transform from last transformation to new
-	CharTransatormationsAnimations[last_transformation].play("transform")
-	last_anim_direction = "down"
-
-func dash():
-	if current_transformation_config.DashSpeed > 0:
-		is_dashing = true
-		dash_timer = current_transformation_config.DashDuration
-		dash_cooldown_timer = current_transformation_config.DashCooldown
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name.begins_with("attack_"):
-		is_atatcking = false
-	if anim_name.begins_with("transform"):
-		_complete_transformation()
-
-func start_punch_trace():
-	is_tracing_punch = true
-	
-func end_punch_trace():
-	is_tracing_punch = false
-
-func shake():
-	Shaker.shake_by_preset(SCREEN_SHAKER, follow_camera, 2, 5, 20)
-	
-func trace_punch():
-	
-	if is_tracing_punch == false: return
-	
-	if last_anim_direction == "left":
-		punch_trace.rotation_degrees = -90
-		punch_trace.target_position = Vector2(0,-100)
-	if last_anim_direction == "right":
-		punch_trace.rotation_degrees = -90
-		punch_trace.target_position = Vector2(0,100)
-	if last_anim_direction == "up":
-		punch_trace.rotation_degrees = 0
-		punch_trace.target_position = Vector2(0,-100)
-	if last_anim_direction == "down":
-		punch_trace.rotation_degrees = 0
-		punch_trace.target_position = Vector2(0,100)
-
-	if punch_trace.is_colliding():
-		
-		for i in range(0, punch_trace.get_collision_count()):
-			var hurtbox = punch_trace.get_collider(i)
-			var body = hurtbox.get_parent()
-			if body is Enemy:
-				(body as Enemy).damage(3, Enums.ELEMENTS.SUPER, velocity)
-				
-		is_tracing_punch = false
-		
-func damage(hurt_points: int, damage_type: Enums.ELEMENTS) -> void:
-	
-	if is_blocking || is_dashing || is_dying: return
-	
-	health -= hurt_points
-	Hud.health_bar.updateHeats(health)
-	
-	if health <= 0:
-		if current_transformation != Enums.TransformationsENUM.MAGE:
-			revert_transformation()
-		else:
-			is_dying = true
-			CharTransatormationsAnimations[current_transformation].play("death")
-	else:
-		is_being_hit = true
-		CharTransatormationsAnimations[current_transformation].play("hit")
-		
-func recover_life(add_value: int) -> void:
-	health +=add_value
-	Hud.health_bar.updateHeats(health)
-
-func select_card(card_number:int):
-	Hud.card_hand.select_card(card_number)

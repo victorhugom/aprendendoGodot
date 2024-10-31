@@ -13,6 +13,8 @@ config_version=5
 config/name="Sauchicha Alpha Concept"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://assets/spalshScreen.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [aseprite_importers]
@@ -30,10 +32,6 @@ Hud="*res://gui/HUD.tscn"
 
 [display]
 
-window/size/viewport_width=1136
-window/size/viewport_height=624
-window/size/window_width_override=1920
-window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
 [editor]
@@ -121,7 +119,12 @@ ui_draw_cards={
 2d_physics/layer_3="furniture"
 2d_physics/layer_4="wall"
 2d_physics/layer_5="interactables"
-2d_physics/layer_6="projectile"
-2d_physics/layer_7="enemy"
+2d_physics/layer_6="player_hurtbox"
+2d_physics/layer_7="player_projectile"
+2d_physics/layer_8="player_melee"
+2d_physics/layer_9="enemy_hurtbox"
+2d_physics/layer_10="enemy_projectile"
+2d_physics/layer_11="enemy_melee"
+2d_physics/layer_12="enemy"
 avoidance/layer_1="npc"
 avoidance/layer_2="obstacle"
