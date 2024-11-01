@@ -41,6 +41,7 @@ animations = [{
 }]
 
 [node name="Bluegrass" type="Node2D"]
+texture_filter = 3
 script = ExtResource("1_mr8ka")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

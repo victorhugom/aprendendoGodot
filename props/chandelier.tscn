@@ -58,6 +58,7 @@ animations = [{
 }]
 
 [node name="Chandelier" type="Node2D"]
+texture_filter = 3
 script = ExtResource("1_i3syb")
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
