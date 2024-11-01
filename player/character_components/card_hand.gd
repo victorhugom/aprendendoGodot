@@ -10,7 +10,6 @@ const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_co
 
 const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://player/cards/cardsConfigs/card_config_transform_sausage.tres")
 const CARD_CONFIG_HEALTH_POTION = preload("res://player/cards/cardsConfigs/card_config_health_potion.tres")
-
 const CARD = preload("res://player/cards/card.tscn")
 
 @onready var card_container: HBoxContainer = $CenterContainer/CardContainer
@@ -67,7 +66,7 @@ func destroy_card(card: Card):
 		
 	update_shortcut_ids()
 	
-func draw_cards(amount_to_draw = 1) -> bool:
+func draw_cards(amount_to_draw: int = 1) -> bool:
 	
 	if cards.size() >= 3:
 		return false
@@ -75,14 +74,13 @@ func draw_cards(amount_to_draw = 1) -> bool:
 	
 	if cards.size() == 0:
 		create_and_add_card(base_card)
-		return true
+		select_card(1)
 	
 	if card_deck.size() > 0:
 		for i in range(0, amount_to_draw):
 			
 			if card_deck.size() <= 0:
 				return false
-				continue
 			
 			var card_index = randi_range(0, card_deck.size() - 1)
 			var card_in_deck = (card_deck[card_index] as CardInDeck)
@@ -94,12 +92,11 @@ func draw_cards(amount_to_draw = 1) -> bool:
 			
 			create_and_add_card(card_config)
 	
-	return true
-	
 	if card_selected == null && cards.size() != 0:
 		select_card(1)
 	
 	update_shortcut_ids()
+	return true
 
 func select_card(card_number:int):
 	

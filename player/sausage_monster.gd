@@ -4,6 +4,7 @@ const SCREEN_SHAKER = preload("res://utils/screen_shaker.tres")
 
 const PROJECTILE = preload("res://player/projectile.tscn")
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectile/basic_projectile.tres")
+const SAUSAGE_HUD = preload("res://player/character_components/sausageHUD.tscn")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_player_blink: AnimationPlayer = $AnimationPlayerBlink
@@ -13,14 +14,12 @@ const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectil
 @onready var shooter: Shooter = $Shooter
 @onready var punch_collision_area: MeleeCollisionBox = $PunchCollisionArea
 
-
 @export var ground_map_tile: TileMapLayer
 @export var max_health = 3
 
 @export_group("Movement")
 @export var speed = 32 * 5
 @export var walk_speed = 32 * 5
-
 
 var projectile_config: ProjectileConfig
 var dps = 1
@@ -55,6 +54,9 @@ func _ready() -> void:
 	previous_char.get_parent().remove_child(previous_char)
 	get_tree().call_group("enemies", "update_target")
 	
+	var sausage_hud = SAUSAGE_HUD.instantiate()
+	add_child(sausage_hud)	
+	
 	punch_collision_area.monitorable = false
 	punch_collision_area.monitoring = false
 	
@@ -62,7 +64,7 @@ func _physics_process(_delta: float) -> void:
 
 	hurt_box.can_be_hurt = can_take_damage()
 	
-	if is_transforming || is_being_hit: return
+	if is_transforming || is_being_hit || is_atatcking: return
 	
 	handle_movement_input()
 	
@@ -75,6 +77,8 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_attack"):
 		attack()
+	if event.is_action_pressed("ui_special_attack"):
+		trigger_special_attack()
 
 func handle_movement_input():
 	move_direction_vector = Input.get_vector( "ui_left", "ui_right", "ui_up","ui_down")
@@ -85,15 +89,20 @@ func update_animation():
 	var direction = last_anim_direction
 	var animation_type = "walk_"
 	
-	if velocity.length() == 0: #idle
-		animation_type = "idle_"
-	else: #walking
-		animation_type = "walk_"
+	if velocity.length() > 0: #idle
 		
-	if velocity.x < 0: direction = "left"
-	elif velocity.x > 0: direction = "right"
-	elif velocity.y < 0: direction = "up"
-	elif velocity.y > 0: direction = "down"
+		var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+		if abs(angle) < 0.25 * PI:
+			direction = "right"
+		elif abs(angle) > 0.75 * PI:
+			direction = "left"
+		elif angle > 0.0:
+			direction = "down"
+		else:
+			direction = "up"
+
+	else: #walking
+		animation_type = "idle_"
 		
 	last_anim_direction = direction
 	animation_player.play(animation_type + direction)
@@ -104,9 +113,23 @@ func attack() -> void:
 	is_atatcking = true
 	
 	animation_player.play("attack_" + last_anim_direction)
-		
+
+func trigger_special_attack():
+	#trigger special attack to be shoot during the animation
+	
+	if is_atatcking: return
+	is_atatcking = true
+	
+	animation_player.play("shoot_" + last_anim_direction)
+	
+func execute_special_attack():
+	shooter.projectile_config = PROJECTILE_BASIC_CONFIG
+	shooter.shoot(last_anim_direction, 5, 3)	
+	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):
+		is_atatcking = false
+	if anim_name.begins_with("shoot_"):
 		is_atatcking = false
 	if anim_name.begins_with("hit"):
 		is_being_hit = false
@@ -117,7 +140,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		get_tree().root.add_child(previous_char)
 		get_tree().call_group("enemies", "update_target")
 		previous_char.global_position = current_position
-		Hud.health_bar.health = previous_char
+		Hud.health_bar.health = previous_char.health
 		self.get_parent().remove_child(self)
 		
 	if anim_name.begins_with("block_"):

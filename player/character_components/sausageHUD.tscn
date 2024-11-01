@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7hlftc7pqefc"]
+
+[ext_resource type="Texture2D" uid="uid://c57c3vp8qqdak" path="res://assets/cards/especial/specialcardface.png" id="5_0g1de"]
+[ext_resource type="Texture2D" uid="uid://bvo81bkdj8263" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q.png" id="6_uokb0"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="7_vdde8"]
+
+[node name="SausageHud" type="CanvasLayer"]
+
+[node name="BuyCards" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 528.0
+offset_right = -7.0
+offset_bottom = 613.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="BuyCards"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Specialcardface" type="Sprite2D" parent="BuyCards/MarginContainer"]
+position = Vector2(34, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_0g1de")
+centered = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuyCards"]
+layout_mode = 2
+
+[node name="KeyboardQ" type="TextureRect" parent="BuyCards/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_uokb0")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="BuyCards/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BuyCards/HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("7_vdde8")
+text = "Especial"
+fit_content = true
+autowrap_mode = 0

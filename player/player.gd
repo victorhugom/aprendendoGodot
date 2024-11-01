@@ -116,18 +116,22 @@ func update_animation():
 	var direction = last_anim_direction
 	var animation_type = "walk_"
 	
-	if velocity.length() == 0: #idle
-		animation_type = "idle_"
-	else: #walking
-		animation_type = "walk_"
-	
-	if is_dashing:
-		animation_type = "dash_"
+	if velocity.length() > 0: #idle
+		if is_dashing:
+			animation_type = "dash_"
 		
-	if velocity.x < 0: direction = "left"
-	elif velocity.x > 0: direction = "right"
-	elif velocity.y < 0: direction = "up"
-	elif velocity.y > 0: direction = "down"
+		var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+		if abs(angle) < 0.25 * PI:
+			direction = "right"
+		elif abs(angle) > 0.75 * PI:
+			direction = "left"
+		elif angle > 0.0:
+			direction = "down"
+		else:
+			direction = "up"
+
+	else: #walking
+		animation_type = "idle_"
 		
 	last_anim_direction = direction
 	if is_atatcking == false && is_transforming == false:
@@ -202,7 +206,7 @@ func create_deck_hand(deck: Array[CardInDeck]):
 	card_hand.card_selected_changed.connect(_on_card_selected_changed)
 	
 	add_child(card_hand)
-	card_hand.draw_cards()
+	card_hand.draw_cards(2)
 	
 func _on_card_selected_changed(card_selected: Card):
 	
