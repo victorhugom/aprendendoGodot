@@ -20,7 +20,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 	
-func shoot(direction: String, projectile_count: int, projectile_scale: int = 1):
+func shoot(direction: String, projectile_count: int, projectile_scale: int = 1, target_location: Vector2 = Vector2(0,0)):
 	
 	
 	for i in range(0, projectile_count):
@@ -41,7 +41,7 @@ func shoot(direction: String, projectile_count: int, projectile_scale: int = 1):
 			projectile.position = down_marker.global_position
 		
 		get_tree().root.add_child(projectile)
-		projectile.shoot(direction)
+		projectile.shoot(direction, target_location)
 		
 		timer.start()
 		await timer.timeout

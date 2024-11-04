@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 func set_config(config: ProjectileConfig):
 	projectile_config = config
 
-func shoot(player_direction: String) -> void:
+func shoot(player_direction: String, target_location: Vector2 = Vector2(0,0)) -> void:
 	
 	if player_direction == "left":
 		direction = Vector2(-1,0)
@@ -32,10 +32,14 @@ func shoot(player_direction: String) -> void:
 		direction = Vector2(1,0)
 	elif player_direction == "up":
 		direction = Vector2(0,-1)
-		basic_projectile.rotation_degrees = -90
+		rotation_degrees = -90
 	elif player_direction == "down":
 		direction = Vector2(0,1)
-		basic_projectile.rotation_degrees = 90
+		rotation_degrees = 90
+		#
+	#if(target_location.length() > 0):
+		#var projectile_rotation = position.angle_to(target_location)
+		#rotation = projectile_rotation
 			
 func _on_destruction_timer_timeout() -> void:
 	show_hit()
