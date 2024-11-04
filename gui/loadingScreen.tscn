@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://da4rphtoi7ubi"]
+[gd_scene load_steps=16 format=3 uid="uid://da4rphtoi7ubi"]
 
 [ext_resource type="Script" path="res://gui/loading_screen.gd" id="1_1lcdk"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_w7iu4"]
 [ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_wltgg"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="4_r8lfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_538qd"]
 atlas = ExtResource("2_w7iu4")
@@ -112,3 +113,23 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_f3dr6")
 frame_progress = 0.0665092
 centered = false
+
+[node name="LoadinTextCenter" type="CenterContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -128.0
+offset_right = 47.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoadinTextCenter"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_r8lfb")
+text = "Carregando"
+fit_content = true
+autowrap_mode = 0
