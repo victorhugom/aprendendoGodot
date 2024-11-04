@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="7_xfhto"]
 [ext_resource type="AudioStream" uid="uid://d0bh7ti3dry6j" path="res://assets/sounds/music1.mp3" id="8_apfpx"]
 [ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="9_tprk0"]
-[ext_resource type="PackedScene" uid="uid://tmkv1nrroxoi" path="res://props/candle1.tscn" id="10_0mja2"]
+[ext_resource type="PackedScene" path="res://props/candle1.tscn" id="10_0mja2"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://npc/enemy.tscn" id="10_hunqv"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="10_llmax"]
 [ext_resource type="Texture2D" uid="uid://bjn337n3raevr" path="res://assets/props/cancientdragon.png" id="13_p5axc"]
@@ -544,3 +544,5 @@ target = NodePath("../Player")
 position = Vector2(4537, 1772)
 scale = Vector2(1.64, 1.64)
 texture = ExtResource("13_p5axc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
