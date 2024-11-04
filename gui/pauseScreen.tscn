@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2cq7miu0eg0q"]
 
 [ext_resource type="Shader" path="res://main.gdshader" id="1_l7w8a"]
-[ext_resource type="Script" path="res://pause_screen.gd" id="1_rh38h"]
+[ext_resource type="Script" path="res://gui/pause_screen.gd" id="1_rh38h"]
 [ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_yp62p"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_a08j0"]
 

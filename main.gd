@@ -1,6 +1,6 @@
 class_name MainScene extends Node2D
 
-const PAUSE_SCREEN = preload("res://pauseScreen.tscn")
+const PAUSE_SCREEN = preload("res://gui/pauseScreen.tscn")
 
 var pause_screen: PauseScreen
 

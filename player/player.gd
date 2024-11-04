@@ -4,6 +4,7 @@ const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectil
 const DECK_BUILDER = preload("res://player/cards/deckBuilder.tscn")
 const CARD_HAND = preload("res://player/character_components/cardHand.tscn")
 const SAUSAGE_MONSTER = preload("res://player/sausage_monster.tscn")
+const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 
 @onready var health: Health = $Health
 @onready var hurt_box: HurtBox  = $HurtBox
@@ -165,6 +166,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("transform"):
 		is_transforming = false
 		get_tree().root.	add_child(transformation)
+	if anim_name.begins_with("death"):
+		var death_screen = DEATH_SCREEN.instantiate()
+		get_tree().root.add_child(death_screen)
 
 func _on_hit():
 	if is_dying: return

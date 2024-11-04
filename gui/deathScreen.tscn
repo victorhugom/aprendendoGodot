@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3lmiy5wrk7p7"]
+
+[ext_resource type="Shader" path="res://main.gdshader" id="1_i7o8t"]
+[ext_resource type="Script" path="res://gui/death_screen.gd" id="1_vh0bd"]
+[ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_xyk7t"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_4rno3"]
+[ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="4_6ni4x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rf0o3"]
+shader = ExtResource("1_i7o8t")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.03
+shader_parameter/aberration = 0.01
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.135
+shader_parameter/vignette_opacity = 0.5
+
+[node name="DeathScreen" type="CanvasLayer"]
+script = ExtResource("1_vh0bd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rf0o3")
+scale = Vector2(0.5, 0.557391)
+texture = ExtResource("2_xyk7t")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemsContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/ItemsContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/ItemsContainer/CenterContainer"]
+texture = ExtResource("4_6ni4x")
+centered = false
+hframes = 10
+vframes = 22
+frame = 173
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/ItemsContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/ItemsContainer/CenterContainer2"]
+custom_minimum_size = Vector2(105, 45)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_4rno3")
+theme_override_font_sizes/normal_font_size = 40
+text = "Morri"
+
+[node name="RestartButton" type="Button" parent="CenterContainer/ItemsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4rno3")
+text = "Tentar novamente
+"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/ItemsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4rno3")
+text = "Sair
+"
+
+[connection signal="pressed" from="CenterContainer/ItemsContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CenterContainer/ItemsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
