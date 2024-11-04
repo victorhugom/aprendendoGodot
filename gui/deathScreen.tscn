@@ -31,6 +31,7 @@ shader_parameter/vignette_intensity = 0.135
 shader_parameter/vignette_opacity = 0.5
 
 [node name="DeathScreen" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_vh0bd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
