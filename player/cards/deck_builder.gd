@@ -58,8 +58,12 @@ func _ready() -> void:
 		
 		cards_container.add_child(card_in_deck)
 	
+	print_debug("%s: ready" %Time.get_time_string_from_system())
 	opened.emit()
-
+	
+func _process(delta: float) -> void:
+	pass
+	
 func add_card_selected(card_config) -> void:
 	
 	if card_quantity >= 20:

@@ -6,13 +6,9 @@ var pause_screen: PauseScreen
 
 func _ready() -> void:
 	pass
-	#if customer_spawner:
-		#customer_spawner.start()
 
-func _exit_tree() -> void:
+func _process(delta: float) -> void:
 	pass
-	#if customer_spawner:
-		#customer_spawner.stop()
 
 func _input(event):
 	if event is InputEventKey && event.keycode == KEY_M:
