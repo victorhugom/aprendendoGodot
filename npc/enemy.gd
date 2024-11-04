@@ -6,7 +6,7 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 @onready var eye: Sprite2D = $Eye
 @onready var player_trace: ShapeCast2D = $PlayerTrace
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
-@onready var shoot_timer: Timer = $ShootTimer
+@onready var attack_timer: Timer = $AttackTimer
 @onready var shooter: Shooter = $Shooter
 
 @onready var hurt_box: HurtBox = $HurtBox
@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	
-	if is_dying || animation_player.current_animation == "attack" || animation_player.current_animation == "hit": 
+	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
 		return
 		
 	if global_position.distance_to(target.global_position) > 400:
@@ -37,25 +37,40 @@ func _physics_process(_delta: float) -> void:
 	
 	is_seeing_player = player_trace.is_colliding()
 	
+	var animation_type = "walk_"
+	
 	if is_seeing_player == false: #only moves if not seeing player
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		var current_position = global_position
 		velocity = current_position.direction_to(next_path_position) * speed
 		move_and_slide()
-	
-	if velocity.x < 0:
-		eye.flip_h = false
-		direction = "left"
-		player_trace.target_position = Vector2(0,-300)
-	else:
-		player_trace.target_position = Vector2(0,300)
-		direction = "right"
-		eye.flip_h = true
 		
-	if velocity.x != 0:
-		animation_player.play("walk_left")
-	else:
-		animation_player.play("idle_left")
+		var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+		if abs(angle) < 0.25 * PI:
+			direction = "right"
+			player_trace.target_position = Vector2(0,300)
+			player_trace.rotation_degrees = -90
+		elif abs(angle) > 0.75 * PI:
+			direction = "left"
+			player_trace.target_position = Vector2(0,-300)
+			player_trace.rotation_degrees = -90
+		elif angle > 0.0:
+			direction = "down"
+			player_trace.target_position = Vector2(0,300)
+			player_trace.rotation_degrees = 0
+		else:
+			direction = "up"
+			player_trace.target_position = Vector2(0,-300)
+			player_trace.rotation_degrees = 0
+			
+
+	if velocity.length() > 0:
+		animation_type = "walk_"
+	else: #walking
+		animation_type = "idle_"
+
+	animation_player.play(animation_type +  direction)
+	
 		
 func follow_player() -> void:
 	navigation_agent_2d.target_position = target.global_position
@@ -69,7 +84,7 @@ func _on_damaged() -> void:
 
 func _on_health_empty():
 	is_dying = true
-	shoot_timer.stop()
+	attack_timer.stop()
 	animation_player.play("death")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -81,10 +96,13 @@ func _on_attack_timer_timeout() -> void:
 	if is_dying: return
 	
 	if player_trace.is_colliding():
-		animation_player.play("attack")
+		animation_player.play("attack_" + direction)
 		
-		shooter.projectile_config = PROJECTILE_CONFIG
-		shooter.shoot(direction, 1)
+func _execute_attack():
+	#execute attack during animation
+	shooter.projectile_config = PROJECTILE_CONFIG
+	print_debug(target.global_position)
+	shooter.shoot(direction, 1, 1, target.global_position)
 
 func _on_tracking_timer_timeout() -> void:
 	follow_player()
