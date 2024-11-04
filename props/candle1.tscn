@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://tmkv1nrroxoi"]
 
-[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="2_v6mm6"]
+[ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="2_c173n"]
 [ext_resource type="Texture2D" uid="uid://i0jki8661gnp" path="res://assets/props/Torch.png" id="3_4fv88"]
 [ext_resource type="Texture2D" uid="uid://bk6vhchsduq4o" path="res://assets/props/candle1.png" id="3_aw4dg"]
 [ext_resource type="Script" path="res://props/candle.gd" id="5_rx4bh"]
@@ -95,14 +95,14 @@ animations = [{
 script = ExtResource("5_rx4bh")
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
-position = Vector2(0, 2)
-scale = Vector2(0.724609, 0.724609)
+position = Vector2(-1, -11)
+scale = Vector2(0.353271, 0.353271)
 color = Color(0.292611, 0.206516, 0.0247197, 1)
 energy = 0.96
 range_z_max = 0
 shadow_enabled = true
 shadow_filter = 2
-texture = ExtResource("2_v6mm6")
+texture = ExtResource("2_c173n")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 position = Vector2(0, -11)
