@@ -835,6 +835,7 @@ collision_mask = 2078
 script = ExtResource("1_nyc0f")
 
 [node name="FollowCamera" parent="." instance=ExtResource("2_axglg")]
+zoom = Vector2(2, 2)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
 position = Vector2(0, -29)
