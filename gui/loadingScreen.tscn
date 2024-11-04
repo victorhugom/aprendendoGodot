@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://da4rphtoi7ubi"]
+
+[ext_resource type="Script" path="res://gui/loading_screen.gd" id="1_1lcdk"]
+[ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_w7iu4"]
+[ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_wltgg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_538qd"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvmwb"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b771p"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsmva"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nydxj"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joi3a"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubwta"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2wro"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7oxn"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaau6"]
+atlas = ExtResource("2_w7iu4")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3dr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_538qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvmwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b771p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsmva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nydxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joi3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubwta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2wro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7oxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaau6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_1lcdk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wltgg")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LoadingSprite" type="AnimatedSprite2D" parent="CenterContainer"]
+texture_filter = 3
+position = Vector2(240, 221)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_f3dr6")
+frame_progress = 0.0665092
+centered = false

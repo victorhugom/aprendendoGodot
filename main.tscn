@@ -528,17 +528,17 @@ position = Vector2(3540, 6016)
 
 [node name="EnemiesContainer" type="Node" parent="."]
 
+[node name="Enemy" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
+position = Vector2(989, 679)
+target = NodePath("../../Player")
+
+[node name="Enemy2" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
+position = Vector2(807, 682)
+target = NodePath("../../Player")
+
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("2_ugr7h")]
 position = Vector2(910, 573)
 ground_map_tile = NodePath("../Floor")
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
-position = Vector2(1014, 675)
-target = NodePath("../Player")
-
-[node name="Enemy2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
-position = Vector2(832, 678)
-target = NodePath("../Player")
 
 [node name="Cancientdragon" type="Sprite2D" parent="."]
 position = Vector2(4537, 1772)
