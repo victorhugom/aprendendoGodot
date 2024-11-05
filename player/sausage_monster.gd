@@ -15,7 +15,7 @@ const SAUSAGE_HUD = preload("res://player/character_components/sausageHUD.tscn")
 @onready var punch_collision_area: MeleeCollisionBox = $PunchCollisionArea
 
 @export var ground_map_tile: TileMapLayer
-@export var max_health = 3
+@export var max_health = 6
 
 @export_group("Movement")
 @export var speed = 32 * 5
@@ -46,8 +46,10 @@ func _ready() -> void:
 	
 	#health setup
 	health.health_empty.connect(_on_health_empty)
-	hurt_box.damaged.connect(_on_hit)
+	health.max_health = max_health
+	health.current_health = max_health
 	Hud.health_bar.health = health
+	hurt_box.damaged.connect(_on_hit)
 	
 	previous_char = Globals.player
 	Globals.player =  self

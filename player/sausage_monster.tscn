@@ -1195,7 +1195,6 @@ position = Vector2(0, 3)
 
 [node name="Health" parent="." instance=ExtResource("17_418l2")]
 position = Vector2(0, 10)
-max_health = 5
 
 [node name="PunchCollisionArea" type="Area2D" parent="."]
 collision_layer = 128

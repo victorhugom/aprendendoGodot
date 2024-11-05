@@ -28,7 +28,7 @@ func set_max_hearts(value: int = 3, transformation = false):
 		remove_child(h)
 	
 	max_health = value
-	for i in range(max_health):
+	for i in range(0, max_health/3): # on full hearth for each 3 hearts
 		var heart = HEART.instantiate()
 		if transformation:
 			heart.set_texture(preload("res://assets/heart_transformation.png"))
@@ -36,10 +36,17 @@ func set_max_hearts(value: int = 3, transformation = false):
 		add_child(heart)
 		
 func update_hearts(current_health: int):
+
 	var hearts = get_children()
-	for i in range(current_health):
+	
+	var small_hearts = current_health % 3
+	var full_hearts = (current_health - small_hearts)/3
+	
+	for i in range(full_hearts):
 		hearts[i].update(true)
-		
-	for i in range(current_health, hearts.size()):
+	
+	if small_hearts != 0:
+		hearts[full_hearts].update(false, small_hearts)
+	
+	for i in range(full_hearts + 1, hearts.size()):
 		hearts[i].update(false);
-				
