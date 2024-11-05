@@ -651,6 +651,10 @@ ground_map_tile = NodePath("../Floor")
 position = Vector2(1014, 675)
 target = NodePath("../Player")
 
+[node name="Enemy3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
+position = Vector2(3136, 624)
+target = NodePath("../Player")
+
 [node name="Enemy2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
 position = Vector2(832, 678)
 target = NodePath("../Player")

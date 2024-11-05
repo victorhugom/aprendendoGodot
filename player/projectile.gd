@@ -36,10 +36,11 @@ func shoot(player_direction: String, target_location: Vector2 = Vector2(0,0)) ->
 	elif player_direction == "down":
 		direction = Vector2(0,1)
 		rotation_degrees = 90
-		#
-	#if(target_location.length() > 0):
-		#var projectile_rotation = position.angle_to(target_location)
-		#rotation = projectile_rotation
+	
+	if(target_location.length() > 0):
+		look_at(target_location)
+		basic_projectile.flip_h = false
+		direction = (target_location + Vector2(16,0) - global_position).normalized()
 			
 func _on_destruction_timer_timeout() -> void:
 	show_hit()

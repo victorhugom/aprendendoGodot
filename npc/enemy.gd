@@ -19,6 +19,7 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 
 var is_dying = false
 var direction = "left"
+var target_position: Vector2
 var is_seeing_player = false
 
 func _ready() -> void:
@@ -96,13 +97,14 @@ func _on_attack_timer_timeout() -> void:
 	if is_dying: return
 	
 	if player_trace.is_colliding():
+		target_position = target.global_position
 		animation_player.play("attack_" + direction)
 		
 func _execute_attack():
 	#execute attack during animation
 	shooter.projectile_config = PROJECTILE_CONFIG
 	print_debug(target.global_position)
-	shooter.shoot(direction, 1, 1, target.global_position)
+	shooter.shoot(direction, 1, 1, target_position)
 
 func _on_tracking_timer_timeout() -> void:
 	follow_player()

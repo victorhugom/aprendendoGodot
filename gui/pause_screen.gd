@@ -7,10 +7,6 @@ func _ready() -> void:
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _input(event):
 	if event.is_action_released("ui_pause"):
 		get_tree().paused = false
