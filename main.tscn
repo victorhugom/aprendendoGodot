@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/bluevegetation2.tscn" id="7_bo32h"]
 [ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="7_xfhto"]
 [ext_resource type="AudioStream" uid="uid://d0bh7ti3dry6j" path="res://assets/sounds/music1.mp3" id="8_apfpx"]
-[ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="9_tprk0"]
+[ext_resource type="PackedScene" uid="uid://dt8la4mvryehu" path="res://props/postlight.tscn" id="9_tprk0"]
 [ext_resource type="PackedScene" uid="uid://tmkv1nrroxoi" path="res://props/candle1.tscn" id="10_0mja2"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://npc/enemy.tscn" id="10_hunqv"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="10_llmax"]
@@ -580,71 +580,10 @@ position = Vector2(4000, 3621)
 
 [node name="PostlightContainer" type="Node" parent="."]
 
-[node name="Postlight" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(856, 647)
-
-[node name="Postlight2" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(1120, 928)
-scale = Vector2(-1, 1)
-
-[node name="Postlight3" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(1727, 917)
-
-[node name="Postlight5" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(2173, 1268)
-
-[node name="Postlight6" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3459, 1473)
-rotation = -3.14159
-scale = Vector2(1, -1)
-
-[node name="Postlight7" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3941, 1020)
-
-[node name="Postlight8" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3427, 2620)
-
-[node name="Postlight9" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(4412, 3334)
-
-[node name="Postlight10" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3812, 3221)
-
-[node name="Postlight11" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3834, 3667)
-
-[node name="Postlight12" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(4480, 3644)
-
-[node name="Postlight13" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3423, 3389)
-
-[node name="Postlight14" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3650, 3838)
-
-[node name="Postlight15" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(4086, 3143)
-
-[node name="Postlight16" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3464, 3126)
-scale = Vector2(-1, 1)
-
-[node name="Postlight4" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(1492, 1878)
-
-[node name="Postlight17" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(2703, 1252)
-
-[node name="Postlight18" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3078, 1260)
-
-[node name="Postlight19" parent="PostlightContainer" instance=ExtResource("9_tprk0")]
-position = Vector2(3429, 2088)
-
 [node name="EnemiesContainer" type="Node" parent="."]
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("2_ugr7h")]
-position = Vector2(2741, 482)
+position = Vector2(3840, 1016)
 ground_map_tile = NodePath("../Floor")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
@@ -664,4 +603,5 @@ position = Vector2(1209, 2476)
 scale = Vector2(1.64, 1.64)
 texture = ExtResource("13_p5axc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PostLamp" parent="." instance=ExtResource("9_tprk0")]
+position = Vector2(3928, 1064)
