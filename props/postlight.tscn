@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt8la4mvryehu"]
+[gd_scene load_steps=9 format=3 uid="uid://da85vjj26ttqb"]
 
 [ext_resource type="Texture2D" uid="uid://cj706nik2xul7" path="res://assets/props/postlight-Sheet.png" id="1_alvaa"]
 [ext_resource type="Script" path="res://props/postlight.gd" id="1_ut7y2"]
@@ -37,9 +37,9 @@ animations = [{
 size = Vector2(10, 10)
 
 [node name="PostLamp" type="StaticBody2D"]
-z_index = 1
 y_sort_enabled = true
-position = Vector2(3808, 992)
+collision_layer = 4
+collision_mask = 2051
 script = ExtResource("1_ut7y2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,4 +52,5 @@ shape = SubResource("RectangleShape2D_s4up7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(8, -32)
+scale = Vector2(2.16, 2.16)
 texture = ExtResource("3_tk11i")
