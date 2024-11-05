@@ -10,16 +10,16 @@ const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_co
 
 const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://player/cards/cardsConfigs/card_config_transform_sausage.tres")
 const CARD_CONFIG_HEALTH_POTION = preload("res://player/cards/cardsConfigs/card_config_health_potion.tres")
+
 const CARD = preload("res://player/cards/card.tscn")
 
 @onready var card_container: HBoxContainer = $CenterContainer/CardContainer
 
 var cards: Array[Card]
+var card_deck: Array[CardInDeck]
 var card_selected: Card
 var base_card = CARD_CONFIG_BASIC_SHOOT
 var previous_card = CARD_CONFIG_BASIC_SHOOT
-
-var card_deck: Array[CardInDeck]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -68,7 +68,7 @@ func destroy_card(card: Card):
 	
 func draw_cards(amount_to_draw: int = 1) -> bool:
 	
-	if cards.size() >= 3:
+	if cards.size() >= 3 || card_deck.size() == 0:
 		return false
 		#TODO: message, cannot draw cards
 	
@@ -99,7 +99,7 @@ func draw_cards(amount_to_draw: int = 1) -> bool:
 	return true
 
 func select_card(card_number:int):
-	
+
 	if card_number <= cards.size():
 		if card_selected:
 			card_selected.in_use = false
@@ -110,7 +110,7 @@ func select_card(card_number:int):
 		card_selected_changed.emit(card_selected)
 	
 func select_previous_card():
-	pass
+	
 	var previous_card_idx = cards.find(previous_card)
 	select_card(previous_card_idx + 1)
 	

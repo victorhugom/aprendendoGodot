@@ -14,7 +14,7 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 @onready var follow_camera: FollowCamera = $FollowCamera
 
 @export var ground_map_tile: TileMapLayer
-@export var max_health = 3
+@export var max_health = 9
 
 @export var speed = 32 * 5
 @export var dash_speed = 32 * 10
@@ -58,8 +58,10 @@ func _ready() -> void:
 	
 	#health setup
 	health.health_empty.connect(_on_health_empty)
-	hurt_box.damaged.connect(_on_hit)
+	health.max_health = max_health
+	health.current_health = max_health
 	Hud.health_bar.health = health
+	hurt_box.damaged.connect(_on_hit)
 	
 	#deck builder setup
 	deck_builder = DECK_BUILDER.instantiate()
@@ -238,7 +240,6 @@ func transform(_transformation_card = CardConfig) -> void:
 	transformation = SAUSAGE_MONSTER.instantiate()
 	transformation.position = global_position
 	transformation.ground_map_tile = ground_map_tile
-	transformation.max_health = 5
 
 	#transform from last transformation to new
 	animation_player.play("transform")

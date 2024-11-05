@@ -15,8 +15,8 @@ func _process(_delta: float) -> void:
 func set_texture(texture: Texture2D):
 	heart_texture = texture
 	
-func update(full: bool):
+func update(full: bool, amount = 0):
 	if full:
 		sprite.frame = 3
 	else:
-		sprite.frame = 0
+		sprite.frame = amount

@@ -583,7 +583,7 @@ position = Vector2(4000, 3621)
 [node name="EnemiesContainer" type="Node" parent="."]
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("2_ugr7h")]
-position = Vector2(3840, 1016)
+position = Vector2(3408, 624)
 ground_map_tile = NodePath("../Floor")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_hunqv")]
