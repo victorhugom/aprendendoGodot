@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://nav_filter.gd" id="2_ghngq"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="3_4e3ww"]
 
-[node name="PlaygroundMap" type="Node2D"]
+[node name="PlaygroundMapVictor" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.410648, 0.799932, 0.833323, 1)
