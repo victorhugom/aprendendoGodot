@@ -68,13 +68,16 @@ func destroy_card(card: Card):
 	
 func draw_cards(amount_to_draw: int = 1) -> bool:
 	
-	if cards.size() >= 3 || card_deck.size() == 0:
+	if cards.size() >= 3:
 		return false
 		#TODO: message, cannot draw cards
 	
 	if cards.size() == 0:
 		create_and_add_card(base_card)
 		select_card(1)
+		
+	if card_deck.size() == 0:
+		return false
 	
 	if card_deck.size() > 0:
 		for i in range(0, amount_to_draw):

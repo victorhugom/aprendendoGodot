@@ -10,7 +10,7 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 @onready var hurt_box: HurtBox  = $HurtBox
 @onready var shooter: Shooter = $Shooter
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var animation_player_blink: AnimationPlayer = $AnimationPlayerBlink
+@onready var animation_player_take_hit: AnimationPlayer = $AnimationPlayerTakeHit
 @onready var follow_camera: FollowCamera = $FollowCamera
 
 @export var ground_map_tile: TileMapLayer
@@ -98,7 +98,7 @@ func _input(event):
 	if is_dying: return
 	
 	if event.is_action_pressed("ui_attack"):
-		attack()
+		prepare_attack()
 	if event.is_action_pressed("ui_dash"):
 		dash()
 	if event.is_action_pressed("ui_draw_cards"):
@@ -143,12 +143,16 @@ func update_animation():
 		else:
 			animation_player.play(animation_type + direction)
 	
-func attack() -> void:
+
+func prepare_attack() -> void:
 	
 	if is_atatcking: return
 	is_atatcking = true
 	
 	animation_player.play("attack_" + last_anim_direction)
+
+func attack() -> void:
+	
 	card_hand.use_selected_card()
 
 	shooter.projectile_config = projectile_config
@@ -175,7 +179,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_hit():
 	if is_dying: return
 	is_being_hit = true
-	animation_player_blink.play("hit_" + last_anim_direction)
+	animation_player_take_hit.play("hit_" + last_anim_direction)
 	
 func _on_health_empty():
 	is_dying = true
