@@ -20,6 +20,8 @@ var target_position: Vector2
 
 func _ready() -> void:
 	health.health_empty.connect(_on_health_empty)
+	
+	hurt_box.health = health
 	hurt_box.damaged.connect(_on_damaged)
 	hurt_box.can_be_hurt = true
 	
@@ -93,10 +95,11 @@ func update_target():
 	
 func _on_damaged() -> void:
 	if is_dying: return
-	animation_player.play("hit")
+	animation_player.play("hit_" + direction)
 
 func _on_health_empty():
 	is_dying = true
+	
 	attack_timer.stop()
 	animation_player.play("death")
 
@@ -111,9 +114,5 @@ func _on_attack_timer_timeout() -> void:
 	target_position = target.global_position
 	animation_player.play("attack_" + direction)
 		
-func _execute_attack():
-	#execute attack during animation
-	print_debug(target.global_position)
-
 func _on_tracking_timer_timeout() -> void:
 	follow_player()
