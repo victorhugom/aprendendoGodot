@@ -1,5 +1,7 @@
 class_name LoadingScreen extends CanvasLayer
 
+const LOADING_SCREEN = preload("res://gui/loadingScreen.tscn")
+
 @onready var loading_sprite: AnimatedSprite2D = $CenterContainer/LoadingSprite
 
 var loading_status : int
@@ -12,11 +14,11 @@ func _ready() -> void:
 	var parent_size = loading_sprite.get_parent().get_rect().size 
 	loading_sprite.position = parent_size / 2 - Vector2(128,128)
 	
-	ResourceLoader.load_threaded_request(Globals.next_screen)
+	ResourceLoader.load_threaded_request(Globals.next_scence_path)
 	
 func _process(_delta: float) -> void:
 	# Update the status:
-	loading_status = ResourceLoader.load_threaded_get_status(Globals.next_screen, progress)
+	loading_status = ResourceLoader.load_threaded_get_status(Globals.next_scence_path, progress)
 	
 	# Check the loading status:
 	match loading_status:
@@ -26,7 +28,8 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			# When done loading, change to the target scene:
 			print_debug("%s: %s loaded scene in bkg" %[Time.get_time_string_from_system(), progress[0] * 100])
-			get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(Globals.next_screen))
+			var next_screen_packed = ResourceLoader.load_threaded_get(Globals.next_scence_path)
+			get_tree().change_scene_to_packed(next_screen_packed)
 			print_debug("%s: changed to scene" %Time.get_time_string_from_system())
 			
 		ResourceLoader.THREAD_LOAD_FAILED:
