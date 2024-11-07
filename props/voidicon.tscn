@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://brihouxjitc0b"]
+
+[ext_resource type="Script" path="res://props/voidicon_sheet.gd" id="1_16aj4"]
+[ext_resource type="Texture2D" uid="uid://bw5v3ao51kmyi" path="res://assets/props/voidicon-Sheet.png" id="2_qib43"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isedw"]
+atlas = ExtResource("2_qib43")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w35gt"]
+atlas = ExtResource("2_qib43")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ocf"]
+atlas = ExtResource("2_qib43")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2d5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isedw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w35gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ocf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Voidicon" type="Node2D"]
+script = ExtResource("1_16aj4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_q2d5m")
+frame = 1
+frame_progress = 0.783171

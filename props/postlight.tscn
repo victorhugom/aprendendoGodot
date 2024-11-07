@@ -37,7 +37,9 @@ animations = [{
 size = Vector2(10, 10)
 
 [node name="PostLamp" type="StaticBody2D"]
+z_index = 1
 y_sort_enabled = true
+texture_filter = 3
 collision_layer = 4
 collision_mask = 2051
 script = ExtResource("1_ut7y2")
@@ -47,6 +49,7 @@ sprite_frames = SubResource("SpriteFrames_4j8ss")
 offset = Vector2(10, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-13, 3)
 shape = SubResource("RectangleShape2D_s4up7")
 
