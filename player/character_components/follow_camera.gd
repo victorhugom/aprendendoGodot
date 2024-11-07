@@ -14,4 +14,3 @@ func set_camera_limit():
 	
 	camera.limit_right = worldMapInPixels.x
 	camera.limit_bottom = worldMapInPixels.y
-	

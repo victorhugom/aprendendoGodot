@@ -1,13 +1,10 @@
-class_name Enemy extends CharacterBody2D
+class_name EnemyTriEye extends CharacterBody2D
 
-const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy_eye_projectile.tres")
-
+@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var eye: Sprite2D = $Eye
-@onready var player_trace: ShapeCast2D = $PlayerTrace
+
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
 @onready var attack_timer: Timer = $AttackTimer
-@onready var shooter: Shooter = $Shooter
 
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health: Health = $Health
@@ -20,50 +17,54 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 var is_dying = false
 var direction = "left"
 var target_position: Vector2
-var is_seeing_player = false
 
 func _ready() -> void:
 	health.health_empty.connect(_on_health_empty)
 	hurt_box.damaged.connect(_on_damaged)
 	hurt_box.can_be_hurt = true
+	
+	tracking_timer.connect("timeout", _on_tracking_timer_timeout)
+	attack_timer.connect("timeout", _on_attack_timer_timeout)
 	add_to_group("enemies")
 	
-func _physics_process(_delta: float) -> void:
+func can_update_char():
+	
+	if target == null: 
+		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
-		return
+		return false
 		
-	if global_position.distance_to(target.global_position) > 400:
-		return
+	return true
+
+func _physics_process(_delta: float) -> void:
 	
-	is_seeing_player = player_trace.is_colliding()
+	if can_update_char() == false:
+		return
 	
 	var animation_type = "walk_"
 	
-	if is_seeing_player == false: #only moves if not seeing player
+	if global_position.distance_to(target.global_position) > 16:
+		
+		if attack_timer.is_stopped() == false: attack_timer.stop()
+		
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		var current_position = global_position
 		velocity = current_position.direction_to(next_path_position) * speed
 		move_and_slide()
-		
-		var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
-		if abs(angle) < 0.25 * PI:
-			direction = "right"
-			player_trace.target_position = Vector2(0,300)
-			player_trace.rotation_degrees = -90
-		elif abs(angle) > 0.75 * PI:
-			direction = "left"
-			player_trace.target_position = Vector2(0,-300)
-			player_trace.rotation_degrees = -90
-		elif angle > 0.0:
-			direction = "down"
-			player_trace.target_position = Vector2(0,300)
-			player_trace.rotation_degrees = 0
-		else:
-			direction = "up"
-			player_trace.target_position = Vector2(0,-300)
-			player_trace.rotation_degrees = 0
-			
+	else:
+		if attack_timer.is_stopped(): attack_timer.start()
+		velocity = Vector2(0,0)
+	
+	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+	if abs(angle) < 0.25 * PI:
+		direction = "right"
+	elif abs(angle) > 0.75 * PI:
+		direction = "left"
+	#elif angle > 0.0:
+		#direction = "down"
+	#else:
+		#direction = "up"
 
 	if velocity.length() > 0:
 		animation_type = "walk_"
@@ -74,7 +75,18 @@ func _physics_process(_delta: float) -> void:
 	
 		
 func follow_player() -> void:
-	navigation_agent_2d.target_position = target.global_position
+	#navigation_agent_2d.target_position = target.global_position
+	
+	var direction_to_player = target.global_position - global_position 
+	var horizontal_target_pos = global_position 
+	var side_offset = 16 # Distance to the left or right of the player
+	if direction_to_player.x > 0: 
+		# Move to the left side of the player 
+		horizontal_target_pos = target.global_position - Vector2(side_offset, 0) 
+	else: # Move to the right side of the player 
+		horizontal_target_pos = target.global_position + Vector2(side_offset, 0) 
+		
+	navigation_agent_2d.set_target_position(horizontal_target_pos)
 
 func update_target():
 	target = Globals.player
@@ -96,15 +108,12 @@ func _on_attack_timer_timeout() -> void:
 	
 	if is_dying: return
 	
-	if player_trace.is_colliding():
-		target_position = target.global_position
-		animation_player.play("attack_" + direction)
+	target_position = target.global_position
+	animation_player.play("attack_" + direction)
 		
 func _execute_attack():
 	#execute attack during animation
-	shooter.projectile_config = PROJECTILE_CONFIG
 	print_debug(target.global_position)
-	shooter.shoot(direction, 1, 1, target_position)
 
 func _on_tracking_timer_timeout() -> void:
 	follow_player()

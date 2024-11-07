@@ -70,6 +70,7 @@ func _ready() -> void:
 	add_child(deck_builder)
 	
 	Globals.player = self
+	get_tree().call_group("enemies", "update_target")
 
 func _physics_process(_delta: float) -> void:
 
