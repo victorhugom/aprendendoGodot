@@ -41,6 +41,7 @@ animations = [{
 }]
 
 [node name="Bluegrass" type="Node2D"]
+z_index = 1
 texture_filter = 3
 script = ExtResource("1_mr8ka")
 

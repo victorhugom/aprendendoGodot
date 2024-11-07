@@ -58,6 +58,7 @@ animations = [{
 }]
 
 [node name="Chandelier" type="Node2D"]
+z_index = 1
 texture_filter = 3
 script = ExtResource("1_i3syb")
 
