@@ -1,4 +1,0 @@
-class_name CardDataTransformation extends CardDataInterface
-
-@export var TransformationEnum: Enums.TransformationsENUM
-@export var TransformationConfig: PlayerTransformationConfig

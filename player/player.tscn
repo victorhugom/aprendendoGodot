@@ -887,7 +887,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
 y_sort_enabled = true
 texture_filter = 3
 collision_mask = 2078
@@ -899,19 +898,17 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
 texture = ExtResource("2_61y8n")
-offset = Vector2(0, -18)
+offset = Vector2(0, -24)
 hframes = 10
 vframes = 22
 frame = 180
 region_rect = Rect2(241, 254, 29, 35)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("15_yjxdr")]
-position = Vector2(0, 10)
+position = Vector2(0, 3)
 collision_layer = 32
 collision_mask = 1536
 health = NodePath("../Health")
@@ -922,8 +919,7 @@ position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_w1ujr")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("14_acclv")]
-visible = false
-position = Vector2(0, 16)
+position = Vector2(0, 9)
 collision_layer = 64
 collision_mask = 256
 left_marker = NodePath("LeftMarker2D")
@@ -944,7 +940,7 @@ position = Vector2(1, -50)
 position = Vector2(1, -3)
 
 [node name="Health" parent="." instance=ExtResource("16_v5ako")]
-position = Vector2(0, 16)
+position = Vector2(0, 9)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

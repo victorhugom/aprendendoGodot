@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardConfig" load_steps=5 format=3 uid="uid://ckepdh1e8pjfs"]
+
+[ext_resource type="Resource" path="res://player/player_transformation_sausage.tres" id="1_co2sf"]
+[ext_resource type="Script" path="res://cards/configs/definitions/card_data_transformation.gd" id="2_748py"]
+[ext_resource type="Script" path="res://cards/configs/definitions/card_config.gd" id="3_h1i0k"]
+
+[sub_resource type="Resource" id="Resource_yuuid"]
+script = ExtResource("2_748py")
+transformationEnum = 1
+transformationConfig = ExtResource("1_co2sf")
+
+[resource]
+script = ExtResource("3_h1i0k")
+Name = "Sausicha"
+MaxCardUsage = 1
+CardType = 2
+CardData = SubResource("Resource_yuuid")

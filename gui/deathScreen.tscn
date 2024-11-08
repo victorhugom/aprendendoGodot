@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3lmiy5wrk7p7"]
 
-[ext_resource type="Shader" path="res://main.gdshader" id="1_i7o8t"]
+[ext_resource type="Shader" path="res://utils/shader/crt.gdshader" id="1_i7o8t"]
 [ext_resource type="Script" path="res://gui/death_screen.gd" id="1_vh0bd"]
 [ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_xyk7t"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_4rno3"]

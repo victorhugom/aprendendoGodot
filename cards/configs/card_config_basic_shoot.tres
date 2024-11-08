@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardConfig" load_steps=5 format=3 uid="uid://ckh2gytu3quek"]
+
+[ext_resource type="Resource" uid="uid://dco0xkbrahs5v" path="res://player/projectile/playerProjectile/basic_projectile.tres" id="1_i8hth"]
+[ext_resource type="Script" path="res://cards/configs/definitions/card_config.gd" id="1_u00u8"]
+[ext_resource type="Script" path="res://cards/configs/definitions/card_data_projectile.gd" id="2_n8q2u"]
+
+[sub_resource type="Resource" id="Resource_pvxat"]
+script = ExtResource("2_n8q2u")
+DPS = 1
+projectile_config = ExtResource("1_i8hth")
+
+[resource]
+script = ExtResource("1_u00u8")
+Name = "Tiro Básico"
+MaxCardUsage = 9999999
+CardType = 0
+CardData = SubResource("Resource_pvxat")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sauchicha Alpha Concept"
-run/main_scene="res://gui/landingScreen.tscn"
+run/main_scene="res://gui/landing.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://assets/spalshScreen.png"
 boot_splash/fullsize=false
@@ -24,7 +24,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 [autoload]
 
 Globals="*res://globals.gd"
-Helper="*res://helper.gd"
+Helper="*res://utils/shader/helper.gd"
 InteractionCall="*res://gui/InteractionCall.tscn"
 Enums="*res://utils/enums.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
@@ -46,10 +46,14 @@ enabled=PackedStringArray("res://addons/shaker/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://levels/": "purple",
-"res://npc/": "blue",
-"res://player/": "teal",
-"res://props/": "pink"
+"res://assets/": "red",
+"res://cards/": "orange",
+"res://enemies/": "blue",
+"res://gui/": "yellow",
+"res://levels/": "green",
+"res://player/": "purple",
+"res://props/": "pink",
+"res://utils/": "gray"
 }
 
 [input]

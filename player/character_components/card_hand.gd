@@ -2,16 +2,16 @@ class_name CardHand extends CanvasLayer
 
 signal card_selected_changed(card: Card)
 
-const CARD_CONFIG_AIR_SHOOT = preload("res://player/cards/cardsConfigs/card_config_air_shoot.tres")
-const CARD_CONFIG_BASIC_SHOOT = preload("res://player/cards/cardsConfigs/card_config_basic_shoot.tres")
-const CARD_CONFIG_EARTH_SHOOT = preload("res://player/cards/cardsConfigs/card_config_earth_shoot.tres")
-const CARD_CONFIG_FIRE_SHOOT = preload("res://player/cards/cardsConfigs/card_config_fire_shoot.tres")
-const CARD_CONFIG_WATER_SHOOT = preload("res://player/cards/cardsConfigs/card_config_water_shoot.tres")
+const CARD_CONFIG_AIR_SHOOT = preload("res://cards/configs/card_config_air_shoot.tres")
+const CARD_CONFIG_BASIC_SHOOT = preload("res://cards/configs/card_config_basic_shoot.tres")
+const CARD_CONFIG_EARTH_SHOOT = preload("res://cards/configs/card_config_earth_shoot.tres")
+const CARD_CONFIG_FIRE_SHOOT = preload("res://cards/configs/card_config_fire_shoot.tres")
+const CARD_CONFIG_WATER_SHOOT = preload("res://cards/configs/card_config_water_shoot.tres")
 
-const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://player/cards/cardsConfigs/card_config_transform_sausage.tres")
-const CARD_CONFIG_HEALTH_POTION = preload("res://player/cards/cardsConfigs/card_config_health_potion.tres")
+const CARD_CONFIG_TRANSFORM_SAUSAGE = preload("res://cards/configs/card_config_transform_sausage.tres")
+const CARD_CONFIG_HEALTH_POTION = preload("res://cards/configs/card_config_health_potion.tres")
 
-const CARD = preload("res://player/cards/card.tscn")
+const CARD = preload("res://cards/card.tscn")
 
 @onready var card_container: HBoxContainer = $CenterContainer/CardContainer
 

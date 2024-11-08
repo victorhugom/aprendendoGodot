@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 const PROJECTILE_BASIC_CONFIG = preload("res://player/projectile/playerProjectile/basic_projectile.tres")
-const DECK_BUILDER = preload("res://player/cards/deckBuilder.tscn")
+const DECK_BUILDER = preload("res://cards/deckBuilder.tscn")
 const CARD_HAND = preload("res://player/character_components/cardHand.tscn")
 const SAUSAGE_MONSTER = preload("res://player/sausage_monster.tscn")
 const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")

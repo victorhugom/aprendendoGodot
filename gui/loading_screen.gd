@@ -1,7 +1,5 @@
 class_name LoadingScreen extends CanvasLayer
 
-const LOADING_SCREEN = preload("res://gui/loadingScreen.tscn")
-
 @onready var loading_sprite: AnimatedSprite2D = $CenterContainer/LoadingSprite
 
 var loading_status : int

@@ -20,7 +20,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-
 func set_max_hearts(value: int = 3, transformation = false):
 	
 	var hearts = get_children()
