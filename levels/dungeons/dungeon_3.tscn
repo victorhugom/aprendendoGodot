@@ -30,8 +30,7 @@ tile_map_data = PackedByteArray("AAAgACgAAAALAAwAAAAgACkAAAALAA4AAAAgACcAAAALAAw
 tile_set = ExtResource("1_myj4c")
 
 [node name="DungeonStart" parent="." instance=ExtResource("3_ociku")]
-position = Vector2(784, 754)
-disabled = true
+position = Vector2(784, 714)
 target_scene_path = "res://levels/main.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

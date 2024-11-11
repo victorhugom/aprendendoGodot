@@ -4,13 +4,12 @@
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="2_rvi8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yofjs"]
-size = Vector2(16, 32)
+size = Vector2(54, 32)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_fwm28")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_yofjs")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

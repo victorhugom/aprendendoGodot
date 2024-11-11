@@ -29,7 +29,7 @@ tile_map_data = PackedByteArray("AAATABkAAAAAAAoAAAATABgAAAAAAAoAAAATABcAAAAAAAo
 tile_set = ExtResource("1_trnk5")
 
 [node name="DungeonStart" parent="." instance=ExtResource("3_8l44u")]
-position = Vector2(1105, 709)
+position = Vector2(1106, 725)
 disabled = true
 target_scene_path = "res://levels/main.tscn"
 

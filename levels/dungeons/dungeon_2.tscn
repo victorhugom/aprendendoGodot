@@ -28,8 +28,7 @@ tile_map_data = PackedByteArray("AAAkAB8AAAADAAwAAAAkAB4AAAAAAAoAAAAkAB0AAAAAAAo
 tile_set = ExtResource("1_ocefl")
 
 [node name="DungeonStart" parent="." instance=ExtResource("3_iaiks")]
-position = Vector2(959, 599)
-disabled = true
+position = Vector2(1044, 577)
 target_scene_path = "res://levels/main.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

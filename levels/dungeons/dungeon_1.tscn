@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=5 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="2_8ai17"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_3865b"]
+[ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="4_narg8"]
 
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
@@ -29,9 +30,65 @@ tile_map_data = PackedByteArray("AAAfAAoAAAACAA4AAAAeABEAAAACAA4AAAAeAAoAAAACAA4
 tile_set = ExtResource("1_bpnn8")
 
 [node name="DungeonStart" parent="." instance=ExtResource("2_8ai17")]
-position = Vector2(1361, 529)
-disabled = true
+position = Vector2(1263, 553)
 target_scene_path = "res://levels/main.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.173307, 0.283621, 0.393027, 1)
+color = Color(0.233176, 0.271143, 0.372912, 1)
+
+[node name="Chandelier" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1199, 440)
+
+[node name="Chandelier3" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1318, 953)
+
+[node name="Chandelier4" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1274, 1078)
+
+[node name="Chandelier5" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1511, 1092)
+
+[node name="Chandelier6" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1382, 631)
+
+[node name="Chandelier7" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1085, 954)
+
+[node name="Chandelier8" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(891, 1019)
+
+[node name="Chandelier9" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1127, 1201)
+
+[node name="Chandelier10" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(738, 1080)
+
+[node name="Chandelier11" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(817, 1333)
+
+[node name="Chandelier12" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1011, 1273)
+
+[node name="Chandelier13" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1400, 1334)
+
+[node name="Chandelier14" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(748, 825)
+
+[node name="Chandelier15" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(871, 985)
+
+[node name="Chandelier16" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(634, 918)
+
+[node name="Chandelier17" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(706, 344)
+
+[node name="Chandelier18" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(970, 341)
+
+[node name="Chandelier19" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1030, 497)
+
+[node name="Chandelier2" parent="." instance=ExtResource("4_narg8")]
+position = Vector2(1318, 441)
