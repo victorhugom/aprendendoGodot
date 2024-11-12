@@ -44,9 +44,19 @@ func _physics_process(_delta: float) -> void:
 	if can_update_char() == false:
 		return
 	
-	var animation_type = "walk_"
-	
-	if global_position.distance_to(target.global_position) > 16:
+	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+	if velocity.length() > 0:
+		if abs(angle) < 0.25 * PI:
+			direction = "right"
+		elif abs(angle) > 0.75 * PI:
+			direction = "left"
+		#elif angle > 0.0:
+			#direction = "down"
+		#else:
+			#direction = "up"
+		
+	if global_position.distance_to(target.global_position) > 24:
+		#too far from player, keep walking
 		
 		if attack_timer.is_stopped() == false: attack_timer.stop()
 		
@@ -55,33 +65,24 @@ func _physics_process(_delta: float) -> void:
 		velocity = current_position.direction_to(next_path_position) * speed
 		move_and_slide()
 	else:
-		if attack_timer.is_stopped(): attack_timer.start()
+		#close enough to attack
+		_on_attack_timer_timeout() #run first attack as soon is close
 		velocity = Vector2(0,0)
-	
-	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
-	if abs(angle) < 0.25 * PI:
-		direction = "right"
-	elif abs(angle) > 0.75 * PI:
-		direction = "left"
-	#elif angle > 0.0:
-		#direction = "down"
-	#else:
-		#direction = "up"
-
-	if velocity.length() > 0:
-		animation_type = "walk_"
-	else: #walking
+		if attack_timer.is_stopped(): 
+			attack_timer.start()
+		
+	var animation_type = "walk_"
+	if velocity.length() <= 0:
 		animation_type = "idle_"
 
 	animation_player.play(animation_type +  direction)
 	
 		
 func follow_player() -> void:
-	#navigation_agent_2d.target_position = target.global_position
 	
 	var direction_to_player = target.global_position - global_position 
 	var horizontal_target_pos = global_position 
-	var side_offset = 16 # Distance to the left or right of the player
+	var side_offset = 24 # Distance to the left or right of the player
 	if direction_to_player.x > 0: 
 		# Move to the left side of the player 
 		horizontal_target_pos = target.global_position - Vector2(side_offset, 0) 

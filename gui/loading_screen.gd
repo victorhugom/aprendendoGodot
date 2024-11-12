@@ -13,8 +13,8 @@ func _ready() -> void:
 	loading_sprite.position = parent_size / 2 - Vector2(128,128)
 	
 	ResourceLoader.load_threaded_request(Globals.next_scence_path)
-	
-func _process(_delta: float) -> void:
+
+func _process(delta: float) -> void:
 	# Update the status:
 	loading_status = ResourceLoader.load_threaded_get_status(Globals.next_scence_path, progress)
 	
@@ -34,3 +34,5 @@ func _process(_delta: float) -> void:
 			# Well some error happend:
 			print_debug("Error. Could not load Resource")
 			
+func _exit_tree() -> void:
+	print_debug("EEEE")

@@ -30,10 +30,10 @@ func _ready() -> void:
 	create_card_table(cards_owned)
 	opened.emit()
 
-func create_card_table(cards_owned: Array[CardConfig]):
+func create_card_table(cards: Array[CardConfig]):
 	#create card table (all cards that can be selected)
 	
-	for card_config in cards_owned:
+	for card_config in cards:
 		var deck_card = DECK_CARD.instantiate()
 		deck_card.card_config = card_config
 		

@@ -142,3 +142,7 @@ ui_pause={
 2d_physics/layer_12="enemy"
 avoidance/layer_1="npc"
 avoidance/layer_2="obstacle"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=3
