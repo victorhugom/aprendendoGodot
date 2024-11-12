@@ -92,13 +92,17 @@ animations = [{
 }]
 
 [node name="Candle" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 3
 script = ExtResource("5_rx4bh")
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
+z_index = 1
 position = Vector2(-1, -9)
 scale = Vector2(0.353271, 0.353271)
 color = Color(0.429925, 0.309709, 0.0527162, 1)
 range_z_max = 0
+range_item_cull_mask = 3
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("2_c173n")

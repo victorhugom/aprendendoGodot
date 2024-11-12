@@ -95,9 +95,10 @@ void fragment() {
 	//float new_red = (red * sin(TIME));
 	//float new_blue = (blue * cos(TIME));
 	//float new_green = (green * sin(TIME));
-	float red = 0.2 * (sin(TIME * 0.1));
-	float blue = 0.1 ;
-	float green = 0.1 ;
+	
+	float red = 0.2;
+	float green = 0.1;
+	float blue = 0.8;  // Azul forte para destacar tons frios	
 	
 	
 	float rz = flow(p);

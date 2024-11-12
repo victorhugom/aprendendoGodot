@@ -58,13 +58,12 @@ animations = [{
 }]
 
 [node name="Chandelier" type="Node2D"]
-z_index = 1
 texture_filter = 3
 script = ExtResource("1_i3syb")
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
 position = Vector2(0, -8)
-color = Color(0.746147, 0.329536, 2.88785e-07, 1)
+color = Color(0.812891, 0.540435, 0.280769, 1)
 energy = 1.07
 range_z_max = 0
 shadow_enabled = true
