@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=5 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="3_4e3ww"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="4_ofs0r"]
-[ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="5_owsjq"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true
@@ -38,8 +37,4 @@ ground_map_tile = NodePath("../Floor")
 
 [node name="EnemyTriEye" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_ofs0r")]
 position = Vector2(590, 633)
-target = NodePath("../Player")
-
-[node name="EnemyEye" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_owsjq")]
-position = Vector2(633, 631)
 target = NodePath("../Player")
