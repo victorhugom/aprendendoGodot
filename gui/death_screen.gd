@@ -8,7 +8,8 @@ func _ready() -> void:
 
 func _on_restart_button_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	get_tree().change_scene_to_file("res://levels/main.tscn")
-
+	Globals.next_scence_path = "res://levels/main.tscn"
+	get_tree().change_scene_to_packed(Globals.loading_screen)
+	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

@@ -211,9 +211,9 @@ func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
 	
 func create_deck_hand(deck: Array[DeckCardItem]):
 	
-	var saved_game: SavedGame = SavedGame.new()
-	saved_game.deck_cards = deck
-	ResourceSaver.save(saved_game, "res://savegame.tres")
+	var new_saved_game: SavedGame = SavedGame.new()
+	new_saved_game.deck_cards = deck
+	ResourceSaver.save(new_saved_game, "res://savegame.tres")
 	
 	card_hand = CARD_HAND.instantiate()
 	card_hand.deck_cards = deck
