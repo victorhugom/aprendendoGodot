@@ -9,12 +9,6 @@ var current_health: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_health = max_health
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func decrease_health(value: int = 1) -> bool:
 	
@@ -44,4 +38,3 @@ func increase_health(value: int = 1) -> bool:
 	print_debug("Health: Increase Health by %s: current health: %s" % [value, current_health])
 	
 	return true
-	

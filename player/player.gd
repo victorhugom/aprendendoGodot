@@ -14,7 +14,6 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 @onready var follow_camera: FollowCamera = $FollowCamera
 
 @export var ground_map_tile: TileMapLayer
-@export var max_health = 9
 
 @export var speed = 32 * 5
 @export var dash_speed = 32 * 10
@@ -22,28 +21,31 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 @export var dash_duration = 0.35
 @export var dash_cooldown = 1
 
-var transformation: Node2D
-var is_dying = false
-var is_being_hit = false
-
 #region Deck Builder
 var deck_builder: DeckBuilder
 var card_hand: CardHand
-var card_deck: Array[CardConfig]
+var deck_cards: Array[CardConfig]
 #endregion
 
-var projectile_config: ProjectileConfig
+var saved_game = SavedGame
 
+var transformation: Node2D
+
+var is_dying = false
+var is_dashing = false
+var is_being_hit = false
 var is_atatcking = false
 var is_transforming = false
+
 var last_anim_direction = "down"
 var move_direction_vector = Vector2(0,0)
 
-var is_dashing = false
 var dash_timer = 0.0
 var dash_cooldown_timer = 0.0
 
 func _ready() -> void:
+	
+	load_game()
 	
 	shooter.projectile_config = PROJECTILE_BASIC_CONFIG
 	
@@ -58,16 +60,18 @@ func _ready() -> void:
 	
 	#health setup
 	health.health_empty.connect(_on_health_empty)
-	health.max_health = max_health
-	health.current_health = max_health
+	health.max_health = (saved_game as SavedGame).max_health
 	Hud.health_bar.health = health
 	hurt_box.damaged.connect(_on_hit)
 	
 	#deck builder setup
 	deck_builder = DECK_BUILDER.instantiate()
+	deck_builder.cards_owned = (saved_game as SavedGame).cards_owned
+	deck_builder.deck_cards = (saved_game as SavedGame).deck_cards
 	deck_builder.closed.connect(_on_deck_builder_closed)
 	deck_builder.opened.connect(_on_deck_builder_opened)
 	add_child(deck_builder)
+	deck_builder.update_deck()
 	
 	Globals.player = self
 	get_tree().call_group("enemies", "update_target")
@@ -144,7 +148,6 @@ func update_animation():
 		else:
 			animation_player.play(animation_type + direction)
 	
-
 func prepare_attack() -> void:
 	
 	if is_atatcking: return
@@ -155,8 +158,6 @@ func prepare_attack() -> void:
 func attack() -> void:
 	
 	card_hand.use_selected_card()
-
-	shooter.projectile_config = projectile_config
 	shooter.shoot(last_anim_direction, (card_hand.card_selected.card_config.CardData as CardDataProjectile).DPS)
 	
 func dash():
@@ -200,29 +201,31 @@ func _on_deck_builder_opened() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
-func _on_deck_builder_closed(deck: Array[CardInDeck]) -> void:
+func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	remove_child(deck_builder)
 	deck_builder.queue_free()
-	
-	for card:CardInDeck in deck:
-		card.get_parent().remove_child(card)
-	
+		
 	create_deck_hand(deck)
 	
-func create_deck_hand(deck: Array[CardInDeck]):
-	card_hand = CARD_HAND.instantiate()
-	card_hand.card_deck = deck
-	card_hand.card_selected_changed.connect(_on_card_selected_changed)
+func create_deck_hand(deck: Array[DeckCardItem]):
 	
+	var saved_game: SavedGame = SavedGame.new()
+	saved_game.deck_cards = deck
+	ResourceSaver.save(saved_game, "res://savegame.tres")
+	
+	card_hand = CARD_HAND.instantiate()
+	card_hand.deck_cards = deck
+	card_hand.card_selected_changed.connect(_on_card_selected_changed)
+
 	add_child(card_hand)
 	card_hand.draw_cards(2)
 	
 func _on_card_selected_changed(card_selected: Card):
 	
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Projectile:
-		projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
+		shooter.projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
 		card_hand.use_selected_card()
 		transform(card_selected.card_config)
@@ -249,3 +252,6 @@ func transform(_transformation_card = CardConfig) -> void:
 	#transform from last transformation to new
 	animation_player.play("transform")
 	last_anim_direction = "down"
+
+func load_game():
+	saved_game = load("res://savegame.tres") as SavedGame

@@ -24,7 +24,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 [autoload]
 
 Globals="*res://globals.gd"
-Helper="*res://utils/shader/helper.gd"
+Helper="*res://utils/helper.gd"
 InteractionCall="*res://gui/InteractionCall.tscn"
 Enums="*res://utils/enums.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"

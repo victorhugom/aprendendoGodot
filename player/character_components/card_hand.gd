@@ -16,19 +16,11 @@ const CARD = preload("res://cards/card.tscn")
 @onready var card_container: HBoxContainer = $CenterContainer/CardContainer
 
 var cards: Array[Card]
-var card_deck: Array[CardInDeck]
+var deck_cards: Array[DeckCardItem]
 var card_selected: Card
 var base_card = CARD_CONFIG_BASIC_SHOOT
 var previous_card = CARD_CONFIG_BASIC_SHOOT
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-	
 func create_and_add_card(card_config: CardConfig) -> void:
 	var card = CARD.instantiate()
 	card.card_config = card_config
@@ -39,11 +31,6 @@ func create_and_add_card(card_config: CardConfig) -> void:
 func update_shortcut_ids():
 	for idx in range(0, cards.size()):
 		cards[idx].shortcut_id = idx + 1
-	
-func add_card(new_card: Card, current_player: Player):
-	new_card.player = current_player
-	add_child(new_card)
-	cards.append(new_card)
 	
 func remove_card(card: Card):
 	card.destroy_card()
@@ -69,31 +56,33 @@ func destroy_card(card: Card):
 func draw_cards(amount_to_draw: int = 1) -> bool:
 	
 	if cards.size() >= 3:
+		#has too many cards in hand, cannot draw cards
 		return false
-		#TODO: message, cannot draw cards
 	
 	if cards.size() == 0:
+		#has no card in hand, create base card
 		create_and_add_card(base_card)
 		select_card(1)
 		
-	if card_deck.size() == 0:
+	if deck_cards.size() == 0:
+		#has no card in hand, cannot draw cards
 		return false
 	
-	if card_deck.size() > 0:
+	if deck_cards.size() > 0:
 		for i in range(0, amount_to_draw):
 			
-			if card_deck.size() <= 0:
+			if deck_cards.size() <= 0:
 				return false
 			
-			var card_index = randi_range(0, card_deck.size() - 1)
-			var card_in_deck = (card_deck[card_index] as CardInDeck)
-			var card_config = card_in_deck.card.card_config
+			var card_index = randi_range(0, deck_cards.size() - 1) #pick a random cards
+			var card_in_deck = (deck_cards[card_index] as DeckCardItem)
+			var card_config = card_in_deck.card_config
 			
 			card_in_deck.quantity -= 1
-			if card_in_deck.quantity == 0:
-				card_deck.remove_at(card_index)
+			if card_in_deck.quantity == 0: #remove this card if it's the last one
+				deck_cards.remove_at(card_index)
 			
-			create_and_add_card(card_config)
+			create_and_add_card(card_config) #create card and add to hand
 	
 	if card_selected == null && cards.size() != 0:
 		select_card(1)

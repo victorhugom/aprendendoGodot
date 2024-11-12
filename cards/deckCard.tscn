@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwadoh18xwd0n"]
 
-[ext_resource type="Script" path="res://cards/card_in_deck.gd" id="1_6pf4k"]
+[ext_resource type="Script" path="res://cards/deck_card.gd" id="1_6pf4k"]
 
-[node name="CardInDeck" type="Button"]
+[node name="DeckCard" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(85, 128)
 anchors_preset = -1
@@ -17,3 +17,8 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 85.0
 offset_bottom = 128.0
+
+[node name="QuantityLabel" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1"

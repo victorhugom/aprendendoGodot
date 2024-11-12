@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://cards/card.gd" id="1_o1hy8"]
-[ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/cardsConfigs/card_config_air_shoot.tres" id="2_b41ao"]
+[ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="2_b41ao"]
 [ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
 [ext_resource type="Texture2D" uid="uid://bvo81bkdj8263" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q.png" id="5_x5dgr"]
