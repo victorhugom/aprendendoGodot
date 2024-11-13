@@ -153,13 +153,24 @@ func destroy_card() -> void:
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	pass
-		
+	
 func set_dissolve_percent(percentage: float) -> void:
 	
-	if card_background_sprite.material == null:
+	if card_background_sprite.material != BURN_DISSOLVED_MATERIAL:
 		card_background_sprite.material = BURN_DISSOLVED_MATERIAL
 		card_icons_container.material = BURN_DISSOLVED_MATERIAL
 		card_name_label.material = BURN_DISSOLVED_MATERIAL
 		usages_remaining_label.material = BURN_DISSOLVED_MATERIAL
 	
 	card_background_sprite.material.set_shader_parameter('percentage', percentage)
+
+
+func _on_mouse_entered() -> void:
+	card_background_sprite.material = SHINE_MATERIAL
+	card_icons_container.material = SHINE_MATERIAL
+	card_name_label.material = SHINE_MATERIAL
+
+func _on_mouse_exited() -> void:
+	card_background_sprite.material = null
+	card_icons_container.material = null
+	card_name_label.material = null
