@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b05uadrom8blw"]
+[gd_scene load_steps=26 format=3 uid="uid://b05uadrom8blw"]
 
 [ext_resource type="Script" path="res://enemies/enemy_tri_eye.gd" id="1_dnkxr"]
 [ext_resource type="Texture2D" uid="uid://cs1a11vty5ty0" path="res://assets/enemies/melee-Sheet.png" id="1_rbip2"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://coo4qp2kipcyp" path="res://assets/sounds/clap.mp3" id="8_18xgr"]
 [ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="9_0jeor"]
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="10_gl5nr"]
+[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="11_tg382"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbok2"]
 height = 24.0
@@ -527,3 +528,10 @@ script = ExtResource("10_gl5nr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeCollisionBox"]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_ki3i3")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -15)
+scale = Vector2(0.355469, 0.355469)
+color = Color(0.999987, 0.335532, 0.269612, 1)
+energy = 0.5
+texture = ExtResource("11_tg382")
