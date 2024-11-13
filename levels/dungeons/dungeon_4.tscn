@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_615aa"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="3_8l44u"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="4_c1c0s"]
-[ext_resource type="PackedScene" uid="uid://tmkv1nrroxoi" path="res://props/candle.tscn" id="5_e8yod"]
+[ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="5_e8yod"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_71ark"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="7_u4a2u"]
 

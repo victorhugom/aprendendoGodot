@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="3_iaiks"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="4_qeiig"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="5_f7uj7"]
-[ext_resource type="PackedScene" uid="uid://tmkv1nrroxoi" path="res://props/candle.tscn" id="6_573se"]
-[ext_resource type="PackedScene" path="res://props/voidicon.tscn" id="7_2a2r4"]
+[ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="6_573se"]
+[ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="7_2a2r4"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="8_bkm2a"]
 
 [node name="Dungeon2" type="Node2D"]

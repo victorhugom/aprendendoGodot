@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=9 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="2_8ai17"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_3865b"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="4_narg8"]
-[ext_resource type="PackedScene" uid="uid://tmkv1nrroxoi" path="res://props/candle.tscn" id="5_y78n5"]
-[ext_resource type="PackedScene" path="res://props/voidicon.tscn" id="6_syedk"]
+[ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="5_y78n5"]
+[ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="6_syedk"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="7_yq431"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="8_wikqq"]
-[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_1e1ve"]
 
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
@@ -37,6 +36,7 @@ tile_map_data = PackedByteArray("AAAfAAoAAAACAA4AAAAeABEAAAACAA4AAAAeAAoAAAACAA4
 tile_set = ExtResource("1_bpnn8")
 
 [node name="Furniture" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 texture_filter = 3
 tile_map_data = PackedByteArray("AAAfAB4ABAAOAAkAAAAiAB8ABAAMAAkAAAAcACUABAAMAAkAAAAcACMABAARAAoAAAAdAB4ABAASAAwAAAAiAB4ABAASAAwAAAAcAB4ABAARAAsAAAAfACIABAAKAAQAAAA=")
 tile_set = ExtResource("1_bpnn8")
@@ -113,43 +113,40 @@ position = Vector2(1033, 1081)
 [node name="Voidicon" parent="." instance=ExtResource("6_syedk")]
 position = Vector2(1008, 1130)
 
-[node name="Enemy Container" type="Node" parent="."]
+[node name="EnemyContainer" type="Node" parent="."]
 
-[node name="EnemyEye" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(1476, 1077)
 
-[node name="EnemyEye2" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye2" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(1362, 1019)
 
-[node name="EnemyEye3" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye3" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(1314, 1136)
 
-[node name="EnemyEye4" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye4" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(1051, 1217)
 
-[node name="EnemyEye5" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye5" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(912, 1090)
 
-[node name="EnemyEye6" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye6" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(795, 990)
 
-[node name="EnemyEye7" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye7" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(673, 900)
 
-[node name="EnemyEye8" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye8" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(889, 413)
 
-[node name="EnemyEye9" parent="Enemy Container" instance=ExtResource("7_yq431")]
+[node name="EnemyEye9" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(828, 486)
 
-[node name="EnemyTriEye" parent="Enemy Container" instance=ExtResource("8_wikqq")]
+[node name="EnemyTriEye" parent="EnemyContainer" instance=ExtResource("8_wikqq")]
 position = Vector2(915, 477)
 
-[node name="EnemyTriEye2" parent="Enemy Container" instance=ExtResource("8_wikqq")]
+[node name="EnemyTriEye2" parent="EnemyContainer" instance=ExtResource("8_wikqq")]
 position = Vector2(966, 395)
 
-[node name="EnemyTriEye3" parent="Enemy Container" instance=ExtResource("8_wikqq")]
+[node name="EnemyTriEye3" parent="EnemyContainer" instance=ExtResource("8_wikqq")]
 position = Vector2(794, 922)
-
-[node name="Player" parent="." instance=ExtResource("9_1e1ve")]
-position = Vector2(1232, 658)
