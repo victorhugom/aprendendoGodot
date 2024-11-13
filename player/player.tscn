@@ -898,6 +898,7 @@ position = Vector2(0, 16)
 zoom = Vector2(1.5, 1.5)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
+light_mask = 2
 texture = ExtResource("2_61y8n")
 offset = Vector2(0, -24)
 hframes = 10
@@ -905,11 +906,33 @@ vframes = 22
 frame = 180
 region_rect = Rect2(241, 254, 29, 35)
 
+[node name="PointLight2D_World" type="PointLight2D" parent="LittleMage"]
+y_sort_enabled = true
+range_layer_min = -10
+range_layer_max = 10
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("15_m5ob6")
+texture_scale = 0.6
+
+[node name="PointLight2D_Player" type="PointLight2D" parent="LittleMage"]
+light_mask = 0
+energy = 0.8
+range_layer_min = -10
+range_layer_max = 10
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+texture = ExtResource("15_m5ob6")
+texture_scale = 0.6
+height = 100.0
+
 [node name="HitBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("15_yjxdr")]
+visible = false
 position = Vector2(0, 3)
 collision_layer = 32
 collision_mask = 1536
@@ -920,6 +943,7 @@ position = Vector2(-1, -16)
 shape = SubResource("CapsuleShape2D_w1ujr")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("14_acclv")]
+visible = false
 position = Vector2(0, 9)
 collision_layer = 64
 collision_mask = 256
@@ -958,11 +982,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_cdd01")
 }
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-shadow_enabled = true
-texture = ExtResource("15_m5ob6")
-texture_scale = 0.6
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayerTakeHit" to="." method="_on_animation_player_animation_finished"]

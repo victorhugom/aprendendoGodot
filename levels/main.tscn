@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
 [ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="3_a07g3"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="4_b2f0c"]
-[ext_resource type="PackedScene" uid="uid://tmkv1nrroxoi" path="res://props/candle.tscn" id="4_ylwl0"]
+[ext_resource type="PackedScene" path="res://props/candle.tscn" id="4_ylwl0"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="5_n5rof"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_6ry67"]
 [ext_resource type="Texture2D" uid="uid://bjn337n3raevr" path="res://assets/props/cancientdragon.png" id="8_5jpkx"]
@@ -76,7 +76,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("4_b2f0c")]
-position = Vector2(430, 400)
+position = Vector2(434, 403)
 ground_map_tile = NodePath("../Ground")
 
 [node name="CandlesContainer" type="Node2D" parent="."]
@@ -95,87 +95,67 @@ y_sort_enabled = true
 
 [node name="PostLamp" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1310, 1211)
-script = null
 
 [node name="PostLamp3" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1088, 1395)
-script = null
 
 [node name="PostLamp4" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1565, 1118)
-script = null
 
 [node name="PostLamp5" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1614, 925)
-script = null
 
 [node name="PostLamp6" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1961, 1296)
-script = null
 
 [node name="PostLamp7" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(2425, 1297)
-script = null
 
 [node name="PostLamp8" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(2930, 1296)
-script = null
 
 [node name="PostLamp14" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3413, 2093)
-script = null
 
 [node name="PostLamp15" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3442, 2668)
-script = null
 
 [node name="PostLamp16" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3406, 3297)
-script = null
 
 [node name="PostLamp17" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(4124, 3346)
-script = null
 
 [node name="PostLamp18" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3825, 3594)
-script = null
 
 [node name="PostLamp19" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3935, 4025)
-script = null
 
 [node name="PostLamp20" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(4253, 4048)
-script = null
 
 [node name="PostLamp21" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3787, 3124)
-script = null
 
 [node name="PostLamp9" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3382, 1299)
-script = null
 
 [node name="PostLamp10" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1426, 1622)
-script = null
 
 [node name="PostLamp11" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1114, 1806)
-script = null
 
 [node name="PostLamp12" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(1533, 1893)
 rotation = -3.14159
 scale = Vector2(1, -1)
-script = null
 
 [node name="PostLamp13" parent="PostlightContainer" instance=ExtResource("3_a07g3")]
 position = Vector2(3523, 1698)
 rotation = -3.14159
 scale = Vector2(1, -1)
-script = null
 
 [node name="PropsContainer" type="Node2D" parent="."]
 
