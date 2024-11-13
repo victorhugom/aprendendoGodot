@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
 [ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="3_a07g3"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="4_b2f0c"]
-[ext_resource type="PackedScene" path="res://props/candle.tscn" id="4_ylwl0"]
+[ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="4_ylwl0"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="5_n5rof"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_6ry67"]
 [ext_resource type="Texture2D" uid="uid://bjn337n3raevr" path="res://assets/props/cancientdragon.png" id="8_5jpkx"]
@@ -84,11 +84,9 @@ y_sort_enabled = true
 
 [node name="Candle3" parent="CandlesContainer" instance=ExtResource("4_ylwl0")]
 position = Vector2(2906, 2861)
-script = null
 
 [node name="Candle8" parent="CandlesContainer" instance=ExtResource("4_ylwl0")]
 position = Vector2(2737, 436)
-script = null
 
 [node name="PostlightContainer" type="Node2D" parent="."]
 y_sort_enabled = true
