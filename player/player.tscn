@@ -1,9 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=47 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
 [ext_resource type="PackedScene" uid="uid://cqtt62iaedi3k" path="res://player/character_components/followCamera.tscn" id="2_axglg"]
 [ext_resource type="AudioStream" uid="uid://dtfprkct4rf8h" path="res://assets/sounds/magicshoot.mp3" id="3_kwohu"]
+[ext_resource type="Shader" path="res://utils/shader/acceleration.gdshader" id="3_le3c6"]
 [ext_resource type="AudioStream" uid="uid://chmk56e0axfdf" path="res://assets/sounds/dash.mp3" id="4_a7pac"]
 [ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="5_mbxu5"]
 [ext_resource type="AudioStream" uid="uid://bkhv0v1km4ona" path="res://assets/sounds/human-impact-on-ground.wav" id="6_eepaq"]
@@ -15,6 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="15_m5ob6"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="15_yjxdr"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="16_v5ako"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2r6x"]
+shader = ExtResource("3_le3c6")
+shader_parameter/opacity = 1.0
+shader_parameter/r = null
+shader_parameter/g = null
+shader_parameter/b = null
+shader_parameter/mix_color = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
 size = Vector2(13, 10.293)
@@ -899,6 +908,7 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
 light_mask = 2
+material = SubResource("ShaderMaterial_l2r6x")
 texture = ExtResource("2_61y8n")
 offset = Vector2(0, -24)
 hframes = 10
@@ -917,7 +927,7 @@ texture_scale = 0.6
 
 [node name="PointLight2D_Player" type="PointLight2D" parent="LittleMage"]
 light_mask = 0
-energy = 0.8
+energy = 0.5
 range_layer_min = -10
 range_layer_max = 10
 range_item_cull_mask = 2

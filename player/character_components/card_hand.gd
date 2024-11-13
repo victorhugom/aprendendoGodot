@@ -38,6 +38,16 @@ func remove_card(card: Card):
 	
 func destroy_card(card: Card):
 	
+	var tween = get_tree().create_tween()
+	tween.tween_method(card.set_dissolve_percent, 0.0, 1.0, 0.5)
+	
+	var destroy_card_call_back = Callable(execute_destroy_card)
+	destroy_card_call_back.bind(card)
+	tween.tween_callback(destroy_card_call_back).set_delay(.6)
+	
+	
+func execute_destroy_card(card: Card):
+	
 	card.queue_free()
 	
 	#remove from list

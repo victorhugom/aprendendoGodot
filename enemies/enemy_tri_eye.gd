@@ -31,9 +31,6 @@ func _ready() -> void:
 	
 func can_update_char():
 	
-	if target == null: 
-		return false
-	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
 		return false
 		
@@ -41,8 +38,11 @@ func can_update_char():
 
 func _physics_process(_delta: float) -> void:
 	
+	if target == null:
+		target = Globals.player
+	
 	if can_update_char() == false:
-		return
+		return	
 	
 	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
 	if velocity.length() > 0:
@@ -116,4 +116,5 @@ func _on_attack_timer_timeout() -> void:
 	animation_player.play("attack_" + direction)
 		
 func _on_tracking_timer_timeout() -> void:
-	follow_player()
+	if target != null:
+		follow_player()

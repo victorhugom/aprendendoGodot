@@ -175,6 +175,7 @@ position = Vector2(2817, 442)
 position = Vector2(2937, 2830)
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
+process_mode = 4
 y_sort_enabled = true
 
 [node name="Enemy" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_jyplk")]
