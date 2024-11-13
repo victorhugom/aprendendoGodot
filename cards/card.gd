@@ -1,9 +1,9 @@
 class_name Card extends Panel
 
 const PROJECTILE = preload("res://player/projectile.tscn")
+const BURN_DISSOLVED_MATERIAL = preload("res://utils/materials/burn_dissolved_material.tres")
 
 signal destroyed
-
 @onready var card_background_sprite: TextureRect = $PanelContainer/CardBackgroundSprite
 @onready var card_name_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CardNameLabel
 @onready var usages_remaining_label: RichTextLabel = $PanelContainer/CenterContainer/VBoxContainer/CenterContainer/UsagesRemainingLabel
@@ -140,11 +140,19 @@ func create_life_card() -> void:
 	card_icons_container.add_child(card_icon)
 
 func destroy_card() -> void:
-	animation_player.play("destroy")
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_dissolve_percent, 0.0, 1.0, 0.5)
+	
+	await tween.finished
+	destroyed.emit(self)
+	
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "destroy":
-		destroyed.emit(self)
+	pass
 		
 func set_dissolve_percent(percentage: float) -> void:
+	
+	if card_background_sprite.material == null:
+		card_background_sprite.material = BURN_DISSOLVED_MATERIAL
+	
 	card_background_sprite.material.set_shader_parameter('percentage', percentage)
