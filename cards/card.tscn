@@ -58,6 +58,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_au0ah"]
 resource_name = "down"
 length = 0.1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -74,6 +75,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_3ve20"]
 resource_name = "up"
 length = 0.1
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -195,4 +197,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0tbg3")
 }
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

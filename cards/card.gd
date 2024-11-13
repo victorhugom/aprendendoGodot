@@ -2,6 +2,7 @@ class_name Card extends Panel
 
 const PROJECTILE = preload("res://player/projectile.tscn")
 const BURN_DISSOLVED_MATERIAL = preload("res://utils/materials/burn_dissolved_material.tres")
+const SHINE_MATERIAL = preload("res://utils/materials/shine_material.tres")
 
 signal destroyed
 @onready var card_background_sprite: TextureRect = $PanelContainer/CardBackgroundSprite
@@ -48,7 +49,7 @@ var current_usage: int:
 	set(value):
 		current_usage = value
 		
-		if current_usage > 999:
+		if current_usage > 99:
 			usages_remaining_label.text = "#"
 		else:
 	
@@ -70,7 +71,7 @@ var in_use: bool:
 	get:
 		return in_use
 	set(value):
-		if value:
+		if value && card_background_sprite.material != BURN_DISSOLVED_MATERIAL:
 			animation_player.play("up")
 		else:
 			animation_player.play("down")
@@ -114,8 +115,9 @@ func create_projectile_card() -> void:
 		card_icon.size = card_icon_size
 		card_icon.custom_minimum_size = card_icon_size
 		card_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		card_icon.stretch_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		(card_icon as Control).stretch_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		card_icon.texture = card_shoot_icons[card_projectile.projectile_config.element]
+		card_icon.use_parent_material = true
 		card_icons_container.add_child(card_icon)
 
 func create_transformation_card() -> void:
@@ -127,6 +129,7 @@ func create_transformation_card() -> void:
 	var card_icon = TextureRect.new()
 	card_icon.size = Vector2(64, 64)
 	card_icon.texture = transformation_icons[card_transformation.transformationEnum]
+	card_icon.use_parent_material = true
 	card_icons_container.add_child(card_icon)	
 
 func create_life_card() -> void:
@@ -137,22 +140,37 @@ func create_life_card() -> void:
 	var card_icon = TextureRect.new()
 	card_icon.size = Vector2(64, 64)
 	card_icon.texture = HPICON
+	card_icon.use_parent_material = true
 	card_icons_container.add_child(card_icon)
 
 func destroy_card() -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_method(set_dissolve_percent, 0.0, 1.0, 0.5)
+	tween.tween_method(set_dissolve_percent, 1.0, 0, 0.5)
 	
 	await tween.finished
+	card_background_sprite.visible = false
 	destroyed.emit(self)
-	
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	pass
-		
+	
 func set_dissolve_percent(percentage: float) -> void:
 	
-	if card_background_sprite.material == null:
+	if card_background_sprite.material != BURN_DISSOLVED_MATERIAL:
 		card_background_sprite.material = BURN_DISSOLVED_MATERIAL
+		card_icons_container.material = BURN_DISSOLVED_MATERIAL
+		card_name_label.material = BURN_DISSOLVED_MATERIAL
+		usages_remaining_label.material = BURN_DISSOLVED_MATERIAL
 	
 	card_background_sprite.material.set_shader_parameter('percentage', percentage)
+
+
+func _on_mouse_entered() -> void:
+	card_background_sprite.material = SHINE_MATERIAL
+	card_icons_container.material = SHINE_MATERIAL
+	card_name_label.material = SHINE_MATERIAL
+
+func _on_mouse_exited() -> void:
+	card_background_sprite.material = null
+	card_icons_container.material = null
+	card_name_label.material = null
