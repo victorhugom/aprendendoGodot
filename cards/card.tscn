@@ -1,10 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=18 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://cards/card.gd" id="1_o1hy8"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="2_b41ao"]
+[ext_resource type="Shader" path="res://utils/shader/burn_dissolver.gdshader" id="3_n0tbj"]
 [ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
 [ext_resource type="Texture2D" uid="uid://bvo81bkdj8263" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_q.png" id="5_x5dgr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kbouj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_760fb"]
+noise = SubResource("FastNoiseLite_kbouj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s5f23"]
+shader = ExtResource("3_n0tbj")
+shader_parameter/percentage = 1.0
+shader_parameter/burn_texture = SubResource("NoiseTexture2D_760fb")
+shader_parameter/layer_1 = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/size_1 = 0.05
+shader_parameter/layer_2 = Color(1, 0, 0, 1)
+shader_parameter/size_2 = 0.05
+shader_parameter/layer_3 = Color(1, 0.5, 0, 1)
+shader_parameter/size_3 = 0.05
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v640x"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8erwt"]
+noise = SubResource("FastNoiseLite_v640x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4m61"]
+shader = ExtResource("3_n0tbj")
+shader_parameter/percentage = 1.0
+shader_parameter/burn_texture = SubResource("NoiseTexture2D_8erwt")
+shader_parameter/layer_1 = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/size_1 = 0.05
+shader_parameter/layer_2 = Color(1, 0, 0, 1)
+shader_parameter/size_2 = 0.05
+shader_parameter/layer_3 = Color(1, 0.5, 0, 1)
+shader_parameter/size_3 = 0.05
 
 [sub_resource type="Animation" id="Animation_gj107"]
 length = 0.001
@@ -92,6 +125,7 @@ card_config = ExtResource("2_b41ao")
 [node name="PanelContainer" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 3
+material = SubResource("ShaderMaterial_s5f23")
 custom_minimum_size = Vector2(85, 128)
 layout_mode = 1
 offset_right = 85.0
@@ -99,6 +133,7 @@ offset_bottom = 128.0
 mouse_filter = 1
 
 [node name="CardBackgroundSprite" type="TextureRect" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_f4m61")
 layout_mode = 0
 offset_right = 85.0
 offset_bottom = 128.0

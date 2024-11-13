@@ -28,10 +28,20 @@ func _ready() -> void:
 	hurt_box.can_be_hurt = true
 	add_to_group("enemies")
 	
-func _physics_process(_delta: float) -> void:
+func can_update_char():
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
-		return
+		return false
+		
+	return true
+
+func _physics_process(_delta: float) -> void:
+	
+	if target == null:
+		target = Globals.player
+	
+	if can_update_char() == false:
+		return	
 		
 	if global_position.distance_to(target.global_position) > 400:
 		return
@@ -107,4 +117,5 @@ func _execute_attack():
 	shooter.shoot(direction, 1, 1, target_position)
 
 func _on_tracking_timer_timeout() -> void:
-	follow_player()
+	if target != null:
+		follow_player()

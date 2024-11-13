@@ -145,3 +145,6 @@ func destroy_card() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "destroy":
 		destroyed.emit(self)
+		
+func set_dissolve_percent(percentage: float) -> void:
+	card_background_sprite.material.set_shader_parameter('percentage', percentage)

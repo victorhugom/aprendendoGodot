@@ -673,7 +673,7 @@ position = Vector2(480, 2027)
 
 [node name="Dungeon1" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(907, 1521)
-target_scene_path = "res://levels/dungeon_1.tscn"
+target_scene_path = "res://levels/dungeons/dungeon_1.tscn"
 
 [node name="Dungeon2" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(3950, 779)
