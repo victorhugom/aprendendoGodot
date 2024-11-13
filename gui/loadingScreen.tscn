@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://da4rphtoi7ubi"]
 
 [ext_resource type="Script" path="res://gui/loading_screen.gd" id="1_1lcdk"]
+[ext_resource type="Texture2D" uid="uid://po0078wb56m6" path="res://assets/gui/BG.png" id="2_8i3v0"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_w7iu4"]
-[ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_wltgg"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="4_r8lfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_538qd"]
@@ -93,7 +93,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_wltgg")
+texture = ExtResource("2_8i3v0")
 expand_mode = 2
 stretch_mode = 6
 

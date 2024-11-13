@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://smuhytu33fjx"]
+[gd_scene load_steps=4 format=3 uid="uid://smuhytu33fjx"]
 
 [ext_resource type="Script" path="res://gui/interaction_call.gd" id="1_nrqpp"]
 [ext_resource type="Texture2D" uid="uid://bebwhk7dv6tv5" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_e.png" id="2_8uag0"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_qmjru"]
 
 [node name="InteractionCall" type="Control"]
 layout_mode = 3
@@ -44,6 +45,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("3_qmjru")
 text = "Abrir Porta"
 fit_content = true
 scroll_active = false

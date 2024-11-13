@@ -86,7 +86,7 @@ y_sort_enabled = true
 position = Vector2(2906, 2861)
 
 [node name="Candle8" parent="CandlesContainer" instance=ExtResource("4_ylwl0")]
-position = Vector2(2737, 436)
+position = Vector2(2761, 407)
 
 [node name="PostlightContainer" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -164,7 +164,7 @@ scale = Vector2(1.64, 1.64)
 texture = ExtResource("8_5jpkx")
 
 [node name="Voidicon" parent="PropsContainer" instance=ExtResource("9_81cth")]
-position = Vector2(375, 429)
+position = Vector2(2733, 459)
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
