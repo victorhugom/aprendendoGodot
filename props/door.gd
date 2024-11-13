@@ -9,7 +9,7 @@ var near_door = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if target_scene_path == Globals.previous_scence_path:
+	if target_scene_path == Globals.previous_scence_path && Globals.player:
 		get_tree().root.add_child(Globals.player)
 		Globals.player.global_position = marker_2d.global_position
 

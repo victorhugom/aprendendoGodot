@@ -75,11 +75,6 @@ tile_set = ExtResource("1_jbj36")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Walls" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAA+ACQAAAACAA4AAAA9ACQAAAACAA4AAAA8ACQAAAACAA4AAAA7ACQAAAACAA4AAAA6ACQAAAACAA4AAAA5ACQAAAACAA4AAAA4ACQAAAACAA4AAAA3ACQAAAACAA4AAAA=")
-tile_set = ExtResource("1_jbj36")
-
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("3_4e3ww")]
 position = Vector2(1807, 1215)
 ground_map_tile = NodePath("../Ground")

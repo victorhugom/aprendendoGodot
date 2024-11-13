@@ -28,7 +28,10 @@ func _ready() -> void:
 	hurt_box.can_be_hurt = true
 	add_to_group("enemies")
 	
-func can_update_char():
+func can_update_char() -> bool:
+	
+	if target == null:
+		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
 		return false

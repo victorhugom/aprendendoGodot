@@ -29,8 +29,11 @@ func _ready() -> void:
 	attack_timer.connect("timeout", _on_attack_timer_timeout)
 	add_to_group("enemies")
 	
-func can_update_char():
+func can_update_char() -> bool:
 	
+	if target == null:
+		return false
+		
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
 		return false
 		
