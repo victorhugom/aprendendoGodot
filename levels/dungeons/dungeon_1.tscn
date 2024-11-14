@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=9 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="2_8ai17"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="6_syedk"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="7_yq431"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="8_wikqq"]
-[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_h6t5f"]
 
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
@@ -155,6 +154,3 @@ position = Vector2(966, 395)
 
 [node name="EnemyTriEye3" parent="EnemyContainer" instance=ExtResource("8_wikqq")]
 position = Vector2(804, 910)
-
-[node name="Player" parent="." instance=ExtResource("9_h6t5f")]
-position = Vector2(1270, 583)

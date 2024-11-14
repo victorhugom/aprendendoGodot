@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://3ub8eral5hes"]
+[gd_scene load_steps=12 format=4 uid="uid://3ub8eral5hes"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
 [ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="3_a07g3"]
-[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="4_b2f0c"]
 [ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="4_ylwl0"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="5_n5rof"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_6ry67"]
@@ -74,10 +73,6 @@ tile_map_data = PackedByteArray("AABxACcAAQACAA0AAABxAC8AAQAFAA0AAABxADgAAQAMAAc
 tile_set = ExtResource("1_rmmfw")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
-
-[node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("4_b2f0c")]
-position = Vector2(434, 403)
-ground_map_tile = NodePath("../Ground")
 
 [node name="CandlesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -171,35 +166,35 @@ y_sort_enabled = true
 
 [node name="Enemy" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_6ry67")]
 position = Vector2(1389, 921)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="Enemy3" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_6ry67")]
 position = Vector2(3441, 900)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="Enemy2" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_6ry67")]
 position = Vector2(1133, 952)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="EnemyTriEye" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("5_n5rof")]
 position = Vector2(1697, 1505)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="EnemyTriEye2" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("5_n5rof")]
 position = Vector2(1273, 1301)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="EnemyTriEye3" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("5_n5rof")]
 position = Vector2(2140, 1231)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="EnemyTriEye4" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("5_n5rof")]
 position = Vector2(1004, 1809)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="EnemyTriEye5" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("5_n5rof")]
 position = Vector2(1512, 2016)
-target = NodePath("../../Player")
+target = NodePath("")
 
 [node name="GrassContainer" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -686,3 +681,7 @@ target_scene_path = "res://levels/dungeons/dungeon_3.tscn"
 [node name="Dungeon4" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(4296, 3950)
 target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
+
+[node name="DoorLobby" parent="." instance=ExtResource("10_l7p46")]
+position = Vector2(431, 398)
+target_scene_path = "res://levels/lobby.tscn"

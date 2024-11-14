@@ -12,5 +12,3 @@ func set_camera_limit():
 	var map_cellsize = 32
 	var worldMapInPixels = map_limits.size * map_cellsize
 	
-	camera.limit_right = worldMapInPixels.x
-	camera.limit_bottom = worldMapInPixels.y
