@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://jb3tkcu7oswd"]
+
+[ext_resource type="Texture2D" uid="uid://d24tlkx16ej2l" path="res://assets/npc/lilia-Sheet.npc.png" id="1_nmc6p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhquk"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqe2r"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cvo1"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt8td"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqpib"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xycjq"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl4dm"]
+atlas = ExtResource("1_nmc6p")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2d5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhquk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqe2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cvo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt8td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqpib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xycjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl4dm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Voidicon" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_q2d5m")
+autoplay = "default"
+frame_progress = 0.783171

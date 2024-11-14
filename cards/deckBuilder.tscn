@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4m5g3at6qoip"]
 
 [ext_resource type="Script" path="res://cards/deck_builder.gd" id="1_yfrfj"]
-[ext_resource type="Texture2D" uid="uid://d1d6rumtmbi4k" path="res://assets/deck_background.png" id="2_0k1fo"]
+[ext_resource type="Texture2D" uid="uid://cfuq1qnbow221" path="res://assets/gui/deck/BG.png" id="2_w280t"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_5f26q"]
 
 [node name="DeckBuilder" type="CanvasLayer"]
@@ -11,7 +11,7 @@ script = ExtResource("1_yfrfj")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_0k1fo")
+texture = ExtResource("2_w280t")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -36,8 +36,8 @@ size_flags_vertical = 3
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_5f26q")
-theme_override_font_sizes/normal_font_size = 32
-text = "Todas Cartas (crie seu baralho)"
+theme_override_font_sizes/normal_font_size = 26
+text = "Todas as cartas"
 fit_content = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/GridContainer/VBoxContainer"]
@@ -53,6 +53,13 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_5f26q")
+theme_override_font_sizes/normal_font_size = 26
+text = "Todas as cartas"
+fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2

@@ -14,12 +14,12 @@
 [sub_resource type="Resource" id="Resource_08dkn"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("8_np418")
-quantity = 4
+quantity = 9
 
 [sub_resource type="Resource" id="Resource_gtp7m"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("7_invc2")
-quantity = 5
+quantity = 2
 
 [sub_resource type="Resource" id="Resource_rlat2"]
 script = ExtResource("9_0fx4n")
