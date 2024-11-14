@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=15 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_m58qk"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="12_ijhb8"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="13_5svdw"]
+[ext_resource type="PackedScene" uid="uid://b6h51bpowsn2s" path="res://enemies/VoidBoss.tscn" id="14_y370b"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true
@@ -77,7 +78,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("3_4e3ww")]
-position = Vector2(1078, 1504)
+position = Vector2(4821, 2908)
 ground_map_tile = NodePath("../Ground")
 
 [node name="CandlesContainer" type="Node2D" parent="."]
@@ -695,3 +696,6 @@ target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 
 [node name="PickableGoldKey" parent="DungeonDoor" instance=ExtResource("13_5svdw")]
 position = Vector2(1251, 1586)
+
+[node name="VoidBoss" parent="." instance=ExtResource("14_y370b")]
+position = Vector2(4729, 2715)
