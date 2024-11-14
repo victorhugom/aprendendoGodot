@@ -1,9 +1,4 @@
-extends Control
-
-@warning_ignore("unused_signal")
-signal show_interaction(text: String)
-@warning_ignore("unused_signal")
-signal hide_interaction
+class_name InteractionUI extends Control
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var rich_text_label: RichTextLabel = $CanvasLayer/HBoxContainer/CenterContainer/RichTextLabel
@@ -16,9 +11,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _on_show_interaction(text) -> void:
+func show_interaction(text) -> void:
 	canvas_layer.visible = true
 	rich_text_label.text = text
 
-func _on_hide_interaction() -> void:
+func hide_interaction() -> void:
 	canvas_layer.visible = false

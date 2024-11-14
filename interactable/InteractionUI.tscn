@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://smuhytu33fjx"]
+
+[ext_resource type="Script" path="res://interactable/interaction_ui.gd" id="1_io1g0"]
+[ext_resource type="Texture2D" uid="uid://bebwhk7dv6tv5" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_e.png" id="2_erorh"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_medu7"]
+
+[node name="InteractionUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_io1g0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 176.0
+offset_right = 145.0
+offset_bottom = 208.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_erorh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("3_medu7")
+text = "Abrir Porta"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

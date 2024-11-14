@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=14 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://cards/card.gd" id="1_o1hy8"]
-[ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="2_b41ao"]
 [ext_resource type="Shader" path="res://utils/shader/burn_dissolver.gdshader" id="3_n0tbj"]
 [ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
@@ -106,12 +105,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_o1hy8")
-card_config = ExtResource("2_b41ao")
 
 [node name="PanelContainer" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 3
 material = SubResource("ShaderMaterial_s5f23")
+use_parent_material = true
 custom_minimum_size = Vector2(85, 128)
 layout_mode = 1
 offset_right = 85.0
@@ -119,6 +118,7 @@ offset_bottom = 128.0
 mouse_filter = 1
 
 [node name="CardBackgroundSprite" type="TextureRect" parent="PanelContainer"]
+use_parent_material = true
 layout_mode = 0
 offset_right = 85.0
 offset_bottom = 128.0
@@ -144,6 +144,7 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="CardNameLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -157,6 +158,7 @@ autowrap_mode = 0
 layout_mode = 2
 
 [node name="UsagesRemainingLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer/CenterContainer"]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -178,6 +180,7 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="CardIconsContainer" type="HFlowContainer" parent="PanelContainer"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -199,4 +202,3 @@ libraries = {
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

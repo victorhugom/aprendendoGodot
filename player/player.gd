@@ -12,6 +12,7 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_player_take_hit: AnimationPlayer = $AnimationPlayerTakeHit
 @onready var follow_camera: FollowCamera = $FollowCamera
+@onready var inventory: Inventory = $Inventory
 
 @export var ground_map_tile: TileMapLayer
 
@@ -110,6 +111,8 @@ func _input(event):
 		if card_hand.draw_cards():
 			health.decrease_health(1)
 			_on_hit()
+	if event.is_action_pressed("ui_test"):
+		inventory.drop_item(0, global_position)
 	
 	for i in range(KEY_0, KEY_9):  # Loop from KEY_0 to KEY_9
 		if event is InputEventKey && event.keycode == i && event.is_released():

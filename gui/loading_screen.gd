@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	ResourceLoader.load_threaded_request(Globals.next_scence_path)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Update the status:
 	loading_status = ResourceLoader.load_threaded_get_status(Globals.next_scence_path, progress)
 	

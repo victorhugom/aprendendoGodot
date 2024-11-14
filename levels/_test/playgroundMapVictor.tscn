@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=14 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="10_uxeix"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_m58qk"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="12_ijhb8"]
+[ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="13_5svdw"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true
@@ -56,7 +57,7 @@ metadata/_edit_group_ = true
 
 [node name="Props" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAaAAgABAAMAAkAAAAZAAgABAAMAAkAAAAaAAcABAAMAAkAAAAbAAoABAARAAkAAAAeAA0ABAARAAsAAAAgAA4ABAASAAwAAAAtADkABAASAAwAAAAwADsABAARAAUAAAAKAHQABAAFAAUAAAAKAHUABAACAAUAAAALAHwABAADAAUAAAANAHsABAAFAAUAAAAOAHUABAAEAAUAAAAPAHgABAAFAAUAAAAPAHwABAAEAAUAAAAPAH4ABAAEAAUAAAAQAHgABAACAAUAAAAQAH4ABAABAAUAAAASAHcABAACAAUAAAASAHoABAACAAUAAAAxAGgABAACAAUAAAAvAGsABAADAAUAAAAuAGwABAAFAAUAAAA=")
+tile_map_data = PackedByteArray("AAAaAAgABAAMAAkAAAAZAAgABAAMAAkAAAAaAAcABAAMAAkAAAAbAAoABAARAAkAAAAeAA0ABAARAAsAAAAgAA4ABAASAAwAAAAtADkABAASAAwAAAAwADsABAARAAUAAAAKAHQABAAFAAUAAAAKAHUABAACAAUAAAALAHwABAADAAUAAAANAHsABAAFAAUAAAAOAHUABAAEAAUAAAAPAHgABAAFAAUAAAAPAHwABAAEAAUAAAAPAH4ABAAEAAUAAAAQAHgABAACAAUAAAAQAH4ABAABAAUAAAASAHcABAACAAUAAAASAHoABAACAAUAAAAxAGgABAACAAUAAAAvAGsABAADAAUAAAAuAGwABAAFAAUAAAAcAC4ABAALAA4AAAA=")
 tile_set = ExtResource("1_jbj36")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -76,7 +77,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("3_4e3ww")]
-position = Vector2(1807, 1215)
+position = Vector2(1078, 1504)
 ground_map_tile = NodePath("../Ground")
 
 [node name="CandlesContainer" type="Node2D" parent="."]
@@ -676,8 +677,9 @@ position = Vector2(480, 2027)
 [node name="DungeonDoor" type="Node" parent="."]
 
 [node name="Dungeon1" parent="DungeonDoor" instance=ExtResource("10_uxeix")]
-position = Vector2(907, 1521)
+position = Vector2(911, 1516)
 target_scene_path = "res://levels/dungeon_1.tscn"
+requires_key = true
 
 [node name="Dungeon2" parent="DungeonDoor" instance=ExtResource("10_uxeix")]
 position = Vector2(3950, 779)
@@ -690,3 +692,6 @@ target_scene_path = "res://levels/dungeons/dungeon_3.tscn"
 [node name="Dungeon4" parent="DungeonDoor" instance=ExtResource("10_uxeix")]
 position = Vector2(4296, 3950)
 target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
+
+[node name="PickableGoldKey" parent="DungeonDoor" instance=ExtResource("13_5svdw")]
+position = Vector2(1251, 1586)

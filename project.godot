@@ -25,7 +25,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 Globals="*res://globals.gd"
 Helper="*res://utils/helper.gd"
-InteractionCall="*res://gui/InteractionCall.tscn"
+InteractionCall="*res://interactable/InteractionUI.tscn"
 Enums="*res://utils/enums.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Hud="*res://gui/HUD.tscn"
@@ -125,6 +125,11 @@ ui_pause={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+ui_test={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":93,"key_label":0,"unicode":93,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -132,7 +137,7 @@ ui_pause={
 2d_physics/layer_2="npc"
 2d_physics/layer_3="furniture"
 2d_physics/layer_4="wall"
-2d_physics/layer_5="interactables"
+2d_physics/layer_5="interactable"
 2d_physics/layer_6="player_hurtbox"
 2d_physics/layer_7="player_projectile"
 2d_physics/layer_8="player_melee"
