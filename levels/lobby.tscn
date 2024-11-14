@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3y5d21thmc6f"]
+[gd_scene load_steps=7 format=4 uid="uid://c3y5d21thmc6f"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_dbyp5"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_0er6a"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="5_awpbb"]
 [ext_resource type="PackedScene" uid="uid://jb3tkcu7oswd" path="res://props/lilia.tscn" id="5_ojs5g"]
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="6_7owfs"]
-[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
 
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
@@ -47,9 +46,6 @@ metadata/_edit_lock_ = true
 position = Vector2(1255, 490)
 target_scene_path = "res://levels/main.tscn"
 
-[node name="Player" parent="." instance=ExtResource("9_vkru6")]
-position = Vector2(992, 953)
-
 [node name="Lilia" parent="." instance=ExtResource("5_ojs5g")]
 position = Vector2(1008, 796)
 
@@ -58,3 +54,7 @@ position = Vector2(781, 875)
 
 [node name="Candle" parent="." instance=ExtResource("5_awpbb")]
 position = Vector2(806, 824)
+
+[node name="DoorMain" parent="." instance=ExtResource("3_hfpwh")]
+position = Vector2(1234, 973)
+target_scene_path = "res://levels/main.tscn"
