@@ -56,6 +56,7 @@ position = Vector2(999, 632)
 
 [node name="DoorMain" parent="." instance=ExtResource("3_hfpwh")]
 position = Vector2(783, 972)
+disabled = null
 target_scene_path = "res://levels/main.tscn"
 
 [node name="Redportal" parent="." instance=ExtResource("7_3bj6d")]
@@ -63,4 +64,9 @@ position = Vector2(782, 974)
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("9_vkru6")]
 position = Vector2(822, 605)
+speed = null
+dash_speed = null
+walk_speed = null
+dash_duration = null
+dash_cooldown = null
 ground_map_tile = NodePath("../Grass")
