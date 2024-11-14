@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=46 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="14_acclv"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="15_m5ob6"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="15_yjxdr"]
+[ext_resource type="PackedScene" uid="uid://leld44qf7tew" path="res://inventory/inventory.tscn" id="16_qm5ht"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="16_v5ako"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
@@ -982,6 +983,8 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_cdd01")
 }
+
+[node name="Inventory" parent="." instance=ExtResource("16_qm5ht")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayerTakeHit" to="." method="_on_animation_player_animation_finished"]

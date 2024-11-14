@@ -24,3 +24,8 @@ enum ELEMENTS {
 	Air,
 	SUPER
 }
+
+enum ITEM_TYPE {
+	Card,
+	Key_Gold
+}
