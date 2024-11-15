@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://b8dhl8bkqruhs"]
+[gd_scene load_steps=32 format=3 uid="uid://b8dhl8bkqruhs"]
 
 [ext_resource type="Script" path="res://enemies/enemy_eye.gd" id="1_qa1g2"]
 [ext_resource type="Texture2D" uid="uid://cftr1ocg6q8tx" path="res://assets/enemies/enemy1-Sheet.png" id="2_67bjt"]
-[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="2_vk54n"]
+[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="2_vk54n"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="3_roh5r"]
 [ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="4_h106r"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="5_iguai"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="8_grqc0"]
 [ext_resource type="AudioStream" uid="uid://coo4qp2kipcyp" path="res://assets/sounds/clap.mp3" id="9_40nbb"]
 [ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="10_wci6s"]
+[ext_resource type="PackedScene" uid="uid://cppg4wlj741eq" path="res://enemies/components/healthBar.tscn" id="11_mr6mk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hdjc"]
 height = 24.0
@@ -562,6 +563,12 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_jtf3n")
 }
+
+[node name="HealthBar" parent="." instance=ExtResource("11_mr6mk")]
+offset_left = -11.0
+offset_top = -37.0
+offset_right = 9.0
+offset_bottom = -34.0
 
 [node name="PlayerTrace" type="ShapeCast2D" parent="."]
 visible = false

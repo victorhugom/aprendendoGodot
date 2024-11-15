@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6h51bpowsn2s"]
+[gd_scene load_steps=26 format=3 uid="uid://b6h51bpowsn2s"]
 
-[ext_resource type="Texture2D" uid="uid://b3yw4nubh6dea" path="res://assets/enemies/salchichaboss-Sheet.png" id="1_4roqs"]
+[ext_resource type="Texture2D" uid="uid://ctvl0wep25jia" path="res://assets/enemies/salchichaboss-Sheet.png" id="1_4roqs"]
 [ext_resource type="Script" path="res://enemies/void_boss.gd" id="1_5e1wn"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="2_dieii"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="3_jp5ql"]
@@ -86,7 +86,31 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../SpinMeleeCollisionBox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../SpinMeleeCollisionBox:monitorable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_fe63q"]
@@ -115,7 +139,7 @@ tracks/1/path = NodePath("../MeleeCollisionBox:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.25, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -127,7 +151,7 @@ tracks/2/path = NodePath("../MeleeCollisionBox:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.25, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -195,7 +219,7 @@ tracks/1/path = NodePath("../MeleeCollisionBox:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.25, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -207,7 +231,7 @@ tracks/2/path = NodePath("../MeleeCollisionBox:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.25, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -444,7 +468,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_g5ehu"]
-resource_name = "spint_attack"
+resource_name = "spin_attack"
 length = 1.9
 step = 0.1
 tracks/0/type = "audio"
@@ -498,6 +522,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [51, 52, 53, 54, 55, 56, 57, 58, 59, 55, 56, 57, 58, 59, 55, 56, 57, 58, 59]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SpinMeleeCollisionBox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SpinMeleeCollisionBox:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_pb8c1"]
 resource_name = "super_attack"
@@ -514,6 +562,56 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 73, 74, 75, 76, 77, 78, 79, 80, 81, 73, 74, 75, 76, 77, 78, 79, 80, 81]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}, {
+"args": [],
+"method": &"create_void_tectacles"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_goxk4"]
@@ -586,7 +684,7 @@ _data = {
 "hit_right": SubResource("Animation_hre8y"),
 "idle_left": SubResource("Animation_1hk04"),
 "idle_right": SubResource("Animation_ybwaf"),
-"spint_attack": SubResource("Animation_g5ehu"),
+"spin_attack": SubResource("Animation_g5ehu"),
 "super_attack": SubResource("Animation_pb8c1"),
 "walk_left": SubResource("Animation_goxk4"),
 "walk_right": SubResource("Animation_mvi3r")
@@ -595,15 +693,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_devwp"]
 size = Vector2(45, 73.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1kwb"]
+size = Vector2(90, 77)
+
 [node name="VoidBoss" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_5e1wn")
-speed = 64
+speed = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4roqs")
 centered = false
 offset = Vector2(-48, -84)
-flip_h = true
 hframes = 17
 vframes = 7
 region_rect = Rect2(133, 163, 26, 40)
@@ -626,6 +727,7 @@ visible = false
 max_health = 10
 
 [node name="AttackTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
@@ -657,3 +759,16 @@ script = ExtResource("9_kii3s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeCollisionBox"]
 shape = SubResource("RectangleShape2D_devwp")
+
+[node name="SpinMeleeCollisionBox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 32
+monitoring = false
+monitorable = false
+script = ExtResource("9_kii3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpinMeleeCollisionBox"]
+position = Vector2(1, -32)
+shape = SubResource("RectangleShape2D_c1kwb")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

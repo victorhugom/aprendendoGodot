@@ -2,13 +2,11 @@ class_name EnemyTriEye extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
 @onready var attack_timer: Timer = $AttackTimer
-
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health: Health = $Health
-
+@onready var health_bar: HBoxContainer = $HealthBar
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 @export var target: Node
@@ -25,6 +23,10 @@ func _ready() -> void:
 	hurt_box.damaged.connect(_on_damaged)
 	hurt_box.can_be_hurt = true
 	
+	#health setup
+	health.health_empty.connect(_on_health_empty)
+	health_bar.health = health
+	
 	tracking_timer.connect("timeout", _on_tracking_timer_timeout)
 	attack_timer.connect("timeout", _on_attack_timer_timeout)
 	add_to_group("enemies")
@@ -32,6 +34,9 @@ func _ready() -> void:
 func can_update_char() -> bool:
 	
 	if target == null:
+		return false
+		
+	if global_position.distance_to(target.global_position) > 400:
 		return false
 		
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://3ub8eral5hes"]
+[gd_scene load_steps=12 format=4 uid="uid://3ub8eral5hes"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
 [ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="3_a07g3"]
-[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="4_b2f0c"]
 [ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="4_ylwl0"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="5_n5rof"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_6ry67"]
@@ -661,28 +660,20 @@ position = Vector2(480, 2027)
 
 [node name="Dungeon1" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(1518, 1858)
-disabled = null
 target_scene_path = "res://levels/dungeons/dungeon_1.tscn"
 
 [node name="Dungeon2" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(3950, 779)
-disabled = null
 target_scene_path = "res://levels/dungeons/dungeon_2.tscn"
 
 [node name="Dungeon3" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(4496, 2025)
-disabled = null
 target_scene_path = "res://levels/dungeons/dungeon_3.tscn"
 
 [node name="Dungeon4" parent="DungeonDoor" instance=ExtResource("10_l7p46")]
 position = Vector2(4296, 3950)
-disabled = null
 target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 
 [node name="DoorLobby" parent="." instance=ExtResource("10_l7p46")]
 position = Vector2(431, 398)
-disabled = null
 target_scene_path = "res://levels/lobby.tscn"
-
-[node name="Player" parent="." instance=ExtResource("4_b2f0c")]
-position = Vector2(431, 398)

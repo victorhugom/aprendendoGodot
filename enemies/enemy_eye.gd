@@ -8,6 +8,7 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
 @onready var attack_timer: Timer = $AttackTimer
 @onready var shooter: Shooter = $Shooter
+@onready var health_bar: HBoxContainer = $HealthBar
 
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health: Health = $Health
@@ -26,11 +27,19 @@ func _ready() -> void:
 	health.health_empty.connect(_on_health_empty)
 	hurt_box.damaged.connect(_on_damaged)
 	hurt_box.can_be_hurt = true
+	
+	#health setup
+	health.health_empty.connect(_on_health_empty)
+	health_bar.health = health
+	
 	add_to_group("enemies")
 	
 func can_update_char() -> bool:
 	
 	if target == null:
+		return false
+		
+	if global_position.distance_to(target.global_position) > 400:
 		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
@@ -46,9 +55,6 @@ func _physics_process(_delta: float) -> void:
 	if can_update_char() == false:
 		return	
 		
-	if global_position.distance_to(target.global_position) > 400:
-		return
-	
 	is_seeing_player = player_trace.is_colliding()
 	
 	var animation_type = "walk_"
