@@ -61,7 +61,7 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("6_qkoss")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/0/use_blend = true
 tracks/1/type = "method"
@@ -107,7 +107,7 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("6_qkoss")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/0/use_blend = true
 tracks/1/type = "method"
@@ -165,7 +165,7 @@ tracks/1/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("6_qkoss")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
 tracks/2/type = "method"
@@ -199,7 +199,7 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("6_qkoss")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0)
 }
 tracks/0/use_blend = true
 tracks/1/type = "method"

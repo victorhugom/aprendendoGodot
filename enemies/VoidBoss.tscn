@@ -1,13 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://b6h51bpowsn2s"]
+[gd_scene load_steps=29 format=3 uid="uid://b6h51bpowsn2s"]
 
 [ext_resource type="Texture2D" uid="uid://ctvl0wep25jia" path="res://assets/enemies/salchichaboss-Sheet.png" id="1_4roqs"]
 [ext_resource type="Script" path="res://enemies/void_boss.gd" id="1_5e1wn"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="2_dieii"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="3_jp5ql"]
-[ext_resource type="AudioStream" uid="uid://7rcbqgj8ef05" path="res://assets/sounds/lasershoot.mp3" id="4_0gxxq"]
+[ext_resource type="AudioStream" uid="uid://bkhv0v1km4ona" path="res://assets/sounds/human-impact-on-ground.wav" id="6_eb7hy"]
 [ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="6_u6ke0"]
+[ext_resource type="AudioStream" uid="uid://shmt1c506hwo" path="res://assets/sounds/suffering.mp3" id="7_up2ju"]
 [ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="8_qydex"]
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="9_kii3s"]
+[ext_resource type="AudioStream" uid="uid://e2wis1in3prv" path="res://assets/sounds/breathmonster.mp3" id="9_ptyde"]
+[ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="10_anmay"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6a47"]
 height = 48.0
@@ -125,11 +128,11 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 0.126905,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_0gxxq")
+"stream": ExtResource("8_qydex")
 }],
-"times": PackedFloat32Array(0.05)
+"times": PackedFloat32Array(0.15)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -205,11 +208,11 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 0.126905,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_0gxxq")
+"stream": ExtResource("8_qydex")
 }],
-"times": PackedFloat32Array(0.05)
+"times": PackedFloat32Array(0)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -275,7 +278,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_baue8"]
 resource_name = "death"
-length = 2.0
+length = 5.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -284,11 +287,42 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.2, 1.4, 1.5, 1.6, 1.8, 1.9, 2, 2.1, 2.3, 2.6, 2.8, 2.9, 3.3, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 118, 118]
+"values": [102, 104, 105, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 118]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_eb7hy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_up2ju")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_eb7hy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_eb7hy")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_eb7hy")
+}],
+"times": PackedFloat32Array(0.3, 1.1, 2.8, 4.84404, 5)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_56sli"]
 resource_name = "hit_left"
@@ -409,7 +443,6 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_1hk04"]
-length = 0.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -431,15 +464,29 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_ptyde")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ybwaf"]
 resource_name = "idle_right"
-length = 0.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -461,11 +508,26 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_ptyde")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_g5ehu"]
 resource_name = "spin_attack"
@@ -613,6 +675,33 @@ tracks/1/keys = {
 "method": &"create_void_tectacles"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 1.65863,
+"start_offset": 0.139547,
+"stream": ExtResource("10_anmay")
+}, {
+"end_offset": 1.15077,
+"start_offset": 0.518658,
+"stream": ExtResource("10_anmay")
+}, {
+"end_offset": 1.65863,
+"start_offset": 0.139547,
+"stream": ExtResource("10_anmay")
+}, {
+"end_offset": 1.15077,
+"start_offset": 0.518658,
+"stream": ExtResource("10_anmay")
+}],
+"times": PackedFloat32Array(0.5, 1.3, 2.2, 3)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_goxk4"]
 resource_name = "walk_left"
@@ -698,11 +787,11 @@ size = Vector2(90, 77)
 
 [node name="VoidBoss" type="CharacterBody2D"]
 y_sort_enabled = true
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5e1wn")
 speed = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_4roqs")
 centered = false
 offset = Vector2(-48, -84)

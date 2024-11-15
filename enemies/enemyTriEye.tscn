@@ -1,16 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://b05uadrom8blw"]
+[gd_scene load_steps=29 format=3 uid="uid://b05uadrom8blw"]
 
 [ext_resource type="Script" path="res://enemies/enemy_tri_eye.gd" id="1_dnkxr"]
 [ext_resource type="Texture2D" uid="uid://cs1a11vty5ty0" path="res://assets/enemies/melee-Sheet.png" id="1_rbip2"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="2_vpbqo"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="4_p23gm"]
-[ext_resource type="AudioStream" uid="uid://7rcbqgj8ef05" path="res://assets/sounds/lasershoot.mp3" id="5_12xo1"]
+[ext_resource type="AudioStream" uid="uid://b5x306tvk8na0" path="res://assets/sounds/punch.mp3" id="5_4jx7u"]
 [ext_resource type="AudioStream" uid="uid://cfhmmgy2nxoqc" path="res://assets/sounds/vanishing.mp3" id="6_y435f"]
 [ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="7_41br4"]
-[ext_resource type="AudioStream" uid="uid://coo4qp2kipcyp" path="res://assets/sounds/clap.mp3" id="8_18xgr"]
+[ext_resource type="AudioStream" uid="uid://meu22frdqyor" path="res://assets/sounds/deathmelee.mp3" id="8_yewor"]
 [ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="9_0jeor"]
 [ext_resource type="PackedScene" uid="uid://cppg4wlj741eq" path="res://enemies/components/healthBar.tscn" id="10_4yih6"]
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="10_gl5nr"]
+[ext_resource type="AudioStream" uid="uid://bl3pes3880s5n" path="res://assets/sounds/idleenemy.mp3" id="11_1riay"]
+[ext_resource type="AudioStream" uid="uid://bpg785jbmairf" path="res://assets/sounds/footstepsbloddy.mp3" id="11_70oxe"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="11_tg382"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbok2"]
@@ -92,15 +94,11 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 0.126905,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_12xo1")
-}, {
-"end_offset": 0.126905,
-"start_offset": 0.0,
-"stream": ExtResource("5_12xo1")
+"stream": ExtResource("5_4jx7u")
 }],
-"times": PackedFloat32Array(0.05, 0.55)
+"times": PackedFloat32Array(0.3)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -163,15 +161,11 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 0.128842,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_12xo1")
-}, {
-"end_offset": 0.128842,
-"start_offset": 0.0,
-"stream": ExtResource("5_12xo1")
+"stream": ExtResource("5_4jx7u")
 }],
-"times": PackedFloat32Array(0.05, 0.55)
+"times": PackedFloat32Array(0.25)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -224,8 +218,8 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_g5ehu"]
-length = 1.1
-step = 0.1
+length = 2.3
+step = 0.15
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -240,13 +234,9 @@ tracks/0/keys = {
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_41br4")
-}, {
-"end_offset": 0.715479,
-"start_offset": 0.0,
-"stream": ExtResource("7_41br4")
+"stream": ExtResource("8_yewor")
 }],
-"times": PackedFloat32Array(-0.0355844, 0, 0.6)
+"times": PackedFloat32Array(-0.0355844, 0)
 }
 tracks/0/use_blend = true
 tracks/1/type = "audio"
@@ -256,16 +246,8 @@ tracks/1/path = NodePath("../AudioStreamPlayer2D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_18xgr")
-}, {
-"end_offset": 0.572117,
-"start_offset": 0.41215,
-"stream": ExtResource("6_y435f")
-}],
-"times": PackedFloat32Array(0, 0.605114)
+"clips": [],
+"times": PackedFloat32Array()
 }
 tracks/1/use_blend = true
 tracks/2/type = "value"
@@ -275,10 +257,10 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.714286, 1, 1.28571, 1.57143, 1.85714, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202]
+"values": [192, 193, 194, 195, 196, 197, 198, 199, 200, 201]
 }
 
 [sub_resource type="Animation" id="Animation_56sli"]
@@ -376,7 +358,6 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_1hk04"]
-length = 0.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -386,15 +367,29 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [24, 25, 26, 27, 28, 29]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_1riay")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1nsjn"]
 resource_name = "idle_right"
-length = 0.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -404,11 +399,26 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_1riay")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_goxk4"]
 resource_name = "walk_left"
@@ -427,6 +437,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [72, 73, 74, 75, 76]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.599058,
+"start_offset": 0.0,
+"stream": ExtResource("11_70oxe")
+}, {
+"end_offset": 0.118181,
+"start_offset": 0.423823,
+"stream": ExtResource("11_70oxe")
+}],
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_eq8sx"]
 resource_name = "walk_right"
@@ -445,6 +474,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [48, 49, 50, 51, 52]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.599058,
+"start_offset": 0.0,
+"stream": ExtResource("11_70oxe")
+}, {
+"end_offset": 0.118181,
+"start_offset": 0.423823,
+"stream": ExtResource("11_70oxe")
+}],
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtf3n"]
 _data = {

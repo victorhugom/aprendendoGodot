@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://i634nwo2sv1m"]
+[gd_scene load_steps=46 format=3 uid="uid://i634nwo2sv1m"]
 
 [ext_resource type="Script" path="res://player/sausage_monster.gd" id="1_f7cmr"]
 [ext_resource type="PackedScene" uid="uid://cqtt62iaedi3k" path="res://player/character_components/followCamera.tscn" id="2_1jd10"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="10_klxrp"]
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="11_3tadl"]
 [ext_resource type="Texture2D" uid="uid://cgp2wtq4rhqiy" path="res://assets/player/personagem-Sheet.png" id="12_aoyik"]
+[ext_resource type="AudioStream" uid="uid://bs8xm6v0s0jma" path="res://assets/sounds/hitsalsicha.mp3" id="12_bnete"]
 [ext_resource type="AudioStream" uid="uid://dyh7ntv3sifvq" path="res://assets/sounds/har_impact_on_ground.mp3" id="13_lj68h"]
 [ext_resource type="AudioStream" uid="uid://e2wis1in3prv" path="res://assets/sounds/breathmonster.mp3" id="14_elkfd"]
 [ext_resource type="AudioStream" uid="uid://bke3m3fkukpdw" path="res://assets/sounds/bigfootstep.mp3" id="15_00k0a"]
@@ -841,8 +842,12 @@ tracks/1/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("15_00k0a")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_00k0a")
 }],
-"times": PackedFloat32Array(0, 0.3)
+"times": PackedFloat32Array(0, 0.3, 0.3001)
 }
 tracks/1/use_blend = true
 
@@ -1036,6 +1041,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [216, 217, 218, 219, 220, 221]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.83542,
+"start_offset": 0.0,
+"stream": ExtResource("12_bnete")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.326018,
+"stream": ExtResource("12_bnete")
+}],
+"times": PackedFloat32Array(0, 0.0666667)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_6m8ut"]
 resource_name = "hit_left"
@@ -1065,6 +1089,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [228, 229, 230, 231, 232, 233]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.83542,
+"start_offset": 0.0,
+"stream": ExtResource("12_bnete")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.326018,
+"stream": ExtResource("12_bnete")
+}],
+"times": PackedFloat32Array(0, 0.0666667)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tg1nq"]
 resource_name = "hit_right"
@@ -1094,6 +1137,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [204, 205, 206, 207, 208, 209]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.83542,
+"start_offset": 0.0,
+"stream": ExtResource("12_bnete")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.326018,
+"stream": ExtResource("12_bnete")
+}],
+"times": PackedFloat32Array(0, 0.0666667)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_o0iat"]
 resource_name = "hit_up"
@@ -1123,6 +1185,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [240, 241, 242, 243, 244, 245]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.83542,
+"start_offset": 0.0,
+"stream": ExtResource("12_bnete")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.326018,
+"stream": ExtResource("12_bnete")
+}],
+"times": PackedFloat32Array(0, 0.0666667)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yrmkf"]
 _data = {

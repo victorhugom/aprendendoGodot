@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c3y5d21thmc6f"]
+[gd_scene load_steps=10 format=4 uid="uid://c3y5d21thmc6f"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_dbyp5"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_0er6a"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="5_awpbb"]
 [ext_resource type="PackedScene" uid="uid://jb3tkcu7oswd" path="res://props/lilia.tscn" id="5_ojs5g"]
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="6_7owfs"]
-[ext_resource type="PackedScene" path="res://props/redportals.tscn" id="7_3bj6d"]
+[ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="8_6rtrp"]
+[ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="9_ns2m1"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
 
 [node name="Lobby" type="Node2D"]
@@ -28,7 +29,7 @@ not_walkable_tiles = [NodePath("../Wall")]
 metadata/_edit_lock_ = true
 
 [node name="Floor" type="TileMapLayer" parent="." node_paths=PackedStringArray("not_walkable_tiles")]
-tile_map_data = PackedByteArray("AAAoABcAAAAWAAEAAAAoABgAAAAVAAMAAAAnABgAAAAVAAMAAAAnABkAAAAVAAQAAAAnABcAAAAWAAEAAAAgABkAAAAVAAMAAAAfABkAAAAVAAMAAAAeABkAAAAVAAMAAAAdABkAAAARAAIAAAAdABoAAAAVAAMAAAAeABoAAAAVAAMAAAAfABoAAAAVAAMAAAAgABoAAAAVAAMAAAAgABgAAAAWAAEAAAAfABgAAAASAAIAAAAeABgAAAARAAIAAAAdABsAAAARAAMAAAAeABsAAAAVAAMAAAAfABsAAAAVAAMAAAAgABsAAAAVAAMAAAAhABoAAAAVAAMAAAAhABkAAAASAAIAAAAdABgAAAAUAAEAAAAhABgAAAAXAAEAAAAhABsAAAASAAMAAAAfABwAAAAWAAQAAAAfAB0AAAAMAAIAAAAfAB4AAAAMAAIAAAAfAB8AAAAMAAIAAAAfACAAAAAMAAIAAAAfACEAAAAMAAMAAAAcABsAAAARAAQAAAAbABwAAAAPAAMAAAAaABwAAAANAAEAAAAbABsAAAANAAEAAAAcABoAAAAUAAIAAAAaAB0AAAAPAAMAAAAdABwAAAAQAAMAAAAdAB0AAAAPAAMAAAAcAB4AAAAMAAIAAAAbAB8AAAANAAEAAAAcAB0AAAANAAEAAAAbACAAAAAMAAMAAAAcAB8AAAAPAAMAAAAhABwAAAATAAMAAAAgABwAAAAVAAQAAAAhAB0AAAANAAMAAAAiAB4AAAAMAAIAAAAiAB8AAAANAAMAAAAjAB8AAAAPAAEAAAAjACAAAAAMAAMAAAAiAB0AAAAPAAEAAAAiABsAAAASAAQAAAAjABsAAAAPAAEAAAAjABwAAAANAAMAAAAkABwAAAAPAAEAAAAlAB0AAAARAAEAAAAmAB0AAAAXAAEAAAAmAB4AAAAXAAQAAAAiABoAAAAXAAMAAAAkAB0AAAANAAMAAAAlAB4AAAAUAAQAAAAiABkAAAASAAEAAAAjABkAAAAOAAQAAAAkABkAAAAOAAQAAAAlABkAAAAOAAQAAAAmABkAAAARAAQAAAAmABgAAAAUAAIAAAApABcAAAAXAAEAAAAmABcAAAAUAAEAAAApABgAAAAXAAMAAAAoABkAAAAVAAQAAAApABkAAAAXAAQAAAAeABMAAAAVAAMAAAAeABIAAAAVAAMAAAAdABIAAAAVAAMAAAAdABMAAAAVAAMAAAAdABQAAAAVAAMAAAAeABQAAAAVAAMAAAAfABQAAAAVAAMAAAAfABMAAAAVAAMAAAAfABIAAAAVAAMAAAAcABMAAAAVAAMAAAAcABQAAAAVAAMAAAAgABQAAAAVAAMAAAAgABMAAAAVAAMAAAAgABIAAAASAAIAAAAfABEAAAAWAAEAAAAeABEAAAAWAAEAAAAdABUAAAAVAAMAAAAeABUAAAAVAAMAAAAdABEAAAAWAAEAAAAcABIAAAARAAIAAAAcABEAAAAUAAEAAAAbABMAAAAUAAIAAAAbABIAAAAUAAEAAAAbABQAAAAUAAIAAAAgABEAAAAXAAEAAAAhABQAAAAXAAMAAAAgABUAAAASAAMAAAAfABUAAAAVAAMAAAAhABUAAAAXAAQAAAAhABMAAAAXAAMAAAAhABIAAAAXAAEAAAAdABYAAAAVAAQAAAAcABYAAAAUAAQAAAAeABYAAAARAAMAAAAfABYAAAASAAMAAAAgABYAAAAXAAQAAAAeABcAAAAUAAIAAAAfABcAAAAXAAMAAAAeABwAAAAVAAQAAAAcABkAAAAUAAEAAAAcABUAAAARAAMAAAAbABUAAAAUAAQAAAA=")
+tile_map_data = PackedByteArray("AAAoABcAAAAWAAEAAAAoABgAAAAVAAMAAAAnABgAAAAVAAMAAAAnABkAAAAVAAQAAAAnABcAAAAWAAEAAAAgABkAAAAVAAMAAAAfABkAAAAVAAMAAAAeABkAAAAVAAMAAAAdABkAAAARAAIAAAAdABoAAAAVAAMAAAAeABoAAAAVAAMAAAAfABoAAAAVAAMAAAAgABoAAAAVAAMAAAAgABgAAAAWAAEAAAAfABgAAAASAAIAAAAeABgAAAARAAIAAAAdABsAAAARAAMAAAAeABsAAAAVAAMAAAAfABsAAAAVAAMAAAAgABsAAAAVAAMAAAAhABoAAAAVAAMAAAAhABkAAAASAAIAAAAdABgAAAAUAAEAAAAhABgAAAAXAAEAAAAhABsAAAASAAMAAAAfABwAAAAWAAQAAAAfAB0AAAAMAAIAAAAfAB4AAAAMAAIAAAAfAB8AAAAMAAIAAAAfACAAAAAMAAIAAAAfACEAAAAMAAMAAAAcABsAAAARAAQAAAAbABwAAAAPAAMAAAAaABwAAAANAAEAAAAbABsAAAANAAEAAAAcABoAAAAUAAIAAAAaAB0AAAAPAAMAAAAdABwAAAAQAAMAAAAdAB0AAAAPAAMAAAAcAB4AAAAMAAIAAAAbAB8AAAANAAEAAAAcAB0AAAANAAEAAAAbACAAAAAMAAMAAAAcAB8AAAAPAAMAAAAhABwAAAATAAMAAAAgABwAAAAVAAQAAAAhAB0AAAANAAMAAAAiAB4AAAAMAAIAAAAiAB8AAAANAAMAAAAjAB8AAAAPAAEAAAAjACAAAAAMAAMAAAAiAB0AAAAPAAEAAAAiABsAAAASAAQAAAAjABsAAAAPAAEAAAAjABwAAAANAAMAAAAkABwAAAAPAAEAAAAlAB0AAAARAAEAAAAmAB0AAAAXAAEAAAAmAB4AAAAXAAQAAAAiABoAAAAXAAMAAAAkAB0AAAANAAMAAAAlAB4AAAAUAAQAAAAiABkAAAASAAEAAAAjABkAAAAOAAQAAAAkABkAAAAOAAQAAAAlABkAAAAOAAQAAAAmABkAAAARAAQAAAAmABgAAAAUAAIAAAApABcAAAAXAAEAAAAmABcAAAAUAAEAAAApABgAAAAXAAMAAAAoABkAAAAVAAQAAAApABkAAAAXAAQAAAAeABMAAAAVAAMAAAAeABIAAAAVAAMAAAAdABIAAAAVAAMAAAAdABMAAAAVAAMAAAAdABQAAAAVAAMAAAAeABQAAAAVAAMAAAAfABQAAAAVAAMAAAAfABMAAAAVAAMAAAAfABIAAAAVAAMAAAAcABMAAAAVAAMAAAAcABQAAAAVAAMAAAAgABQAAAAVAAMAAAAgABMAAAAVAAMAAAAgABIAAAASAAIAAAAfABEAAAAWAAEAAAAeABEAAAAWAAEAAAAdABUAAAAVAAMAAAAeABUAAAAVAAMAAAAdABEAAAAWAAEAAAAcABIAAAARAAIAAAAcABEAAAAUAAEAAAAbABMAAAAUAAIAAAAbABIAAAAUAAEAAAAbABQAAAAUAAIAAAAgABEAAAAXAAEAAAAhABQAAAAXAAMAAAAgABUAAAASAAMAAAAfABUAAAAVAAMAAAAhABUAAAAXAAQAAAAhABMAAAAXAAMAAAAhABIAAAAXAAEAAAAdABYAAAAVAAQAAAAcABYAAAAUAAQAAAAeABYAAAARAAMAAAAfABYAAAASAAMAAAAgABYAAAAXAAQAAAAeABcAAAAUAAIAAAAfABcAAAAXAAMAAAAeABwAAAAVAAQAAAAcABkAAAAUAAEAAAAcABUAAAARAAMAAAAbABUAAAAUAAQAAAAWABgAAQALAAsAAAAXABgAAQALAAsAAAAXABkAAQALAAsAAAAXABoAAQALAAsAAAAWABoAAQALAAkAAAAVABoAAQALAAsAAAAVABsAAQALAAkAAAAWABsAAQALAAkAAAAXABsAAQALAAsAAAAaABcAAQALAAsAAAAaABYAAQALAAkAAAAZABYAAQALAAsAAAAZABUAAQALAAsAAAAYABQAAQALAAkAAAAXABQAAQALAAoAAAAYABMAAQALAAkAAAArABoAAQALAAoAAAAqABoAAQALAAoAAAApABoAAQALAAkAAAApABsAAQALAAkAAAAoABsAAQALAAoAAAAnABsAAQALAAsAAAApABwAAQALAAkAAAApAB0AAQALAAoAAAAjABcAAQALAAsAAAAiABcAAQALAAoAAAAiABYAAQALAAoAAAAWAB0AAQALAAsAAAAVAB0AAQALAAkAAAAiAA4AAQALAAoAAAAhAA8AAQALAAkAAAAgAA8AAQALAAkAAAAgAA4AAQALAAoAAAAhAA4AAQALAAsAAAAhAA0AAQALAAkAAAAhAAwAAQALAAoAAAAgAAwAAQALAAsAAAAbABEAAQALAAsAAAA=")
 tile_set = ExtResource("1_dbyp5")
 script = ExtResource("2_0er6a")
 not_walkable_tiles = [NodePath("../Wall")]
@@ -36,31 +37,116 @@ metadata/_edit_lock_ = true
 
 [node name="Wall" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAUABIAAAAAAAcAAAAoAA8ABAANABIAAAAgABMABAATAAkAAAAcABMABAAGAAQAAAAeABIABAATAAQAAAAeABQABAAKAAQAAAA=")
+tile_map_data = PackedByteArray("AAAUABIAAAAAAAcAAAAoAA8ABAANABIAAAAgABMABAATAAkAAAAcABMABAAGAAQAAAAeABIABAATAAQAAAAeABQABAAKAAQAAAAfABkABAATAA8AAAA=")
 tile_set = ExtResource("1_dbyp5")
 metadata/_edit_lock_ = true
 
 [node name="Furniture" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAmAB4ABAAOAAwAAAAfACEABAAOAAwAAAAjACAABAAOAAwAAAAbACAABAAOAAwAAAAfABkABAASAA8AAAA=")
+tile_map_data = PackedByteArray("AAAmAB4ABAAOAAwAAAAfACEABAAOAAwAAAAjACAABAAOAAwAAAAbACAABAAOAAwAAAAfABkABAASAA8AAAAYAB4ABAADABEAAAA=")
 tile_set = ExtResource("1_dbyp5")
 metadata/_edit_lock_ = true
 
 [node name="Lilia" parent="." instance=ExtResource("5_ojs5g")]
-position = Vector2(1002, 772)
-
-[node name="Voidicon2" parent="." instance=ExtResource("6_7owfs")]
-position = Vector2(974, 683)
-
-[node name="Candle" parent="." instance=ExtResource("5_awpbb")]
-position = Vector2(999, 632)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1003, 766)
 
 [node name="DoorMain" parent="." instance=ExtResource("3_hfpwh")]
 position = Vector2(783, 972)
 target_scene_path = "res://levels/main.tscn"
 
-[node name="Redportal" parent="." instance=ExtResource("7_3bj6d")]
-position = Vector2(782, 974)
-
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("9_vkru6")]
-position = Vector2(822, 605)
+position = Vector2(1002, 876)
 ground_map_tile = NodePath("../Grass")
+
+[node name="FurnitureContainer" type="Node2D" parent="."]
+position = Vector2(645, 897)
+
+[node name="Bluegrass" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+
+[node name="Bluegrass2" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(39, -251)
+
+[node name="Bluegrass3" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(216, -362)
+
+[node name="Bluegrass4" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(498, -141)
+
+[node name="Bluegrass5" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(496, -384)
+
+[node name="Bluegrass6" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(301, -449)
+
+[node name="Bluegrass7" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(472, -531)
+
+[node name="Bluegrass8" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(893, -33)
+
+[node name="Bluegrass9" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(797, -220)
+
+[node name="Bluegrass10" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(816, -207)
+
+[node name="Bluegrass11" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(828, -252)
+
+[node name="Bluegrass12" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(777, -137)
+
+[node name="Bluegrass13" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(793, -161)
+
+[node name="Bluegrass14" parent="FurnitureContainer" instance=ExtResource("8_6rtrp")]
+position = Vector2(795, -144)
+
+[node name="Bluegrass15" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(57, -13)
+
+[node name="Bluegrass16" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(14, -88)
+
+[node name="Bluegrass17" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(65, 150)
+
+[node name="Bluegrass18" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(617, 165)
+
+[node name="Bluegrass19" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(667, -16)
+
+[node name="Bluegrass20" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(204, -194)
+
+[node name="Bluegrass21" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(134, -256)
+
+[node name="Bluegrass22" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(421, -433)
+
+[node name="Bluegrass23" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(378, -519)
+
+[node name="Bluegrass24" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(152, -486)
+
+[node name="Bluegrass25" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(126, -448)
+
+[node name="Bluegrass26" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(146, -472)
+
+[node name="Bluegrass27" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(-104, -215)
+
+[node name="Bluegrass28" parent="FurnitureContainer" instance=ExtResource("9_ns2m1")]
+position = Vector2(-55, -282)
+
+[node name="Voidicon2" parent="FurnitureContainer" instance=ExtResource("6_7owfs")]
+position = Vector2(329, -214)
+
+[node name="Candle" parent="FurnitureContainer" instance=ExtResource("5_awpbb")]
+position = Vector2(354, -265)
