@@ -27,6 +27,7 @@ func set_max_hearts(value: int = 3, transformation = false):
 		remove_child(h)
 	
 	max_health = value
+	@warning_ignore("integer_division")
 	for i in range(0, max_health/3): # on full hearth for each 3 hearts
 		var heart = HEART.instantiate()
 		if transformation:
@@ -39,6 +40,7 @@ func update_hearts(current_health: int):
 	var hearts = get_children()
 	
 	var small_hearts = current_health % 3
+	@warning_ignore("integer_division")
 	var full_hearts = (current_health - small_hearts)/3
 	
 	for i in range(full_hearts):

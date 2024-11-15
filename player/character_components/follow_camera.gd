@@ -8,6 +8,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func set_camera_limit():
-	var map_limits = ground_map_tile.get_used_rect()
-	var map_cellsize = 32
-	var worldMapInPixels = map_limits.size * map_cellsize
+	pass
+	#var map_limits = ground_map_tile.get_used_rect()
+	#var map_cellsize = 32
+	#var worldMapInPixels = map_limits.size * map_cellsize

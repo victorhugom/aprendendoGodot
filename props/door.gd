@@ -19,7 +19,7 @@ func _ready() -> void:
 		get_tree().root.add_child(Globals.player)
 		Globals.player.global_position = marker_2d.global_position
 		
-func _on_interactable_interact(body:Node2D) -> void:
+func _on_interactable_interact(_body:Node2D) -> void:
 	Globals.next_scence_path = target_scene_path
 	Globals.previous_scence_path = get_tree().current_scene.scene_file_path
 	

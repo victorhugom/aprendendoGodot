@@ -32,6 +32,9 @@ func can_update_char() -> bool:
 	
 	if target == null:
 		return false
+		
+	if global_position.distance_to(target.global_position) > 400:
+		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
 		return false
@@ -46,9 +49,6 @@ func _physics_process(_delta: float) -> void:
 	if can_update_char() == false:
 		return	
 		
-	if global_position.distance_to(target.global_position) > 400:
-		return
-	
 	is_seeing_player = player_trace.is_colliding()
 	
 	var animation_type = "walk_"

@@ -1,5 +1,7 @@
 class_name VoidBoss extends CharacterBody2D
 
+const VOID_TENTACLES = preload("res://enemies/voidTentacles.tscn")
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -34,7 +36,13 @@ func can_update_char() -> bool:
 	if target == null:
 		return false
 		
+	if global_position.distance_to(target.global_position) > 400:
+		return false
+		
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
+		return false
+	
+	if animation_player.current_animation.begins_with("super_attack"): 
 		return false
 		
 	return true
@@ -53,16 +61,9 @@ func _physics_process(_delta: float) -> void:
 			direction = "right"
 		elif abs(angle) > 0.75 * PI:
 			direction = "left"
-		#elif angle > 0.0:
-			#direction = "down"
-		#else:
-			#direction = "up"
-		
-	if global_position.distance_to(target.global_position) > 24:
+			
+	if global_position.distance_to(target.global_position) > 24 || animation_player.current_animation.begins_with("spin_attack"):
 		#too far from player, keep walking
-		
-		if attack_timer.is_stopped() == false: attack_timer.stop()
-		
 		var next_path_position = navigation_agent_2d.get_next_path_position()
 		var current_position = global_position
 		velocity = current_position.direction_to(next_path_position) * speed
@@ -71,14 +72,13 @@ func _physics_process(_delta: float) -> void:
 		#close enough to attack
 		_on_attack_timer_timeout() #run first attack as soon is close
 		velocity = Vector2(0,0)
-		if attack_timer.is_stopped(): 
-			attack_timer.start()
 		
 	var animation_type = "walk_"
 	if velocity.length() <= 0:
 		animation_type = "idle_"
 
-	animation_player.play(animation_type +  direction)
+	if not animation_player.current_animation.begins_with("spin_attack"):
+		animation_player.play(animation_type +  direction)
 	
 		
 func follow_player() -> void:
@@ -94,9 +94,24 @@ func follow_player() -> void:
 		
 	navigation_agent_2d.set_target_position(horizontal_target_pos)
 
+func create_void_tectacles():
+	
+	var radius = 400
+	var angle = randf_range(0, PI * 2)
+	var distance = randf_range(0, radius)
+	var offset = Vector2(cos(angle), sin(angle)) * distance
+	var tentacle_position =  global_position + offset
+	
+	var new_void_tentacles = VOID_TENTACLES.instantiate()
+	new_void_tentacles.global_position = tentacle_position
+	get_tree().root.add_child(new_void_tentacles)
+
+func super_attack():
+	pass
+
 func update_target():
 	target = Globals.player
-	
+
 func _on_damaged() -> void:
 	if is_dying: return
 	animation_player.play("hit_" + direction)
@@ -113,10 +128,21 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_attack_timer_timeout() -> void:
 	
-	if is_dying: return
+	if is_dying: 
+		return
 	
-	target_position = target.global_position
-	animation_player.play("attack_" + direction)
+	if animation_player.current_animation.contains("attack"):
+		return
+	
+	var attack_dice = randi_range(1, 10)
+	
+	if attack_dice >= 1 and attack_dice <= 2: #has 20% of change to run the spin attack
+		animation_player.play("spin_attack")
+	elif attack_dice == 3:
+		animation_player.play("super_attack")
+	elif global_position.distance_to(target.global_position) <= 24:
+		target_position = target.global_position
+		animation_player.play("attack_" + direction)
 		
 func _on_tracking_timer_timeout() -> void:
 	if target != null:
