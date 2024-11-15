@@ -702,6 +702,7 @@ script = ExtResource("1_5e1wn")
 speed = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_4roqs")
 centered = false
 offset = Vector2(-48, -84)
