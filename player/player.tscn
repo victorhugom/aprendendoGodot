@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="8_f16ms"]
 [ext_resource type="AudioStream" uid="uid://dwg6je1cusplu" path="res://assets/sounds/tinyfootsteps.mp3" id="9_8fibq"]
 [ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="14_acclv"]
-[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="15_m5ob6"]
+[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="15_m5ob6"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="15_yjxdr"]
 [ext_resource type="PackedScene" uid="uid://leld44qf7tew" path="res://inventory/inventory.tscn" id="16_qm5ht"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="16_v5ako"]

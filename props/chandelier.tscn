@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dk75mr3u1qd36"]
 
-[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/light.png" id="2_epraj"]
+[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="2_epraj"]
 [ext_resource type="Texture2D" uid="uid://i0jki8661gnp" path="res://assets/props/Torch.png" id="3_k1wqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nldfs"]

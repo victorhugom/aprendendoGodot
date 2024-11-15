@@ -8,6 +8,7 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
 @onready var attack_timer: Timer = $AttackTimer
 @onready var shooter: Shooter = $Shooter
+@onready var health_bar: HBoxContainer = $HealthBar
 
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health: Health = $Health
@@ -26,6 +27,11 @@ func _ready() -> void:
 	health.health_empty.connect(_on_health_empty)
 	hurt_box.damaged.connect(_on_damaged)
 	hurt_box.can_be_hurt = true
+	
+	#health setup
+	health.health_empty.connect(_on_health_empty)
+	health_bar.health = health
+	
 	add_to_group("enemies")
 	
 func can_update_char() -> bool:

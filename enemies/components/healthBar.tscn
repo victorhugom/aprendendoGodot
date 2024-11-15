@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cppg4wlj741eq"]
+
+[ext_resource type="Script" path="res://enemies/components/health_bar.gd" id="1_k87gb"]
+
+[node name="HealthBar" type="HBoxContainer"]
+z_index = 1
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 0
+script = ExtResource("1_k87gb")

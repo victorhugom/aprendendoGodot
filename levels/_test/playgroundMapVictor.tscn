@@ -78,7 +78,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("3_4e3ww")]
-position = Vector2(4821, 2908)
+position = Vector2(3879, 3372)
 ground_map_tile = NodePath("../Ground")
 
 [node name="CandlesContainer" type="Node2D" parent="."]
@@ -699,3 +699,10 @@ position = Vector2(1251, 1586)
 
 [node name="VoidBoss" parent="." instance=ExtResource("14_y370b")]
 position = Vector2(4729, 2715)
+
+[node name="EnemyEye" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_jyplk")]
+position = Vector2(3648, 3528)
+target = NodePath("../Player")
+
+[node name="EnemyTriEye" parent="." instance=ExtResource("4_ofs0r")]
+position = Vector2(3754, 3532)
