@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://eetvodjwpv8r"]
+[gd_scene load_steps=11 format=3 uid="uid://eetvodjwpv8r"]
 
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_diull"]
 [ext_resource type="Texture2D" uid="uid://g0r7s3cqjopf" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_left.png" id="5_t6bsr"]
+[ext_resource type="Texture2D" uid="uid://bjehfu1d3e5tf" path="res://assets/props/key.png" id="6_0yhao"]
 [ext_resource type="Texture2D" uid="uid://bywbuxstv8gyt" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_right.png" id="6_qafju"]
 
 [sub_resource type="Animation" id="Animation_w6w73"]
@@ -89,6 +90,39 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_diull")
 text = "Esquiva"
+fit_content = true
+autowrap_mode = 0
+
+[node name="KeyBox" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="KeyImage" type="TextureRect" parent="CanvasLayer/KeyBox"]
+layout_mode = 2
+texture = ExtResource("6_0yhao")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/KeyBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/KeyBox/CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/KeyBox/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "x
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="KeyCountLabel" type="RichTextLabel" parent="CanvasLayer/KeyBox/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "0
+"
 fit_content = true
 autowrap_mode = 0
 

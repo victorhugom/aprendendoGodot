@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="8_6rtrp"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="9_ns2m1"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
-[ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="11_is6gc"]
+[ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="11_eqfob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjlm0"]
 size = Vector2(132, 41)
@@ -59,6 +59,7 @@ position = Vector2(1003, 766)
 [node name="DoorMain" parent="." instance=ExtResource("3_hfpwh")]
 position = Vector2(783, 972)
 target_scene_path = "res://levels/main.tscn"
+requires_key = true
 
 [node name="FurnitureContainer" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -178,9 +179,14 @@ shape = SubResource("RectangleShape2D_hjlm0")
 position = Vector2(974, 650)
 ground_map_tile = NodePath("../Grass")
 
-[node name="EnemyTriEye" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_is6gc")]
-position = Vector2(1091, 717)
-target = NodePath("../Player")
+[node name="PickableGoldKey" parent="." instance=ExtResource("11_eqfob")]
+position = Vector2(854, 736)
+
+[node name="PickableGoldKey2" parent="." instance=ExtResource("11_eqfob")]
+position = Vector2(800, 817)
+
+[node name="PickableGoldKey3" parent="." instance=ExtResource("11_eqfob")]
+position = Vector2(749, 730)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

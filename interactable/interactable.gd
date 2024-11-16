@@ -54,4 +54,4 @@ func can_interact() -> bool:
 	
 	var required_item = inventory.has_item(required_item_type)
 	
-	return required_item != null
+	return required_item.size() > 0 && required_item.size() >= required_item_quantity

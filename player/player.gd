@@ -65,6 +65,9 @@ func _ready() -> void:
 	Hud.health_bar.health = health
 	hurt_box.damaged.connect(_on_hit)
 	
+	#inventory setup
+	Hud.inventory = inventory
+	
 	#deck builder setup
 	deck_cards = saved_game.deck_cards
 	if deck_cards.size() == 0 && not get_tree().current_scene.scene_file_path.contains("lobby"):
