@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c3y5d21thmc6f"]
+[gd_scene load_steps=15 format=4 uid="uid://c3y5d21thmc6f"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_dbyp5"]
 [ext_resource type="Script" path="res://levels/lobby.gd" id="1_epi6a"]
@@ -10,9 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="8_6rtrp"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="9_ns2m1"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
+[ext_resource type="PackedScene" uid="uid://p5s7pcd61xly" path="res://conversation/conversationTrigger.tscn" id="10_ipgk1"]
+[ext_resource type="Resource" uid="uid://c0q5ki1lxha8a" path="res://conversation/conversations/lilia_dont_go_conversation.tres" id="12_65s5k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjlm0"]
-size = Vector2(132, 41)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2gt"]
+size = Vector2(222, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpdnw"]
+size = Vector2(121, 33)
 
 [node name="Lobby" type="Node2D"]
 y_sort_enabled = true
@@ -166,16 +171,26 @@ position = Vector2(331, -220)
 [node name="Candle" parent="FurnitureContainer" instance=ExtResource("5_awpbb")]
 position = Vector2(354, -265)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(818, 935.5)
-shape = SubResource("RectangleShape2D_hjlm0")
-
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("9_vkru6")]
 position = Vector2(974, 650)
 ground_map_tile = NodePath("../Grass")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="CehckDeckArea" type="Area2D" parent="."]
+position = Vector2(1002, 783)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CehckDeckArea"]
+position = Vector2(-208, 140)
+shape = SubResource("RectangleShape2D_vx2gt")
+
+[node name="ConversationTrigger" parent="." instance=ExtResource("10_ipgk1")]
+position = Vector2(752, 911)
+conversation = ExtResource("12_65s5k")
+play_once = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConversationTrigger"]
+position = Vector2(33, 14)
+shape = SubResource("RectangleShape2D_xpdnw")
+
+[connection signal="body_entered" from="CehckDeckArea" to="." method="_on_cehck_deck_area_body_entered"]
+[connection signal="body_entered" from="ConversationTrigger" to="." method="_on_conversation_trigger_body_entered"]

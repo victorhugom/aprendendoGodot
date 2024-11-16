@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://p5s7pcd61xly"]
+
+[ext_resource type="Script" path="res://conversation/conversation_trigger.gd" id="1_k1xbs"]
+
+[node name="ConversationTrigger" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_k1xbs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
