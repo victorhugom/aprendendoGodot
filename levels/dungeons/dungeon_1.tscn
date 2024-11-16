@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=11 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="2_8ai17"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="6_syedk"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="7_yq431"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="8_wikqq"]
+[ext_resource type="PackedScene" uid="uid://cffcop1k7pmc1" path="res://props/liliamessage.tscn" id="9_ybi5u"]
+[ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="10_wimbo"]
 
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
@@ -41,7 +43,7 @@ tile_set = ExtResource("1_bpnn8")
 metadata/_edit_lock_ = true
 
 [node name="Furniture" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAfAB4ABAAOAAkAAAAiAB8ABAAMAAkAAAAcACUABAAMAAkAAAAcACMABAARAAoAAAAdAB4ABAASAAwAAAAiAB4ABAASAAwAAAAfACIABAAKAAQAAAAcAB4ABAARAAsAAAA=")
+tile_map_data = PackedByteArray("AAAfAB4ABAAOAAkAAAAiAB8ABAAMAAkAAAAcACUABAAMAAkAAAAcACMABAARAAoAAAAdAB4ABAASAAwAAAAiAB4ABAASAAwAAAAfACIABAAKAAQAAAAcAB4ABAARAAsAAAAfAB8ABAAAACAAAAA=")
 tile_set = ExtResource("1_bpnn8")
 metadata/_edit_lock_ = true
 
@@ -154,3 +156,13 @@ position = Vector2(966, 395)
 
 [node name="EnemyTriEye3" parent="EnemyContainer" instance=ExtResource("8_wikqq")]
 position = Vector2(804, 910)
+
+[node name="LiliaMessage" parent="." instance=ExtResource("9_ybi5u")]
+position = Vector2(1006, 1096)
+
+[node name="PickableGoldKey" parent="." instance=ExtResource("10_wimbo")]
+position = Vector2(1012, 1110)
+
+[node name="Exit" parent="." instance=ExtResource("2_8ai17")]
+position = Vector2(1007, 1007)
+target_scene_path = "res://levels/main.tscn"

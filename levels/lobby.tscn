@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c3y5d21thmc6f"]
+[gd_scene load_steps=12 format=4 uid="uid://c3y5d21thmc6f"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_dbyp5"]
 [ext_resource type="Script" path="res://levels/lobby.gd" id="1_epi6a"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="8_6rtrp"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="9_ns2m1"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
-[ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="11_is6gc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjlm0"]
 size = Vector2(132, 41)
@@ -43,19 +42,18 @@ metadata/_edit_lock_ = true
 
 [node name="Wall" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAUABIAAAAAAAcAAAAoAA8ABAANABIAAAAgABMABAATAAkAAAAcABMABAAGAAQAAAAeABIABAATAAQAAAAeABQABAAKAAQAAAAfABkABAATAA8AAAA=")
+tile_map_data = PackedByteArray("AAAUABIAAAAAAAcAAAAoAA8ABAANABIAAAAgABMABAATAAkAAAAeABIABAATAAQAAAAeABQABAAKAAQAAAAcABMABAAGAAQAAAA=")
 tile_set = ExtResource("1_dbyp5")
 metadata/_edit_lock_ = true
 
 [node name="Furniture" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAmAB4ABAAOAAwAAAAfACEABAAOAAwAAAAjACAABAAOAAwAAAAbACAABAAOAAwAAAAfABkABAASAA8AAAAYAB4ABAADABEAAAA=")
+tile_map_data = PackedByteArray("AAAmAB4ABAAOAAwAAAAfACEABAAOAAwAAAAjACAABAAOAAwAAAAbACAABAAOAAwAAAAYAB4ABAADABEAAAAfABkABAATAA4AAAA=")
 tile_set = ExtResource("1_dbyp5")
 metadata/_edit_lock_ = true
 
 [node name="Lilia" parent="." instance=ExtResource("5_ojs5g")]
 z_index = 1
-y_sort_enabled = true
-position = Vector2(1003, 766)
+position = Vector2(1005, 784)
 
 [node name="DoorMain" parent="." instance=ExtResource("3_hfpwh")]
 position = Vector2(783, 972)
@@ -176,13 +174,8 @@ position = Vector2(818, 935.5)
 shape = SubResource("RectangleShape2D_hjlm0")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("9_vkru6")]
-position = Vector2(974, 650)
+position = Vector2(976, 653)
 ground_map_tile = NodePath("../Grass")
-
-[node name="EnemyTriEye" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_is6gc")]
-position = Vector2(1091, 717)
-target = NodePath("../Player")
-speed = 70
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

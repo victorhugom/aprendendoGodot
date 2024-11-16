@@ -992,8 +992,8 @@ texture_scale = 0.6
 
 [node name="PointLight2D_Player" type="PointLight2D" parent="LittleMage"]
 light_mask = 0
-color = Color(0.620275, 0.38849, 0.286406, 1)
-energy = 0.3
+color = Color(0.44672, 0.257814, 0.720444, 1)
+energy = 0.8
 range_layer_min = -10
 range_layer_max = 10
 range_item_cull_mask = 2
