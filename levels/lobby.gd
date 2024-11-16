@@ -19,9 +19,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		get_tree().root.add_child(chat_box)
 
 func _on_area_2d_body_exited(_body: Node2D) -> void:
-	var tween = get_tree().create_tween()
 	if chat_box != null:
-		tween.tween_callback(chat_box.close_conversation).set_delay(1)
+		var tween = get_tree().create_tween()
+		tween.tween_callback(chat_box.close_conversation).set_delay(.5)
 
 func _on_next_message(message: ChatMessage):
 	print_debug("next_message: %s" %message.message)

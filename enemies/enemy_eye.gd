@@ -9,8 +9,8 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 @onready var attack_timer: Timer = $AttackTimer
 @onready var shooter: Shooter = $Shooter
 @onready var health_bar: HBoxContainer = $HealthBar
-
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var hit_box: CollisionShape2D = $HitBox
 @onready var health: Health = $Health
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
@@ -102,7 +102,10 @@ func _on_damaged() -> void:
 	animation_player.play("hit")
 
 func _on_health_empty():
+	
 	is_dying = true
+	hurt_box.set_collision_layer_value(9, false)
+	
 	attack_timer.stop()
 	animation_player.play("death")
 

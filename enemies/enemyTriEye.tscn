@@ -544,6 +544,7 @@ size = Vector2(27, 49)
 y_sort_enabled = true
 texture_filter = 3
 script = ExtResource("1_dnkxr")
+speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rbip2")
@@ -554,8 +555,7 @@ vframes = 17
 region_rect = Rect2(133, 163, 26, 40)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-7, -12)
+position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_bbok2")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_vpbqo")]
@@ -568,7 +568,6 @@ position = Vector2(7, -9)
 shape = SubResource("CapsuleShape2D_e2s3c")
 
 [node name="Health" parent="." instance=ExtResource("4_p23gm")]
-visible = false
 max_health = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -591,13 +590,13 @@ target_desired_distance = 20.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 16.0
+max_speed = 500.0
 
 [node name="TrackingTimer" type="Timer" parent="NavigationAgent2D"]
 wait_time = 0.1
 autostart = true
 
 [node name="MeleeCollisionBox" type="Area2D" parent="."]
-visible = false
 position = Vector2(-20, -20)
 collision_layer = 1024
 collision_mask = 32

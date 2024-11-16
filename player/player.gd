@@ -25,7 +25,7 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 #region Deck Builder
 var deck_builder: DeckBuilder
 var card_hand: CardHand
-var deck_cards: Array[CardConfig]
+var deck_cards: Array[DeckCardItem] #full deck
 #endregion
 
 var saved_game = SavedGame
@@ -46,7 +46,7 @@ var dash_cooldown_timer = 0.0
 
 func _ready() -> void:
 	
-	load_game()
+	saved_game = load_game()
 	
 	shooter.projectile_config = PROJECTILE_BASIC_CONFIG
 	
@@ -61,15 +61,16 @@ func _ready() -> void:
 	
 	#health setup
 	health.health_empty.connect(_on_health_empty)
-	health.max_health = (saved_game as SavedGame).max_health
+	health.max_health = saved_game.max_health
 	Hud.health_bar.health = health
 	hurt_box.damaged.connect(_on_hit)
 	
 	#deck builder setup
-	if (saved_game as SavedGame).deck_cards.size() == 0 && not get_tree().current_scene.scene_file_path.contains("lobby"):
+	deck_cards = saved_game.deck_cards
+	if deck_cards.size() == 0 && not get_tree().current_scene.scene_file_path.contains("lobby"):
 		build_deck()
 	else:
-		create_deck_hand((saved_game as SavedGame).deck_cards)
+		create_deck_hand()
 	
 	Globals.player = self
 	get_tree().call_group("enemies", "update_target")
@@ -207,30 +208,44 @@ func _on_deck_builder_opened() -> void:
 	get_tree().paused = true
 
 func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
+	
+	#remove deck builder from screen
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	remove_child(deck_builder)
 	deck_builder.queue_free()
-		
-	create_deck_hand(deck)
-
-func build_deck():
-	deck_builder = DECK_BUILDER.instantiate()
-	deck_builder.cards_owned = (saved_game as SavedGame).cards_owned
-	deck_builder.deck_cards = (saved_game as SavedGame).deck_cards
-	deck_builder.closed.connect(_on_deck_builder_closed)
-	deck_builder.opened.connect(_on_deck_builder_opened)
-	add_child(deck_builder)
-	deck_builder.update_deck()	
-
-func create_deck_hand(deck: Array[DeckCardItem]):
 	
+	# save deck created
 	var new_saved_game: SavedGame = SavedGame.new()
 	new_saved_game.deck_cards = deck
 	ResourceSaver.save(new_saved_game, "res://savegame.tres")
+		
+	deck_cards = deck
+	create_deck_hand()
+
+func build_deck():
+	
+	var current_saved_game = load_game()
+	
+	deck_builder = DECK_BUILDER.instantiate()
+	deck_builder.cards_owned = current_saved_game.cards_owned
+	deck_builder.deck_cards = current_saved_game.deck_cards
+	deck_builder.closed.connect(_on_deck_builder_closed)
+	deck_builder.opened.connect(_on_deck_builder_opened)
+	add_child(deck_builder)
+	deck_builder.update_deck()
+
+func create_deck_hand():
+	
+	var deck_in_hand: Array[DeckCardItem] = []
+	for deck_card_item in deck_cards:
+		var card_copy = DeckCardItem.new()
+		card_copy.card_config = deck_card_item.card_config
+		card_copy.quantity = deck_card_item.quantity
+		deck_in_hand.append(card_copy)
 	
 	card_hand = CARD_HAND.instantiate()
-	card_hand.deck_cards = deck
+	card_hand.deck_cards = deck_in_hand
 	card_hand.card_selected_changed.connect(_on_card_selected_changed)
 
 	add_child(card_hand)
@@ -267,5 +282,5 @@ func transform(_transformation_card = CardConfig) -> void:
 	animation_player.play("transform")
 	last_anim_direction = "down"
 
-func load_game():
-	saved_game = load("res://savegame.tres") as SavedGame
+func load_game() -> SavedGame:
+	return load("res://savegame.tres") as SavedGame

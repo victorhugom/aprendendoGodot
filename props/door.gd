@@ -3,7 +3,7 @@ class_name Door extends Node2D
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var interactable: Interactable = $Interactable
 
-@export_file("*.tscn") var target_scene_path
+@export_file("*.tscn") var target_scene_path: String
 
 @export_category("Requires Key")
 @export var requires_key:= false
@@ -19,8 +19,10 @@ func _ready() -> void:
 		
 		var current_scene = get_tree().current_scene
 		var first_node = current_scene.get_child(0)
-		(first_node as Node2D).add_sibling.call_deferred(Globals.player)
-		Globals.player.global_position = marker_2d.global_position
+		
+		if not (current_scene.get_path() as String).to_lower().contains("lobby"):
+			(first_node as Node2D).add_sibling.call_deferred(Globals.player)
+			Globals.player.global_position = marker_2d.global_position
 		
 func _on_interactable_interact(_body:Node2D) -> void:
 	Globals.next_scence_path = target_scene_path
