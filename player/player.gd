@@ -176,7 +176,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_being_hit = false
 	if anim_name.begins_with("transform"):
 		is_transforming = false
-		get_tree().root.	add_child(transformation)
+		var current_scene = get_tree().current_scene
+		var first_node = current_scene.get_child(0)
+		(first_node as Node2D).add_sibling.call_deferred(transformation)
 	if anim_name.begins_with("death"):
 		var death_screen = DEATH_SCREEN.instantiate()
 		get_tree().root.add_child(death_screen)

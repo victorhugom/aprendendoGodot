@@ -1162,8 +1162,8 @@ zoom = Vector2(1.5, 1.5)
 [node name="SausageMonster" type="Sprite2D" parent="."]
 light_mask = 2
 texture_filter = 3
-position = Vector2(0, -16)
 texture = ExtResource("12_aoyik")
+offset = Vector2(0, -28)
 hframes = 12
 vframes = 25
 frame = 187
@@ -1191,11 +1191,11 @@ height = 100.0
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(3, 9.53674e-07)
+position = Vector2(3, -8)
 shape = SubResource("RectangleShape2D_mhrhn")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("16_ajou3")]
-position = Vector2(1, 14)
+position = Vector2(1, 6)
 scale = Vector2(1, 2.08)
 collision_layer = 32
 collision_mask = 1536
@@ -1206,7 +1206,7 @@ position = Vector2(1, -12.5)
 shape = SubResource("CapsuleShape2D_qs8ly")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("5_s3gp0")]
-position = Vector2(0, 10)
+position = Vector2(0, 2)
 collision_layer = 64
 collision_mask = 256
 left_marker = NodePath("LeftMarker2D")
@@ -1228,7 +1228,7 @@ position = Vector2(0, -59)
 position = Vector2(0, 3)
 
 [node name="Health" parent="." instance=ExtResource("17_418l2")]
-position = Vector2(0, 10)
+position = Vector2(0, 2)
 
 [node name="PunchCollisionArea" type="Area2D" parent="."]
 collision_layer = 128
