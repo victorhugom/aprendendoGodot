@@ -983,8 +983,6 @@ frame = 180
 region_rect = Rect2(241, 254, 29, 35)
 
 [node name="PointLight2D_World" type="PointLight2D" parent="LittleMage"]
-y_sort_enabled = true
-energy = 0.5
 range_layer_min = -10
 range_layer_max = 10
 shadow_enabled = true
@@ -994,8 +992,8 @@ texture_scale = 0.6
 
 [node name="PointLight2D_Player" type="PointLight2D" parent="LittleMage"]
 light_mask = 0
-color = Color(0.375251, 0.465362, 0.222672, 1)
-energy = 0.8
+color = Color(0.620275, 0.38849, 0.286406, 1)
+energy = 0.3
 range_layer_min = -10
 range_layer_max = 10
 range_item_cull_mask = 2
@@ -1010,7 +1008,6 @@ position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("15_yjxdr")]
-visible = false
 position = Vector2(0, 3)
 collision_layer = 32
 collision_mask = 1536

@@ -33,6 +33,3 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_FAILED:
 			# Well some error happend:
 			print_debug("Error. Could not load Resource")
-			
-func _exit_tree() -> void:
-	print_debug("EEEE")
