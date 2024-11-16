@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=13 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://cards/configs/definitions/card_config.gd" id="1_8doj4"]
 [ext_resource type="Resource" path="res://cards/configs/card_config_basic_shoot_double.tres" id="2_egmm0"]
@@ -11,18 +11,28 @@
 [ext_resource type="Script" path="res://cards/deck_card_item.gd" id="9_0fx4n"]
 [ext_resource type="Script" path="res://player/saved_game.gd" id="9_msrdv"]
 
-[sub_resource type="Resource" id="Resource_wfetn"]
+[sub_resource type="Resource" id="Resource_fcye4"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("6_tbd5l")
-quantity = 3
+quantity = 4
 
-[sub_resource type="Resource" id="Resource_2hw8b"]
+[sub_resource type="Resource" id="Resource_6u502"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("7_invc2")
-quantity = 1
+quantity = 7
+
+[sub_resource type="Resource" id="Resource_g8wgv"]
+script = ExtResource("9_0fx4n")
+card_config = ExtResource("5_fg025")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_6mvbi"]
+script = ExtResource("9_0fx4n")
+card_config = ExtResource("2_egmm0")
+quantity = 7
 
 [resource]
 script = ExtResource("9_msrdv")
 max_health = 9
-deck_cards = Array[ExtResource("9_0fx4n")]([SubResource("Resource_wfetn"), SubResource("Resource_2hw8b")])
+deck_cards = Array[ExtResource("9_0fx4n")]([SubResource("Resource_fcye4"), SubResource("Resource_6u502"), SubResource("Resource_g8wgv"), SubResource("Resource_6mvbi")])
 cards_owned = Array[ExtResource("1_8doj4")]([ExtResource("2_egmm0"), ExtResource("3_7qo4l"), ExtResource("4_m8uqo"), ExtResource("5_fg025"), ExtResource("6_tbd5l"), ExtResource("7_invc2"), ExtResource("8_np418")])
