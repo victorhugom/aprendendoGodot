@@ -121,7 +121,11 @@ custom_minimum_size = Vector2(96, 99)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/MarginContainer/PanelContainer"]
+position = Vector2(-62, -196)
+scale = Vector2(3.05208, 3.05208)
 sprite_frames = SubResource("SpriteFrames_dyum5")
+autoplay = "default"
+frame_progress = 0.713587
 centered = false
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
@@ -136,6 +140,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 6.0
+offset_right = -3.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 40
@@ -147,6 +155,7 @@ layout_mode = 2
 
 [node name="CharName" type="RichTextLabel" parent="HBoxContainer/ColorRect/MarginContainer/PanelContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_gdf1r")
 text = "Lilia"
 fit_content = true
 autowrap_mode = 0
@@ -166,7 +175,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ColorRect"]
-modulate = Color(0.552083, 0.293294, 0.293294, 1)
+modulate = Color(0.0808967, 0.0802124, 0.146915, 1)
 custom_minimum_size = Vector2(230, 32)
 layout_mode = 1
 anchors_preset = 3
