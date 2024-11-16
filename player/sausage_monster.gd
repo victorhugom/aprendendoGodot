@@ -139,9 +139,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		is_transforming = false
 		
 		var current_position = global_position
-		get_tree().root.add_child(previous_char)
-		get_tree().call_group("enemies", "update_target")
+		
+		var current_scene = get_tree().current_scene
+		var first_node = current_scene.get_child(0)
+		(first_node as Node2D).add_sibling.call_deferred(previous_char)
 		previous_char.global_position = current_position
+		
+		get_tree().call_group("enemies", "update_target")
 		Hud.health_bar.health = previous_char.health
 		self.get_parent().remove_child(self)
 		

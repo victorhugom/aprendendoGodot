@@ -171,6 +171,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 400
 
 [node name="Message" type="RichTextLabel" parent="HBoxContainer/ColorRect/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
