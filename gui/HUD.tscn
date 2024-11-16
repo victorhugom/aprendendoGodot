@@ -97,9 +97,10 @@ autowrap_mode = 0
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -552.0
+offset_top = 68.0
+offset_right = -493.0
+offset_bottom = 108.0
 grow_horizontal = 2
 
 [node name="KeyImage" type="TextureRect" parent="CanvasLayer/KeyBox"]

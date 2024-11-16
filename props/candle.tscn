@@ -71,7 +71,6 @@ y_sort_enabled = true
 texture_filter = 3
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
-z_index = 1
 position = Vector2(-1, -9)
 scale = Vector2(0.353271, 0.353271)
 color = Color(0.997226, 0.935439, 0.83206, 1)

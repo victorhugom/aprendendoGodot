@@ -8,7 +8,6 @@ var player: Player
 
 func _on_interactable_interact(body: Node2D) -> void:
 	player = body as Player
-	player.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	var chat_box = CHAT_BOX.instantiate()
 	chat_box.conversation = conversation

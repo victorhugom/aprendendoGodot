@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://3ub8eral5hes"]
+[gd_scene load_steps=16 format=4 uid="uid://3ub8eral5hes"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="10_l7p46"]
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_dqtli"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="11_ds84i"]
-[ext_resource type="PackedScene" path="res://props/liliamessage.tscn" id="13_eaqi8"]
+[ext_resource type="PackedScene" uid="uid://b3hhlk7w3q8ie" path="res://props/liliamessage.tscn" id="13_eaqi8"]
+[ext_resource type="Resource" uid="uid://bwkbcgoquybla" path="res://conversation/conversations/lilia_message1_conversation.tres" id="14_1hlcs"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="14_1mwr4"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
@@ -1042,8 +1043,9 @@ position = Vector2(431, 398)
 target_scene_path = "res://levels/lobby.tscn"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]
-position = Vector2(907, 513)
+position = Vector2(894, 511)
+conversation = ExtResource("14_1hlcs")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("14_1mwr4")]
-position = Vector2(904, 527)
+position = Vector2(916, 522)
 rotation = -0.419262
