@@ -151,6 +151,8 @@ ui_full_screen={
 
 [layer_names]
 
+2d_render/layer_1="World"
+2d_render/layer_2="Player"
 2d_physics/layer_1="player"
 2d_physics/layer_2="npc"
 2d_physics/layer_3="furniture"

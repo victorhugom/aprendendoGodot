@@ -259,7 +259,7 @@ func transform(_transformation_card = CardConfig) -> void:
 	
 	transformation = SAUSAGE_MONSTER.instantiate()
 	transformation.position = global_position
-	transformation.ground_map_tile = ground_map_tile
+	#transformation.ground_map_tile = ground_map_tile
 
 	#transform from last transformation to new
 	animation_player.play("transform")
