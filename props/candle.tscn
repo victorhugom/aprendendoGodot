@@ -74,7 +74,7 @@ texture_filter = 3
 z_index = 1
 position = Vector2(-1, -9)
 scale = Vector2(0.353271, 0.353271)
-color = Color(0.429925, 0.309709, 0.0527162, 1)
+color = Color(0.997226, 0.935439, 0.83206, 1)
 range_z_max = 0
 range_item_cull_mask = 3
 shadow_enabled = true
@@ -83,9 +83,10 @@ texture = ExtResource("2_c173n")
 texture_scale = 1.4
 
 [node name="Candle" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -11)
+y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7oav6")
 animation = &"candleflame"
 autoplay = "candleflame"
 frame_progress = 0.819946
+offset = Vector2(0, -26.9)
