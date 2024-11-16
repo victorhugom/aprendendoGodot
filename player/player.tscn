@@ -983,7 +983,6 @@ frame = 180
 region_rect = Rect2(241, 254, 29, 35)
 
 [node name="PointLight2D_World" type="PointLight2D" parent="LittleMage"]
-y_sort_enabled = true
 range_layer_min = -10
 range_layer_max = 10
 shadow_enabled = true

@@ -16,7 +16,10 @@ func _ready() -> void:
 	interactable.required_item_quantity = required_quantity
 	
 	if target_scene_path == Globals.previous_scence_path && Globals.player:
-		get_tree().root.add_child(Globals.player)
+		
+		var current_scene = get_tree().current_scene
+		var first_node = current_scene.get_child(0)
+		(first_node as Node2D).add_sibling.call_deferred(Globals.player)
 		Globals.player.global_position = marker_2d.global_position
 		
 func _on_interactable_interact(_body:Node2D) -> void:
