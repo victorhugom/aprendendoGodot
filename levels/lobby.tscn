@@ -175,11 +175,11 @@ position = Vector2(354, -265)
 position = Vector2(974, 650)
 ground_map_tile = NodePath("../Grass")
 
-[node name="CehckDeckArea" type="Area2D" parent="."]
+[node name="CheckDeckArea" type="Area2D" parent="."]
 position = Vector2(1002, 783)
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CehckDeckArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckDeckArea"]
 position = Vector2(-208, 140)
 shape = SubResource("RectangleShape2D_vx2gt")
 
@@ -192,5 +192,5 @@ play_once = true
 position = Vector2(33, 14)
 shape = SubResource("RectangleShape2D_xpdnw")
 
-[connection signal="body_entered" from="CehckDeckArea" to="." method="_on_cehck_deck_area_body_entered"]
+[connection signal="body_entered" from="CheckDeckArea" to="." method="_on_cehck_deck_area_body_entered"]
 [connection signal="body_entered" from="ConversationTrigger" to="." method="_on_conversation_trigger_body_entered"]
