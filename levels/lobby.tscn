@@ -54,7 +54,6 @@ metadata/_edit_lock_ = true
 
 [node name="Lilia" parent="." instance=ExtResource("5_ojs5g")]
 z_index = 1
-y_sort_enabled = true
 position = Vector2(1003, 766)
 
 [node name="DoorMain" parent="." instance=ExtResource("3_hfpwh")]
@@ -182,7 +181,6 @@ ground_map_tile = NodePath("../Grass")
 [node name="EnemyTriEye" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_is6gc")]
 position = Vector2(1091, 717)
 target = NodePath("../Player")
-speed = 70
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

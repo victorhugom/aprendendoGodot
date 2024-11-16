@@ -27,13 +27,13 @@ const DECK_CARD = preload("res://cards/deckCard.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	create_card_table(cards_owned)
+	create_card_table()
 	opened.emit()
 
-func create_card_table(cards: Array[CardConfig]):
+func create_card_table():
 	#create card table (all cards that can be selected)
 	
-	for card_config in cards:
+	for card_config in cards_owned:
 		var deck_card = DECK_CARD.instantiate()
 		deck_card.card_config = card_config
 		
