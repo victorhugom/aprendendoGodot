@@ -16,8 +16,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hdjc"]
 height = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ob6v"]
-radius = 12.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix582"]
+height = 36.0
 
 [sub_resource type="Animation" id="Animation_xo2l5"]
 length = 0.001
@@ -518,18 +518,15 @@ position = Vector2(-7, -12)
 shape = SubResource("CapsuleShape2D_4hdjc")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_roh5r")]
-visible = false
-position = Vector2(-37, -15)
+position = Vector2(0, -15)
 collision_layer = 256
 collision_mask = 192
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(29, -1)
-shape = SubResource("CircleShape2D_8ob6v")
+shape = SubResource("CapsuleShape2D_ix582")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("4_h106r")]
-visible = false
 collision_layer = 512
 collision_mask = 32
 left_marker = NodePath("LeftMarker2D")

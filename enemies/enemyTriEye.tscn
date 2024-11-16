@@ -18,8 +18,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbok2"]
 height = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_plcyg"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2s3c"]
 radius = 12.0
+height = 54.0
 
 [sub_resource type="Animation" id="Animation_xo2l5"]
 length = 0.001
@@ -530,14 +531,13 @@ position = Vector2(-7, -12)
 shape = SubResource("CapsuleShape2D_bbok2")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_vpbqo")]
-visible = false
 position = Vector2(-7, -16)
 collision_layer = 256
 collision_mask = 192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(1, 5)
-shape = SubResource("CircleShape2D_plcyg")
+position = Vector2(7, -9)
+shape = SubResource("CapsuleShape2D_e2s3c")
 
 [node name="Health" parent="." instance=ExtResource("4_p23gm")]
 visible = false
