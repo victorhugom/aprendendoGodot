@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="6_syedk"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="7_yq431"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="8_wikqq"]
-[ext_resource type="PackedScene" uid="uid://cffcop1k7pmc1" path="res://props/liliamessage.tscn" id="9_ybi5u"]
+[ext_resource type="PackedScene" path="res://props/liliamessage.tscn" id="9_ybi5u"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="10_wimbo"]
 
 [node name="Dungeon1" type="Node2D"]
@@ -166,3 +166,5 @@ position = Vector2(1012, 1110)
 [node name="Exit" parent="." instance=ExtResource("2_8ai17")]
 position = Vector2(1007, 1007)
 target_scene_path = "res://levels/main.tscn"
+only_exit = true
+requires_key = true

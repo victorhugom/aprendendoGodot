@@ -4,6 +4,7 @@ class_name Door extends Node2D
 @onready var interactable: Interactable = $Interactable
 
 @export_file("*.tscn") var target_scene_path: String
+@export var only_exit:= false
 
 @export_category("Requires Key")
 @export var requires_key:= false
@@ -14,6 +15,9 @@ func _ready() -> void:
 	
 	interactable.requires_item = requires_key
 	interactable.required_item_quantity = required_quantity
+	
+	if only_exit: 
+		return
 	
 	if target_scene_path == Globals.previous_scence_path && Globals.player:
 		
