@@ -64,7 +64,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wskju"]
 size = Vector2(96, 103.5)
 
-[node name="Voidicon" type="Node2D"]
+[node name="Lilia" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_a7po7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

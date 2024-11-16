@@ -3,6 +3,8 @@ class_name HealthBar extends HBoxContainer
 @export var health: Health:
 	set(value):
 		health = value
+		if health.health_changed.get_connections().size() > 0:
+			health.health_changed.disconnect(health.health_changed.get_connections()[0])
 		health.health_changed.connect(update_hearts)
 		set_max_hearts(health.max_health)
 		update_hearts(health.current_health)
