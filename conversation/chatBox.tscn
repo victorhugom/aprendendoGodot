@@ -1,0 +1,219 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2wllq3qir520"]
+
+[ext_resource type="Script" path="res://conversation/chat_box.gd" id="1_hvumw"]
+[ext_resource type="Texture2D" uid="uid://bshc78j0khkjx" path="res://assets/npc/liliaportrait-Sheet.png" id="1_w4li0"]
+[ext_resource type="Texture2D" uid="uid://rx6qr8wsh1" path="res://assets/npc/subtittlesbox.png" id="2_ekx55"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="3_gdf1r"]
+[ext_resource type="Texture2D" uid="uid://d38q8c7rxmmal" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/keyboard_e.png" id="5_v6xqg"]
+[ext_resource type="Texture2D" uid="uid://cl47ksnnb7xn4" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/keyboard_r.png" id="6_l83ki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oskty"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(0, 0, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snkso"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(96, 0, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stukg"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(192, 0, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekwmc"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(288, 0, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fxev"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(384, 0, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a40ew"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(480, 0, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ie2"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(480, 99, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofmnn"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(384, 99, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju5sl"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(288, 99, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdt06"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(192, 99, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esrrr"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(96, 99, 96, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkg14"]
+atlas = ExtResource("1_w4li0")
+region = Rect2(0, 99, 96, 99)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dyum5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oskty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snkso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stukg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekwmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fxev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a40ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8ie2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofmnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju5sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdt06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esrrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkg14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ChatBox" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_hvumw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(96, 99)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/MarginContainer/PanelContainer"]
+sprite_frames = SubResource("SpriteFrames_dyum5")
+centered = false
+
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_ekx55")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 5
+
+[node name="PanelContainer" type="VBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="CharName" type="RichTextLabel" parent="HBoxContainer/ColorRect/MarginContainer/PanelContainer"]
+layout_mode = 2
+text = "Lilia"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ColorRect/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+
+[node name="Message" type="RichTextLabel" parent="HBoxContainer/ColorRect/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_gdf1r")
+text = "Voce quer tirar as cartas?"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ColorRect"]
+modulate = Color(0.552083, 0.293294, 0.293294, 1)
+custom_minimum_size = Vector2(230, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -42.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="CancelButton" type="HBoxContainer" parent="HBoxContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/ColorRect/HBoxContainer/CancelButton"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/ColorRect/HBoxContainer/CancelButton/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_gdf1r")
+text = "Cancelar"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/ColorRect/HBoxContainer/CancelButton"]
+layout_mode = 2
+texture = ExtResource("6_l83ki")
+expand_mode = 3
+
+[node name="CenterContainer2" type="HBoxContainer" parent="HBoxContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/ColorRect/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/ColorRect/HBoxContainer/CenterContainer2/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_gdf1r")
+text = "Continuar"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+texture = ExtResource("5_v6xqg")
+expand_mode = 3

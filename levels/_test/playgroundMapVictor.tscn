@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_m58qk"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="12_ijhb8"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="13_5svdw"]
-[ext_resource type="PackedScene" uid="uid://b6h51bpowsn2s" path="res://enemies/voidBoss.tscn" id="14_y370b"]
+[ext_resource type="PackedScene" uid="uid://b6h51bpowsn2s" path="res://enemies/VoidBoss.tscn" id="14_y370b"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true

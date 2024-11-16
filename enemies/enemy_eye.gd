@@ -24,13 +24,12 @@ var target_position: Vector2
 var is_seeing_player = false
 
 func _ready() -> void:
-	health.health_empty.connect(_on_health_empty)
-	hurt_box.damaged.connect(_on_damaged)
-	hurt_box.can_be_hurt = true
 	
 	#health setup
 	health.health_empty.connect(_on_health_empty)
 	health_bar.health = health
+	hurt_box.damaged.connect(_on_damaged)
+	hurt_box.can_be_hurt = true
 	
 	add_to_group("enemies")
 	
@@ -39,7 +38,7 @@ func can_update_char() -> bool:
 	if target == null:
 		return false
 		
-	if global_position.distance_to(target.global_position) > 400:
+	if global_position.distance_to(target.global_position) > 300:
 		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 

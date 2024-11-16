@@ -581,7 +581,6 @@ max_results = 2
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="TrackingTimer" type="Timer" parent="NavigationAgent2D"]
 wait_time = 0.1

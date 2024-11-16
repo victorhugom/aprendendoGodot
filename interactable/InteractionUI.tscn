@@ -18,15 +18,14 @@ script = ExtResource("1_io1g0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(50, 0)
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = 176.0
-offset_right = 145.0
-offset_bottom = 208.0
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -82.0
+offset_right = 127.0
+offset_bottom = -50.0
+grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -38,12 +37,12 @@ stretch_mode = 5
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("3_medu7")
-text = "Abrir Porta"
+text = "Falar"
 fit_content = true
-scroll_active = false
 autowrap_mode = 0

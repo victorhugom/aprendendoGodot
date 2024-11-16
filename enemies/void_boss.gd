@@ -36,7 +36,7 @@ func can_update_char() -> bool:
 	if target == null:
 		return false
 		
-	if global_position.distance_to(target.global_position) > 400:
+	if global_position.distance_to(target.global_position) > 300:
 		return false
 		
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 

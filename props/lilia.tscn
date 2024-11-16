@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://jb3tkcu7oswd"]
+[gd_scene load_steps=13 format=3 uid="uid://jb3tkcu7oswd"]
 
+[ext_resource type="Script" path="res://props/lilia.gd" id="1_a7po7"]
 [ext_resource type="Texture2D" uid="uid://d24tlkx16ej2l" path="res://assets/npc/lilia-Sheet.npc.png" id="1_nmc6p"]
+[ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="3_2umqx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhquk"]
 atlas = ExtResource("1_nmc6p")
@@ -59,10 +61,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wskju"]
+size = Vector2(96, 103.5)
+
 [node name="Voidicon" type="Node2D"]
+script = ExtResource("1_a7po7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_q2d5m")
 autoplay = "default"
 frame_progress = 0.783171
+
+[node name="Interactable" parent="." instance=ExtResource("3_2umqx")]
+interact_message = "Falar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 60)
+shape = SubResource("RectangleShape2D_wskju")
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

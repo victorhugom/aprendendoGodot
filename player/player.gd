@@ -66,13 +66,10 @@ func _ready() -> void:
 	hurt_box.damaged.connect(_on_hit)
 	
 	#deck builder setup
-	deck_builder = DECK_BUILDER.instantiate()
-	deck_builder.cards_owned = (saved_game as SavedGame).cards_owned
-	deck_builder.deck_cards = (saved_game as SavedGame).deck_cards
-	deck_builder.closed.connect(_on_deck_builder_closed)
-	deck_builder.opened.connect(_on_deck_builder_opened)
-	add_child(deck_builder)
-	deck_builder.update_deck()
+	if (saved_game as SavedGame).deck_cards.size() == 0 && not get_tree().current_scene.scene_file_path.contains("lobby"):
+		build_deck()
+	else:
+		create_deck_hand((saved_game as SavedGame).deck_cards)
 	
 	Globals.player = self
 	get_tree().call_group("enemies", "update_target")
@@ -80,6 +77,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 
 	hurt_box.can_be_hurt = can_take_damage()
+	
+	#hide card hand in lobby
+	card_hand.visible = not get_tree().current_scene.scene_file_path.contains("lobby")
 	
 	if is_dying || is_being_hit: return
 	
@@ -211,7 +211,16 @@ func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
 	deck_builder.queue_free()
 		
 	create_deck_hand(deck)
-	
+
+func build_deck():
+	deck_builder = DECK_BUILDER.instantiate()
+	deck_builder.cards_owned = (saved_game as SavedGame).cards_owned
+	deck_builder.deck_cards = (saved_game as SavedGame).deck_cards
+	deck_builder.closed.connect(_on_deck_builder_closed)
+	deck_builder.opened.connect(_on_deck_builder_opened)
+	add_child(deck_builder)
+	deck_builder.update_deck()	
+
 func create_deck_hand(deck: Array[DeckCardItem]):
 	
 	var new_saved_game: SavedGame = SavedGame.new()

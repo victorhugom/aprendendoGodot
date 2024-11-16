@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=6 format=3 uid="uid://odt02j6r6ewm"]
+
+[ext_resource type="Script" path="res://conversation/chat_message.gd" id="1_1vtao"]
+[ext_resource type="Script" path="res://conversation/conversation.gd" id="1_n4kma"]
+
+[sub_resource type="Resource" id="Resource_1tyrd"]
+script = ExtResource("1_1vtao")
+message_id = "OLA"
+char_name = "Lilia"
+message = "Olá maguinho, vai se aventurar?"
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_krrxt"]
+script = ExtResource("1_1vtao")
+message_id = "OLA2"
+char_name = "Lilia"
+message = "Não vá sozinho, o futuro é incerto"
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_4ajdk"]
+script = ExtResource("1_1vtao")
+message_id = "TIRAR_CARTAS"
+char_name = "Lilia"
+message = "Você quer tirar as cartas?"
+has_cancel = true
+
+[resource]
+script = ExtResource("1_n4kma")
+messages = Array[ExtResource("1_1vtao")]([SubResource("Resource_1tyrd"), SubResource("Resource_krrxt"), SubResource("Resource_4ajdk")])
