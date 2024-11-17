@@ -80,7 +80,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("3_4e3ww")]
-position = Vector2(3879, 3372)
+position = Vector2(1701, 1332)
 ground_map_tile = NodePath("../Ground")
 
 [node name="CandlesContainer" type="Node2D" parent="."]
@@ -174,7 +174,6 @@ position = Vector2(2817, 442)
 position = Vector2(2937, 2830)
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
-process_mode = 4
 y_sort_enabled = true
 
 [node name="Enemy" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_jyplk")]
@@ -703,8 +702,8 @@ target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 position = Vector2(1251, 1586)
 
 [node name="PickableCard" parent="." instance=ExtResource("15_duiwm")]
-position = Vector2(3988, 3352)
+position = Vector2(1810, 1312)
 card_config = ExtResource("16_3uqnh")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("13_5svdw")]
-position = Vector2(3840, 3443)
+position = Vector2(1662, 1403)

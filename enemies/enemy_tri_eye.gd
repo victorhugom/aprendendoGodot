@@ -4,7 +4,6 @@ class_name EnemyTriEye extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
 @onready var hurt_box: HurtBox = $HurtBox
-@onready var hurt_bot_collision_shape_2d: CollisionShape2D = $HurtBox/CollisionShape2D
 @onready var hit_box: CollisionShape2D = $HitBox
 @onready var health: Health = $Health
 @onready var health_bar: HBoxContainer = $HealthBar
@@ -97,7 +96,11 @@ func _on_damaged() -> void:
 func _on_health_empty():
 	
 	is_dying = true
-	hurt_box.set_collision_layer_value(9, false)
+	hurt_box.set_deferred("monitoring", false)
+	hurt_box.set_deferred("monitorable", false)
+	
+	hit_box.set_deferred("disabled", true)
+	
 	animation_player.play("death")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
