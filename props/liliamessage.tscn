@@ -24,4 +24,5 @@ interact_message = "Falar"
 position = Vector2(0, 60)
 shape = SubResource("RectangleShape2D_gw83g")
 
+[connection signal="body_exited" from="Interactable" to="." method="_on_interactable_body_exited"]
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

@@ -1,22 +1,22 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=7 format=3 uid="uid://bphy5w35vmgl3"]
 
-[ext_resource type="Resource" path="res://cards/configs/card_config_health_potion.tres" id="2_23ygq"]
-[ext_resource type="Resource" path="res://cards/configs/card_config_basic_shoot_double.tres" id="2_egmm0"]
+[ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="2_23ygq"]
+[ext_resource type="Resource" uid="uid://bysdkdhgxib0g" path="res://cards/configs/card_config_basic_shoot_double.tres" id="2_egmm0"]
 [ext_resource type="Script" path="res://cards/deck_card_item.gd" id="9_0fx4n"]
 [ext_resource type="Script" path="res://player/saved_game.gd" id="9_msrdv"]
 
-[sub_resource type="Resource" id="Resource_tw8yc"]
+[sub_resource type="Resource" id="Resource_bjq5n"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("2_egmm0")
 quantity = 2
 
-[sub_resource type="Resource" id="Resource_84lu4"]
+[sub_resource type="Resource" id="Resource_w7j1c"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("2_23ygq")
-quantity = 1
+quantity = 3
 
 [resource]
 script = ExtResource("9_msrdv")
 max_health = 9
-deck_cards = Array[ExtResource("9_0fx4n")]([SubResource("Resource_tw8yc"), SubResource("Resource_84lu4")])
-cards_owned = Array[ExtResource("9_0fx4n")]([])
+deck_cards = Array[ExtResource("9_0fx4n")]([])
+cards_owned = Array[ExtResource("9_0fx4n")]([SubResource("Resource_bjq5n"), SubResource("Resource_w7j1c")])

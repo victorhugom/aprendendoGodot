@@ -1054,6 +1054,6 @@ rotation = -0.419262
 item_id = "MAIN_GOLD_KEY_01"
 
 [node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
-position = Vector2(935, 722)
+position = Vector2(1065, 721)
 card_config = ExtResource("17_bcr4k")
 item_id = "CARD_VIDINHA_01"
