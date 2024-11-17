@@ -1041,7 +1041,7 @@ position = Vector2(4296, 3950)
 target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 
 [node name="DoorLobby" parent="." instance=ExtResource("10_l7p46")]
-position = Vector2(431, 398)
+position = Vector2(1988, 2031)
 target_scene_path = "res://levels/lobby.tscn"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]

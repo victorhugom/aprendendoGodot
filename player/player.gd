@@ -84,6 +84,10 @@ func _physics_process(_delta: float) -> void:
 
 	hurt_box.can_be_hurt = can_take_damage()
 	
+	# Verificar se o cooldown do dash passou
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= _delta
+	
 	#hide card hand in lobby
 	card_hand.visible = not get_tree().current_scene.scene_file_path.contains("lobby")
 	
@@ -101,6 +105,7 @@ func _physics_process(_delta: float) -> void:
 		if dash_timer <= 0:
 			is_dashing = false
 			speed = walk_speed
+			dash_cooldown_timer = dash_cooldown  # Começa o cooldown depois que o dash acabou
 	
 	if is_atatcking == false && is_transforming == false:
 		move_and_slide()
@@ -170,10 +175,11 @@ func attack() -> void:
 	shooter.shoot(last_anim_direction, (card_hand.card_selected.card_config.CardData as CardDataProjectile).DPS)
 	
 func dash():
-
-	is_dashing = true
-	dash_timer = dash_duration
-	dash_cooldown_timer = dash_cooldown
+	# Só executa o dash se o cooldown já passou
+	if dash_cooldown_timer <= 0:
+		is_dashing = true
+		dash_timer = dash_duration
+		dash_cooldown_timer = dash_cooldown  # Reseta o cooldown após um dash
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):

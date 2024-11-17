@@ -528,7 +528,7 @@ shape = SubResource("CapsuleShape2D_ix582")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("4_h106r")]
 collision_layer = 512
-collision_mask = 111
+collision_mask = 110
 left_marker = NodePath("LeftMarker2D")
 right_marker = NodePath("RightMarker2D")
 up_marker = NodePath("UpMarker2D")
