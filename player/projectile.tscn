@@ -92,9 +92,10 @@ position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_vhgr5")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(3, 1)
+position = Vector2(7, 1)
 scale = Vector2(0.087957, 0.087957)
-color = Color(0.890855, 0.290719, 0.549626, 1)
+color = Color(0.659376, 0.498314, 0.543939, 1)
+energy = 0.5
 texture = ExtResource("3_5f23m")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

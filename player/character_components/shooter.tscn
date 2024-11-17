@@ -6,6 +6,7 @@
 
 [node name="Shooter" type="Area2D"]
 script = ExtResource("1_v4oyu")
+shoot_delay = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.1, 0.1)
