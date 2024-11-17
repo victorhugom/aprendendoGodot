@@ -429,6 +429,29 @@ position = Vector2(1587, 1906)
 [node name="EnemyTriEye51" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2020, 1404)
 
+[node name="EnemyTriEye56" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
+position = Vector2(2816, 1447)
+
+[node name="EnemyTriEye57" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
+position = Vector2(2819, 1195)
+rotation = -0.504946
+
+[node name="EnemyTriEye58" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
+position = Vector2(3240, 1225)
+rotation = -0.504946
+
+[node name="EnemyTriEye59" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
+position = Vector2(3195, 1603)
+rotation = -0.504946
+
+[node name="EnemyTriEye60" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
+position = Vector2(3039, 1870)
+rotation = -0.504946
+
+[node name="EnemyTriEye61" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
+position = Vector2(3243, 1993)
+rotation = -0.504946
+
 [node name="EnemyTriEye52" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1929, 1205)
 
@@ -1040,8 +1063,8 @@ target_scene_path = "res://levels/dungeons/dungeon_3.tscn"
 position = Vector2(4296, 3950)
 target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 
-[node name="DoorLobby" parent="." instance=ExtResource("10_l7p46")]
-position = Vector2(1988, 2031)
+[node name="PlayerSpawn" parent="." instance=ExtResource("10_l7p46")]
+position = Vector2(4729, 3423)
 target_scene_path = "res://levels/lobby.tscn"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]
@@ -1049,11 +1072,11 @@ position = Vector2(894, 511)
 conversation = ExtResource("14_1hlcs")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("14_1mwr4")]
-position = Vector2(982, 532)
+position = Vector2(911, 424)
 rotation = -0.419262
 item_id = "MAIN_GOLD_KEY_01"
 
 [node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
-position = Vector2(1065, 721)
+position = Vector2(1064, 722)
 card_config = ExtResource("17_bcr4k")
 item_id = "CARD_VIDINHA_01"

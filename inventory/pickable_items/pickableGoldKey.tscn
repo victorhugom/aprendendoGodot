@@ -1,9 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://gb5ccgk2r1iy"]
+[gd_scene load_steps=11 format=3 uid="uid://gb5ccgk2r1iy"]
 
 [ext_resource type="Script" path="res://inventory/pickable_items/pickable_gold_key.gd" id="1_kmvk7"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="1_y713h"]
-[ext_resource type="Texture2D" uid="uid://bjehfu1d3e5tf" path="res://assets/props/key.png" id="2_40tw8"]
-[ext_resource type="Material" uid="uid://djccxvhynh5rn" path="res://utils/materials/shine_material.tres" id="2_kqikh"]
+[ext_resource type="Texture2D" uid="uid://c74niiv26rukk" path="res://assets/props/keya.png" id="2_i4dje"]
+[ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="4_m4yy1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc4x4"]
+atlas = ExtResource("2_i4dje")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onjew"]
+atlas = ExtResource("2_i4dje")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex5x5"]
+atlas = ExtResource("2_i4dje")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rm8o"]
+atlas = ExtResource("2_i4dje")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwtqj"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xc4x4")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_onjew")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ex5x5")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_5rm8o")
+}],
+"loop": false,
+"name": &"key_picked",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov7gl"]
 size = Vector2(38, 21)
@@ -11,9 +47,14 @@ size = Vector2(38, 21)
 [node name="PickableGoldKey" type="Node2D"]
 script = ExtResource("1_kmvk7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_kqikh")
-texture = ExtResource("2_40tw8")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dwtqj")
+animation = &"key_picked"
+speed_scale = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 0.5)
+stream = ExtResource("4_m4yy1")
 
 [node name="Interactable" parent="." instance=ExtResource("1_y713h")]
 

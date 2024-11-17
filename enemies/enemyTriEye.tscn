@@ -586,7 +586,7 @@ shape = SubResource("RectangleShape2D_ki3i3")
 position = Vector2(0, -15)
 scale = Vector2(0.355469, 0.355469)
 color = Color(0.999987, 0.335532, 0.269612, 1)
-energy = 0.5
+energy = 0.3
 texture = ExtResource("11_tg382")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
