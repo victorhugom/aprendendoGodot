@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
 [ext_resource type="PackedScene" uid="uid://p5s7pcd61xly" path="res://conversation/conversationTrigger.tscn" id="10_ipgk1"]
 [ext_resource type="Resource" uid="uid://c0q5ki1lxha8a" path="res://conversation/conversations/lilia_dont_go_conversation.tres" id="12_65s5k"]
-[ext_resource type="PackedScene" uid="uid://dbh2bhrg63sx8" path="res://gui/CooldownBar.tscn" id="13_gs7sw"]
+[ext_resource type="PackedScene" path="res://gui/CooldownBar.tscn" id="13_gs7sw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2gt"]
 size = Vector2(222, 46)
