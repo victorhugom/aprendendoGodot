@@ -6,6 +6,7 @@ signal end_focus(body: Node2D)
 
 @export var interact_message:= "Interagir"
 @export var cannot_interact_message:= "Não pode interagir"
+@export var can_interact_once:= false
 @export var disabled := false
 
 @export_category("Requires Key")
@@ -19,7 +20,7 @@ var interactor: Node2D
 func _on_body_entered(body: Node2D) -> void:
 	interactor = body
 	
-	if can_interact.call():
+	if can_interact():
 		InteractionCall.show_interaction(interact_message)
 	else:
 		InteractionCall.show_interaction(cannot_interact_message)
@@ -38,9 +39,10 @@ func _on_body_exited(body: Node2D) -> void:
 	end_focus.emit(body)
 	
 func _input(event):
-	if interactor and event.is_action_pressed("ui_interact") and can_interact.call():
+	if interactor and event.is_action_pressed("ui_interact") and can_interact():
 		interact.emit(interactor)
-		disabled = true  # Desabilita interação após a primeira interação
+		if can_interact_once:
+			disabled = true  # Desabilita interação após a primeira interação
 		InteractionCall.hide_interaction()  # Esconde a mensagem de interação
 		
 func can_interact() -> bool:

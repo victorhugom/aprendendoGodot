@@ -105,7 +105,10 @@ func _on_damaged() -> void:
 func _on_health_empty():
 	
 	is_dying = true
-	hurt_box.set_collision_layer_value(9, false)
+	hurt_box.set_deferred("monitoring", false)
+	hurt_box.set_deferred("monitorable", false)
+	
+	hit_box.set_deferred("disabled", true)	
 
 	animation_player.play("death")
 

@@ -48,6 +48,12 @@ func _on_destruction_timer_timeout() -> void:
 func _on_area_entered(_area: Area2D) -> void:
 	show_hit()
 
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	show_hit()
+
+func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	show_hit()
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "projectile_dismiss":
 		queue_free()

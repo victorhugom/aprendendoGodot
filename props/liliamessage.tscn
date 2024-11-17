@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3hhlk7w3q8ie"]
+[gd_scene load_steps=5 format=3 uid="uid://b3hhlk7w3q8ie"]
 
 [ext_resource type="Script" path="res://props/liliamessage.gd" id="1_ck83n"]
 [ext_resource type="Texture2D" uid="uid://83sglkt02oou" path="res://assets/props/LiliaMessage.png" id="1_tq1x5"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="2_uh48y"]
-[ext_resource type="Script" path="res://props/collision_shape_2d.gd" id="4_b2pxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw83g"]
 size = Vector2(96, 103.5)
@@ -24,7 +23,6 @@ interact_message = "Falar"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(0, 60)
 shape = SubResource("RectangleShape2D_gw83g")
-script = ExtResource("4_b2pxd")
 
 [connection signal="body_exited" from="Interactable" to="." method="_on_interactable_body_exited"]
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
