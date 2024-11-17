@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_3e5ss"]
+[ext_resource type="Resource" path="res://cards/configs/card_config_health_potion.tres" id="2_gff1f"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_hfhcm"]
+
+[sub_resource type="Resource" id="Resource_eeu0o"]
+script = ExtResource("1_3e5ss")
+item_id = "MAIN_GOLD_KEY_01"
+item_type = 1
+display_name = "Chave Dourada"
+description = "Chave Dourada"
+
+[sub_resource type="Resource" id="Resource_j482f"]
+script = ExtResource("1_3e5ss")
+item_id = "CARD_VIDINHA_01"
+item_type = 0
+display_name = "Vidinha"
+description = "Carta Vidinha"
+resouce = ExtResource("2_gff1f")
+
+[resource]
+script = ExtResource("2_hfhcm")
+items = Array[ExtResource("1_3e5ss")]([SubResource("Resource_eeu0o"), SubResource("Resource_j482f"), SubResource("Resource_j482f")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://3ub8eral5hes"]
+[gd_scene load_steps=18 format=4 uid="uid://3ub8eral5hes"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b3hhlk7w3q8ie" path="res://props/liliamessage.tscn" id="13_eaqi8"]
 [ext_resource type="Resource" uid="uid://b2n4w3lt5jw1l" path="res://conversation/conversations/lilia_message1_conversation.tres" id="14_1hlcs"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="14_1mwr4"]
+[ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="16_rt7d5"]
+[ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="17_bcr4k"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true
@@ -1047,5 +1049,11 @@ position = Vector2(894, 511)
 conversation = ExtResource("14_1hlcs")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("14_1mwr4")]
-position = Vector2(916, 522)
+position = Vector2(982, 532)
 rotation = -0.419262
+item_id = "MAIN_GOLD_KEY_01"
+
+[node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
+position = Vector2(935, 722)
+card_config = ExtResource("17_bcr4k")
+item_id = "CARD_VIDINHA_01"
