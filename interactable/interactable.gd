@@ -38,8 +38,10 @@ func _on_body_exited(body: Node2D) -> void:
 	end_focus.emit(body)
 	
 func _input(event):
-	if interactor && event.is_action_pressed("ui_interact") && can_interact.call():
+	if interactor and event.is_action_pressed("ui_interact") and can_interact.call():
 		interact.emit(interactor)
+		disabled = true  # Desabilita interação após a primeira interação
+		InteractionCall.hide_interaction()  # Esconde a mensagem de interação
 		
 func can_interact() -> bool:
 	

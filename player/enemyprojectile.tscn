@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqrsw6b8pyhc2"]
+[gd_scene load_steps=9 format=3 uid="uid://r6wjtkf3kk8j"]
 
-[ext_resource type="Script" path="res://player/projectile.gd" id="1_vgfv6"]
-[ext_resource type="Texture2D" uid="uid://dsw8s4ii3365p" path="res://assets/props/projectile/basic_projectile-Sheet.png" id="2_ttupi"]
-[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="3_5f23m"]
+[ext_resource type="Script" path="res://player/projectile.gd" id="1_hxicf"]
+[ext_resource type="Texture2D" uid="uid://lia56e4e76sx" path="res://assets/enemies/enemy_basic_projectile-Sheet.png" id="2_nku00"]
+[ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="3_8tdwn"]
 
 [sub_resource type="Animation" id="Animation_p041u"]
 length = 0.001
@@ -66,7 +66,7 @@ size = Vector2(15.5, 6)
 [node name="Projectile" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_vgfv6")
+script = ExtResource("1_hxicf")
 
 [node name="DestructionTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -78,7 +78,7 @@ autostart = true
 
 [node name="BasicProjectile" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_ttupi")
+texture = ExtResource("2_nku00")
 hframes = 6
 vframes = 2
 
@@ -88,14 +88,15 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_vhgr5")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(3, 1)
-scale = Vector2(0.087957, 0.087957)
-color = Color(0.890855, 0.290719, 0.549626, 1)
-texture = ExtResource("3_5f23m")
+position = Vector2(1, 0)
+scale = Vector2(0.13725, 0.13725)
+color = Color(0.868705, 0.310027, 0.660086, 1)
+texture = ExtResource("3_8tdwn")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

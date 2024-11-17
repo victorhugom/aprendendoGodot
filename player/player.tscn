@@ -971,7 +971,7 @@ collision_mask = 2078
 script = ExtResource("1_nyc0f")
 
 [node name="FollowCamera" parent="." instance=ExtResource("2_axglg")]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2, 2)
 
 [node name="LittleMage" type="Sprite2D" parent="."]
 light_mask = 2
@@ -1019,7 +1019,7 @@ shape = SubResource("CapsuleShape2D_w1ujr")
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("14_acclv")]
 position = Vector2(0, 9)
 collision_layer = 64
-collision_mask = 256
+collision_mask = 780
 left_marker = NodePath("LeftMarker2D")
 right_marker = NodePath("RightMarker2D")
 up_marker = NodePath("UpMarker2D")
