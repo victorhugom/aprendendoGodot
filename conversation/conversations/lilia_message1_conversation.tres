@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Conversation" load_steps=4 format=3 uid="uid://bwkbcgoquybla"]
+[gd_resource type="Resource" script_class="Conversation" load_steps=4 format=3 uid="uid://b2n4w3lt5jw1l"]
 
 [ext_resource type="Script" path="res://conversation/chat_message.gd" id="1_raprf"]
 [ext_resource type="Script" path="res://conversation/conversation.gd" id="2_cmqkc"]

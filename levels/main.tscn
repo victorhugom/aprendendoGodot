@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_dqtli"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="11_ds84i"]
 [ext_resource type="PackedScene" uid="uid://b3hhlk7w3q8ie" path="res://props/liliamessage.tscn" id="13_eaqi8"]
-[ext_resource type="Resource" uid="uid://bwkbcgoquybla" path="res://conversation/conversations/lilia_message1_conversation.tres" id="14_1hlcs"]
+[ext_resource type="Resource" uid="uid://b2n4w3lt5jw1l" path="res://conversation/conversations/lilia_message1_conversation.tres" id="14_1hlcs"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="14_1mwr4"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]

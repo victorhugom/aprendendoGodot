@@ -1,32 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://gb5ccgk2r1iy"]
+[gd_scene load_steps=6 format=3 uid="uid://gb5ccgk2r1iy"]
 
 [ext_resource type="Script" path="res://inventory/pickable_items/pickable_gold_key.gd" id="1_kmvk7"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="1_y713h"]
 [ext_resource type="Texture2D" uid="uid://bjehfu1d3e5tf" path="res://assets/props/key.png" id="2_40tw8"]
-[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="2_hfm2w"]
 [ext_resource type="Material" uid="uid://djccxvhynh5rn" path="res://utils/materials/shine_material.tres" id="2_kqikh"]
-
-[sub_resource type="Resource" id="Resource_anyox"]
-script = ExtResource("2_hfm2w")
-display_name = "Chave Dourada"
-description = "Uma Chave Dourada"
-item_type = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov7gl"]
 size = Vector2(38, 21)
 
 [node name="PickableGoldKey" type="Node2D"]
 script = ExtResource("1_kmvk7")
-inventoryItem = SubResource("Resource_anyox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_kqikh")
+texture = ExtResource("2_40tw8")
 
 [node name="Interactable" parent="." instance=ExtResource("1_y713h")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_ov7gl")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_kqikh")
-texture = ExtResource("2_40tw8")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

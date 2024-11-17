@@ -67,6 +67,7 @@ func _ready() -> void:
 	
 	#inventory setup
 	Hud.inventory = inventory
+	inventory.item_added.connect(_on_inventory_item_added)
 	
 	#deck builder setup
 	deck_cards = saved_game.deck_cards
@@ -268,7 +269,32 @@ func _on_card_selected_changed(card_selected: Card):
 			card_hand.use_selected_card()
 		else:
 			card_hand.select_previous_card()
+
+func _on_inventory_item_added(item: InventoryItem):
 	
+	var current_save_game = load("res://savegame.tres") as SavedGame
+	
+	if item.item_type == Enums.ITEM_TYPE.Card:
+		
+		var deck_card_item: DeckCardItem = null
+	
+		for card_owned: DeckCardItem in current_save_game.cards_owned:
+			if card_owned.card_config  == item.resouce:
+				deck_card_item = card_owned
+				break
+				
+		if deck_card_item == null:
+			deck_card_item = DeckCardItem.new()
+			deck_card_item.card_config = item.resouce
+			deck_card_item.quantity = 0
+			current_save_game.cards_owned.append(deck_card_item)
+		
+		deck_card_item.quantity += 1
+		card_hand.add_card_to_deck(deck_card_item)
+		
+	#current_save_game.items_picked_ids.append(item_id)
+	ResourceSaver.save(current_save_game, "res://savegame.tres")
+		
 func transform(_transformation_card = CardConfig) -> void:
 	
 	if is_transforming: 

@@ -14,6 +14,7 @@ const CARD_CONFIG_HEALTH_POTION = preload("res://cards/configs/card_config_healt
 const CARD = preload("res://cards/card.tscn")
 
 @onready var card_container: HBoxContainer = $CenterContainer/CardContainer
+@onready var card_quantity_label: RichTextLabel = $BuyCards/HBoxContainer2/CardQuantityLabel
 
 var cards: Array[Card]
 var deck_cards: Array[DeckCardItem]
@@ -21,13 +22,29 @@ var card_selected: Card
 var base_card = CARD_CONFIG_BASIC_SHOOT
 var previous_card = CARD_CONFIG_BASIC_SHOOT
 
+var card_quantity: int:
+	get:
+		return deck_cards.reduce(func(accum, elem): return accum + elem.quantity, 0)
+
+func add_card_to_deck(item: DeckCardItem):
+	for card in deck_cards:
+		if card.card_config == item.card_config:
+			card.quantity += 1
+			return
+		
+	var new_deck_card = DeckCardItem.new()
+	new_deck_card.quantity = 1
+	new_deck_card.card_config = item.card_config
+	deck_cards.append(new_deck_card)
+	card_quantity_label.text = "%s x" %card_quantity
+
 func create_and_add_card(card_config: CardConfig) -> void:
 	var card = CARD.instantiate()
 	card.card_config = card_config
 	cards.append(card)
 	
 	card_container.add_child(card)
-	
+
 func update_shortcut_ids():
 	for idx in range(0, cards.size()):
 		cards[idx].shortcut_id = idx + 1
@@ -88,6 +105,7 @@ func draw_cards(amount_to_draw: int = 1) -> bool:
 		select_card(1)
 	
 	update_shortcut_ids()
+	card_quantity_label.text = "%s x" %card_quantity
 	return true
 
 func select_card(card_number:int):

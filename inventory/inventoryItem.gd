@@ -4,3 +4,4 @@ class_name InventoryItem extends Resource
 @export var display_name: String
 @export var description: String
 @export var item_type: Enums.ITEM_TYPE
+@export var resouce: Resource

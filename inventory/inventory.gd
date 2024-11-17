@@ -5,8 +5,8 @@ signal item_added(item: InventoryItem)
 var items: Array[InventoryItem] = []
 
 func add_item(item: InventoryItem):
-	item_added.emit(item)
 	items.append(item)
+	item_added.emit(item)
 	
 func has_item(item_type: Enums.ITEM_TYPE) -> Array[InventoryItem]:
 	var items_found: Array[InventoryItem] = []
@@ -15,6 +15,4 @@ func has_item(item_type: Enums.ITEM_TYPE) -> Array[InventoryItem]:
 			items_found.append(item)
 			
 	return items_found
-	
-	
 	

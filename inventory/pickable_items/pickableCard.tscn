@@ -7,25 +7,22 @@
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="4_mqklg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qaf5f"]
-size = Vector2(7.08205, 9.58595)
+size = Vector2(84.6353, 131.698)
 
 [node name="PickableCard" type="Node2D"]
+y_sort_enabled = true
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_o6mv8")
 
-[node name="Card" parent="." instance=ExtResource("2_exyxo")]
-material = ExtResource("3_ia5id")
-offset_left = -50.0
-offset_top = -135.0
-offset_right = 35.0
-offset_bottom = -7.0
-card_config = ExtResource("4_mqklg")
-
 [node name="Interactable" parent="." instance=ExtResource("2_wna75")]
-position = Vector2(-50, -135)
+position = Vector2(-43, -41)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(38.9734, 61)
-scale = Vector2(13.5479, -15.4393)
+position = Vector2(42, 63)
 shape = SubResource("RectangleShape2D_qaf5f")
+
+[node name="Card" parent="Interactable" instance=ExtResource("2_exyxo")]
+material = ExtResource("3_ia5id")
+card_config = ExtResource("4_mqklg")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
