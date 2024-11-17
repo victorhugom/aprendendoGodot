@@ -48,11 +48,13 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
 [node name="CardsContainer" type="HFlowContainer" parent="MarginContainer/GridContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/GridContainer/VBoxContainer2"]
@@ -86,10 +88,14 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="DeckContainer" type="VBoxContainer" parent="MarginContainer/GridContainer/VBoxContainer2/ScrollContainer2"]
-custom_minimum_size = Vector2(120, 0)
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/GridContainer/VBoxContainer2/ScrollContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="DeckContainer" type="VBoxContainer" parent="MarginContainer/GridContainer/VBoxContainer2/ScrollContainer2/CenterContainer"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="CreateDeckButton" type="Button" parent="MarginContainer/GridContainer/VBoxContainer2"]

@@ -1,53 +1,22 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=18 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://cards/configs/definitions/card_config.gd" id="1_8doj4"]
 [ext_resource type="Resource" path="res://cards/configs/card_config_basic_shoot_double.tres" id="2_egmm0"]
-[ext_resource type="Resource" path="res://cards/configs/card_config_air_shoot.tres" id="3_7qo4l"]
-[ext_resource type="Resource" path="res://cards/configs/card_config_earth_shoot.tres" id="4_m8uqo"]
-[ext_resource type="Resource" path="res://cards/configs/card_config_fire_shoot.tres" id="5_fg025"]
 [ext_resource type="Resource" path="res://cards/configs/card_config_health_potion.tres" id="6_tbd5l"]
-[ext_resource type="Resource" path="res://cards/configs/card_config_transform_sausage.tres" id="7_invc2"]
-[ext_resource type="Resource" path="res://cards/configs/card_config_water_shoot.tres" id="8_np418"]
 [ext_resource type="Script" path="res://cards/deck_card_item.gd" id="9_0fx4n"]
 [ext_resource type="Script" path="res://player/saved_game.gd" id="9_msrdv"]
 
-[sub_resource type="Resource" id="Resource_k384m"]
-script = ExtResource("9_0fx4n")
-card_config = ExtResource("8_np418")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_ugmni"]
-script = ExtResource("9_0fx4n")
-card_config = ExtResource("7_invc2")
-quantity = 5
-
-[sub_resource type="Resource" id="Resource_sqqma"]
-script = ExtResource("9_0fx4n")
-card_config = ExtResource("5_fg025")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_xuke6"]
+[sub_resource type="Resource" id="Resource_qxam2"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("6_tbd5l")
-quantity = 13
+quantity = 4
 
-[sub_resource type="Resource" id="Resource_jsndf"]
-script = ExtResource("9_0fx4n")
-card_config = ExtResource("4_m8uqo")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_qf55h"]
-script = ExtResource("9_0fx4n")
-card_config = ExtResource("3_7qo4l")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_rtb2y"]
+[sub_resource type="Resource" id="Resource_djtqx"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("2_egmm0")
-quantity = 1
+quantity = 3
 
 [resource]
 script = ExtResource("9_msrdv")
 max_health = 9
-deck_cards = Array[ExtResource("9_0fx4n")]([SubResource("Resource_k384m"), SubResource("Resource_ugmni"), SubResource("Resource_sqqma"), SubResource("Resource_xuke6"), SubResource("Resource_jsndf"), SubResource("Resource_qf55h"), SubResource("Resource_rtb2y")])
-cards_owned = Array[ExtResource("1_8doj4")]([ExtResource("2_egmm0"), ExtResource("3_7qo4l"), ExtResource("4_m8uqo"), ExtResource("5_fg025"), ExtResource("6_tbd5l"), ExtResource("7_invc2"), ExtResource("8_np418")])
+deck_cards = Array[ExtResource("9_0fx4n")]([SubResource("Resource_qxam2"), SubResource("Resource_djtqx")])
+cards_owned = Array[ExtResource("9_0fx4n")]([])

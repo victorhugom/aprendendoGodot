@@ -1,24 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwadoh18xwd0n"]
+[gd_scene load_steps=4 format=3 uid="uid://cwadoh18xwd0n"]
 
 [ext_resource type="Script" path="res://cards/deck_card.gd" id="1_6pf4k"]
+[ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="2_8ofdt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k4nm"]
+bg_color = Color(0.309804, 0.12549, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="DeckCard" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(85, 128)
-anchors_preset = -1
-anchor_right = 0.075
-anchor_bottom = 0.256
-offset_right = -0.200005
-offset_bottom = 0.255997
+custom_minimum_size = Vector2(95, 158)
+offset_right = 95.0
+offset_bottom = 138.0
 script = ExtResource("1_6pf4k")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 130.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Container" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(85, 128)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="QuantityLabelBox" type="CenterContainer" parent="MarginContainer/Container"]
 layout_mode = 0
 offset_right = 85.0
-offset_bottom = 128.0
+offset_bottom = 25.0
 
-[node name="QuantityLabel" type="RichTextLabel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(40, 0)
+[node name="Panel" type="Panel" parent="MarginContainer/Container/QuantityLabelBox"]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
-text = "1"
+theme_override_styles/panel = SubResource("StyleBoxFlat_1k4nm")
+
+[node name="QuantityLabel" type="RichTextLabel" parent="MarginContainer/Container/QuantityLabelBox"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_8ofdt")
+theme_override_font_sizes/normal_font_size = 12
+text = "99"
+fit_content = true
+autowrap_mode = 0
