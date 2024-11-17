@@ -109,6 +109,7 @@ position = Vector2(-22, 353)
 scale = Vector2(3.05208, 3.05208)
 stream = ExtResource("2_pqk7b")
 autoplay = true
+panning_strength = 0.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 12
