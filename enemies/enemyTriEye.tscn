@@ -150,20 +150,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-20, -20)]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("..")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_gec7l"]
 resource_name = "attack_right"
@@ -230,20 +216,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(25, -20)]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("..")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_g5ehu"]
@@ -544,8 +516,9 @@ size = Vector2(27, 49)
 y_sort_enabled = true
 texture_filter = 3
 collision_layer = 2048
+collision_mask = 2049
 script = ExtResource("1_dnkxr")
-speed = 100
+speed = 48
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rbip2")

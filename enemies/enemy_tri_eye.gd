@@ -11,7 +11,7 @@ class_name EnemyTriEye extends CharacterBody2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 @export var target: Node
-@export var speed = 16*3
+@export var speed: int
 
 var is_dying = false
 var direction = "left"
@@ -50,31 +50,29 @@ func _physics_process(_delta: float) -> void:
 	if can_update_char() == false:
 		return	
 	
-	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
-	if velocity.length() > 0:
-		if abs(angle) < 0.25 * PI:
-			direction = "right"
-		elif abs(angle) > 0.75 * PI:
-			direction = "left"
-		
-	if global_position.distance_to(target.global_position) > 24:
-		#too far from player, keep walking
-		
-		var next_path_position = navigation_agent_2d.get_next_path_position()
-		var current_position = global_position
-		velocity = current_position.direction_to(next_path_position) * speed
-		move_and_slide()
-		
-		var animation_type = "walk_"
-		if velocity.length() <= 0:
-			animation_type = "idle_"
-		animation_player.play(animation_type +  direction)
+	var animation_type = "walk_"
 	
+	var next_path_position = navigation_agent_2d.get_next_path_position()
+	velocity = global_position.direction_to(next_path_position) * speed
+	
+	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+	if abs(angle) < 0.25 * PI:
+		direction = "right"
 	else:
-		#close enough to attack
+		direction = "left"
+	
+	if global_position.distance_to(target.global_position) <= 24:
 		attack() #run first attack as soon is close
-		velocity = Vector2(0,0)
-		
+	else:
+		#too far from player, keep walking
+		move_and_slide()
+		if velocity.length() > 0:
+			animation_type = "walk_"
+		else: #walking
+			animation_type = "idle_"
+			
+		move_and_slide()
+		animation_player.play(animation_type +  direction)
 		
 func follow_player() -> void:
 	
@@ -116,6 +114,13 @@ func attack() -> void:
 		
 	if animation_player.current_animation.begins_with("attack"):
 		return
+		
+	velocity = global_position.direction_to(target.global_position) * speed
+	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
+	if abs(angle) < 0.25 * PI:
+		direction = "right"
+	else:
+		direction = "left"
 	
 	target_position = target.global_position
 	animation_player.play("attack_" + direction)

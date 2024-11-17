@@ -1,6 +1,6 @@
 class_name PickableItem extends Node
 
-const INVENTORY_DATA = preload("res://inventory/inventory_data.tres")
+const INVENTORY_DATA = preload("res://inventory_data.tres")
 
 @onready var interactable: Interactable = $Interactable
 @export var item_id: String
