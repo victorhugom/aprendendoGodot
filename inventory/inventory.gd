@@ -1,6 +1,6 @@
 class_name Inventory extends Node2D
 
-const INVENTORY_DATA: InventoryData = preload("res://inventory/inventory_data.tres")
+const INVENTORY_DATA = preload("res://inventory_data.tres")
 
 signal item_added(item: InventoryItem)
 

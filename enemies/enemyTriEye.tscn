@@ -543,6 +543,7 @@ size = Vector2(27, 49)
 [node name="EnemyTriEye" type="CharacterBody2D"]
 y_sort_enabled = true
 texture_filter = 3
+collision_layer = 2048
 script = ExtResource("1_dnkxr")
 speed = 100
 

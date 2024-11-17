@@ -17,6 +17,6 @@ quantity = 2
 
 [resource]
 script = ExtResource("9_msrdv")
-max_health = 6
+max_health = 9
 deck_cards = Array[ExtResource("9_0fx4n")]([])
 cards_owned = Array[ExtResource("9_0fx4n")]([SubResource("Resource_x1pxr"), SubResource("Resource_3p2ja")])
