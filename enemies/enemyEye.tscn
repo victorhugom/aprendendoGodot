@@ -568,7 +568,6 @@ offset_right = 9.0
 offset_bottom = -34.0
 
 [node name="PlayerTrace" type="ShapeCast2D" parent="."]
-visible = false
 position = Vector2(0, -16)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_37lhs")

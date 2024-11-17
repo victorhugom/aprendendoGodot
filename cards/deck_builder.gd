@@ -11,8 +11,8 @@ const DECK_CARD = preload("res://cards/deckCard.tscn")
 @onready var quantity_label: RichTextLabel = $MarginContainer/GridContainer/VBoxContainer2/HBoxContainer/QuantityLabel
 
 @export var deck_cards: Array[DeckCardItem] = []	
-@export var cards_owned: Array[DeckCardItem] = []	
 
+@export var cards_owned: Array[DeckCardItem] = []
 @export var card_quantity: int:
 	get:
 		return card_quantity

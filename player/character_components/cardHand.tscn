@@ -39,42 +39,84 @@ grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="BuyCards"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BuyCards"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="Neutralface" type="Sprite2D" parent="BuyCards/MarginContainer"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_62y2k")
-centered = false
+[node name="CardQuantityLabel" type="RichTextLabel" parent="BuyCards/HBoxContainer2"]
+layout_mode = 2
+text = "0 x"
+fit_content = true
+autowrap_mode = 0
 
-[node name="Aircardface" type="Sprite2D" parent="BuyCards/MarginContainer"]
-position = Vector2(10, 0)
-scale = Vector2(0.5, 0.5)
+[node name="HFlowContainer" type="HFlowContainer" parent="BuyCards/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Panel" parent="BuyCards/HBoxContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Aircardface" type="TextureRect" parent="BuyCards/HBoxContainer2/HFlowContainer/Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 48.0
 texture = ExtResource("3_pnloh")
-centered = false
+expand_mode = 5
+stretch_mode = 4
 
-[node name="Earthcardface" type="Sprite2D" parent="BuyCards/MarginContainer"]
-position = Vector2(18, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_yg3v0")
-centered = false
+[node name="Control2" type="Panel" parent="BuyCards/HBoxContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
-[node name="Firecardface" type="Sprite2D" parent="BuyCards/MarginContainer"]
-position = Vector2(26, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_vr801")
-centered = false
-
-[node name="Specialcardface" type="Sprite2D" parent="BuyCards/MarginContainer"]
-position = Vector2(34, 0)
-scale = Vector2(0.5, 0.5)
+[node name="Specialcardface" type="TextureRect" parent="BuyCards/HBoxContainer2/HFlowContainer/Control2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 48.0
 texture = ExtResource("6_y10as")
-centered = false
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Control3" type="Panel" parent="BuyCards/HBoxContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Firecardface" type="TextureRect" parent="BuyCards/HBoxContainer2/HFlowContainer/Control3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 48.0
+texture = ExtResource("5_vr801")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Control4" type="Panel" parent="BuyCards/HBoxContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Earthcardface" type="TextureRect" parent="BuyCards/HBoxContainer2/HFlowContainer/Control4"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 48.0
+texture = ExtResource("4_yg3v0")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Control5" type="Panel" parent="BuyCards/HBoxContainer2/HFlowContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Neutralface" type="TextureRect" parent="BuyCards/HBoxContainer2/HFlowContainer/Control5"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 48.0
+texture = ExtResource("2_62y2k")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BuyCards"]
 layout_mode = 2

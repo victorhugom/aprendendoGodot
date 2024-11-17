@@ -67,8 +67,10 @@ func _ready() -> void:
 	
 	#inventory setup
 	Hud.inventory = inventory
+	inventory.item_added.connect(_on_inventory_item_added)
 	
 	#deck builder setup
+	
 	deck_cards = saved_game.deck_cards
 	if deck_cards.size() == 0 && not get_tree().current_scene.scene_file_path.contains("lobby"):
 		build_deck()
@@ -200,7 +202,6 @@ func recover_life(value: int) -> void:
 	health.increase_health(value)
 
 func select_card(card_number:int):
-	print_debug("select card")
 	card_hand.select_card(card_number)
 	
 func can_take_damage():
@@ -228,11 +229,9 @@ func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
 
 func build_deck():
 	
-	var current_saved_game = load_game()
-	
 	deck_builder = DECK_BUILDER.instantiate()
-	deck_builder.cards_owned = current_saved_game.cards_owned
-	deck_builder.deck_cards = current_saved_game.deck_cards
+	deck_builder.cards_owned = saved_game.cards_owned
+	deck_builder.deck_cards = saved_game.deck_cards
 	deck_builder.closed.connect(_on_deck_builder_closed)
 	deck_builder.opened.connect(_on_deck_builder_opened)
 	add_child(deck_builder)
@@ -256,6 +255,8 @@ func create_deck_hand():
 	
 func _on_card_selected_changed(card_selected: Card):
 	
+	print_debug(card_selected.card_config.CardType)
+	
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Projectile:
 		shooter.projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
@@ -266,9 +267,34 @@ func _on_card_selected_changed(card_selected: Card):
 		var result: bool = health.increase_health(health_card_data.health)
 		if result:
 			card_hand.use_selected_card()
-		else:
-			card_hand.select_previous_card()
+			
+		card_hand.select_previous_card()
+
+func _on_inventory_item_added(item: InventoryItem):
 	
+	var current_save_game = load("res://savegame.tres") as SavedGame
+	
+	if item.item_type == Enums.ITEM_TYPE.Card:
+		
+		var deck_card_item: DeckCardItem = null
+	
+		for card_owned: DeckCardItem in current_save_game.cards_owned:
+			if card_owned.card_config  == item.resouce:
+				deck_card_item = card_owned
+				break
+				
+		if deck_card_item == null:
+			deck_card_item = DeckCardItem.new()
+			deck_card_item.card_config = item.resouce
+			deck_card_item.quantity = 0
+			current_save_game.cards_owned.append(deck_card_item)
+		
+		deck_card_item.quantity += 1
+		card_hand.add_card_to_deck(deck_card_item)
+		
+	#current_save_game.items_picked_ids.append(item_id)
+	ResourceSaver.save(current_save_game, "res://savegame.tres")
+		
 func transform(_transformation_card = CardConfig) -> void:
 	
 	if is_transforming: 

@@ -10,6 +10,6 @@ health = 1
 [resource]
 script = ExtResource("1_scs0f")
 Name = "Vidinha"
-MaxCardUsage = 1
+MaxCardUsage = 3
 CardType = 1
 CardData = SubResource("Resource_pv76e")

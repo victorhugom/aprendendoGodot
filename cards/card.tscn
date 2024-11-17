@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwuvbt5j5i7uw"]
+[gd_scene load_steps=15 format=3 uid="uid://dwuvbt5j5i7uw"]
 
 [ext_resource type="Script" path="res://cards/card.gd" id="1_o1hy8"]
+[ext_resource type="Resource" uid="uid://ckh2gytu3quek" path="res://cards/configs/card_config_basic_shoot.tres" id="2_uodm7"]
 [ext_resource type="Shader" path="res://utils/shader/burn_dissolver.gdshader" id="3_n0tbj"]
 [ext_resource type="Texture2D" uid="uid://cqxc7ixxcxbu" path="res://assets/cards/air/aircardbg.png" id="3_pcsg4"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_7myfg"]
@@ -105,6 +106,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_o1hy8")
+card_config = ExtResource("2_uodm7")
 
 [node name="PanelContainer" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
