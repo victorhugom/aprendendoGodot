@@ -11,4 +11,4 @@ const CARD_CONFIG_WATER_SHOOT = preload("res://cards/configs/card_config_water_s
 
 @export var max_health := 9
 @export var deck_cards: Array[DeckCardItem]
-@export var cards_owned : Array[DeckCardItem] = []
+@export var cards_owned : Array[DeckCardItem]

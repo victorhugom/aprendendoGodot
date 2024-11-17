@@ -43,6 +43,7 @@ const NEUTRAL_BKG = preload("res://assets/cards/neutral/neutralcardbg.png")
 const HPICON = preload("res://assets/cards/neutral/hpicon.png")
 
 var id: int
+var is_being_destroyed: bool
 
 var current_usage: int:
 	get:
@@ -145,6 +146,10 @@ func create_life_card() -> void:
 	card_icons_container.add_child(card_icon)
 
 func destroy_card() -> void:
+	
+	if is_being_destroyed: return
+	is_being_destroyed = true
+	
 	var tween = get_tree().create_tween()
 	tween.tween_method(set_dissolve_percent, 1.0, 0, 0.5)
 	

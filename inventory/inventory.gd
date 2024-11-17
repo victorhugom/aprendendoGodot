@@ -13,9 +13,7 @@ func add_item(item: InventoryItem):
 	items.append(item)
 	item_added.emit(item)
 	
-	INVENTORY_DATA.items.append(item)
 	ResourceSaver.save(INVENTORY_DATA, INVENTORY_DATA.resource_path)
-	
 	
 func has_item(item_type: Enums.ITEM_TYPE) -> Array[InventoryItem]:
 	var items_found: Array[InventoryItem] = []

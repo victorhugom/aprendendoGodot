@@ -19,30 +19,34 @@ const CARD = preload("res://cards/card.tscn")
 var cards: Array[Card]
 var deck_cards: Array[DeckCardItem]
 var card_selected: Card
-var base_card = CARD_CONFIG_BASIC_SHOOT
-var previous_card = CARD_CONFIG_BASIC_SHOOT
+var previous_card: Card
+var base_card: CardConfig = CARD_CONFIG_BASIC_SHOOT
 
 var card_quantity: int:
 	get:
 		return deck_cards.reduce(func(accum, elem): return accum + elem.quantity, 0)
 
 func add_card_to_deck(item: DeckCardItem):
+	
+	# for each deck card, if is already in deck increase quantity
 	for card in deck_cards:
 		if card.card_config == item.card_config:
 			card.quantity += 1
 			return
-		
+	
+	#if deck is not in deck cards, create a new one and add it
 	var new_deck_card = DeckCardItem.new()
 	new_deck_card.quantity = 1
 	new_deck_card.card_config = item.card_config
 	deck_cards.append(new_deck_card)
+	
 	card_quantity_label.text = "%s x" %card_quantity
 
 func create_and_add_card(card_config: CardConfig) -> void:
 	var card = CARD.instantiate()
 	card.card_config = card_config
-	cards.append(card)
 	
+	cards.append(card)
 	card_container.add_child(card)
 
 func update_shortcut_ids():
@@ -50,39 +54,38 @@ func update_shortcut_ids():
 		cards[idx].shortcut_id = idx + 1
 	
 func remove_card(card: Card):
+	if card.is_being_destroyed:
+		return
+		
 	card.destroy_card()
 	card.destroyed.connect(destroy_card)
 	
 func destroy_card(card: Card):
 	
-	card.queue_free()
-	
 	#remove from list
-	var card_to_remove_idx = cards.find(card_selected)
+	var card_to_remove_idx = cards.find(card)
 	cards.remove_at(card_to_remove_idx)
 	
-	#select previous card or base card
-	var previous_card_idx = cards.find(previous_card)
-	if previous_card:
-		select_card(previous_card_idx + 1)
-	else:
-		select_card(1)
-		
+	# remove node and free card from memory
+	card_container.remove_child(card)
+	card.queue_free()
+	
+	select_previous_card()		
 	update_shortcut_ids()
 	
 func draw_cards(amount_to_draw: int = 1) -> bool:
 	
+	#has too many cards in hand, cannot draw cards
 	if cards.size() >= 3:
-		#has too many cards in hand, cannot draw cards
 		return false
 	
+	#has no card in hand, create base card
 	if cards.size() == 0:
-		#has no card in hand, create base card
 		create_and_add_card(base_card)
 		select_card(1)
 		
+	#has no card in hand, cannot draw cards
 	if deck_cards.size() == 0:
-		#has no card in hand, cannot draw cards
 		return false
 	
 	if deck_cards.size() > 0:
@@ -91,12 +94,15 @@ func draw_cards(amount_to_draw: int = 1) -> bool:
 			if deck_cards.size() <= 0:
 				return false
 			
-			var card_index = randi_range(0, deck_cards.size() - 1) #pick a random cards
-			var card_in_deck = (deck_cards[card_index] as DeckCardItem)
+			#pick a random card
+			var card_index = randi_range(0, deck_cards.size() - 1) 
+			var card_in_deck:  DeckCardItem = deck_cards[card_index]
 			var card_config = card_in_deck.card_config
 			
 			card_in_deck.quantity -= 1
-			if card_in_deck.quantity == 0: #remove this card if it's the last one
+			
+			#remove this card if it's the last one
+			if card_in_deck.quantity == 0: 
 				deck_cards.remove_at(card_index)
 			
 			create_and_add_card(card_config) #create card and add to hand
@@ -110,11 +116,18 @@ func draw_cards(amount_to_draw: int = 1) -> bool:
 
 func select_card(card_number:int):
 
-	if card_number <= cards.size():
-		if card_selected:
-			card_selected.in_use = false
+	# if card in range
+	if card_number > 0 && card_number <= cards.size():
 		
-		previous_card = card_selected
+		# save previous card a deselect it (not in use)
+		if card_selected != null:
+			
+			if card_selected.card_config.CardType != Enums.CARD_TYPE.Life:
+				previous_card = card_selected
+				
+			card_selected.in_use = false
+
+		# udpate card selected
 		card_selected = cards[card_number - 1]
 		card_selected.in_use = true
 		card_selected_changed.emit(card_selected)

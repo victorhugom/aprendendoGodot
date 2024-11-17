@@ -209,6 +209,9 @@ target = NodePath("../../Player")
 position = Vector2(1512, 2016)
 target = NodePath("../../Player")
 
+[node name="VoidBoss" parent="EnemiesContainer" instance=ExtResource("14_y370b")]
+position = Vector2(4729, 2715)
+
 [node name="GrassContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -698,9 +701,6 @@ target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 
 [node name="PickableGoldKey" parent="DungeonDoor" instance=ExtResource("13_5svdw")]
 position = Vector2(1251, 1586)
-
-[node name="VoidBoss" parent="." instance=ExtResource("14_y370b")]
-position = Vector2(4729, 2715)
 
 [node name="PickableCard" parent="." instance=ExtResource("15_duiwm")]
 position = Vector2(3988, 3352)
