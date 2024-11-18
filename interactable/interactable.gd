@@ -5,7 +5,7 @@ signal interact(body: Node2D)
 signal begin_focus(body: Node2D)
 signal end_focus(body: Node2D)
 
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 @export var interact_message:= "Interagir"
 @export var cannot_interact_message:= "Não pode interagir"
@@ -20,8 +20,13 @@ signal end_focus(body: Node2D)
 @export_category("Audio Settings")
 @export var audio_stream: AudioStream
 
+var audio_stream_player_2d: AudioStreamPlayer2D
 var in_interaction_area:= false
 var interactor: Node2D
+
+func _ready() -> void:
+	audio_stream_player_2d = AudioStreamPlayer2D.new()
+	get_tree().root.add_child.call_deferred(audio_stream_player_2d)
 	
 func _on_body_entered(body: Node2D) -> void:
 	interactor = body
@@ -46,14 +51,16 @@ func _on_body_exited(body: Node2D) -> void:
 	
 func _input(event):
 	if interactor and event.is_action_pressed("ui_interact") and can_interact():
-		interact.emit(interactor)
 		if can_interact_once:
 			disabled = true  # Desabilita interação após a primeira interação
 		
 		audio_stream_player_2d.stop()
+		audio_stream_player_2d.global_position = global_position
 		if !audio_stream_player_2d.is_playing() && audio_stream: 
 			audio_stream_player_2d.stream = audio_stream 
 			audio_stream_player_2d.play(0)
+			
+		interact.emit(interactor)
 		
 func can_interact() -> bool:
 	
@@ -69,3 +76,7 @@ func can_interact() -> bool:
 	var required_item = inventory.has_item(required_item_type)
 	
 	return required_item.size() > 0 && required_item.size() >= required_item_quantity
+
+func _exit_tree() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_callback(audio_stream_player_2d.queue_free).set_delay(audio_stream.get_length())
