@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=28 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
@@ -16,8 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="15_ghhgj"]
 [ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="15_o24gi"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="16_3uqnh"]
-[ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="16_k7a8w"]
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="16_xhs7s"]
+[ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/sounds/hitplayer.mp3" id="18_jdqsl"]
+[ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="19_fgble"]
 
 [sub_resource type="Animation" id="Animation_myofy"]
 length = 0.001
@@ -780,7 +781,7 @@ card_config = ExtResource("16_3uqnh")
 position = Vector2(1662, 1403)
 
 [node name="InteractionHandler" parent="." node_paths=PackedStringArray("interactable_switch", "animation_player") instance=ExtResource("14_lp4ki")]
-position = Vector2(1756, 1415)
+position = Vector2(1774, 1384)
 hframes = 4
 frame = 3
 interactable_switch = NodePath("../InteractableSwitch")
@@ -797,9 +798,11 @@ libraries = {
 }
 
 [node name="InteractableSwitch" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("15_ghhgj")]
+position = Vector2(1922, 1384)
 frame = 3
 animation_player = NodePath("AnimationPlayer")
-audio_stream = ExtResource("16_k7a8w")
+audio_stream_a = ExtResource("18_jdqsl")
+audio_stream_b = ExtResource("19_fgble")
 collision_layers = 16
 collision_masks = 1
 

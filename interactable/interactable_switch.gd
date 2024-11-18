@@ -4,7 +4,6 @@ class_name InteractableSwitch extends Sprite2D
 signal interact(body: Node2D)
 
 @export var animation_player: AnimationPlayer
-
 @onready var collision_shape: CollisionShape2D = $Interactable/CollisionShape2D
 
 #region Interactable
@@ -20,7 +19,10 @@ signal interact(body: Node2D)
 @export var required_item_quantity:= 1
 
 @export_category("Audio Settings")
-@export var audio_stream: AudioStream
+## audio played when goes to state a
+@export var audio_stream_a: AudioStream
+## audio played when goes to state b
+@export var audio_stream_b: AudioStream
 #endregion
 
 # Define custom properties for collision layers and masks
@@ -65,8 +67,7 @@ func _ready() -> void:
 	interactable.requires_item = requires_item
 	interactable.required_item_type = required_item_type
 	interactable.required_item_quantity = required_item_quantity
-	interactable.audio_stream = audio_stream
-	
+		
 	# Set the new size
 	var texture_size = Vector2(texture.get_size().x / hframes, texture.get_size().y / vframes)
 	var rect_shape = collision_shape.shape as RectangleShape2D 
@@ -82,5 +83,10 @@ func _on_interactable_interacted(body: Node2D) -> void:
 	else:
 		current_state = "state_a"
 	
+
+	var audio_stream = audio_stream_a if current_state == "state_b" else audio_stream_b
+	if audio_stream != null:
+		interactable.audio_stream = audio_stream
+
 	animation_player.play(current_state)
 	interact.emit(body)
