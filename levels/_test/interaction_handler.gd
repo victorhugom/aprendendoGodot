@@ -40,10 +40,10 @@ func _ready() -> void:
 	assert(animation_player.has_animation("state_b"), "state_b not found, create it on animation player")
 	
 	interactable_switch.interact.connect(_on_interactable_interacted)
-	
-	var texture_size = texture.get_size()
-	var rect_shape = collision_shape.shape as RectangleShape2D 
+
 	# Set the new size
+	var texture_size = Vector2(texture.get_size().x / hframes, texture.get_size().y / vframes)
+	var rect_shape = collision_shape.shape as RectangleShape2D 
 	rect_shape.size = texture_size
 	
 	static_body_2d.collision_layer = collision_layers  # Update the internal collision layer

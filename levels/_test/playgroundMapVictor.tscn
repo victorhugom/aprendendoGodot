@@ -794,6 +794,9 @@ libraries = {
 [node name="InteractableSwitch" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("15_ghhgj")]
 frame = 3
 animation_player = NodePath("AnimationPlayer")
+interact_message = "Abrir"
+cannot_interact_message = "Cade a chave?"
+required_item_type = 1
 collision_layers = 16
 collision_masks = 1
 

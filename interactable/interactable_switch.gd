@@ -5,8 +5,20 @@ signal interact(body: Node2D)
 
 @export var animation_player: AnimationPlayer
 
-@onready var interactable: Interactable = $Interactable
 @onready var collision_shape: CollisionShape2D = $Interactable/CollisionShape2D
+
+#region Interactable
+@onready var interactable: Interactable = $Interactable
+@export var interact_message:= "Interagir"
+@export var cannot_interact_message:= "Não pode interagir"
+@export var can_interact_once:= false
+@export var disabled := false
+
+@export_category("Requires Key")
+@export var requires_item:=false
+@export var required_item_type: Enums.ITEM_TYPE
+@export var required_item_quantity:= 1
+#endregion
 
 var current_state:= "state_a"
 
@@ -41,9 +53,18 @@ func _ready() -> void:
 	
 	interactable.interact.connect(_on_interactable_interacted)
 	
-	var texture_size = texture.get_size()
-	var rect_shape = collision_shape.shape as RectangleShape2D 
+	interactable.interact_message = interact_message
+	interactable.cannot_interact_message = cannot_interact_message
+	interactable.can_interact_once = can_interact_once
+	interactable.disabled = disabled
+
+	interactable.requires_item = requires_item
+	interactable.required_item_type = required_item_type
+	interactable.required_item_quantity = required_item_quantity
+	
 	# Set the new size
+	var texture_size = Vector2(texture.get_size().x / hframes, texture.get_size().y / vframes)
+	var rect_shape = collision_shape.shape as RectangleShape2D 
 	rect_shape.size = texture_size
 	
 	interactable.collision_layer = collision_layers  # Update the internal collision layer
