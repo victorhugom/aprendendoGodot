@@ -184,9 +184,11 @@ position = Vector2(924, 1099)
 [node name="PickableCard" parent="." instance=ExtResource("10_5t2xe")]
 position = Vector2(1136, 1163)
 card_config = ExtResource("11_w8j7n")
+item_id = "DUENGON_02_CARD_01"
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("12_4fryi")]
 position = Vector2(1074, 1232)
+item_id = "DUENGON_02_GOLD_KEY"
 
 [node name="Exit" parent="." instance=ExtResource("3_iaiks")]
 position = Vector2(1073, 1105)

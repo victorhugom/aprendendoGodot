@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://3ub8eral5hes"]
+[gd_scene load_steps=21 format=4 uid="uid://3ub8eral5hes"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
@@ -14,69 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_dqtli"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="11_ds84i"]
 [ext_resource type="PackedScene" uid="uid://b3hhlk7w3q8ie" path="res://props/liliamessage.tscn" id="13_eaqi8"]
+[ext_resource type="Resource" uid="uid://b2n4w3lt5jw1l" path="res://conversation/conversations/lilia_message1_conversation.tres" id="14_1hlcs"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="14_1mwr4"]
 [ext_resource type="Resource" uid="uid://ckepdh1e8pjfs" path="res://cards/configs/card_config_transform_sausage.tres" id="16_le5ir"]
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="16_rt7d5"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="17_bcr4k"]
-[ext_resource type="Script" path="res://conversation/chat_message.gd" id="17_g23xn"]
-[ext_resource type="Script" path="res://conversation/conversation.gd" id="18_eo813"]
-
-[sub_resource type="Resource" id="Resource_7c8uj"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem da Lilia"
-message = "Você conseguiu!"
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_krnpy"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem da Lilia"
-message = "Agora que está com seu guardião pode passar pelas provações."
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_8dmrq"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem da Lilia"
-message = "Terra, Agua, Fogo e Ar."
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_784yl"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem dos devs"
-message = "Esse jogo é feito por dois meninos. Esse é o fim da demo."
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_5o8ud"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem dos devs"
-message = "Obrigado por jogar."
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_2i24k"]
-script = ExtResource("18_eo813")
-messages = Array[ExtResource("17_g23xn")]([SubResource("Resource_7c8uj"), SubResource("Resource_krnpy"), SubResource("Resource_8dmrq"), SubResource("Resource_784yl"), SubResource("Resource_5o8ud")])
-
-[sub_resource type="Resource" id="Resource_y1l3v"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem da Lilia"
-message = "No pé da estátua tem uma chave e uma das minhas cartas."
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_srg6k"]
-script = ExtResource("17_g23xn")
-message_id = ""
-char_name = "Mensagem da Lilia"
-message = "Com a chave você tem acesso aos santuários. As cartas vão de dar poder para enfrentar os obstáculos."
-has_cancel = false
-
-[sub_resource type="Resource" id="Resource_nf7kx"]
-script = ExtResource("18_eo813")
-messages = Array[ExtResource("17_g23xn")]([SubResource("Resource_y1l3v"), SubResource("Resource_srg6k")])
+[ext_resource type="Resource" uid="uid://l8ia07g4lnkf" path="res://conversation/conversations/void_map_end_conversation.tres" id="19_d3ok1"]
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true
@@ -1146,16 +1089,17 @@ item_id = "MAIN_GOLD_KEY_01"
 [node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(845, 443)
 card_config = ExtResource("17_bcr4k")
-item_id = "CARD_VIDINHA_01"
+item_id = "MAIN_CARD_VIDINHA_01"
 
 [node name="PickableCard2" parent="." instance=ExtResource("16_rt7d5")]
-position = Vector2(4715, 2682)
+position = Vector2(4758, 2523)
 card_config = ExtResource("16_le5ir")
+item_id = "MAIN_CARD_SAUSAGE"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]
-position = Vector2(4688, 2731)
-conversation = SubResource("Resource_2i24k")
+position = Vector2(4687, 2525)
+conversation = ExtResource("19_d3ok1")
 
 [node name="LiliaMessage2" parent="." instance=ExtResource("13_eaqi8")]
 position = Vector2(899, 546)
-conversation = SubResource("Resource_nf7kx")
+conversation = ExtResource("14_1hlcs")

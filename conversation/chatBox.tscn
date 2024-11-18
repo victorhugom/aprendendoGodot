@@ -171,16 +171,16 @@ autowrap_mode = 0
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 400
 
 [node name="Message" type="RichTextLabel" parent="HBoxContainer/ColorRect/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.118158, 0.138114, 0.325695, 1)
 theme_override_fonts/normal_font = ExtResource("3_gdf1r")
-text = "Voce quer tirar as cartas?"
+text = "Voce quer tirar as cartas? Voce quer tirar as cartas? Voce quer tirar as cartas? Voce quer tirar as cartas?"
 fit_content = true
-autowrap_mode = 0
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ColorRect"]
 modulate = Color(0.161661, 0.148296, 0.303669, 1)
