@@ -165,6 +165,7 @@ ui_full_screen={
 2d_physics/layer_10="enemy_projectile"
 2d_physics/layer_11="enemy_melee"
 2d_physics/layer_12="enemy"
+2d_physics/layer_13="invisible_wall"
 avoidance/layer_1="npc"
 avoidance/layer_2="obstacle"
 

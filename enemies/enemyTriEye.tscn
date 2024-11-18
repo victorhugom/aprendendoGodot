@@ -516,7 +516,7 @@ size = Vector2(27, 49)
 y_sort_enabled = true
 texture_filter = 3
 collision_layer = 2048
-collision_mask = 2049
+collision_mask = 6175
 script = ExtResource("1_dnkxr")
 speed = 48
 

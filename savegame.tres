@@ -13,7 +13,7 @@ quantity = 2
 [sub_resource type="Resource" id="Resource_mvpdc"]
 script = ExtResource("9_0fx4n")
 card_config = ExtResource("3_oax3n")
-quantity = 0
+quantity = 2
 
 [sub_resource type="Resource" id="Resource_ppcba"]
 script = ExtResource("9_0fx4n")

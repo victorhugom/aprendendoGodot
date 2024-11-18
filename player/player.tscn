@@ -968,7 +968,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 texture_filter = 3
-collision_mask = 2078
+collision_mask = 6174
 script = ExtResource("1_nyc0f")
 
 [node name="FollowCamera" parent="." instance=ExtResource("2_axglg")]
