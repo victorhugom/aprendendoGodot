@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://gb5ccgk2r1iy"]
+[gd_scene load_steps=7 format=3 uid="uid://gb5ccgk2r1iy"]
 
 [ext_resource type="Script" path="res://inventory/pickable_items/pickable_gold_key.gd" id="1_kmvk7"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="1_y713h"]
 [ext_resource type="Texture2D" uid="uid://bjehfu1d3e5tf" path="res://assets/props/key.png" id="4_5bpob"]
 [ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="4_m4yy1"]
+[ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="5_5rtqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov7gl"]
 size = Vector2(38, 21)
@@ -23,5 +24,9 @@ shape = SubResource("RectangleShape2D_ov7gl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_5bpob")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.386719, 0.386719)
+texture = ExtResource("5_5rtqj")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

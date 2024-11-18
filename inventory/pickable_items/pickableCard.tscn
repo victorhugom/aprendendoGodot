@@ -1,28 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsg70w1u4t435"]
+[gd_scene load_steps=9 format=3 uid="uid://bsg70w1u4t435"]
 
 [ext_resource type="Script" path="res://inventory/pickable_items/pickable_card.gd" id="1_o6mv8"]
 [ext_resource type="PackedScene" uid="uid://dwuvbt5j5i7uw" path="res://cards/card.tscn" id="2_exyxo"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="2_wna75"]
 [ext_resource type="Material" uid="uid://djccxvhynh5rn" path="res://utils/materials/shine_material.tres" id="3_ia5id"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="4_mqklg"]
+[ext_resource type="Texture2D" uid="uid://dwdhif6txg36a" path="res://assets/props/projectile/card.png" id="6_nndxf"]
+[ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="7_k8nd0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qaf5f"]
-size = Vector2(84.6353, 131.698)
+size = Vector2(40, 46.6667)
 
 [node name="PickableCard" type="Node2D"]
 y_sort_enabled = true
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_o6mv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-43, -41)
 
 [node name="Interactable" parent="." instance=ExtResource("2_wna75")]
 position = Vector2(-43, -41)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(42, 63)
+position = Vector2(43, 41)
 shape = SubResource("RectangleShape2D_qaf5f")
 
 [node name="Card" parent="Interactable" instance=ExtResource("2_exyxo")]
+visible = false
 material = ExtResource("3_ia5id")
 card_config = ExtResource("4_mqklg")
+
+[node name="Card" type="Sprite2D" parent="."]
+texture = ExtResource("6_nndxf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, -9.53674e-07)
+scale = Vector2(0.200195, 0.200195)
+color = Color(0.619388, 0.227457, 0.354125, 1)
+texture = ExtResource("7_k8nd0")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
