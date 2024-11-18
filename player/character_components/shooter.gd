@@ -16,29 +16,27 @@ var projectile_config: ProjectileConfig
 func _ready() -> void:
 	timer.wait_time = shoot_delay
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func shoot(direction: String, projectile_count: int, projectile_scale: int = 1, target_location: Vector2 = Vector2(0, 0)):
+	# Determine the position based on the direction at the time of shooting
+	var shoot_position: Vector2
+	match direction:
+		"left":
+			shoot_position = left_marker.global_position
+		"right":
+			shoot_position = right_marker.global_position
+		"up":
+			shoot_position = up_marker.global_position
+		"down":
+			shoot_position = down_marker.global_position
 	
-func shoot(direction: String, projectile_count: int, projectile_scale: int = 1, target_location: Vector2 = Vector2(0,0)):
-	
-	
-	for i in range(0, projectile_count):
+	for i in range(projectile_count):
 		var projectile = PROJECTILE.instantiate()
 		
 		projectile.set_config(projectile_config)
 		projectile.collision_layer = collision_layer
 		projectile.collision_mask = collision_mask
 		projectile.scale = Vector2(projectile_scale, projectile_scale)
-		
-		if direction == "left":
-			projectile.position = left_marker.global_position
-		elif direction == "right":
-			projectile.position = right_marker.global_position
-		elif direction == "up":
-			projectile.position = up_marker.global_position
-		elif direction == "down":
-			projectile.position = down_marker.global_position
+		projectile.position = shoot_position  # Use the locked position
 		
 		get_tree().root.add_child(projectile)
 		projectile.shoot(direction, target_location)

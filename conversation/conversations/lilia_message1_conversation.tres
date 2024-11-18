@@ -7,14 +7,14 @@
 script = ExtResource("1_raprf")
 message_id = "lilia message 1"
 char_name = "Mensagem da Lilia"
-message = "\"Ache o caminho nobre e vulgar.\""
+message = "\"No pé da estátua tem uma chave que te dará acesso aos santuários.\""
 has_cancel = false
 
 [sub_resource type="Resource" id="Resource_yt8ta"]
 script = ExtResource("1_raprf")
 message_id = ""
 char_name = "Mensagem da Lilia"
-message = " \"Lá estarão as provações da terra, agua, fogo e ar.\""
+message = " \"E uma carta que vai te dar poder para superar os obstáculos.\""
 has_cancel = false
 
 [resource]

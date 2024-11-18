@@ -78,5 +78,10 @@ func can_interact() -> bool:
 	return required_item.size() > 0 && required_item.size() >= required_item_quantity
 
 func _exit_tree() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_callback(audio_stream_player_2d.queue_free).set_delay(audio_stream.get_length())
+	
+	if audio_stream:
+		var tween = get_tree().create_tween()
+		tween.tween_callback(audio_stream_player_2d.queue_free).set_delay(audio_stream.get_length())
+	else:
+		if audio_stream_player_2d and audio_stream_player_2d.is_inside_tree():
+			audio_stream_player_2d.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c3y5d21thmc6f"]
+[gd_scene load_steps=17 format=4 uid="uid://c3y5d21thmc6f"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_dbyp5"]
 [ext_resource type="Script" path="res://levels/lobby.gd" id="1_epi6a"]
@@ -14,7 +14,6 @@
 [ext_resource type="Resource" uid="uid://c0q5ki1lxha8a" path="res://conversation/conversations/lilia_dont_go_conversation.tres" id="12_65s5k"]
 [ext_resource type="PackedScene" uid="uid://dbh2bhrg63sx8" path="res://gui/CooldownBar.tscn" id="13_gs7sw"]
 [ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="14_t0gjt"]
-[ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="15_6whd4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2gt"]
 size = Vector2(222, 97)
@@ -202,9 +201,6 @@ position = Vector2(900, 732)
 position = Vector2(783, 971)
 texture = ExtResource("14_t0gjt")
 texture_scale = 0.3
-
-[node name="PickableGoldKey" parent="." instance=ExtResource("15_6whd4")]
-position = Vector2(789, 789)
 
 [connection signal="body_entered" from="CheckDeckArea" to="." method="_on_cehck_deck_area_body_entered"]
 [connection signal="body_entered" from="ConversationTrigger" to="." method="_on_conversation_trigger_body_entered"]

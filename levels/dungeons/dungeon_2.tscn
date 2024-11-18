@@ -323,6 +323,8 @@ hframes = 2
 interactable_switch = NodePath("../InteractableSwitch")
 animation_player = NodePath("AnimationPlayer")
 disabled_collision_on_state_b = true
+audio_stream_a = ExtResource("20_q0do1")
+audio_stream_b = ExtResource("20_q0do1")
 collision_layers = 16
 collision_masks = 1
 

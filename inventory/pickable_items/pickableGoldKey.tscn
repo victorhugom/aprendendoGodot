@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://inventory/pickable_items/pickable_gold_key.gd" id="1_kmvk7"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="1_y713h"]
 [ext_resource type="Material" uid="uid://djccxvhynh5rn" path="res://utils/materials/shine_material.tres" id="2_kqikh"]
-[ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="3_baw0r"]
+[ext_resource type="AudioStream" uid="uid://ctm3rauuwy473" path="res://assets/sounds/powerupupgrade.mp3" id="3_wr58e"]
 [ext_resource type="Texture2D" uid="uid://bjehfu1d3e5tf" path="res://assets/props/key.png" id="4_5bpob"]
 [ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="5_5rtqj"]
 
@@ -14,7 +14,7 @@ size = Vector2(38, 21)
 script = ExtResource("1_kmvk7")
 
 [node name="Interactable" parent="." instance=ExtResource("1_y713h")]
-audio_stream = ExtResource("3_baw0r")
+audio_stream = ExtResource("3_wr58e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-1, 0.5)
