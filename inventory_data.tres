@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=6 format=3 uid="uid://bbpbjk2sqimsl"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=7 format=3 uid="uid://bbpbjk2sqimsl"]
 
 [ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_yllaq"]
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_711w1"]
@@ -19,6 +19,13 @@ display_name = "Vidinha"
 description = "Carta Vidinha"
 resouce = ExtResource("2_xqbgm")
 
+[sub_resource type="Resource" id="Resource_3bn7y"]
+script = ExtResource("1_yllaq")
+item_id = ""
+item_type = 1
+display_name = "Chave Dourada"
+description = "Chave Dourada"
+
 [resource]
 script = ExtResource("2_711w1")
-items = Array[ExtResource("1_yllaq")]([SubResource("Resource_homq3"), SubResource("Resource_mwddf")])
+items = Array[ExtResource("1_yllaq")]([SubResource("Resource_homq3"), SubResource("Resource_mwddf"), SubResource("Resource_3bn7y")])
