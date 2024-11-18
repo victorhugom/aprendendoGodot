@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b6h51bpowsn2s"]
+[gd_scene load_steps=32 format=3 uid="uid://b6h51bpowsn2s"]
 
 [ext_resource type="Texture2D" uid="uid://ctvl0wep25jia" path="res://assets/enemies/salchichaboss-Sheet.png" id="1_4roqs"]
 [ext_resource type="Script" path="res://enemies/void_boss.gd" id="1_5e1wn"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="9_kii3s"]
 [ext_resource type="AudioStream" uid="uid://e2wis1in3prv" path="res://assets/sounds/breathmonster.mp3" id="9_ptyde"]
 [ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="10_anmay"]
+[ext_resource type="AudioStream" uid="uid://cn6re8isr5qkr" path="res://assets/sounds/cycloneattack.mp3" id="10_avt1g"]
 [ext_resource type="AudioStream" uid="uid://bke3m3fkukpdw" path="res://assets/sounds/bigfootstep.mp3" id="11_f2bve"]
 [ext_resource type="AudioStream" uid="uid://bpg785jbmairf" path="res://assets/sounds/footstepsbloddy.mp3" id="12_c7kql"]
 
@@ -610,6 +611,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true, false]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.129707,
+"start_offset": 0.0,
+"stream": ExtResource("10_avt1g")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_pb8c1"]
 resource_name = "super_attack"
