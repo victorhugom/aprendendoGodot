@@ -442,23 +442,18 @@ position = Vector2(2816, 1447)
 
 [node name="EnemyTriEye57" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2819, 1195)
-rotation = -0.504946
 
 [node name="EnemyTriEye58" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3240, 1225)
-rotation = -0.504946
 
 [node name="EnemyTriEye59" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3195, 1603)
-rotation = -0.504946
 
 [node name="EnemyTriEye60" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3039, 1870)
-rotation = -0.504946
 
 [node name="EnemyTriEye61" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3243, 1993)
-rotation = -0.504946
 
 [node name="EnemyTriEye52" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1929, 1205)

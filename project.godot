@@ -10,12 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Sauchicha Alpha Concept"
+config/name="O Misterio das Cartas"
 run/main_scene="res://gui/landing.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://assets/spalshScreen.png"
 boot_splash/fullsize=false
-config/icon="res://icon.svg"
+config/icon="res://icon512.png"
 
 [aseprite_importers]
 

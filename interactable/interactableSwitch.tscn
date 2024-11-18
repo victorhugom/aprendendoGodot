@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjhl4df72l5mp"]
+
+[ext_resource type="Texture2D" uid="uid://d1vrfspcd5vrn" path="res://assets/heart_transformation.png" id="1_1yrva"]
+[ext_resource type="Script" path="res://interactable/interactable_switch.gd" id="2_2rcp5"]
+[ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="2_lhda8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiv6c"]
+size = Vector2(43, 36)
+
+[node name="InteractableSwitch" type="Sprite2D"]
+position = Vector2(1903, 1418)
+texture = ExtResource("1_1yrva")
+hframes = 4
+script = ExtResource("2_2rcp5")
+
+[node name="Interactable" parent="." instance=ExtResource("2_lhda8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_eiv6c")
