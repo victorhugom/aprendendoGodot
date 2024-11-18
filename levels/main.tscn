@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://3ub8eral5hes"]
+[gd_scene load_steps=24 format=4 uid="uid://3ub8eral5hes"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_w3cqq"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="16_rt7d5"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="17_bcr4k"]
 [ext_resource type="Resource" uid="uid://l8ia07g4lnkf" path="res://conversation/conversations/void_map_end_conversation.tres" id="19_d3ok1"]
+[ext_resource type="AudioStream" uid="uid://ctm3rauuwy473" path="res://assets/sounds/powerupupgrade.mp3" id="20_t3sjb"]
 [ext_resource type="Resource" uid="uid://bysdkdhgxib0g" path="res://cards/configs/card_config_basic_shoot_double.tres" id="21_yye8k"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="22_ujrnl"]
 
@@ -1099,10 +1100,13 @@ required_quantity = 4
 position = Vector2(431, 388)
 target_scene_path = "res://levels/lobby.tscn"
 
-[node name="PickableGoldKey" parent="." instance=ExtResource("14_1mwr4")]
-position = Vector2(911, 424)
-rotation = -0.419262
-item_id = "MAIN_GOLD_KEY_01"
+[node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]
+position = Vector2(4687, 2525)
+conversation = ExtResource("19_d3ok1")
+
+[node name="LiliaMessage2" parent="." instance=ExtResource("13_eaqi8")]
+position = Vector2(899, 546)
+conversation = ExtResource("14_1hlcs")
 
 [node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(845, 443)
@@ -1112,32 +1116,33 @@ item_id = "MAIN_CARD_VIDINHA_01"
 [node name="PickableCard2" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(4758, 2523)
 card_config = ExtResource("16_le5ir")
+audio_stream = ExtResource("20_t3sjb")
 item_id = "MAIN_CARD_SAUSAGE"
-
-[node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]
-position = Vector2(4687, 2525)
-conversation = ExtResource("19_d3ok1")
-
-[node name="LiliaMessage2" parent="." instance=ExtResource("13_eaqi8")]
-position = Vector2(899, 546)
-conversation = ExtResource("14_1hlcs")
 
 [node name="PickableCard3" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(1132, 2539)
 card_config = ExtResource("17_bcr4k")
+audio_stream = ExtResource("20_t3sjb")
 
 [node name="PickableCard4" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(1243, 2482)
 card_config = ExtResource("17_bcr4k")
+audio_stream = ExtResource("20_t3sjb")
 
 [node name="PickableCard5" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(1089, 2445)
 card_config = ExtResource("21_yye8k")
+audio_stream = ExtResource("20_t3sjb")
 
 [node name="PickableCard6" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(427, 4032)
 card_config = ExtResource("22_ujrnl")
+audio_stream = ExtResource("20_t3sjb")
 
 [node name="PickableCard7" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(2734, 428)
 card_config = ExtResource("17_bcr4k")
+audio_stream = ExtResource("20_t3sjb")
+
+[node name="PickableGoldKey" parent="." instance=ExtResource("14_1mwr4")]
+position = Vector2(920, 428)

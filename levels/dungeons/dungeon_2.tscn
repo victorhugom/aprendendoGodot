@@ -40,6 +40,21 @@ has_cancel = false
 script = ExtResource("15_uddnb")
 messages = Array[ExtResource("14_gv3f2")]([SubResource("Resource_4tm32"), SubResource("Resource_fiq6v")])
 
+[sub_resource type="Animation" id="Animation_oe4x7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_vkc5p"]
 resource_name = "state_a"
 tracks/0/type = "value"
@@ -70,7 +85,14 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_oe4x7"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lltdl"]
+_data = {
+"RESET": SubResource("Animation_oe4x7"),
+"state_a": SubResource("Animation_vkc5p"),
+"state_b": SubResource("Animation_uuybx")
+}
+
+[sub_resource type="Animation" id="Animation_30t8y"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -82,29 +104,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lltdl"]
-_data = {
-"RESET": SubResource("Animation_oe4x7"),
-"state_a": SubResource("Animation_vkc5p"),
-"state_b": SubResource("Animation_uuybx")
-}
-
-[sub_resource type="Animation" id="Animation_6o3b1"]
-resource_name = "state_b"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_e8io8"]
@@ -122,8 +122,8 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_30t8y"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_6o3b1"]
+resource_name = "state_b"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8o88q"]
