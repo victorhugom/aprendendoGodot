@@ -1,11 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=24 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="3_4e3ww"]
-[ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="4_ofs0r"]
 [ext_resource type="PackedScene" uid="uid://da85vjj26ttqb" path="res://props/postlight.tscn" id="5_fqycl"]
-[ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_jyplk"]
 [ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="7_fm8bf"]
 [ext_resource type="Texture2D" uid="uid://bjn337n3raevr" path="res://assets/props/cancientdragon.png" id="8_vm4r3"]
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="9_vf4bx"]
@@ -13,9 +11,114 @@
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_m58qk"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="12_ijhb8"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="13_5svdw"]
-[ext_resource type="PackedScene" uid="uid://b6h51bpowsn2s" path="res://enemies/VoidBoss.tscn" id="14_y370b"]
+[ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="14_lp4ki"]
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="15_duiwm"]
+[ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="15_ghhgj"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="16_3uqnh"]
+
+[sub_resource type="Animation" id="Animation_j4ugy"]
+resource_name = "state_a"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_wfqde"]
+resource_name = "state_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_myofy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqjk3"]
+_data = {
+"RESET": SubResource("Animation_myofy"),
+"state_a": SubResource("Animation_j4ugy"),
+"state_b": SubResource("Animation_wfqde")
+}
+
+[sub_resource type="Animation" id="Animation_h7ef6"]
+resource_name = "state_a"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_wfndh"]
+resource_name = "state_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_taqek"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w80mx"]
+_data = {
+"RESET": SubResource("Animation_taqek"),
+"state_a": SubResource("Animation_h7ef6"),
+"state_b": SubResource("Animation_wfndh")
+}
 
 [node name="PlaygroundMapVictor" type="Node2D"]
 y_sort_enabled = true
@@ -175,41 +278,6 @@ position = Vector2(2937, 2830)
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="Enemy" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_jyplk")]
-position = Vector2(1389, 921)
-target = NodePath("../../Player")
-
-[node name="Enemy3" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_jyplk")]
-position = Vector2(3441, 900)
-target = NodePath("../../Player")
-
-[node name="Enemy2" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_jyplk")]
-position = Vector2(1133, 952)
-target = NodePath("../../Player")
-
-[node name="EnemyTriEye" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("4_ofs0r")]
-position = Vector2(1697, 1505)
-target = NodePath("../../Player")
-
-[node name="EnemyTriEye2" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("4_ofs0r")]
-position = Vector2(1273, 1301)
-target = NodePath("../../Player")
-
-[node name="EnemyTriEye3" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("4_ofs0r")]
-position = Vector2(2140, 1231)
-target = NodePath("../../Player")
-
-[node name="EnemyTriEye4" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("4_ofs0r")]
-position = Vector2(1004, 1809)
-target = NodePath("../../Player")
-
-[node name="EnemyTriEye5" parent="EnemiesContainer" node_paths=PackedStringArray("target") instance=ExtResource("4_ofs0r")]
-position = Vector2(1512, 2016)
-target = NodePath("../../Player")
-
-[node name="VoidBoss" parent="EnemiesContainer" instance=ExtResource("14_y370b")]
-position = Vector2(4729, 2715)
 
 [node name="GrassContainer" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -707,3 +775,29 @@ card_config = ExtResource("16_3uqnh")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("13_5svdw")]
 position = Vector2(1662, 1403)
+
+[node name="InteractionHandler" parent="." node_paths=PackedStringArray("interactable_switch", "animation_player") instance=ExtResource("14_lp4ki")]
+position = Vector2(1756, 1415)
+hframes = 4
+frame = 3
+interactable_switch = NodePath("../InteractableSwitch")
+animation_player = NodePath("AnimationPlayer")
+disabled_collision_on_state_b = true
+collision_layers = 16
+collision_masks = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractionHandler"]
+libraries = {
+"": SubResource("AnimationLibrary_oqjk3")
+}
+
+[node name="InteractableSwitch" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("15_ghhgj")]
+frame = 3
+animation_player = NodePath("AnimationPlayer")
+collision_layers = 16
+collision_masks = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableSwitch"]
+libraries = {
+"": SubResource("AnimationLibrary_w80mx")
+}
