@@ -1,8 +1,11 @@
+@tool
 class_name Interactable extends Area2D
 
 signal interact(body: Node2D)
 signal begin_focus(body: Node2D)
 signal end_focus(body: Node2D)
+
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var interact_message:= "Interagir"
 @export var cannot_interact_message:= "Não pode interagir"
@@ -14,9 +17,12 @@ signal end_focus(body: Node2D)
 @export var required_item_type: Enums.ITEM_TYPE
 @export var required_item_quantity:= 1
 
+@export_category("Audio Settings")
+@export var audio_stream: AudioStream
+
 var in_interaction_area:= false
 var interactor: Node2D
-
+	
 func _on_body_entered(body: Node2D) -> void:
 	interactor = body
 	
@@ -43,7 +49,11 @@ func _input(event):
 		interact.emit(interactor)
 		if can_interact_once:
 			disabled = true  # Desabilita interação após a primeira interação
-		InteractionCall.hide_interaction()  # Esconde a mensagem de interação
+		
+		audio_stream_player_2d.stop()
+		if !audio_stream_player_2d.is_playing() && audio_stream: 
+			audio_stream_player_2d.stream = audio_stream 
+			audio_stream_player_2d.play(0)
 		
 func can_interact() -> bool:
 	

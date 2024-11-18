@@ -1,14 +1,22 @@
 @tool
 class_name InteractionHandler extends Sprite2D
 
-@export var interactable_switch: InteractableSwitch
-@export var animation_player: AnimationPlayer
-@export var disabled_collision_on_state_b:= false
-
 @onready var collision_shape: CollisionShape2D = $StaticBody2D/CollisionShape2D
 @onready var static_body_2d: StaticBody2D = $StaticBody2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+@export var interactable_switch: InteractableSwitch
+@export var animation_player: AnimationPlayer
+## Should collision be disabled when goes to state b?
+@export var disabled_collision_on_state_b:= false
 
 var current_state:= "state_a"
+
+@export_category("Audio Settings")
+## audio played when goes to state a
+@export var audio_stream_a: AudioStream
+## audio played when goes to state b
+@export var audio_stream_b: AudioStream
 
 # Define custom properties for collision layers and masks
 var collision_layers = 0 #setget set_collision_layers
@@ -56,6 +64,13 @@ func _on_interactable_interacted(_body: Node2D) -> void:
 	else:
 		current_state = "state_a"
 		
+	audio_stream_player_2d.stop()
+	if !audio_stream_player_2d.is_playing(): 
+		var audio_stream = audio_stream_a if current_state == "state_b" else audio_stream_b
+		if audio_stream != null:
+			audio_stream_player_2d.stream = audio_stream
+			audio_stream_player_2d.play()
+	
 	collision_shape.disabled = disabled_collision_on_state_b and current_state == "state_b"
 		
 	animation_player.play(current_state)

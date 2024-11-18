@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=27 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
@@ -14,7 +14,25 @@
 [ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="14_lp4ki"]
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="15_duiwm"]
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="15_ghhgj"]
+[ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="15_o24gi"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="16_3uqnh"]
+[ext_resource type="AudioStream" uid="uid://fwuqbgdfquwx" path="res://assets/sounds/blood.mp3" id="16_k7a8w"]
+[ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="16_xhs7s"]
+
+[sub_resource type="Animation" id="Animation_myofy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
 
 [sub_resource type="Animation" id="Animation_j4ugy"]
 resource_name = "state_a"
@@ -46,7 +64,14 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_myofy"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqjk3"]
+_data = {
+"RESET": SubResource("Animation_myofy"),
+"state_a": SubResource("Animation_j4ugy"),
+"state_b": SubResource("Animation_wfqde")
+}
+
+[sub_resource type="Animation" id="Animation_taqek"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -59,13 +84,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqjk3"]
-_data = {
-"RESET": SubResource("Animation_myofy"),
-"state_a": SubResource("Animation_j4ugy"),
-"state_b": SubResource("Animation_wfqde")
 }
 
 [sub_resource type="Animation" id="Animation_h7ef6"]
@@ -96,21 +114,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_taqek"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w80mx"]
@@ -783,6 +786,8 @@ frame = 3
 interactable_switch = NodePath("../InteractableSwitch")
 animation_player = NodePath("AnimationPlayer")
 disabled_collision_on_state_b = true
+audio_stream_a = ExtResource("15_o24gi")
+audio_stream_b = ExtResource("16_xhs7s")
 collision_layers = 16
 collision_masks = 1
 
@@ -794,9 +799,7 @@ libraries = {
 [node name="InteractableSwitch" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("15_ghhgj")]
 frame = 3
 animation_player = NodePath("AnimationPlayer")
-interact_message = "Abrir"
-cannot_interact_message = "Cade a chave?"
-required_item_type = 1
+audio_stream = ExtResource("16_k7a8w")
 collision_layers = 16
 collision_masks = 1
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsg70w1u4t435"]
+[gd_scene load_steps=10 format=3 uid="uid://bsg70w1u4t435"]
 
 [ext_resource type="Script" path="res://inventory/pickable_items/pickable_card.gd" id="1_o6mv8"]
 [ext_resource type="PackedScene" uid="uid://dwuvbt5j5i7uw" path="res://cards/card.tscn" id="2_exyxo"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="2_wna75"]
 [ext_resource type="Material" uid="uid://djccxvhynh5rn" path="res://utils/materials/shine_material.tres" id="3_ia5id"]
+[ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="3_t03s6"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="4_mqklg"]
 [ext_resource type="Texture2D" uid="uid://dwdhif6txg36a" path="res://assets/props/projectile/card.png" id="6_nndxf"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="7_k8nd0"]
@@ -14,12 +15,14 @@ size = Vector2(40, 46.6667)
 [node name="PickableCard" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_o6mv8")
+item_id = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-43, -41)
 
 [node name="Interactable" parent="." instance=ExtResource("2_wna75")]
 position = Vector2(-43, -41)
+audio_stream = ExtResource("3_t03s6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(43, 41)

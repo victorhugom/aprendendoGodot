@@ -18,14 +18,16 @@ signal interact(body: Node2D)
 @export var requires_item:=false
 @export var required_item_type: Enums.ITEM_TYPE
 @export var required_item_quantity:= 1
-#endregion
 
-var current_state:= "state_a"
+@export_category("Audio Settings")
+@export var audio_stream: AudioStream
+#endregion
 
 # Define custom properties for collision layers and masks
 var collision_layers = 0 #setget set_collision_layers
 var collision_masks = 0 #setget set_collision_masks
 
+@export_category("Collision")
 # Override _get_property_list to add custom properties to the editor
 func _get_property_list() -> Array:
 	var properties: Array = []
@@ -42,6 +44,8 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_DEFAULT
 	})
 	return properties
+
+var current_state:= "state_a"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,6 +65,7 @@ func _ready() -> void:
 	interactable.requires_item = requires_item
 	interactable.required_item_type = required_item_type
 	interactable.required_item_quantity = required_item_quantity
+	interactable.audio_stream = audio_stream
 	
 	# Set the new size
 	var texture_size = Vector2(texture.get_size().x / hframes, texture.get_size().y / vframes)

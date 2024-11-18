@@ -4,13 +4,17 @@
 [ext_resource type="Script" path="res://levels/_test/interaction_handler.gd" id="2_jvspd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw3rc"]
-size = Vector2(16, 64)
+size = Vector2(16, 16)
 
 [node name="InteractionHandler" type="Sprite2D"]
 texture = ExtResource("1_jf84y")
 script = ExtResource("2_jvspd")
+collision_layers = 0
+collision_masks = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_mw3rc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
