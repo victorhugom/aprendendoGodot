@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://5rsep75e3543"]
+[gd_scene load_steps=18 format=4 uid="uid://5rsep75e3543"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_myj4c"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_5bxw7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="8_fw0ud"]
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="9_7wj3h"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="10_m4g5k"]
+[ext_resource type="Resource" uid="uid://c0gfa5h63ac0f" path="res://cards/configs/card_config_earth_shoot.tres" id="11_ilv50"]
 [ext_resource type="PackedScene" uid="uid://b3hhlk7w3q8ie" path="res://props/liliamessage.tscn" id="11_ul65p"]
 [ext_resource type="Script" path="res://conversation/chat_message.gd" id="12_tijlo"]
 [ext_resource type="Script" path="res://conversation/conversation.gd" id="13_5w8qg"]
@@ -210,13 +211,17 @@ texture_scale = 0.2
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("8_fw0ud")]
 position = Vector2(1096, 921)
+item_id = "DUENGON_03_GOLD_KEY"
 
 [node name="PickableCard" parent="." instance=ExtResource("9_7wj3h")]
 position = Vector2(1296, 922)
 card_config = ExtResource("10_m4g5k")
+item_id = "DUENGON_03_CARD_01"
 
 [node name="PickableCard2" parent="." instance=ExtResource("9_7wj3h")]
 position = Vector2(1284, 915)
+card_config = ExtResource("11_ilv50")
+item_id = "DUENGON_03_CARD_02"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("11_ul65p")]
 position = Vector2(1198, 917)

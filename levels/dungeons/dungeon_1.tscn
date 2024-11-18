@@ -171,6 +171,7 @@ position = Vector2(685, 428)
 [node name="PickableCard" parent="." instance=ExtResource("11_nywm3")]
 position = Vector2(1009, 1021)
 card_config = ExtResource("12_fs0rq")
+item_id = "DUENGON_01_CARD_01"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("9_ybi5u")]
 position = Vector2(1006, 1106)
@@ -178,6 +179,7 @@ conversation = ExtResource("12_gp816")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("10_wimbo")]
 position = Vector2(924, 1105)
+item_id = "DUENGON_01_GOLD_KEY"
 
 [node name="Exit" parent="." instance=ExtResource("2_8ai17")]
 position = Vector2(1008, 1198)

@@ -2,6 +2,10 @@ class_name VoidBoss extends CharacterBody2D
 
 const VOID_TENTACLES = preload("res://enemies/voidTentacles.tscn")
 
+#GAMBIARRA
+@onready var pickable_card_2: PickableCard = $"../../PickableCard2"
+@onready var lilia_message: Node2D = $"../../LiliaMessage"
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -31,6 +35,10 @@ func _ready() -> void:
 	attack_timer.connect("timeout", _on_attack_timer_timeout)
 	add_to_group("enemies")
 	
+	#gambiarra
+	lilia_message.visible = false
+	pickable_card_2.visible = false
+	
 func can_update_char() -> bool:
 	
 	if target == null:
@@ -51,6 +59,11 @@ func _physics_process(_delta: float) -> void:
 	
 	if target == null:
 		target = Globals.player
+		
+	if animation_player.current_animation.begins_with("spin_attack") or animation_player.current_animation.begins_with("super_attack"):
+		hurt_box.can_be_hurt = false
+	else:
+		hurt_box.can_be_hurt = true
 	
 	if can_update_char() == false:
 		return	
@@ -96,7 +109,7 @@ func follow_player() -> void:
 
 func create_void_tectacles():
 	
-	var radius = 400
+	var radius = 500
 	var angle = randf_range(0, PI * 2)
 	var distance = randf_range(0, radius)
 	var offset = Vector2(cos(angle), sin(angle)) * distance
@@ -104,7 +117,7 @@ func create_void_tectacles():
 	
 	var new_void_tentacles = VOID_TENTACLES.instantiate()
 	new_void_tentacles.global_position = tentacle_position
-	get_tree().root.add_child(new_void_tentacles)
+	get_parent().add_child(new_void_tentacles)
 
 func super_attack():
 	pass
@@ -121,6 +134,9 @@ func _on_health_empty():
 	
 	attack_timer.stop()
 	animation_player.play("death")
+	
+	lilia_message.visible = true
+	pickable_card_2.visible = true
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
@@ -136,9 +152,9 @@ func _on_attack_timer_timeout() -> void:
 	
 	var attack_dice = randi_range(1, 10)
 	
-	if attack_dice >= 1 and attack_dice <= 2: #has 20% of change to run the spin attack
+	if attack_dice >= 1 and attack_dice <= 3: #has 30% of change to run the spin attack
 		animation_player.play("spin_attack")
-	elif attack_dice == 3:
+	elif attack_dice >= 4 and attack_dice <= 5:  #has 20% of change to run the super attack
 		animation_player.play("super_attack")
 	elif global_position.distance_to(target.global_position) <= 24:
 		target_position = target.global_position

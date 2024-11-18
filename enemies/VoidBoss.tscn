@@ -593,10 +593,10 @@ tracks/2/path = NodePath("../SpinMeleeCollisionBox:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4, 1.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 1, 1.1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -605,10 +605,10 @@ tracks/3/path = NodePath("../SpinMeleeCollisionBox:monitorable")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.4, 1.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 1, 1.1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_pb8c1"]
@@ -891,8 +891,7 @@ position = Vector2(7.5, -17)
 shape = SubResource("RectangleShape2D_y0sd0")
 
 [node name="Health" parent="." instance=ExtResource("3_jp5ql")]
-visible = false
-max_health = 10
+max_health = 20
 
 [node name="AttackTimer" type="Timer" parent="."]
 autostart = true

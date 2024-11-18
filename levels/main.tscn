@@ -1146,14 +1146,15 @@ item_id = "MAIN_GOLD_KEY_01"
 [node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(845, 443)
 card_config = ExtResource("17_bcr4k")
-item_id = "CARD_VIDINHA_01"
+item_id = "MAIN_CARD_VIDINHA_01"
 
 [node name="PickableCard2" parent="." instance=ExtResource("16_rt7d5")]
-position = Vector2(4715, 2682)
+position = Vector2(4758, 2523)
 card_config = ExtResource("16_le5ir")
+item_id = "MAIN_CARD_SAUSAGE"
 
 [node name="LiliaMessage" parent="." instance=ExtResource("13_eaqi8")]
-position = Vector2(4688, 2731)
+position = Vector2(4687, 2525)
 conversation = SubResource("Resource_2i24k")
 
 [node name="LiliaMessage2" parent="." instance=ExtResource("13_eaqi8")]
