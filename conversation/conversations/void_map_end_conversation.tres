@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=8 format=3 uid="uid://l8ia07g4lnkf"]
+
+[ext_resource type="Script" path="res://conversation/chat_message.gd" id="1_i5h4q"]
+[ext_resource type="Script" path="res://conversation/conversation.gd" id="2_gkt45"]
+
+[sub_resource type="Resource" id="Resource_7c8uj"]
+script = ExtResource("1_i5h4q")
+message_id = ""
+char_name = "Mensagem da Lilia"
+message = "Você conseguiu!"
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_krnpy"]
+script = ExtResource("1_i5h4q")
+message_id = ""
+char_name = "Mensagem da Lilia"
+message = "Agora que está com seu guardião pode passar pelas provações."
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_8dmrq"]
+script = ExtResource("1_i5h4q")
+message_id = ""
+char_name = "Mensagem da Lilia"
+message = "Terra, Agua, Fogo e Ar."
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_784yl"]
+script = ExtResource("1_i5h4q")
+message_id = ""
+char_name = "Mensagem dos devs"
+message = "Esse jogo é feito por dois meninos. Esse é o fim da demo."
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_5o8ud"]
+script = ExtResource("1_i5h4q")
+message_id = ""
+char_name = "Mensagem dos devs"
+message = "Obrigado por jogar."
+has_cancel = false
+
+[resource]
+script = ExtResource("2_gkt45")
+messages = Array[ExtResource("1_i5h4q")]([SubResource("Resource_7c8uj"), SubResource("Resource_krnpy"), SubResource("Resource_8dmrq"), SubResource("Resource_784yl"), SubResource("Resource_5o8ud")])

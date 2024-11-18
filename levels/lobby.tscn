@@ -12,14 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="9_vkru6"]
 [ext_resource type="PackedScene" uid="uid://p5s7pcd61xly" path="res://conversation/conversationTrigger.tscn" id="10_ipgk1"]
 [ext_resource type="Resource" uid="uid://c0q5ki1lxha8a" path="res://conversation/conversations/lilia_dont_go_conversation.tres" id="12_65s5k"]
-[ext_resource type="PackedScene" uid="uid://dbh2bhrg63sx8" path="res://gui/CooldownBar.tscn" id="13_gs7sw"]
+[ext_resource type="PackedScene" uid="uid://b1ebqyq3lwsbt" path="res://gui/CooldownBar.tscn" id="13_gs7sw"]
 [ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="14_t0gjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2gt"]
-size = Vector2(222, 46)
+size = Vector2(222, 97)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpdnw"]
-size = Vector2(121, 33)
+size = Vector2(121, 81.5)
 
 [node name="Lobby" type="Node2D"]
 y_sort_enabled = true
@@ -182,7 +182,7 @@ position = Vector2(1002, 783)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckDeckArea"]
-position = Vector2(-208, 140)
+position = Vector2(-208, 165.5)
 shape = SubResource("RectangleShape2D_vx2gt")
 
 [node name="ConversationTrigger" parent="." instance=ExtResource("10_ipgk1")]
@@ -191,7 +191,7 @@ conversation = ExtResource("12_65s5k")
 play_once = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConversationTrigger"]
-position = Vector2(33, 14)
+position = Vector2(33, 38.25)
 shape = SubResource("RectangleShape2D_xpdnw")
 
 [node name="CooldownBar" parent="." instance=ExtResource("13_gs7sw")]

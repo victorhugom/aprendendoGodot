@@ -1,21 +1,21 @@
-extends Node2D
+class_name LiliaMessage extends Node2D
 
 const CHAT_BOX = preload("res://conversation/chatBox.tscn")
 
 @export var conversation: Conversation
 
 var chat_box: ChatBox
-var player: Player
 
-func _on_interactable_interact(body: Node2D) -> void:
-	player = body as Player
+func _on_interactable_interact(_body: Node2D) -> void:
 	
-	chat_box = CHAT_BOX.instantiate()
-	chat_box.conversation = conversation
-	chat_box.next_message.connect(_on_next_message)
-	chat_box.cancel_message.connect(_on_cancel_message)
-	chat_box.end_conversation.connect(_on_end_conversation)
-	get_tree().root.add_child(chat_box)
+	if chat_box == null:
+		print_debug("created")
+		chat_box = CHAT_BOX.instantiate()
+		chat_box.conversation = conversation
+		chat_box.next_message.connect(_on_next_message)
+		chat_box.cancel_message.connect(_on_cancel_message)
+		chat_box.end_conversation.connect(_on_end_conversation)
+		get_tree().root.add_child(chat_box)
 
 func _on_next_message(message: ChatMessage):
 	print_debug("next_message: %s" %message.message)
@@ -30,3 +30,4 @@ func _on_interactable_body_exited(_body: Node2D) -> void:
 	if chat_box != null:
 		var tween = get_tree().create_tween()
 		tween.tween_callback(chat_box.close_conversation).set_delay(.5)
+		get_tree().root.remove_child(chat_box)

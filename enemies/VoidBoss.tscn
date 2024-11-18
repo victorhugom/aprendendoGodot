@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="9_kii3s"]
 [ext_resource type="AudioStream" uid="uid://e2wis1in3prv" path="res://assets/sounds/breathmonster.mp3" id="9_ptyde"]
 [ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="10_anmay"]
-[ext_resource type="AudioStream" uid="uid://cn6re8isr5qkr" path="res://assets/sounds/cycloneattack.mp3" id="10_avt1g"]
 [ext_resource type="AudioStream" uid="uid://bke3m3fkukpdw" path="res://assets/sounds/bigfootstep.mp3" id="11_f2bve"]
 [ext_resource type="AudioStream" uid="uid://bpg785jbmairf" path="res://assets/sounds/footstepsbloddy.mp3" id="12_c7kql"]
 
@@ -532,6 +531,9 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
+[sub_resource type="Resource" id="Resource_tkw4e"]
+metadata/__load_path__ = "res://assets/sounds/cycloneattack.mp3"
+
 [sub_resource type="Animation" id="Animation_g5ehu"]
 resource_name = "spin_attack"
 length = 1.9
@@ -621,7 +623,7 @@ tracks/4/keys = {
 "clips": [{
 "end_offset": 0.129707,
 "start_offset": 0.0,
-"stream": ExtResource("10_avt1g")
+"stream": SubResource("Resource_tkw4e")
 }],
 "times": PackedFloat32Array(0.3)
 }
@@ -882,6 +884,7 @@ size = Vector2(90, 77)
 [node name="VoidBoss" type="CharacterBody2D"]
 y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
+collision_layer = 2048
 script = ExtResource("1_5e1wn")
 speed = 80
 
