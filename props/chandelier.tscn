@@ -35,7 +35,7 @@ animations = [{
 [node name="Chandelier" type="Node2D"]
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
-position = Vector2(1, -26)
+position = Vector2(1, 1)
 color = Color(0.812891, 0.540435, 0.280769, 1)
 energy = 1.07
 range_z_max = 0
@@ -44,7 +44,7 @@ shadow_filter = 2
 texture = ExtResource("2_epraj")
 
 [node name="Torch" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -22)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_7oav6")
 animation = &"flame"
 autoplay = "flame"

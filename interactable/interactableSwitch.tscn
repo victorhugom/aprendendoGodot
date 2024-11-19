@@ -1,22 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjhl4df72l5mp"]
 
-[ext_resource type="Texture2D" uid="uid://d1vrfspcd5vrn" path="res://assets/heart_transformation.png" id="1_1yrva"]
+[ext_resource type="Texture2D" uid="uid://fw3tlivftx7l" path="res://assets/props/lever.png" id="1_wtn63"]
 [ext_resource type="Script" path="res://interactable/interactable_switch.gd" id="2_2rcp5"]
 [ext_resource type="PackedScene" uid="uid://bk3wynuaapxir" path="res://interactable/interactable.tscn" id="2_lhda8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eiv6c"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [node name="InteractableSwitch" type="Sprite2D"]
-position = Vector2(1903, 1418)
-texture = ExtResource("1_1yrva")
-hframes = 4
+position = Vector2(0, -15)
+texture = ExtResource("1_wtn63")
+hframes = 2
 script = ExtResource("2_2rcp5")
 interact_message = "Usar Alavanca"
 collision_layers = 0
 collision_masks = 0
 
 [node name="Interactable" parent="." instance=ExtResource("2_lhda8")]
+position = Vector2(0, 12)
+scale = Vector2(1.76632, 1.02763)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+scale = Vector2(0.524435, 0.567245)
 shape = SubResource("RectangleShape2D_eiv6c")
