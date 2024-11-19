@@ -1025,7 +1025,7 @@ left_marker = NodePath("LeftMarker2D")
 right_marker = NodePath("RightMarker2D")
 up_marker = NodePath("UpMarker2D")
 down_marker = NodePath("DownMarker2D")
-shoot_delay = 0.0
+shoot_delay = 0.1
 
 [node name="RightMarker2D" type="Marker2D" parent="Shooter"]
 position = Vector2(15, -16)

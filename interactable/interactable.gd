@@ -83,5 +83,7 @@ func _exit_tree() -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_callback(audio_stream_player_2d.queue_free).set_delay(audio_stream.get_length())
 	else:
-		if audio_stream_player_2d and audio_stream_player_2d.is_inside_tree():
-			audio_stream_player_2d.queue_free()
+		audio_stream_player_2d.queue_free
+	#else:
+		#if audio_stream_player_2d and audio_stream_player_2d.is_inside_tree():
+			#audio_stream_player_2d.queue_free()

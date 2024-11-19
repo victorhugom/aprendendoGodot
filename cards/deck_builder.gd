@@ -1,7 +1,7 @@
 class_name DeckBuilder extends CanvasLayer
 
 signal opened
-signal closed(cards: Array[DeckCardItem])
+signal closed(deck_cards: Array[DeckCardItem], cards_owned: Array[DeckCardItem])
 
 const DECK_CARD = preload("res://cards/deckCard.tscn")
 
@@ -151,4 +151,4 @@ func remove_card_from_deck(card_config) -> void:
 	update_card_table()
 
 func _on_create_deck_button_pressed() -> void:
-	closed.emit(deck_cards)
+	closed.emit(deck_cards, cards_owned)

@@ -8,13 +8,14 @@ const PROJECTILE = preload("res://player/projectile.tscn")
 @export var right_marker: Marker2D
 @export var up_marker: Marker2D
 @export var down_marker: Marker2D
+## delay between shoots, only works if projectile count > 1
 @export var shoot_delay: float = 0.1
 
 var projectile_config: ProjectileConfig
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.wait_time = shoot_delay
+	timer.wait_time = minf(0.1,shoot_delay)
 
 func shoot(direction: String, projectile_count: int, projectile_scale: int = 1, target_location: Vector2 = Vector2(0, 0)):
 	# Determine the position based on the direction at the time of shooting

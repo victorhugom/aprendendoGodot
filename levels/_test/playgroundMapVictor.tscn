@@ -780,7 +780,8 @@ position = Vector2(1810, 1312)
 card_config = ExtResource("16_3uqnh")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("13_5svdw")]
-position = Vector2(1662, 1408)
+position = Vector2(1655, 1406)
+item_id = "KEY_GLLD"
 
 [node name="InteractionHandler" parent="." node_paths=PackedStringArray("interactable_switch", "animation_player") instance=ExtResource("14_lp4ki")]
 position = Vector2(1774, 1384)

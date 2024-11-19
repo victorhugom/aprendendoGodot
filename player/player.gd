@@ -217,7 +217,7 @@ func _on_deck_builder_opened() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
-func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
+func _on_deck_builder_closed(_deck_cards: Array[DeckCardItem], _cards_owned: Array[DeckCardItem]) -> void:
 	
 	#remove deck builder from screen
 	get_tree().paused = false
@@ -227,10 +227,11 @@ func _on_deck_builder_closed(deck: Array[DeckCardItem]) -> void:
 	
 	# save deck created
 	var new_saved_game: SavedGame = SavedGame.new()
-	new_saved_game.deck_cards = deck
+	new_saved_game.deck_cards = _deck_cards
+	new_saved_game.cards_owned = _cards_owned
 	ResourceSaver.save(new_saved_game, "res://savegame.tres")
 		
-	deck_cards = deck
+	deck_cards = _deck_cards
 	create_deck_hand()
 
 func build_deck():
