@@ -2,7 +2,7 @@ class_name Level extends Node2D
 
 const PAUSE_SCREEN = preload("res://gui/pauseScreen.tscn")
 
-@export var camera_zoom := 2
+@export var camera_zoom : float = 2
 
 var pause_screen: PauseScreen
 func _ready() -> void:

@@ -24,7 +24,7 @@ size = Vector2(121, 81.5)
 [node name="Lobby" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_epi6a")
-camera_zoom = 3
+camera_zoom = 2.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.974651, 0.859708, 0.807518, 1)
