@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_x08uv"]
 script = ExtResource("1_raprf")
-message_id = "lilia message 1"
+message_id = "a"
 char_name = "Mensagem da Lilia"
 message = "\"No pé da estátua tem uma chave que te dará acesso aos santuários.\""
 has_cancel = false

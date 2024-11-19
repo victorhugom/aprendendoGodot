@@ -1108,11 +1108,6 @@ conversation = ExtResource("19_d3ok1")
 position = Vector2(899, 546)
 conversation = ExtResource("14_1hlcs")
 
-[node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
-position = Vector2(899, 436)
-card_config = ExtResource("17_bcr4k")
-item_id = "MAIN_CARD_VIDINHA_01"
-
 [node name="PickableCard2" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(4758, 2523)
 card_config = ExtResource("16_le5ir")
@@ -1146,3 +1141,7 @@ audio_stream = ExtResource("20_t3sjb")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("14_1mwr4")]
 position = Vector2(941, 434)
+
+[node name="PickableCard" parent="." instance=ExtResource("16_rt7d5")]
+position = Vector2(897, 438)
+card_config = ExtResource("17_bcr4k")
