@@ -82,6 +82,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 
+	if follow_camera.zoom.x != Globals.camera_zoom:
+		follow_camera.zoom.x = Globals.camera_zoom
+		follow_camera.zoom.y = Globals.camera_zoom
+
 	hurt_box.can_be_hurt = can_take_damage()
 	
 	# Verificar se o cooldown do dash passou

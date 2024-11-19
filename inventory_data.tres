@@ -1,42 +1,8 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=9 format=3 uid="uid://bbpbjk2sqimsl"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=3 format=3 uid="uid://bbpbjk2sqimsl"]
 
 [ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_yllaq"]
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_711w1"]
-[ext_resource type="Resource" uid="uid://bysdkdhgxib0g" path="res://cards/configs/card_config_basic_shoot_double.tres" id="2_wf1xu"]
-[ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="3_164jm"]
-
-[sub_resource type="Resource" id="Resource_68d5o"]
-script = ExtResource("1_yllaq")
-item_id = ""
-item_type = 0
-display_name = "Tiro Duplo"
-description = "Carta Tiro Duplo"
-resouce = ExtResource("2_wf1xu")
-
-[sub_resource type="Resource" id="Resource_838q5"]
-script = ExtResource("1_yllaq")
-item_id = ""
-item_type = 0
-display_name = "Vidinha"
-description = "Carta Vidinha"
-resouce = ExtResource("3_164jm")
-
-[sub_resource type="Resource" id="Resource_ww6qd"]
-script = ExtResource("1_yllaq")
-item_id = ""
-item_type = 0
-display_name = "Vidinha"
-description = "Carta Vidinha"
-resouce = ExtResource("3_164jm")
-
-[sub_resource type="Resource" id="Resource_b7vka"]
-script = ExtResource("1_yllaq")
-item_id = ""
-item_type = 0
-display_name = "Tiro Duplo"
-description = "Carta Tiro Duplo"
-resouce = ExtResource("2_wf1xu")
 
 [resource]
 script = ExtResource("2_711w1")
-items = Array[ExtResource("1_yllaq")]([SubResource("Resource_68d5o"), SubResource("Resource_838q5"), SubResource("Resource_ww6qd"), SubResource("Resource_b7vka")])
+items = Array[ExtResource("1_yllaq")]([])

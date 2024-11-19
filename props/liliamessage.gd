@@ -9,7 +9,6 @@ var chat_box: ChatBox
 func _on_interactable_interact(_body: Node2D) -> void:
 	
 	if chat_box == null:
-		print_debug("created")
 		chat_box = CHAT_BOX.instantiate()
 		chat_box.conversation = conversation
 		chat_box.next_message.connect(_on_next_message)
