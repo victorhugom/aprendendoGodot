@@ -25,7 +25,9 @@ material = ExtResource("2_kqikh")
 texture = ExtResource("4_5bpob")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(0.386719, 0.386719)
+position = Vector2(1, 1)
+scale = Vector2(0.138184, 0.138184)
+color = Color(0.895295, 0.567224, 7.70092e-07, 1)
 texture = ExtResource("5_5rtqj")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

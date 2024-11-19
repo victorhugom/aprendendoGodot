@@ -984,6 +984,7 @@ frame = 180
 region_rect = Rect2(241, 254, 29, 35)
 
 [node name="PointLight2D_World" type="PointLight2D" parent="LittleMage"]
+position = Vector2(0, -37)
 range_layer_min = -10
 range_layer_max = 10
 shadow_enabled = true
@@ -993,6 +994,7 @@ texture_scale = 0.6
 
 [node name="PointLight2D_Player" type="PointLight2D" parent="LittleMage"]
 light_mask = 0
+position = Vector2(0, -37)
 color = Color(0.58828, 0.295073, 0.00476668, 1)
 energy = 0.8
 range_layer_min = -10
