@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
+[ext_resource type="Texture2D" uid="uid://bku1v1ku64ypf" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/keyboard_space.png" id="3_hubhr"]
 [ext_resource type="FontFile" uid="uid://bw8tebfadoyd6" path="res://assets/fonts/Minecraft.ttf" id="5_diull"]
-[ext_resource type="Texture2D" uid="uid://g0r7s3cqjopf" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_left.png" id="5_t6bsr"]
+[ext_resource type="Texture2D" uid="uid://ci5g32obhbxj2" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_ctrl.svg" id="5_rvm8j"]
 [ext_resource type="Texture2D" uid="uid://bjehfu1d3e5tf" path="res://assets/props/key.png" id="6_0yhao"]
-[ext_resource type="Texture2D" uid="uid://bywbuxstv8gyt" path="res://assets/external_resources/kenney_input-prompts/Keyboard & Mouse/Double/mouse_right.png" id="6_qafju"]
 
 [sub_resource type="Animation" id="Animation_w6w73"]
 length = 0.001
@@ -63,9 +63,8 @@ layout_mode = 2
 
 [node name="KeyboardQ" type="TextureRect" parent="CanvasLayer/Commands/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_t6bsr")
+texture = ExtResource("3_hubhr")
 expand_mode = 3
-stretch_mode = 4
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Commands/HBoxContainer"]
 layout_mode = 2
@@ -79,9 +78,8 @@ autowrap_mode = 0
 
 [node name="KeyboardQ2" type="TextureRect" parent="CanvasLayer/Commands/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_qafju")
+texture = ExtResource("5_rvm8j")
 expand_mode = 3
-stretch_mode = 4
 
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Commands/HBoxContainer"]
 layout_mode = 2

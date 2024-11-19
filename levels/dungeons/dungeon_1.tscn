@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=33 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_vf4d4"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="2_8ai17"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_3865b"]
 [ext_resource type="PackedScene" uid="uid://dk75mr3u1qd36" path="res://props/chandelier.tscn" id="4_narg8"]
@@ -145,6 +146,8 @@ _data = {
 
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_vf4d4")
+camera_zoom = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.276895, 0.252349, 0.382333, 1)

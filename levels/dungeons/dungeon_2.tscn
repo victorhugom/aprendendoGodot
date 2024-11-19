@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=4 uid="uid://mgmamirtvaw0"]
+[gd_scene load_steps=34 format=4 uid="uid://mgmamirtvaw0"]
 
+[ext_resource type="Script" path="res://levels/level.gd" id="1_htnw4"]
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_ocefl"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_qkgtq"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="3_iaiks"]
@@ -146,6 +147,7 @@ _data = {
 
 [node name="Dungeon2" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_htnw4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.173307, 0.283621, 0.393027, 1)
