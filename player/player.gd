@@ -91,7 +91,7 @@ func _physics_process(_delta: float) -> void:
 	#hide card hand in lobby
 	card_hand.visible = not get_tree().current_scene.scene_file_path.contains("lobby")
 	
-	if is_dying || is_being_hit: return
+	if is_dying || is_being_hit || animation_player.current_animation.begins_with("attack"): return
 	
 	handle_movement_input()
 	update_animation()

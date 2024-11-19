@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=30 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
@@ -19,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="16_xhs7s"]
 [ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/sounds/hitplayer.mp3" id="18_jdqsl"]
 [ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="19_fgble"]
+[ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="20_w4oxu"]
+[ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="21_d3rio"]
 
 [sub_resource type="Animation" id="Animation_myofy"]
 length = 0.001
@@ -810,3 +812,9 @@ collision_masks = 1
 libraries = {
 "": SubResource("AnimationLibrary_w80mx")
 }
+
+[node name="EnemyEye" parent="." instance=ExtResource("20_w4oxu")]
+position = Vector2(2031, 1423)
+
+[node name="EnemyTriEye" parent="." instance=ExtResource("21_d3rio")]
+position = Vector2(2071, 1297)

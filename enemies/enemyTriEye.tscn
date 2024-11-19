@@ -15,8 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://bpg785jbmairf" path="res://assets/sounds/footstepsbloddy.mp3" id="11_70oxe"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="11_tg382"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbok2"]
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yai1f"]
+size = Vector2(13, 6)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2s3c"]
 radius = 12.0
@@ -516,9 +516,9 @@ size = Vector2(27, 49)
 y_sort_enabled = true
 texture_filter = 3
 collision_layer = 2048
-collision_mask = 6175
+collision_mask = 6159
 script = ExtResource("1_dnkxr")
-speed = 48
+speed = 64
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rbip2")
@@ -529,10 +529,11 @@ vframes = 17
 region_rect = Rect2(133, 163, 26, 40)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
-shape = SubResource("CapsuleShape2D_bbok2")
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_yai1f")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_vpbqo")]
+visible = false
 position = Vector2(-7, -16)
 collision_layer = 256
 collision_mask = 192

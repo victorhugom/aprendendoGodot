@@ -17,10 +17,11 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 @export var target: Node
 @export var speed: int
 
-var is_dying = false
-var direction = "left"
+var is_dying:= false
+var is_attacking:= false
+var is_seeing_player:= false
+var direction:= "left"
 var target_position: Vector2
-var is_seeing_player = false
 
 func _ready() -> void:
 	
@@ -37,7 +38,7 @@ func can_update_char() -> bool:
 	if target == null:
 		return false
 		
-	if global_position.distance_to(target.global_position) > 300:
+	if global_position.distance_to(target.global_position) > 500:
 		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
@@ -51,6 +52,9 @@ func _physics_process(_delta: float) -> void:
 		target = Globals.player
 	
 	if can_update_char() == false:
+		return
+		
+	if is_attacking:
 		return
 	
 	is_seeing_player = player_trace.is_colliding()
@@ -79,7 +83,8 @@ func _physics_process(_delta: float) -> void:
 		player_trace.target_position = Vector2(0,-300)
 		player_trace.rotation_degrees = 0
 		
-	if is_seeing_player:
+	if is_seeing_player and !is_attacking:
+		# is already attacking don't need to start it
 		prepare_attack()
 	else:
 		
@@ -115,6 +120,14 @@ func _on_health_empty():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		queue_free()
+	if anim_name.begins_with("attack"):
+		if player_trace.is_colliding():
+			var tween = get_tree().create_tween()
+			tween.tween_callback(prepare_attack).set_delay(.3)
+		else:
+			is_attacking = false
+	else:
+		is_attacking = false
 
 ## attacks if creature is not dying and player trace is colliding
 func prepare_attack() -> void:
@@ -122,17 +135,16 @@ func prepare_attack() -> void:
 	if is_dying: 
 		return
 		
-	if animation_player.current_animation.begins_with("attack"):
-		return
-	
 	if player_trace.is_colliding():
+		is_attacking = true
 		target_position = target.global_position
 		animation_player.play("attack_" + direction)
+	else:
+		is_attacking = false
 		
 func _execute_attack():
 	#execute attack during animation
 	shooter.projectile_config = PROJECTILE_CONFIG
-	print_debug(target.global_position)
 	shooter.shoot(direction, 1, 1, target_position)
 
 func _on_tracking_timer_timeout() -> void:
