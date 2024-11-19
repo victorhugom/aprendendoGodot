@@ -180,11 +180,6 @@ position = Vector2(354, -265)
 [node name="Player" parent="." node_paths=PackedStringArray("ground_map_tile") instance=ExtResource("9_vkru6")]
 position = Vector2(974, 650)
 ground_map_tile = NodePath("../Grass")
-speed = 160
-dash_speed = 320
-walk_speed = 160
-dash_duration = 0.35
-dash_cooldown = 1
 
 [node name="CheckDeckArea" type="Area2D" parent="."]
 position = Vector2(1002, 783)

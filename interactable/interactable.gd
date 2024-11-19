@@ -7,8 +7,22 @@ signal end_focus(body: Node2D)
 
 
 
-@export var interact_message:= "Interagir"
-@export var cannot_interact_message:= "Não pode interagir"
+@export var interact_message:= "Interagir":
+	set(value):
+		interact_message = value
+		if in_interaction_area:
+			InteractionCall.show_interaction(interact_message)
+	get:
+		return interact_message
+		
+@export var cannot_interact_message:= "Não pode interagir":
+	set(value):
+		cannot_interact_message = value
+		if in_interaction_area:
+			InteractionCall.show_interaction(cannot_interact_message)
+	get:
+		return cannot_interact_message
+		
 @export var can_interact_once:= false
 @export var disabled := false
 
@@ -28,6 +42,21 @@ func _ready() -> void:
 	audio_stream_player_2d = AudioStreamPlayer2D.new()
 	get_tree().root.add_child.call_deferred(audio_stream_player_2d)
 	
+func can_interact() -> bool:
+	
+	if disabled:
+		return false
+	
+	if requires_item == false:
+		return true
+	
+	var inventory = interactor.get_node("Inventory") as Inventory
+	assert(inventory != null, "Error: Inventory not found, check if inventory is in the actor, is in the root and with the name 'Inventory' case sensitive")
+	
+	var required_item = inventory.has_item(required_item_type)
+	
+	return required_item.size() > 0 && required_item.size() >= required_item_quantity
+
 func _on_body_entered(body: Node2D) -> void:
 	interactor = body
 	
@@ -36,7 +65,6 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		InteractionCall.show_interaction(cannot_interact_message)
 	
-	print_debug("Body Entered %s:" %body)
 	in_interaction_area = true
 	begin_focus.emit(body)
 
@@ -44,8 +72,6 @@ func _on_body_exited(body: Node2D) -> void:
 	interactor = null
 	
 	InteractionCall.hide_interaction()
-	
-	print_debug("Body Exit %s:" %body)
 	in_interaction_area = false
 	end_focus.emit(body)
 	
@@ -62,21 +88,6 @@ func _input(event):
 			
 		interact.emit(interactor)
 		
-func can_interact() -> bool:
-	
-	if disabled:
-		return false
-	
-	if requires_item == false:
-		return true
-	
-	var inventory = interactor.get_node("Inventory") as Inventory
-	assert(inventory != null, "Error: Inventory not found, check if inventory is in the actor, is in the root and with the name 'Inventory' case sensitive")
-	
-	var required_item = inventory.has_item(required_item_type)
-	
-	return required_item.size() > 0 && required_item.size() >= required_item_quantity
-
 func _exit_tree() -> void:
 	
 	if audio_stream:
@@ -84,6 +95,3 @@ func _exit_tree() -> void:
 		tween.tween_callback(audio_stream_player_2d.queue_free).set_delay(audio_stream.get_length())
 	else:
 		audio_stream_player_2d.queue_free()
-	#else:
-		#if audio_stream_player_2d and audio_stream_player_2d.is_inside_tree():
-			#audio_stream_player_2d.queue_free()

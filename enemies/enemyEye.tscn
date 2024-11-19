@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cppg4wlj741eq" path="res://enemies/components/healthBar.tscn" id="11_mr6mk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_an4n0"]
-size = Vector2(16, 8)
+size = Vector2(8, 7)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix582"]
 height = 36.0
@@ -514,7 +514,7 @@ vframes = 17
 region_rect = Rect2(133, 163, 26, 40)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(2, 7)
+position = Vector2(7, -4)
 shape = SubResource("RectangleShape2D_an4n0")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_roh5r")]
