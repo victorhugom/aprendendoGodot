@@ -10,11 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="7_k8nd0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qaf5f"]
-size = Vector2(40, 46.6667)
+size = Vector2(23, 32)
 
 [node name="PickableCard" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_o6mv8")
+audio_stream = ExtResource("3_61tun")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-43, -41)
@@ -24,7 +25,7 @@ position = Vector2(-43, -41)
 audio_stream = ExtResource("3_61tun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(43, 41)
+position = Vector2(43.5, 41)
 shape = SubResource("RectangleShape2D_qaf5f")
 
 [node name="Card" parent="Interactable" instance=ExtResource("2_exyxo")]

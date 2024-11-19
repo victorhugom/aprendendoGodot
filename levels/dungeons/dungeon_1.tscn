@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=32 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="2_8ai17"]
@@ -9,16 +9,35 @@
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="7_yq431"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="8_wikqq"]
 [ext_resource type="PackedScene" uid="uid://b3hhlk7w3q8ie" path="res://props/liliamessage.tscn" id="9_ybi5u"]
+[ext_resource type="Script" path="res://conversation/chat_message.gd" id="10_1lh76"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="10_wimbo"]
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="11_nywm3"]
+[ext_resource type="Script" path="res://conversation/conversation.gd" id="11_pgy4n"]
 [ext_resource type="Resource" uid="uid://cley1gty1qtl1" path="res://cards/configs/card_config_fire_shoot.tres" id="12_fs0rq"]
-[ext_resource type="Resource" uid="uid://b2n4w3lt5jw1l" path="res://conversation/conversations/lilia_message1_conversation.tres" id="12_gp816"]
 [ext_resource type="Texture2D" uid="uid://b2evyvnbhcdw0" path="res://assets/lights/lbluelight.png" id="13_ag5sc"]
 [ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="15_fx23r"]
 [ext_resource type="Texture2D" uid="uid://7ptilpstee7v" path="res://assets/props/dungeondoor.png" id="16_gwkt7"]
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="17_ews2j"]
 [ext_resource type="Texture2D" uid="uid://fw3tlivftx7l" path="res://assets/props/lever.png" id="18_f1qvy"]
 [ext_resource type="AudioStream" uid="uid://cqsqmj2g4gdm7" path="res://assets/sounds/pulling-a-lever.mp3" id="19_vhm0t"]
+
+[sub_resource type="Resource" id="Resource_lsk8t"]
+script = ExtResource("10_1lh76")
+message_id = ""
+char_name = "Mensagem da Lilia"
+message = "\"Ache o caminho, nobre e vulgar.\""
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_2mby4"]
+script = ExtResource("10_1lh76")
+message_id = ""
+char_name = "Mensagem da Lilia"
+message = "\"Lá estarão as provações, Terra, Aguá, Fogo e Ar.\""
+has_cancel = false
+
+[sub_resource type="Resource" id="Resource_prurr"]
+script = ExtResource("11_pgy4n")
+messages = Array[ExtResource("10_1lh76")]([SubResource("Resource_lsk8t"), SubResource("Resource_2mby4")])
 
 [sub_resource type="Animation" id="Animation_oe4x7"]
 length = 0.001
@@ -277,14 +296,14 @@ position = Vector2(740, 877)
 [node name="EnemyTriEye3" parent="EnemyContainer" instance=ExtResource("8_wikqq")]
 position = Vector2(685, 428)
 
+[node name="LiliaMessage" parent="EnemyContainer" instance=ExtResource("9_ybi5u")]
+position = Vector2(1005, 1102)
+conversation = SubResource("Resource_prurr")
+
 [node name="PickableCard" parent="." instance=ExtResource("11_nywm3")]
 position = Vector2(1009, 1021)
 card_config = ExtResource("12_fs0rq")
 item_id = "DUENGON_01_CARD_01"
-
-[node name="LiliaMessage" parent="." instance=ExtResource("9_ybi5u")]
-position = Vector2(1006, 1106)
-conversation = ExtResource("12_gp816")
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("10_wimbo")]
 position = Vector2(924, 1105)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c3y5d21thmc6f"]
+[gd_scene load_steps=20 format=4 uid="uid://c3y5d21thmc6f"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_dbyp5"]
 [ext_resource type="Script" path="res://levels/lobby.gd" id="1_epi6a"]
@@ -14,6 +14,9 @@
 [ext_resource type="Resource" uid="uid://c0q5ki1lxha8a" path="res://conversation/conversations/lilia_dont_go_conversation.tres" id="12_65s5k"]
 [ext_resource type="PackedScene" uid="uid://dbh2bhrg63sx8" path="res://gui/CooldownBar.tscn" id="13_gs7sw"]
 [ext_resource type="Texture2D" uid="uid://cs7a0adbjv5fk" path="res://assets/lights/yellowlight.png" id="14_t0gjt"]
+[ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="15_vxl12"]
+[ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="16_cswkq"]
+[ext_resource type="Resource" uid="uid://bysdkdhgxib0g" path="res://cards/configs/card_config_basic_shoot_double.tres" id="17_0p6nv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2gt"]
 size = Vector2(222, 97)
@@ -201,6 +204,22 @@ position = Vector2(900, 732)
 position = Vector2(783, 971)
 texture = ExtResource("14_t0gjt")
 texture_scale = 0.3
+
+[node name="PickableCard" parent="." instance=ExtResource("15_vxl12")]
+position = Vector2(906, 725)
+card_config = ExtResource("16_cswkq")
+
+[node name="PickableCard2" parent="." instance=ExtResource("15_vxl12")]
+position = Vector2(947, 725)
+card_config = ExtResource("16_cswkq")
+
+[node name="PickableCard3" parent="." instance=ExtResource("15_vxl12")]
+position = Vector2(988, 725)
+card_config = ExtResource("17_0p6nv")
+
+[node name="PickableCard4" parent="." instance=ExtResource("15_vxl12")]
+position = Vector2(1029, 725)
+card_config = ExtResource("17_0p6nv")
 
 [connection signal="body_entered" from="CheckDeckArea" to="." method="_on_cehck_deck_area_body_entered"]
 [connection signal="body_entered" from="ConversationTrigger" to="." method="_on_conversation_trigger_body_entered"]
