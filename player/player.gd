@@ -219,7 +219,7 @@ func select_card(card_number:int):
 	card_hand.select_card(card_number)
 	
 func can_take_damage():
-	return is_dying == false && health.current_health > 0
+	return is_dying == false && health.current_health > 0 && is_dashing == false
 	
 func _on_deck_builder_opened() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
