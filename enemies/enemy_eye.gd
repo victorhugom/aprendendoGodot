@@ -145,7 +145,7 @@ func prepare_attack() -> void:
 func _execute_attack():
 	#execute attack during animation
 	shooter.projectile_config = PROJECTILE_CONFIG
-	shooter.shoot(direction, 1, 1, target_position)
+	shooter.shoot(direction, 1, target_position)
 
 func _on_tracking_timer_timeout() -> void:
 	if target != null:

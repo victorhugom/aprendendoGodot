@@ -126,7 +126,8 @@ func trigger_special_attack():
 	
 func execute_special_attack():
 	shooter.projectile_config = PROJECTILE_BASIC_CONFIG
-	shooter.shoot(last_anim_direction, 5, 3)	
+	shooter.projectile_scale = 5
+	shooter.shoot(last_anim_direction, 3)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):

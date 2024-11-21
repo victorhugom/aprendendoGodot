@@ -8,6 +8,8 @@
 script = ExtResource("2_36kfy")
 DPS = 3
 shoot_interval = 0.0
+speed = 180
+scale = 1
 projectile_config = ExtResource("1_8tb1w")
 
 [resource]
