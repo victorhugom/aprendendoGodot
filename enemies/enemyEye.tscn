@@ -13,8 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://duf5k5mapu0oj" path="res://assets/sounds/hit.mp3" id="10_wci6s"]
 [ext_resource type="PackedScene" uid="uid://cppg4wlj741eq" path="res://enemies/components/healthBar.tscn" id="11_mr6mk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_an4n0"]
-size = Vector2(26, 7)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1weuy"]
+radius = 2.0
+height = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix582"]
 height = 36.0
@@ -514,8 +515,9 @@ vframes = 17
 region_rect = Rect2(133, 163, 26, 40)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 8)
-shape = SubResource("RectangleShape2D_an4n0")
+position = Vector2(4, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1weuy")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_roh5r")]
 position = Vector2(0, -15)
