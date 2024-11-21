@@ -176,7 +176,9 @@ func prepare_attack() -> void:
 func attack() -> void:
 	
 	card_hand.use_selected_card()
-	shooter.shoot(last_anim_direction, (card_hand.card_selected.card_config.CardData as CardDataProjectile).DPS)
+	var card_data = (card_hand.card_selected.card_config.CardData as CardDataProjectile)
+	shooter.shoot_interval = card_data.shoot_interval
+	shooter.shoot(last_anim_direction, card_data.DPS) 
 	
 func dash():
 	# Só executa o dash se o cooldown já passou
