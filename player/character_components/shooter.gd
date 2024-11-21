@@ -8,7 +8,7 @@ const PROJECTILE = preload("res://player/projectile.tscn")
 @export var down_marker: Marker2D
 
 ## speed wich the projectile goes forward
-@export var speed:= 36 * 5
+@export var projectile_speed:= 36 * 5
 ## size of the projectile
 @export var projectile_scale:= 1
 ## delay between shoots, only works if projectile count > 1
@@ -48,7 +48,7 @@ func _shoot(shoot_position: Vector2, direction: String, target_location:= Vector
 	projectile.collision_mask = collision_mask
 	projectile.position = shoot_position  # Use the lock the position
 	projectile.scale = Vector2(projectile_scale, projectile_scale)
-	projectile.speed = speed
+	projectile.speed = projectile_speed
 	
 	get_tree().root.add_child(projectile)
 	projectile.shoot(direction, target_location)

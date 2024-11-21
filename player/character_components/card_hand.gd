@@ -2,8 +2,9 @@ class_name CardHand extends CanvasLayer
 
 signal card_selected_changed(card: Card)
 
-const CARD_CONFIG_AIR_SHOOT = preload("res://cards/configs/card_config_air_shoot.tres")
 const CARD_CONFIG_BASIC_SHOOT = preload("res://cards/configs/card_config_basic_shoot.tres")
+
+const CARD_CONFIG_AIR_SHOOT = preload("res://cards/configs/card_config_air_shoot.tres")
 const CARD_CONFIG_EARTH_SHOOT = preload("res://cards/configs/card_config_earth_shoot.tres")
 const CARD_CONFIG_FIRE_SHOOT = preload("res://cards/configs/card_config_fire_shoot.tres")
 const CARD_CONFIG_WATER_SHOOT = preload("res://cards/configs/card_config_water_shoot.tres")
@@ -81,6 +82,7 @@ func draw_cards(amount_to_draw: int = 1) -> bool:
 	
 	#has no card in hand, create base card
 	if cards.size() == 0:
+		#print_debug(((base_card as CardConfig).CardData as CardDataProjectile).shoot_speed)
 		create_and_add_card(base_card)
 		select_card(1)
 		
