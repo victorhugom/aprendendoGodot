@@ -21,5 +21,6 @@ position = Vector2(0, 12)
 scale = Vector2(1.76632, 1.02763)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(5.39922e-07, 5.67973)
 scale = Vector2(0.524435, 0.567245)
 shape = SubResource("RectangleShape2D_eiv6c")

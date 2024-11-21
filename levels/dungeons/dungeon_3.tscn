@@ -303,7 +303,7 @@ position = Vector2(721, 1002)
 position = Vector2(743, 1065)
 
 [node name="Chandelier9" parent="FurnitureContainer" instance=ExtResource("3_yayk1")]
-position = Vector2(1088, 1128)
+position = Vector2(1030, 1126)
 
 [node name="Chandelier10" parent="FurnitureContainer" instance=ExtResource("3_yayk1")]
 position = Vector2(1377, 1345)
@@ -341,14 +341,14 @@ position = Vector2(1198, 917)
 conversation = SubResource("Resource_qqgin")
 
 [node name="InteractionHandler2" parent="." node_paths=PackedStringArray("interactable_switch", "animation_player") instance=ExtResource("15_pvywe")]
-position = Vector2(1296, 1060)
+position = Vector2(1297, 1082)
 interactable_switch = NodePath("../InteractableSwitch")
 animation_player = NodePath("AnimationPlayer")
 disabled_collision_on_state_b = true
 audio_stream_a = ExtResource("19_tpqsv")
 audio_stream_b = ExtResource("19_tpqsv")
 collision_layers = 16
-collision_masks = 1
+collision_masks = 2049
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractionHandler2"]
 libraries = {

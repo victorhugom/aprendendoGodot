@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_2yd7k")
 name = ""
-damage = 1
+damage = 2
 element = 1
 target = 0
 projectileTexture = ExtResource("1_y18hg")

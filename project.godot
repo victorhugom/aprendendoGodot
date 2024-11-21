@@ -178,5 +178,6 @@ avoidance/layer_2="obstacle"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
+textures/vram_compression/import_etc2_astc=true
 2d/sdf/oversize=3
 2d/sdf/scale=0

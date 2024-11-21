@@ -12,6 +12,6 @@ projectile_config = ExtResource("1_sijw5")
 [resource]
 script = ExtResource("3_4e0d1")
 Name = "Tiro de Ar"
-MaxCardUsage = 10
+MaxCardUsage = 20
 CardType = 0
 CardData = SubResource("Resource_1107x")

@@ -7,15 +7,16 @@
 size = Vector2(64, 64)
 
 [node name="InteractionHandler" type="Sprite2D"]
-position = Vector2(0, -20)
+position = Vector2(0, 0.25)
 texture = ExtResource("1_7vkp4")
+offset = Vector2(0, -20.45)
 hframes = 2
 script = ExtResource("2_jvspd")
 collision_layers = 0
 collision_masks = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-1, 19)
+position = Vector2(0, -0.25)
 scale = Vector2(0.66857, 0.150961)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

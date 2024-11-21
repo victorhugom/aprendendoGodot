@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dj8800iifbe5s"]
+[gd_scene load_steps=49 format=3 uid="uid://dj8800iifbe5s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_nyc0f"]
 [ext_resource type="Texture2D" uid="uid://cvb2g7ihw1w3p" path="res://assets/player/littlemage-Sheet.png" id="2_61y8n"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="8_f16ms"]
 [ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="8_nwnf4"]
 [ext_resource type="AudioStream" uid="uid://dwg6je1cusplu" path="res://assets/sounds/tinyfootsteps.mp3" id="9_8fibq"]
+[ext_resource type="AudioStream" uid="uid://c8xr3ut8dskv0" path="res://assets/sounds/music.mp3" id="9_yeqn3"]
 [ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/sounds/hitplayer.mp3" id="13_64krm"]
 [ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="14_acclv"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="15_m5ob6"]
@@ -20,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="16_v5ako"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
-size = Vector2(13, 4)
+size = Vector2(22, 4)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1ujr"]
 radius = 8.0
@@ -1006,7 +1007,8 @@ texture_scale = 0.8
 height = 100.0
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(4.76837e-07, 3)
+scale = Vector2(1, 0.894223)
 shape = SubResource("RectangleShape2D_0gv8d")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("15_yjxdr")]
@@ -1046,10 +1048,17 @@ position = Vector2(0, 9)
 max_health = 9
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -3.0
 autoplay = true
 
 [node name="AudioStreamPlayer2D_ENV" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_nwnf4")
+volume_db = -12.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D_ENV3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_yeqn3")
+volume_db = -6.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
