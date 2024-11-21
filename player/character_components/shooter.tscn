@@ -10,6 +10,3 @@ script = ExtResource("1_v4oyu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.1, 0.1)
 shape = SubResource("SegmentShape2D_jbolv")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
