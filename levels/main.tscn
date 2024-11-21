@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://gxdbph8sligr"]
+[gd_scene load_steps=37 format=4 uid="uid://gxdbph8sligr"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_eg471"]
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
@@ -21,14 +21,17 @@
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="17_bcr4k"]
 [ext_resource type="Resource" uid="uid://l8ia07g4lnkf" path="res://conversation/conversations/void_map_end_conversation.tres" id="19_d3ok1"]
 [ext_resource type="Resource" uid="uid://ckepdh1e8pjfs" path="res://cards/configs/card_config_transform_sausage.tres" id="19_sewin"]
-[ext_resource type="Resource" uid="uid://bysdkdhgxib0g" path="res://cards/configs/card_config_basic_shoot_double.tres" id="21_yye8k"]
+[ext_resource type="Resource" uid="uid://c0gfa5h63ac0f" path="res://cards/configs/card_config_earth_shoot.tres" id="21_ww8kq"]
+[ext_resource type="Resource" uid="uid://cley1gty1qtl1" path="res://cards/configs/card_config_fire_shoot.tres" id="22_h5xja"]
 [ext_resource type="Resource" uid="uid://bfwl6kt5ciygt" path="res://cards/configs/card_config_air_shoot.tres" id="22_ujrnl"]
 [ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="23_c8dld"]
+[ext_resource type="Resource" uid="uid://dexujr406hrb1" path="res://cards/configs/card_config_water_shoot.tres" id="23_nxwpp"]
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="24_vwa5e"]
 [ext_resource type="Texture2D" uid="uid://b3ja6muci83cj" path="res://assets/props/bossdoor.png" id="25_bplf0"]
 [ext_resource type="AudioStream" uid="uid://ctm3rauuwy473" path="res://assets/sounds/powerupupgrade.mp3" id="25_pgct1"]
 [ext_resource type="AudioStream" uid="uid://cqsqmj2g4gdm7" path="res://assets/sounds/pulling-a-lever.mp3" id="28_1e7nx"]
 [ext_resource type="Texture2D" uid="uid://dnctecurnb7np" path="res://assets/props/bosslever.png" id="28_c160t"]
+[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="32_20yp7"]
 
 [sub_resource type="Animation" id="Animation_oe4x7"]
 length = 0.001
@@ -272,6 +275,7 @@ texture = ExtResource("8_5jpkx")
 position = Vector2(2733, 459)
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
+process_mode = 4
 y_sort_enabled = true
 
 [node name="Enemy3" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
@@ -1198,17 +1202,22 @@ item_id = "transformsausicha1"
 
 [node name="PickableCard3" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(1132, 2539)
-card_config = ExtResource("17_bcr4k")
+card_config = ExtResource("22_ujrnl")
 item_id = "mainhealth1"
 
 [node name="PickableCard4" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(1243, 2482)
-card_config = ExtResource("17_bcr4k")
+card_config = ExtResource("21_ww8kq")
 item_id = "mainhealth2"
 
 [node name="PickableCard5" parent="." instance=ExtResource("16_rt7d5")]
 position = Vector2(1089, 2445)
-card_config = ExtResource("21_yye8k")
+card_config = ExtResource("22_h5xja")
+item_id = "maindoubleshoot2"
+
+[node name="PickableCard9" parent="." instance=ExtResource("16_rt7d5")]
+position = Vector2(1153, 2439)
+card_config = ExtResource("23_nxwpp")
 item_id = "maindoubleshoot2"
 
 [node name="PickableCard6" parent="." instance=ExtResource("16_rt7d5")]
@@ -1298,3 +1307,6 @@ collision_masks = 1
 libraries = {
 "": SubResource("AnimationLibrary_lltdl")
 }
+
+[node name="Player" parent="." instance=ExtResource("32_20yp7")]
+position = Vector2(1100, 2610)
