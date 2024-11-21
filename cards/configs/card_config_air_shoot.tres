@@ -6,15 +6,15 @@
 
 [sub_resource type="Resource" id="Resource_1107x"]
 script = ExtResource("2_jw3yh")
-DPS = 2
+DPS = 1
 shoot_interval = 0.0
-speed = 180
-scale = 1
+speed = 350
+projectile_scale = 1
 projectile_config = ExtResource("1_sijw5")
 
 [resource]
 script = ExtResource("3_4e0d1")
 Name = "Tiro de Ar"
-MaxCardUsage = 7
+MaxCardUsage = 20
 CardType = 0
 CardData = SubResource("Resource_1107x")
