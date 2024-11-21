@@ -11,8 +11,6 @@ projectile_speed = 180
 projectile_scale = 1
 shoot_speed = 1
 shoot_interval = 0.3
-speed = 180
-projectile_scale = 1
 projectile_config = ExtResource("1_i8hth")
 
 [resource]

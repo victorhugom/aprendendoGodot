@@ -10,7 +10,7 @@ DPS = 3
 projectile_speed = 180
 projectile_scale = 1
 shoot_speed = 1
-shoot_interval = 0.1
+shoot_interval = 0.15
 projectile_config = ExtResource("1_8tb1w")
 
 [resource]
