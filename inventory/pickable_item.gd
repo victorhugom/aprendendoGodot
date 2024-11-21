@@ -1,7 +1,5 @@
 class_name PickableItem extends Node
 
-const INVENTORY_DATA = preload("res://inventory_data.tres")
-
 @onready var interactable: Interactable = $Interactable
 @export var item_id: String
 
@@ -10,9 +8,11 @@ var inventory_item: InventoryItem
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	var inventory_data = Inventory.load_inventory_data()
+	
 	inventory_item.item_id = item_id
 	
-	var item_found = INVENTORY_DATA.items.filter(func(x): return x.item_id == item_id)
+	var item_found = inventory_data.items.filter(func(x): return x.item_id == item_id)
 	if item_found.size() > 0:
 		queue_free()
 	

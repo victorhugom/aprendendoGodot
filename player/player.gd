@@ -25,10 +25,12 @@ const DEATH_SCREEN = preload("res://gui/deathScreen.tscn")
 #region Deck Builder
 var deck_builder: DeckBuilder
 var card_hand: CardHand
-var deck_cards: Array[DeckCardItem] #full deck
+var deck_cards: Array[DeckCardItem] #current deck
 #endregion
 
-var saved_game = SavedGame
+const USER_DATA_PATH = "user://user_data.tres"
+var user_data = SavedGame
+
 
 var transformation: Node2D
 
@@ -46,7 +48,7 @@ var dash_cooldown_timer = 0.0
 
 func _ready() -> void:
 	
-	saved_game = load_game()
+	user_data = load_game()
 	
 	shooter.projectile_config = PROJECTILE_BASIC_CONFIG
 	
@@ -61,7 +63,7 @@ func _ready() -> void:
 	
 	#health setup
 	health.health_empty.connect(_on_health_empty)
-	health.max_health = saved_game.max_health
+	health.max_health = user_data.max_health
 	hurt_box.damaged.connect(_on_hit)
 	Hud.health_bar.health = health
 	
@@ -71,7 +73,7 @@ func _ready() -> void:
 	
 	#deck builder setup
 	
-	deck_cards = saved_game.deck_cards
+	deck_cards = user_data.deck_cards
 	if deck_cards.size() == 0 && not get_tree().current_scene.scene_file_path.contains("lobby"):
 		build_deck()
 	else:
@@ -235,7 +237,7 @@ func _on_deck_builder_closed(_deck_cards: Array[DeckCardItem], _cards_owned: Arr
 	var new_saved_game: SavedGame = SavedGame.new()
 	new_saved_game.deck_cards = _deck_cards
 	new_saved_game.cards_owned = _cards_owned
-	ResourceSaver.save(new_saved_game, "res://savegame.tres")
+	save_game(new_saved_game)
 		
 	deck_cards = _deck_cards
 	create_deck_hand()
@@ -243,8 +245,8 @@ func _on_deck_builder_closed(_deck_cards: Array[DeckCardItem], _cards_owned: Arr
 func build_deck():
 	
 	deck_builder = DECK_BUILDER.instantiate()
-	deck_builder.cards_owned = saved_game.cards_owned
-	deck_builder.deck_cards = saved_game.deck_cards
+	deck_builder.cards_owned = user_data.cards_owned
+	deck_builder.deck_cards = user_data.deck_cards
 	deck_builder.closed.connect(_on_deck_builder_closed)
 	deck_builder.opened.connect(_on_deck_builder_opened)
 	add_child(deck_builder)
@@ -285,7 +287,7 @@ func _on_card_selected_changed(card_selected: Card):
 
 func _on_inventory_item_added(item: InventoryItem):
 	
-	var current_save_game = load("res://savegame.tres") as SavedGame
+	var current_save_game = load_game()
 	
 	if item.item_type == Enums.ITEM_TYPE.Card:
 		
@@ -305,8 +307,7 @@ func _on_inventory_item_added(item: InventoryItem):
 		deck_card_item.quantity += 1
 		card_hand.add_card_to_deck(deck_card_item)
 		
-	#current_save_game.items_picked_ids.append(item_id)
-	ResourceSaver.save(current_save_game, "res://savegame.tres")
+	save_game(current_save_game)
 		
 func transform(_transformation_card = CardConfig) -> void:
 	
@@ -325,4 +326,14 @@ func transform(_transformation_card = CardConfig) -> void:
 	last_anim_direction = "down"
 
 func load_game() -> SavedGame:
-	return load("res://savegame.tres") as SavedGame
+	
+	if ResourceLoader.exists(USER_DATA_PATH):
+		user_data = SafeResourceLoader.load(USER_DATA_PATH)
+	else:
+		user_data = load("res://default_user_data.tres")
+	
+	return user_data as SavedGame
+	
+func save_game(user_data: SavedGame) -> void:
+
+	ResourceSaver.save(user_data, USER_DATA_PATH)

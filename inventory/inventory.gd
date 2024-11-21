@@ -1,19 +1,22 @@
 class_name Inventory extends Node2D
 
-const INVENTORY_DATA = preload("res://inventory_data.tres")
+var inventory_data: InventoryData
+const INVENTORY_DATA_SAVE_PATH:= "user://inventory_data.tres"
 
 signal item_added(item: InventoryItem)
 
 var items: Array[InventoryItem] = []
 
 func _ready() -> void:
-	items = INVENTORY_DATA.items as Array[InventoryItem]
+	
+	inventory_data = load_inventory_data()
+	items = inventory_data.items as Array[InventoryItem]
 
 func add_item(item: InventoryItem):
 	items.append(item)
 	item_added.emit(item)
 	
-	ResourceSaver.save(INVENTORY_DATA, INVENTORY_DATA.resource_path)
+	ResourceSaver.save(inventory_data, INVENTORY_DATA_SAVE_PATH)
 	
 func has_item(item_type: Enums.ITEM_TYPE) -> Array[InventoryItem]:
 	var items_found: Array[InventoryItem] = []
@@ -23,3 +26,8 @@ func has_item(item_type: Enums.ITEM_TYPE) -> Array[InventoryItem]:
 			
 	return items_found
 	
+static func load_inventory_data():
+	if ResourceLoader.exists(INVENTORY_DATA_SAVE_PATH):
+		return SafeResourceLoader.load(INVENTORY_DATA_SAVE_PATH)
+	else:
+		return InventoryData.new()
