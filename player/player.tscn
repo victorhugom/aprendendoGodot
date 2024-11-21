@@ -20,8 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://leld44qf7tew" path="res://inventory/inventory.tscn" id="16_qm5ht"]
 [ext_resource type="PackedScene" uid="uid://dlubxqu2bs41o" path="res://player/character_components/health.tscn" id="16_v5ako"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gv8d"]
-size = Vector2(22, 4)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3owsn"]
+radius = 1.99453
+height = 17.8924
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1ujr"]
 radius = 8.0
@@ -1007,9 +1008,10 @@ texture_scale = 0.8
 height = 100.0
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(4.76837e-07, 3)
+position = Vector2(-1.7053e-13, 2)
+rotation = 1.56536
 scale = Vector2(1, 0.894223)
-shape = SubResource("RectangleShape2D_0gv8d")
+shape = SubResource("CapsuleShape2D_3owsn")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("15_yjxdr")]
 position = Vector2(0, 3)

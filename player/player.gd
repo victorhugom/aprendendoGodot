@@ -62,8 +62,8 @@ func _ready() -> void:
 	#health setup
 	health.health_empty.connect(_on_health_empty)
 	health.max_health = saved_game.max_health
-	Hud.health_bar.health = health
 	hurt_box.damaged.connect(_on_hit)
+	Hud.health_bar.health = health
 	
 	#inventory setup
 	Hud.inventory = inventory
@@ -225,7 +225,7 @@ func _on_deck_builder_closed(_deck_cards: Array[DeckCardItem], _cards_owned: Arr
 	
 	#remove deck builder from screen
 	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	remove_child(deck_builder)
 	deck_builder.queue_free()
 	

@@ -6,7 +6,7 @@ signal end_conversation
 
 @onready var message_label: RichTextLabel = $HBoxContainer/ColorRect/MarginContainer/PanelContainer/MarginContainer/Message
 @onready var char_name_label: RichTextLabel = $HBoxContainer/ColorRect/MarginContainer/PanelContainer/CharName
-@onready var cancel_button: Control = $HBoxContainer/ColorRect/HBoxContainer/CancelButton
+@onready var cancel_button: Button = $HBoxContainer/ColorRect/HBoxContainer/CancelButton
 
 var conversation: Conversation
 var conversation_idx = 0
@@ -40,6 +40,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel_message") && current_message.has_cancel:
 		cancel_message.emit(current_message)
 		show_message(conversation_idx + 1)
-	
-	
-	
+
+func _on_continue_button_pressed() -> void:
+	show_message(conversation_idx + 1)
+
+func _on_cancel_button_pressed() -> void:
+	cancel_message.emit(current_message)
+	show_message(conversation_idx + 1)

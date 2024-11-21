@@ -110,8 +110,7 @@ func add_card_selected(card_config: CardConfig) -> void:
 			break
 			
 	update_card_table()
-	
-	
+		
 func remove_card_from_deck(card_config) -> void:
 	
 	for deck_card_item:DeckCardItem in deck_cards:
