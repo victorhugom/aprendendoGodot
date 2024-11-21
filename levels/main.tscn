@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://gxdbph8sligr"]
+[gd_scene load_steps=35 format=4 uid="uid://gxdbph8sligr"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_eg471"]
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://52yq81efthq4" path="res://props/candle.tscn" id="4_ylwl0"]
 [ext_resource type="PackedScene" uid="uid://b05uadrom8blw" path="res://enemies/enemyTriEye.tscn" id="5_n5rof"]
 [ext_resource type="PackedScene" uid="uid://b8dhl8bkqruhs" path="res://enemies/enemyEye.tscn" id="6_6ry67"]
-[ext_resource type="Texture2D" uid="uid://bjn337n3raevr" path="res://assets/props/cancientdragon.png" id="8_5jpkx"]
 [ext_resource type="PackedScene" uid="uid://b6h51bpowsn2s" path="res://enemies/VoidBoss.tscn" id="9_4oc04"]
 [ext_resource type="PackedScene" uid="uid://da3j7rf7m732u" path="res://props/voidicon.tscn" id="9_81cth"]
 [ext_resource type="PackedScene" uid="uid://ccglc33gnlens" path="res://props/door.tscn" id="10_l7p46"]
@@ -135,7 +134,7 @@ metadata/_edit_group_ = true
 
 [node name="Statues" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAcAAwABAAGAAQAAAB9AHIABAATAAQAAAB+AEAABAARAAUAAAB7ABYABAAQAA8AAAB7ABcABAAQABAAAABzAD0ABAATAAQAAAA=")
+tile_map_data = PackedByteArray("AAAcAAwABAAGAAQAAAB9AHIABAATAAQAAAB+AEAABAARAAUAAAB7ABYABAAQAA8AAAB7ABcABAAQABAAAABzAD0ABAATAAQAAAAjAEoABAAAACIAAAAjAE0ABAAAACUAAAAnAEsABAAFACIAAAA=")
 tile_set = ExtResource("1_rmmfw")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -263,18 +262,10 @@ scale = Vector2(1, -1)
 
 [node name="PropsContainer" type="Node2D" parent="."]
 
-[node name="Cancientdragon" type="Sprite2D" parent="PropsContainer"]
-y_sort_enabled = true
-texture_filter = 3
-position = Vector2(1194, 2486)
-scale = Vector2(1.64, 1.64)
-texture = ExtResource("8_5jpkx")
-
 [node name="Voidicon" parent="PropsContainer" instance=ExtResource("9_81cth")]
 position = Vector2(2733, 459)
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
-process_mode = 4
 y_sort_enabled = true
 
 [node name="Enemy3" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
@@ -1083,7 +1074,7 @@ position = Vector2(914, 2455)
 position = Vector2(1361, 2496)
 
 [node name="Bluegrass63" parent="GrassContainer" instance=ExtResource("11_ds84i")]
-position = Vector2(1052, 2547)
+position = Vector2(1184, 2545)
 
 [node name="Bluegrass64" parent="GrassContainer" instance=ExtResource("11_ds84i")]
 position = Vector2(1475, 2519)
@@ -1306,3 +1297,5 @@ collision_masks = 1
 libraries = {
 "": SubResource("AnimationLibrary_lltdl")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
