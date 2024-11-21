@@ -7,9 +7,10 @@
 [sub_resource type="Resource" id="Resource_pvxat"]
 script = ExtResource("2_p21mc")
 DPS = 2
-shoot_interval = 0.3
-speed = 180
+projectile_speed = 180
 projectile_scale = 1
+shoot_speed = 1
+shoot_interval = 0.3
 projectile_config = ExtResource("1_iy8c1")
 
 [resource]

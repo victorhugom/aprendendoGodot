@@ -173,14 +173,15 @@ func prepare_attack() -> void:
 	if is_atatcking: return
 	is_atatcking = true
 	
-	animation_player.play("attack_" + last_anim_direction)
+	var shoot_speed = (card_hand.card_selected.card_config.CardData as CardDataProjectile).shoot_speed
+	animation_player.play("attack_" + last_anim_direction, -1, shoot_speed)
 
 func attack() -> void:
 	
 	card_hand.use_selected_card()
 	var card_data = (card_hand.card_selected.card_config.CardData as CardDataProjectile)
 	shooter.shoot_interval = card_data.shoot_interval
-	shooter.speed = card_data.speed
+	shooter.projectile_speed = card_data.projectile_speed
 	shooter.projectile_scale  = card_data.projectile_scale
 	shooter.shoot(last_anim_direction, card_data.DPS)
 	
@@ -272,8 +273,6 @@ func create_deck_hand():
 	
 func _on_card_selected_changed(card_selected: Card):
 	
-	print_debug(card_selected.card_config.CardType)
-	
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Projectile:
 		shooter.projectile_config = (card_selected.card_config.CardData as CardDataProjectile).projectile_config
 	if card_selected.card_config.CardType == Enums.CARD_TYPE.Transform:
@@ -336,6 +335,6 @@ func load_game() -> SavedGame:
 	
 	return user_data as SavedGame
 	
-func save_game(user_data: SavedGame) -> void:
+func save_game(_user_data: SavedGame) -> void:
 
-	ResourceSaver.save(user_data, USER_DATA_PATH)
+	ResourceSaver.save(_user_data, USER_DATA_PATH)
