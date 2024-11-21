@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=32 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_vf4d4"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="15_fx23r"]
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="17_ews2j"]
 [ext_resource type="AudioStream" uid="uid://cqsqmj2g4gdm7" path="res://assets/sounds/pulling-a-lever.mp3" id="19_vhm0t"]
+[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="20_iw7a4"]
 
 [sub_resource type="Resource" id="Resource_lsk8t"]
 script = ExtResource("10_1lh76")
@@ -145,7 +146,7 @@ _data = {
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_vf4d4")
-camera_zoom = 3.0
+camera_zoom = 2.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.276895, 0.252349, 0.382333, 1)
@@ -371,3 +372,6 @@ collision_masks = 1
 libraries = {
 "": SubResource("AnimationLibrary_8o88q")
 }
+
+[node name="Player" parent="." instance=ExtResource("20_iw7a4")]
+position = Vector2(1262, 565)

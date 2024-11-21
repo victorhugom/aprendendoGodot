@@ -8,8 +8,8 @@
 size = Vector2(32, 32)
 
 [node name="InteractableSwitch" type="Sprite2D"]
-position = Vector2(0, -15)
 texture = ExtResource("1_wtn63")
+offset = Vector2(0, -12.125)
 hframes = 2
 script = ExtResource("2_2rcp5")
 interact_message = "Usar Alavanca"
@@ -21,6 +21,6 @@ position = Vector2(0, 12)
 scale = Vector2(1.76632, 1.02763)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(5.39922e-07, 5.67973)
+position = Vector2(0, -14.1101)
 scale = Vector2(0.524435, 0.567245)
 shape = SubResource("RectangleShape2D_eiv6c")

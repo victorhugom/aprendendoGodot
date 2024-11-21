@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_vx4vs"]
 script = ExtResource("2_8t07w")
 DPS = 1
+shoot_interval = 0.3
 projectile_config = ExtResource("1_0pjhq")
 
 [resource]

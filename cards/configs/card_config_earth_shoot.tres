@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_e8w24"]
 script = ExtResource("1_eoewd")
 DPS = 1
+shoot_interval = 1.0
 projectile_config = ExtResource("1_pv331")
 
 [resource]

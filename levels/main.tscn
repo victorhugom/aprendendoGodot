@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://gxdbph8sligr"]
+[gd_scene load_steps=34 format=4 uid="uid://gxdbph8sligr"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_eg471"]
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_rmmfw"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ja6muci83cj" path="res://assets/props/bossdoor.png" id="25_bplf0"]
 [ext_resource type="AudioStream" uid="uid://ctm3rauuwy473" path="res://assets/sounds/powerupupgrade.mp3" id="25_pgct1"]
 [ext_resource type="AudioStream" uid="uid://cqsqmj2g4gdm7" path="res://assets/sounds/pulling-a-lever.mp3" id="28_1e7nx"]
+[ext_resource type="Texture2D" uid="uid://dnctecurnb7np" path="res://assets/props/bosslever.png" id="28_c160t"]
 
 [sub_resource type="Animation" id="Animation_oe4x7"]
 length = 0.001
@@ -1267,6 +1268,7 @@ libraries = {
 
 [node name="InteractableSwitch" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("24_vwa5e")]
 position = Vector2(4645, 3385)
+texture = ExtResource("28_c160t")
 animation_player = NodePath("AnimationPlayer")
 requires_item = true
 required_item_type = 1
