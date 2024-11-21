@@ -1022,6 +1022,7 @@ health = NodePath("../Health")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1, -16)
 shape = SubResource("CapsuleShape2D_w1ujr")
+debug_color = Color(0.7, 0.120312, 0, 0.42)
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("left_marker", "right_marker", "up_marker", "down_marker") instance=ExtResource("14_acclv")]
 position = Vector2(0, 9)
@@ -1031,7 +1032,6 @@ left_marker = NodePath("LeftMarker2D")
 right_marker = NodePath("RightMarker2D")
 up_marker = NodePath("UpMarker2D")
 down_marker = NodePath("DownMarker2D")
-shoot_delay = 0.1
 
 [node name="RightMarker2D" type="Marker2D" parent="Shooter"]
 position = Vector2(15, -16)

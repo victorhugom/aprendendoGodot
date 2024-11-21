@@ -535,7 +535,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cquw7")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_vpbqo")]
-visible = false
 position = Vector2(-7, -16)
 collision_layer = 256
 collision_mask = 192
@@ -543,6 +542,7 @@ collision_mask = 192
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(7, -9)
 shape = SubResource("CapsuleShape2D_e2s3c")
+debug_color = Color(0.7, 0.328125, 0, 0.42)
 
 [node name="Health" parent="." instance=ExtResource("4_p23gm")]
 max_health = 3
