@@ -50,5 +50,7 @@ func _shoot(shoot_position: Vector2, direction: String, target_location:= Vector
 	projectile.scale = Vector2(projectile_scale, projectile_scale)
 	projectile.speed = projectile_speed
 	
-	get_tree().root.add_child(projectile)
+	var first_node = get_tree().current_scene.get_child(0)
+	(first_node as Node2D).add_sibling(projectile)
+	
 	projectile.shoot(direction, target_location)

@@ -587,7 +587,7 @@ path_postprocessing = 1
 simplify_path = true
 avoidance_enabled = true
 radius = 20.0
-debug_enabled = true
+avoidance_mask = 3
 
 [node name="TrackingTimer" type="Timer" parent="NavigationAgent2D"]
 wait_time = 0.1

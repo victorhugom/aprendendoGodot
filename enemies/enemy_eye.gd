@@ -17,6 +17,8 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 
 @export var target: Node
 @export var speed: int
+## Minimum distance where the enemy starts to track the player (in pixels), ie: only tracks the player if they are less than 200px far
+@export var tracking_distance:= 250
 
 var is_dying:= false
 var is_attacking:= false
@@ -38,7 +40,7 @@ func can_update_char() -> bool:
 	if target == null:
 		return false
 		
-	if global_position.distance_to(target.global_position) > 500:
+	if global_position.distance_to(target.global_position) > tracking_distance:
 		return false
 	
 	if is_dying || animation_player.current_animation.begins_with("attack") || animation_player.current_animation.begins_with("hit"): 
