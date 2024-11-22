@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://duc1r703qs3uf"]
+[gd_scene load_steps=32 format=4 uid="uid://duc1r703qs3uf"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_bpnn8"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_vf4d4"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="15_fx23r"]
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="17_ews2j"]
 [ext_resource type="AudioStream" uid="uid://cqsqmj2g4gdm7" path="res://assets/sounds/pulling-a-lever.mp3" id="19_vhm0t"]
+[ext_resource type="PackedScene" uid="uid://dj8800iifbe5s" path="res://player/player.tscn" id="20_x4dy8"]
 
 [sub_resource type="Resource" id="Resource_lsk8t"]
 script = ExtResource("10_1lh76")
@@ -145,7 +146,7 @@ _data = {
 [node name="Dungeon1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_vf4d4")
-camera_zoom = 2.5
+camera_zoom = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.276895, 0.252349, 0.382333, 1)
@@ -259,11 +260,12 @@ position = Vector2(1009, 1124)
 [node name="Candle" parent="ChandelierContainer" instance=ExtResource("5_y78n5")]
 position = Vector2(1034, 1075)
 
-[node name="EnemyContainer" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="EnemyEye7" parent="EnemyContainer" instance=ExtResource("7_yq431")]
+[node name="EnemyEye7" parent="." instance=ExtResource("7_yq431")]
 position = Vector2(673, 900)
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+process_mode = 4
+y_sort_enabled = true
 
 [node name="EnemyEye10" parent="EnemyContainer" instance=ExtResource("7_yq431")]
 position = Vector2(1088, 1101)
@@ -371,3 +373,6 @@ collision_masks = 1
 libraries = {
 "": SubResource("AnimationLibrary_8o88q")
 }
+
+[node name="Player" parent="." instance=ExtResource("20_x4dy8")]
+position = Vector2(1278, 560)

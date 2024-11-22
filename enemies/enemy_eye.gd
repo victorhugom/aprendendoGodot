@@ -4,7 +4,8 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var player_trace: ShapeCast2D = $PlayerTrace
+@onready var player_trace_shape: ShapeCast2D = $PlayerTraceShape
+@onready var player_trace_ray: RayCast2D = $PlayerTraceRay
 @onready var tracking_timer: Timer = $NavigationAgent2D/TrackingTimer
 @onready var shooter: Shooter = $Shooter
 @onready var health_bar: HBoxContainer = $HealthBar
@@ -19,7 +20,6 @@ const PROJECTILE_CONFIG = preload("res://player/projectile/enemyProjectile/enemy
 
 var is_dying:= false
 var is_attacking:= false
-var is_seeing_player:= false
 var direction:= "left"
 var target_position: Vector2
 
@@ -57,8 +57,6 @@ func _physics_process(_delta: float) -> void:
 	if is_attacking:
 		return
 	
-	is_seeing_player = player_trace.is_colliding()
-
 	var animation_type = "walk_"
 	
 	var next_path_position = navigation_agent_2d.get_next_path_position()
@@ -68,22 +66,30 @@ func _physics_process(_delta: float) -> void:
 	var angle = atan2(velocity.y, velocity.x) # angle in [-PI, PI]
 	if abs(angle) < 0.25 * PI:
 		direction = "right"
-		player_trace.target_position = Vector2(0,300)
-		player_trace.rotation_degrees = -90
+		player_trace_shape.target_position = Vector2(0,300)
+		player_trace_shape.rotation_degrees = -90
+		player_trace_ray.target_position = Vector2(0,300)
+		player_trace_ray.rotation_degrees = -90
 	elif abs(angle) > 0.75 * PI:
 		direction = "left"
-		player_trace.target_position = Vector2(0,-300)
-		player_trace.rotation_degrees = -90
+		player_trace_shape.target_position = Vector2(0,-300)
+		player_trace_shape.rotation_degrees = -90
+		player_trace_ray.target_position = Vector2(0,-300)
+		player_trace_ray.rotation_degrees = -90
 	elif angle > 0.0:
 		direction = "down"
-		player_trace.target_position = Vector2(0,300)
-		player_trace.rotation_degrees = 0
+		player_trace_shape.target_position = Vector2(0,300)
+		player_trace_shape.rotation_degrees = 0
+		player_trace_ray.target_position = Vector2(0,300)
+		player_trace_ray.rotation_degrees = 0
 	else:
 		direction = "up"
-		player_trace.target_position = Vector2(0,-300)
-		player_trace.rotation_degrees = 0
+		player_trace_shape.target_position = Vector2(0,-300)
+		player_trace_shape.rotation_degrees = 0
+		player_trace_ray.target_position = Vector2(0,-300)
+		player_trace_ray.rotation_degrees = 0
 		
-	if is_seeing_player and !is_attacking:
+	if is_seeing_player() and !is_attacking:
 		# is already attacking don't need to start it
 		prepare_attack()
 	else:
@@ -102,6 +108,26 @@ func follow_player() -> void:
 
 func update_target():
 	target = Globals.player
+
+func is_seeing_player() -> bool:
+	
+	if player_trace_ray.is_colliding():
+		var collider = player_trace_ray.get_collider()
+		if collider:
+			if collider.name == "Wall":
+				return false
+			else:
+				return true
+	
+	if player_trace_shape.is_colliding():
+		var collider = player_trace_shape.get_collider(0)
+		if collider:
+			if collider.name == "Wall":
+				return false
+			else:
+				return true
+				
+	return false
 	
 func _on_damaged() -> void:
 	if is_dying: return
@@ -121,7 +147,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		queue_free()
 	if anim_name.begins_with("attack"):
-		if player_trace.is_colliding():
+		if is_seeing_player():
 			var tween = get_tree().create_tween()
 			tween.tween_callback(prepare_attack).set_delay(.3)
 		else:
@@ -135,9 +161,9 @@ func prepare_attack() -> void:
 	if is_dying: 
 		return
 		
-	if player_trace.is_colliding():
+	if is_seeing_player():
 		is_attacking = true
-		target_position = target.global_position
+		target_position = Vector2(target.global_position.x, target.global_position.y - 16)
 		animation_player.play("attack_" + direction)
 	else:
 		is_attacking = false
