@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b6h51bpowsn2s"]
+[gd_scene load_steps=33 format=3 uid="uid://b6h51bpowsn2s"]
 
 [ext_resource type="Texture2D" uid="uid://ctvl0wep25jia" path="res://assets/enemies/salchichaboss-Sheet.png" id="1_4roqs"]
 [ext_resource type="Script" path="res://enemies/void_boss.gd" id="1_5e1wn"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" path="res://player/character_components/melee_collision_box.gd" id="9_kii3s"]
 [ext_resource type="AudioStream" uid="uid://e2wis1in3prv" path="res://assets/sounds/breathmonster.mp3" id="9_ptyde"]
 [ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="10_anmay"]
+[ext_resource type="AudioStream" uid="uid://cn6re8isr5qkr" path="res://assets/sounds/cycloneattack.mp3" id="10_cuau1"]
 [ext_resource type="AudioStream" uid="uid://bke3m3fkukpdw" path="res://assets/sounds/bigfootstep.mp3" id="11_f2bve"]
+[ext_resource type="AudioStream" uid="uid://bdudnd0gt1c8u" path="res://assets/sounds/wahhhh.mp3" id="11_o3pc5"]
 [ext_resource type="AudioStream" uid="uid://bpg785jbmairf" path="res://assets/sounds/footstepsbloddy.mp3" id="12_c7kql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6a47"]
@@ -531,16 +533,13 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
-[sub_resource type="Resource" id="Resource_tkw4e"]
-metadata/__load_path__ = "res://assets/sounds/cycloneattack.mp3"
-
 [sub_resource type="Animation" id="Animation_g5ehu"]
 resource_name = "spin_attack"
 length = 1.9
 step = 0.1
 tracks/0/type = "audio"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("../AudioStreamPlayer2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -561,20 +560,8 @@ tracks/0/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("6_u6ke0")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_u6ke0")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_u6ke0")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_u6ke0")
 }],
-"times": PackedFloat32Array(0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6)
+"times": PackedFloat32Array(0.4, 0.7, 1.2, 1.7)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -621,13 +608,32 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "clips": [{
-"end_offset": 0.129707,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": SubResource("Resource_tkw4e")
+"stream": ExtResource("9_ptyde")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.214058,
+"stream": ExtResource("10_cuau1")
 }],
-"times": PackedFloat32Array(0.3)
+"times": PackedFloat32Array(0, 0.514058)
 }
 tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_o3pc5")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_pb8c1"]
 resource_name = "super_attack"
@@ -943,6 +949,7 @@ collision_mask = 32
 monitoring = false
 monitorable = false
 script = ExtResource("9_kii3s")
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeCollisionBox"]
 shape = SubResource("RectangleShape2D_devwp")

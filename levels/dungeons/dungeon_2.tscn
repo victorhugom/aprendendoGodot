@@ -187,7 +187,6 @@ position = Vector2(1008, 490)
 target_scene_path = "res://levels/main.tscn"
 
 [node name="EnemyContainer" type="Node2D" parent="."]
-process_mode = 4
 y_sort_enabled = true
 
 [node name="EnemyEye" parent="EnemyContainer" instance=ExtResource("4_qeiig")]

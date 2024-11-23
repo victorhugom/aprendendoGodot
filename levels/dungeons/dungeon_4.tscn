@@ -252,15 +252,6 @@ y_sort_enabled = true
 [node name="EnemyEye" parent="EnemyContainer" instance=ExtResource("6_71ark")]
 position = Vector2(1309, 941)
 
-[node name="EnemyEye3" parent="EnemyContainer" instance=ExtResource("6_71ark")]
-position = Vector2(1329, 1026)
-
-[node name="EnemyEye4" parent="EnemyContainer" instance=ExtResource("6_71ark")]
-position = Vector2(1071, 1227)
-
-[node name="EnemyEye5" parent="EnemyContainer" instance=ExtResource("6_71ark")]
-position = Vector2(1146, 1184)
-
 [node name="EnemyEye6" parent="EnemyContainer" instance=ExtResource("6_71ark")]
 position = Vector2(1110, 1275)
 
@@ -271,10 +262,7 @@ position = Vector2(782, 1253)
 position = Vector2(858, 971)
 
 [node name="EnemyEye9" parent="EnemyContainer" instance=ExtResource("6_71ark")]
-position = Vector2(787, 737)
-
-[node name="EnemyEye2" parent="EnemyContainer" instance=ExtResource("6_71ark")]
-position = Vector2(1395, 978)
+position = Vector2(1060, 968)
 
 [node name="EnemyTriEye" parent="EnemyContainer" instance=ExtResource("7_u4a2u")]
 position = Vector2(1355, 946)
@@ -304,7 +292,7 @@ position = Vector2(850, 1031)
 position = Vector2(1124, 1002)
 
 [node name="EnemyTriEye10" parent="EnemyContainer" instance=ExtResource("7_u4a2u")]
-position = Vector2(725, 705)
+position = Vector2(1080, 929)
 
 [node name="PickableCard" parent="." instance=ExtResource("8_sb5en")]
 position = Vector2(764, 664)

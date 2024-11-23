@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="8_nwnf4"]
 [ext_resource type="AudioStream" uid="uid://dwg6je1cusplu" path="res://assets/sounds/tinyfootsteps.mp3" id="9_8fibq"]
 [ext_resource type="AudioStream" uid="uid://c8xr3ut8dskv0" path="res://assets/sounds/music.mp3" id="9_yeqn3"]
-[ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/sounds/hitplayer.mp3" id="13_64krm"]
+[ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/hitplayer.mp3" id="13_64krm"]
 [ext_resource type="PackedScene" uid="uid://bonoh8tvsqaxf" path="res://player/character_components/shooter.tscn" id="14_acclv"]
 [ext_resource type="Texture2D" uid="uid://cyks626ojs2bj" path="res://assets/lights/light.png" id="15_m5ob6"]
 [ext_resource type="PackedScene" uid="uid://cwipuv3723neg" path="res://player/character_components/hurtBox.tscn" id="15_yjxdr"]
