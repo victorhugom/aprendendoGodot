@@ -29,6 +29,7 @@ InteractionCall="*res://interactable/InteractionUI.tscn"
 Enums="*res://utils/enums.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Hud="*res://gui/HUD.tscn"
+GlobalAudio="*res://utils/globalAudio.tscn"
 
 [display]
 

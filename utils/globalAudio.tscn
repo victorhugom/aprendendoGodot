@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwhesh6t8mtgb"]
+
+[ext_resource type="Script" path="res://utils/global_audio.gd" id="1_4hmio"]
+[ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="1_aqp78"]
+[ext_resource type="AudioStream" uid="uid://c8xr3ut8dskv0" path="res://assets/sounds/music.mp3" id="2_2e1kf"]
+
+[node name="GlobalAudio" type="Node2D"]
+script = ExtResource("1_4hmio")
+
+[node name="AudioStreamPlayer2D_AMIBENT" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_aqp78")
+volume_db = -12.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D_MUSIC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2e1kf")
+volume_db = -6.0
+autoplay = true

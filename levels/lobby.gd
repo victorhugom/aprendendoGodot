@@ -5,7 +5,7 @@ class_name Lobby extends Level
 
 func _ready() -> void:
 	conversation_trigger.can_play = player.deck_cards.size() <= 0
-	
+	GlobalAudio.play()
 	super._ready()
 
 func _on_cehck_deck_area_body_entered(_body: Node2D) -> void:
