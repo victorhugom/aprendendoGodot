@@ -1157,7 +1157,7 @@ script = ExtResource("1_f7cmr")
 
 [node name="FollowCamera" parent="." instance=ExtResource("2_1jd10")]
 position = Vector2(0, 10)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2, 2)
 
 [node name="SausageMonster" type="Sprite2D" parent="."]
 light_mask = 2
@@ -1213,7 +1213,6 @@ left_marker = NodePath("LeftMarker2D")
 right_marker = NodePath("RightMarker2D")
 up_marker = NodePath("UpMarker2D")
 down_marker = NodePath("DownMarker2D")
-shoot_delay = 0.3
 
 [node name="LeftMarker2D" type="Marker2D" parent="Shooter"]
 position = Vector2(-35, -30)

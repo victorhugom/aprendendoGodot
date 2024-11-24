@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cjg1ccxkfjuff"]
+[gd_scene load_steps=28 format=4 uid="uid://cjg1ccxkfjuff"]
 
 [ext_resource type="TileSet" uid="uid://bisg10shh8p3s" path="res://assets/mainTileAsset.tres" id="1_jbj36"]
 [ext_resource type="Script" path="res://utils/nav_filter.gd" id="2_ghngq"]
@@ -11,12 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://5hn027omehtf" path="res://props/bluegrass.tscn" id="11_m58qk"]
 [ext_resource type="PackedScene" uid="uid://ba65pjm3ttl0p" path="res://props/blueflower.tscn" id="12_ijhb8"]
 [ext_resource type="PackedScene" uid="uid://gb5ccgk2r1iy" path="res://inventory/pickable_items/pickableGoldKey.tscn" id="13_5svdw"]
-[ext_resource type="Resource" uid="uid://cley1gty1qtl1" path="res://cards/configs/card_config_fire_shoot.tres" id="13_tdrh5"]
+[ext_resource type="Resource" uid="uid://ckepdh1e8pjfs" path="res://cards/configs/card_config_transform_sausage.tres" id="14_2vxbs"]
 [ext_resource type="PackedScene" uid="uid://dg3t4l7j602if" path="res://interactable/InteractionHandler.tscn" id="14_lp4ki"]
 [ext_resource type="PackedScene" uid="uid://bsg70w1u4t435" path="res://inventory/pickable_items/pickableCard.tscn" id="15_duiwm"]
 [ext_resource type="PackedScene" uid="uid://bjhl4df72l5mp" path="res://interactable/interactableSwitch.tscn" id="15_ghhgj"]
 [ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="15_o24gi"]
-[ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="16_3uqnh"]
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="16_xhs7s"]
 [ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/hitplayer.mp3" id="18_jdqsl"]
 [ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="19_fgble"]
@@ -774,14 +773,9 @@ target_scene_path = "res://levels/dungeons/dungeon_4.tscn"
 [node name="PickableGoldKey" parent="DungeonDoor" instance=ExtResource("13_5svdw")]
 position = Vector2(1251, 1586)
 
-[node name="PickableCard" parent="." instance=ExtResource("15_duiwm")]
-position = Vector2(1807, 1307)
-card_config = ExtResource("13_tdrh5")
-item_id = "TIRO DE FOGO"
-
 [node name="PickableCard2" parent="." instance=ExtResource("15_duiwm")]
 position = Vector2(1852, 1245)
-card_config = ExtResource("16_3uqnh")
+card_config = ExtResource("14_2vxbs")
 item_id = "VIDAAAAAAAAAAAAa"
 
 [node name="PickableGoldKey" parent="." instance=ExtResource("13_5svdw")]

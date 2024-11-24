@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://eetvodjwpv8r"]
+[gd_scene load_steps=22 format=3 uid="uid://eetvodjwpv8r"]
 
 [ext_resource type="PackedScene" uid="uid://dswh5kmjcy70k" path="res://gui/healthBar/healthBar.tscn" id="1_i2p7x"]
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_tsj7g"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://c4jqejaa3jpgk" path="res://assets/external_resources/kenney_input-prompts/Xbox Series/Default/xbox_button_color_b_outline.png" id="10_qo1h5"]
 [ext_resource type="Texture2D" uid="uid://ba2n5235j3h4q" path="res://assets/external_resources/kenney_input-prompts/Xbox Series/Default/xbox_button_color_x.png" id="13_ja5va"]
 [ext_resource type="Texture2D" uid="uid://dxnmuxgauvot6" path="res://assets/external_resources/kenney_input-prompts/Xbox Series/Default/xbox_button_color_y.png" id="15_5dj7f"]
+[ext_resource type="AudioStream" uid="uid://d0bwlwqt2cdmj" path="res://assets/sounds/forest_ambient_loop.wav" id="16_k4bix"]
+[ext_resource type="AudioStream" uid="uid://c8xr3ut8dskv0" path="res://assets/sounds/music.mp3" id="17_f50x2"]
 
 [sub_resource type="Animation" id="Animation_w6w73"]
 length = 0.001
@@ -178,3 +180,13 @@ texture_normal = ExtResource("10_675dq")
 texture_pressed = ExtResource("15_5dj7f")
 action = "ui_interact"
 visibility_mode = 1
+
+[node name="AudioStreamPlayer2D_AMIBENT" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_k4bix")
+volume_db = -12.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D_MUSIC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_f50x2")
+volume_db = -6.0
+autoplay = true
