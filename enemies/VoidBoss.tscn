@@ -917,7 +917,7 @@ position = Vector2(7.5, -17)
 shape = SubResource("RectangleShape2D_y0sd0")
 
 [node name="Health" parent="." instance=ExtResource("3_jp5ql")]
-max_health = 20
+max_health = 100
 
 [node name="AttackTimer" type="Timer" parent="."]
 autostart = true
