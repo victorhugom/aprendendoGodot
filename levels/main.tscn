@@ -346,19 +346,18 @@ position = Vector2(1267, 3668)
 tracking_distance = 300
 
 [node name="Enemy30" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
-position = Vector2(4511, 4070)
+position = Vector2(4623, 4119)
 tracking_distance = 300
 
 [node name="Enemy31" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(4468, 3800)
-tracking_distance = 300
 
 [node name="Enemy32" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(4122, 3996)
 tracking_distance = 300
 
 [node name="Enemy33" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
-position = Vector2(3988, 4183)
+position = Vector2(3954, 4211)
 tracking_distance = 300
 
 [node name="Enemy34" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
@@ -482,19 +481,19 @@ position = Vector2(3687, 4026)
 tracking_distance = 300
 
 [node name="EnemyTriEye17" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
-position = Vector2(4225, 3971)
+position = Vector2(4363, 4205)
 tracking_distance = 300
 
 [node name="EnemyTriEye18" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
-position = Vector2(4382, 3969)
+position = Vector2(4702, 3852)
 tracking_distance = 300
 
 [node name="EnemyTriEye19" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
-position = Vector2(4357, 4047)
+position = Vector2(4695, 3934)
 tracking_distance = 300
 
 [node name="EnemyTriEye20" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
-position = Vector2(4495, 3988)
+position = Vector2(4600, 3897)
 tracking_distance = 300
 
 [node name="EnemyTriEye21" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
@@ -695,6 +694,7 @@ tracking_distance = 300
 
 [node name="VoidBoss" parent="EnemiesContainer" instance=ExtResource("9_4oc04")]
 position = Vector2(4710, 2626)
+speed = 150
 
 [node name="GrassContainer" type="Node2D" parent="."]
 y_sort_enabled = true

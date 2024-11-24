@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cqwob3bstbxwn" path="res://assets/sounds/vomit.mp3" id="15_o24gi"]
 [ext_resource type="Resource" uid="uid://cn3uqq2dv70em" path="res://cards/configs/card_config_health_potion.tres" id="16_3uqnh"]
 [ext_resource type="AudioStream" uid="uid://cs0gl6bfxqln6" path="res://assets/sounds/transformation.mp3" id="16_xhs7s"]
-[ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/sounds/hitplayer.mp3" id="18_jdqsl"]
+[ext_resource type="AudioStream" uid="uid://ryxhwunmupv4" path="res://assets/hitplayer.mp3" id="18_jdqsl"]
 [ext_resource type="AudioStream" uid="uid://c3ouenxafxgml" path="res://assets/sounds/morri.mp3" id="19_fgble"]
 
 [sub_resource type="Animation" id="Animation_myofy"]
