@@ -20,8 +20,9 @@ const CARD = preload("res://cards/card.tscn")
 var cards: Array[Card]
 var deck_cards: Array[DeckCardItem]
 var card_selected: Card
-var previous_card: Card
 var base_card: CardConfig = CARD_CONFIG_BASIC_SHOOT
+
+var _cards_history: Array[Card] = []
 
 var card_quantity: int:
 	get:
@@ -57,7 +58,13 @@ func update_shortcut_ids():
 func remove_card(card: Card):
 	if card.is_being_destroyed:
 		return
+	
+	# remove last card from list of used cards
+	var left_items = _cards_history.filter(func(element: Card): return element.id != card.id)
+	_cards_history =  left_items
 		
+	select_previous_card()		
+	
 	card.destroy_card()
 	card.destroyed.connect(destroy_card)
 	
@@ -71,8 +78,8 @@ func destroy_card(card: Card):
 	card_container.remove_child(card)
 	card.queue_free()
 	
-	select_previous_card()		
 	update_shortcut_ids()
+	
 	
 func draw_cards(amount_to_draw: int = 1) -> bool:
 	
@@ -82,7 +89,6 @@ func draw_cards(amount_to_draw: int = 1) -> bool:
 	
 	#has no card in hand, create base card
 	if cards.size() == 0:
-		#print_debug(((base_card as CardConfig).CardData as CardDataProjectile).shoot_speed)
 		create_and_add_card(base_card)
 		select_card(1)
 		
@@ -123,20 +129,24 @@ func select_card(card_number:int):
 		
 		# save previous card a deselect it (not in use)
 		if card_selected != null:
-			
-			if card_selected.card_config.CardType != Enums.CARD_TYPE.Life:
-				previous_card = card_selected
-				
 			card_selected.in_use = false
 
 		# udpate card selected
 		card_selected = cards[card_number - 1]
 		card_selected.in_use = true
 		card_selected_changed.emit(card_selected)
+		
+		if card_selected.card_config.CardType != Enums.CARD_TYPE.Life:
+				_cards_history.append(card_selected)
 	
 func select_previous_card():
 	
-	var previous_card_idx = cards.find(previous_card)
+	var previous_card_idx = 0
+
+	var previous_card: Card = _cards_history[_cards_history.size() - 1]
+	if previous_card != null:
+		previous_card_idx = cards.find(previous_card)
+			
 	select_card(previous_card_idx + 1)
 	
 func use_selected_card():
