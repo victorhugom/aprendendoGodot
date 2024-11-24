@@ -271,321 +271,427 @@ y_sort_enabled = true
 
 [node name="Enemy3" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3441, 900)
+tracking_distance = 300
 
 [node name="Enemy5" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1353, 1697)
+tracking_distance = 300
 
 [node name="Enemy6" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1137, 1900)
+tracking_distance = 300
 
 [node name="Enemy7" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(832, 1715)
+tracking_distance = 300
 
 [node name="Enemy8" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1260, 2290)
+tracking_distance = 300
 
 [node name="Enemy9" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1010, 2335)
+tracking_distance = 300
 
 [node name="Enemy10" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1446, 2475)
+tracking_distance = 300
 
 [node name="Enemy11" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1268, 2643)
+tracking_distance = 300
 
 [node name="Enemy12" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1694, 2743)
+tracking_distance = 300
 
 [node name="Enemy13" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1882, 2869)
+tracking_distance = 300
 
 [node name="Enemy14" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2069, 3068)
+tracking_distance = 300
 
 [node name="Enemy15" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2359, 2666)
+tracking_distance = 300
 
 [node name="Enemy16" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2461, 2440)
+tracking_distance = 300
 
 [node name="Enemy17" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2525, 2620)
+tracking_distance = 300
 
 [node name="Enemy18" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3000, 2491)
+tracking_distance = 300
 
 [node name="Enemy19" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2615, 3656)
+tracking_distance = 300
 
 [node name="Enemy20" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2521, 3825)
+tracking_distance = 300
 
 [node name="Enemy21" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2614, 3832)
+tracking_distance = 300
 
 [node name="Enemy22" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(1267, 3668)
+tracking_distance = 300
 
 [node name="Enemy30" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(4511, 4070)
+tracking_distance = 300
 
 [node name="Enemy31" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(4468, 3800)
+tracking_distance = 300
 
 [node name="Enemy32" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(4122, 3996)
+tracking_distance = 300
 
 [node name="Enemy33" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3988, 4183)
+tracking_distance = 300
 
 [node name="Enemy34" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3913, 3701)
+tracking_distance = 300
 
 [node name="Enemy35" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3549, 3208)
+tracking_distance = 300
 
 [node name="Enemy36" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3670, 2785)
+tracking_distance = 300
 
 [node name="Enemy37" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3462, 2543)
+tracking_distance = 300
 
 [node name="Enemy38" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3058, 2943)
+tracking_distance = 300
 
 [node name="Enemy39" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2477, 3003)
+tracking_distance = 300
 
 [node name="Enemy40" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3859, 1969)
+tracking_distance = 300
 
 [node name="Enemy41" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(4478, 882)
+tracking_distance = 300
 
 [node name="Enemy42" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3636, 595)
+tracking_distance = 300
 
 [node name="Enemy44" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2638, 333)
+tracking_distance = 300
 
 [node name="Enemy45" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2638, 333)
+tracking_distance = 300
 
 [node name="Enemy46" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(2632, 522)
+tracking_distance = 300
 
 [node name="Enemy43" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(3659, 859)
+tracking_distance = 300
 
 [node name="Enemy23" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(592, 3992)
+tracking_distance = 300
 
 [node name="Enemy24" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(355, 3860)
+tracking_distance = 300
 
 [node name="Enemy25" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(674, 3521)
+tracking_distance = 300
 
 [node name="Enemy26" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(439, 2541)
+tracking_distance = 300
 
 [node name="Enemy27" parent="EnemiesContainer" instance=ExtResource("6_6ry67")]
 position = Vector2(368, 1859)
+tracking_distance = 300
 
 [node name="EnemyTriEye" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1697, 1505)
+tracking_distance = 300
 
 [node name="EnemyTriEye6" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1252, 2432)
+tracking_distance = 300
 
 [node name="EnemyTriEye7" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(970, 2407)
+tracking_distance = 300
 
 [node name="EnemyTriEye8" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(969, 2638)
+tracking_distance = 300
 
 [node name="EnemyTriEye9" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1399, 2565)
+tracking_distance = 300
 
 [node name="EnemyTriEye10" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1048, 2779)
+tracking_distance = 300
 
 [node name="EnemyTriEye11" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1634, 3190)
+tracking_distance = 300
 
 [node name="EnemyTriEye12" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(653, 3171)
+tracking_distance = 300
 
 [node name="EnemyTriEye13" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(540, 2755)
+tracking_distance = 300
 
 [node name="EnemyTriEye14" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1407, 3366)
+tracking_distance = 300
 
 [node name="EnemyTriEye15" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2035, 3398)
+tracking_distance = 300
 
 [node name="EnemyTriEye16" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3687, 4026)
+tracking_distance = 300
 
 [node name="EnemyTriEye17" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4225, 3971)
+tracking_distance = 300
 
 [node name="EnemyTriEye18" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4382, 3969)
+tracking_distance = 300
 
 [node name="EnemyTriEye19" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4357, 4047)
+tracking_distance = 300
 
 [node name="EnemyTriEye20" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4495, 3988)
+tracking_distance = 300
 
 [node name="EnemyTriEye21" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4410, 4130)
+tracking_distance = 300
 
 [node name="EnemyTriEye22" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4270, 4155)
+tracking_distance = 300
 
 [node name="EnemyTriEye23" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3982, 3401)
+tracking_distance = 300
 
 [node name="EnemyTriEye24" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3374, 3033)
+tracking_distance = 300
 
 [node name="EnemyTriEye25" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3566, 2331)
+tracking_distance = 300
 
 [node name="EnemyTriEye26" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4422, 2023)
+tracking_distance = 300
 
 [node name="EnemyTriEye27" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4478, 2111)
+tracking_distance = 300
 
 [node name="EnemyTriEye28" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4624, 1985)
+tracking_distance = 300
 
 [node name="EnemyTriEye29" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4304, 1961)
+tracking_distance = 300
 
 [node name="EnemyTriEye30" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4082, 1507)
+tracking_distance = 300
 
 [node name="EnemyTriEye31" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4068, 837)
+tracking_distance = 300
 
 [node name="EnemyTriEye32" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3788, 679)
+tracking_distance = 300
 
 [node name="EnemyTriEye33" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3748, 875)
+tracking_distance = 300
 
 [node name="EnemyTriEye34" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3874, 975)
+tracking_distance = 300
 
 [node name="EnemyTriEye35" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4002, 911)
+tracking_distance = 300
 
 [node name="EnemyTriEye36" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(4178, 745)
+tracking_distance = 300
 
 [node name="EnemyTriEye37" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2636, 433)
+tracking_distance = 300
 
 [node name="EnemyTriEye62" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2768, 333)
+tracking_distance = 300
 
 [node name="EnemyTriEye63" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2699, 554)
+tracking_distance = 300
 
 [node name="EnemyTriEye64" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2832, 474)
+tracking_distance = 300
 
 [node name="EnemyTriEye65" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2883, 772)
+tracking_distance = 300
 
 [node name="EnemyTriEye38" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1072, 1015)
+tracking_distance = 300
 
 [node name="EnemyTriEye39" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1295, 862)
+tracking_distance = 300
 
 [node name="EnemyTriEye40" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(978, 1253)
+tracking_distance = 300
 
 [node name="EnemyTriEye43" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(224, 993)
+tracking_distance = 300
 
 [node name="EnemyTriEye44" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(293, 1454)
+tracking_distance = 300
 
 [node name="EnemyTriEye45" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(467, 1890)
+tracking_distance = 300
 
 [node name="EnemyTriEye46" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(430, 2285)
+tracking_distance = 300
 
 [node name="EnemyTriEye47" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1175, 2691)
+tracking_distance = 300
 
 [node name="EnemyTriEye48" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1353, 2318)
+tracking_distance = 300
 
 [node name="EnemyTriEye49" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1429, 1926)
+tracking_distance = 300
 
 [node name="EnemyTriEye50" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1587, 1906)
+tracking_distance = 300
 
 [node name="EnemyTriEye51" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2020, 1404)
+tracking_distance = 300
 
 [node name="EnemyTriEye56" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2816, 1447)
+tracking_distance = 300
 
 [node name="EnemyTriEye57" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2819, 1195)
+tracking_distance = 300
 
 [node name="EnemyTriEye58" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3240, 1225)
+tracking_distance = 300
 
 [node name="EnemyTriEye59" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3231, 1733)
+tracking_distance = 300
 
 [node name="EnemyTriEye60" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3039, 1870)
+tracking_distance = 300
 
 [node name="EnemyTriEye61" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3243, 1993)
+tracking_distance = 300
 
 [node name="EnemyTriEye52" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1929, 1205)
+tracking_distance = 300
 
 [node name="EnemyTriEye53" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3062, 1010)
+tracking_distance = 300
 
 [node name="EnemyTriEye54" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3094, 622)
+tracking_distance = 300
 
 [node name="EnemyTriEye55" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(3094, 622)
+tracking_distance = 300
 
 [node name="EnemyTriEye41" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1459, 1094)
+tracking_distance = 300
 
 [node name="EnemyTriEye42" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1640, 813)
+tracking_distance = 300
 
 [node name="EnemyTriEye2" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1273, 1301)
+tracking_distance = 300
 
 [node name="EnemyTriEye3" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(2140, 1231)
+tracking_distance = 300
 
 [node name="EnemyTriEye4" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1004, 1809)
+tracking_distance = 300
 
 [node name="EnemyTriEye5" parent="EnemiesContainer" instance=ExtResource("5_n5rof")]
 position = Vector2(1512, 2016)
+tracking_distance = 300
 
 [node name="VoidBoss" parent="EnemiesContainer" instance=ExtResource("9_4oc04")]
 position = Vector2(4710, 2626)
