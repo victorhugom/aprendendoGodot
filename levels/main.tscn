@@ -694,7 +694,6 @@ tracking_distance = 300
 
 [node name="VoidBoss" parent="EnemiesContainer" instance=ExtResource("9_4oc04")]
 position = Vector2(4710, 2626)
-speed = 150
 
 [node name="GrassContainer" type="Node2D" parent="."]
 y_sort_enabled = true
